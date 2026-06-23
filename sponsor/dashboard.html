@@ -1,5 +1,14 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sponsor Dashboard | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sponsor Dashboard | CoinGrid</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
 
 *{
 margin:0;
@@ -10,7 +19,8 @@ font-family:'Poppins',sans-serif;
 
 body{
 background:#0f172a;
-color:white;
+color:#fff;
+overflow-x:hidden;
 }
 
 .dashboard{
@@ -23,10 +33,14 @@ min-height:100vh;
 .sidebar{
 width:280px;
 background:#020617;
-padding:25px;
 position:fixed;
+left:0;
+top:0;
 height:100vh;
+padding:25px;
 overflow-y:auto;
+border-right:1px solid rgba(255,255,255,.08);
+z-index:1000;
 }
 
 .logo{
@@ -34,6 +48,7 @@ font-size:32px;
 font-weight:800;
 color:#facc15;
 margin-bottom:40px;
+text-align:center;
 }
 
 .nav-links{
@@ -43,11 +58,18 @@ gap:12px;
 }
 
 .nav-links a{
+background:#0f172a;
 padding:15px;
 border-radius:12px;
-background:#0f172a;
 color:#cbd5e1;
 text-decoration:none;
+transition:.3s;
+font-weight:500;
+}
+
+.nav-links a:hover{
+background:#1e293b;
+transform:translateX(5px);
 }
 
 .nav-links a.active{
@@ -61,28 +83,40 @@ font-weight:700;
 .main-content{
 margin-left:280px;
 flex:1;
-padding:25px;
+padding:30px;
 }
+
+/* TOPBAR */
 
 .topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
-.topbar h1{
+.topbar-left h1{
 font-size:36px;
+font-weight:800;
 }
 
-.topbar p{
+.topbar-left p{
 color:#94a3b8;
+margin-top:6px;
 }
 
 .profile-box{
 background:#1e293b;
-padding:10px 18px;
-border-radius:30px;
+padding:12px 20px;
+border-radius:50px;
+font-weight:600;
+}
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+margin-bottom:15px;
 }
 
 /* OVERVIEW */
@@ -96,13 +130,19 @@ gap:20px;
 .overview-card{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
-padding:25px;
 border-radius:20px;
+padding:25px;
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.overview-card:hover{
+transform:translateY(-5px);
 }
 
 .overview-card h2{
-color:#facc15;
 font-size:32px;
+color:#facc15;
 margin-bottom:10px;
 }
 
@@ -112,18 +152,11 @@ color:#94a3b8;
 
 /* MOBILE */
 
-.menu-btn{
-display:none;
-font-size:28px;
-cursor:pointer;
-}
-
 @media(max-width:991px){
 
 .sidebar{
 left:-100%;
 transition:.3s;
-z-index:1000;
 }
 
 .sidebar.active{
@@ -132,6 +165,7 @@ left:0;
 
 .main-content{
 margin-left:0;
+padding:20px;
 }
 
 .menu-btn{
@@ -146,17 +180,145 @@ grid-template-columns:1fr 1fr;
 
 @media(max-width:600px){
 
-.overview-grid{
-grid-template-columns:1fr;
-}
-
 .topbar{
 flex-direction:column;
 align-items:flex-start;
 gap:15px;
 }
 
+.overview-grid{
+grid-template-columns:1fr;
 }
+
+.topbar-left h1{
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+CoinGrid
+</div>
+
+<div class="nav-links">
+
+<a href="/coingrid/sponsor/dashboard.html" class="active">
+📊 Dashboard
+</a>
+
+<a href="/coingrid/sponsor/create-task.html">
+➕ Create Task
+</a>
+
+<a href="/coingrid/sponsor/task-management.html">
+📋 Manage Tasks
+</a>
+
+<a href="/coingrid/sponsor/payments.html">
+💳 Payments
+</a>
+
+<a href="/coingrid/sponsor/analytics.html">
+📈 Analytics
+</a>
+
+<a href="/coingrid/sponsor/settings.html">
+⚙ Settings
+</a>
+
+</div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content">
+
+<div class="topbar">
+
+<div class="topbar-left">
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+<h1>Sponsor Dashboard</h1>
+
+<p>
+Manage campaigns, track performance, and monitor budgets.
+</p>
+
+</div>
+
+<div class="profile-box">
+Sponsor Account
+</div>
+
+</div>
+
+<!-- OVERVIEW CARDS -->
+
+<div class="overview-grid">
+
+<div class="overview-card">
+<h2>24</h2>
+<p>Active Campaigns</p>
+</div>
+
+<div class="overview-card">
+<h2>12,540</h2>
+<p>Total Completions</p>
+</div>
+
+<div class="overview-card">
+<h2>$2,450</h2>
+<p>Campaign Budget</p>
+</div>
+
+<div class="overview-card">
+<h2>98%</h2>
+<p>Approval Rate</p>
+</div>
+
+</div>
+
+<!-- PART 2 STARTS HERE -->
+
+  <!-- QUICK ACTIONS -->
+
+<div class="quick-actions">
+
+<a href="/coingrid/sponsor/create-task.html" class="action-btn">
+➕ Create Campaign
+</a>
+
+<a href="/coingrid/sponsor/task-management.html" class="action-btn">
+📋 Manage Tasks
+</a>
+
+<a href="/coingrid/sponsor/payments.html" class="action-btn">
+💳 Add Funds
+</a>
+
+<a href="/coingrid/sponsor/analytics.html" class="action-btn">
+📈 Analytics
+</a>
+
+</div>
+
+<style>
+
 .quick-actions{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -168,10 +330,15 @@ margin-top:30px;
 background:#facc15;
 color:#000;
 padding:18px;
-text-align:center;
 border-radius:15px;
+text-align:center;
 text-decoration:none;
 font-weight:700;
+transition:.3s;
+}
+
+.action-btn:hover{
+transform:translateY(-4px);
 }
 
 .dashboard-grid{
@@ -186,6 +353,7 @@ background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
 padding:25px;
 border-radius:20px;
+backdrop-filter:blur(10px);
 }
 
 .dashboard-card h2{
@@ -207,6 +375,7 @@ background:#22c55e;
 padding:8px 12px;
 border-radius:20px;
 font-size:12px;
+font-weight:700;
 }
 
 .completed-badge{
@@ -214,121 +383,22 @@ background:#3b82f6;
 padding:8px 12px;
 border-radius:20px;
 font-size:12px;
-}
-
-.full-width{
-grid-column:1/-1;
-}
-
-.payment-row{
-display:grid;
-grid-template-columns:1fr 2fr 1fr 1fr;
-padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.success{
-color:#22c55e;
-font-weight:700;
-}
-
-.pending{
-color:#f59e0b;
 font-weight:700;
 }
 
 @media(max-width:991px){
 
-.quick-actions,
+.quick-actions{
+grid-template-columns:1fr;
+}
+
 .dashboard-grid{
 grid-template-columns:1fr;
 }
 
-.payment-row{
-grid-template-columns:1fr;
-gap:8px;
 }
 
-  }
-
-  .analytics-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-margin-top:25px;
-}
-
-.campaign-rank,
-.live-stat{
-display:flex;
-justify-content:space-between;
-padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.api-status{
-margin-top:25px;
-}
-
-.status-online{
-display:inline-block;
-padding:10px 15px;
-background:#22c55e;
-border-radius:12px;
-font-weight:700;
-margin:15px 0;
-}
-
-@media(max-width:991px){
-
-.analytics-grid{
-grid-template-columns:1fr;
-}
-
-}
-</style></head><body><div class="dashboard"><!-- SIDEBAR --><div class="sidebar" id="sidebar"><div class="logo">
-CoinGrid
-</div><div class="nav-links"><a href="dashboard.html" class="active">
-📊 Dashboard
-</a><a href="create-task.html">
-➕ Create Task
-</a><a href="task-management.html">
-📋 Manage Tasks
-</a><a href="payments.html">
-💳 Payments
-</a><a href="analytics.html">
-📈 Analytics
-</a><a href="settings.html">
-⚙ Settings
-</a></div></div><!-- MAIN --><div class="main-content"><div class="topbar"><div><div class="menu-btn" id="menuBtn">
-☰
-</div><h1>Sponsor Dashboard</h1><p>
-Manage campaigns and monitor performance.
-</p></div><div class="profile-box">Sponsor Account
-
-</div></div><!-- OVERVIEW --><div class="overview-grid"><div class="overview-card"><h2>24</h2><p>Active Campaigns</p></div><div class="overview-card"><h2>12,540</h2><p>Total Completions</p></div><div class="overview-card"><h2>$2,450</h2><p>Campaign Budget</p></div><div class="overview-card"><h2>98%</h2><p>Approval Rate</p></div></div></div>
-
-<!-- QUICK ACTIONS -->
-
-<div class="quick-actions">
-
-<a href="create-task.html" class="action-btn">
-➕ Create Campaign
-</a>
-
-<a href="task-management.html" class="action-btn">
-📋 Manage Tasks
-</a>
-
-<a href="payments.html" class="action-btn">
-💳 Add Funds
-</a>
-
-<a href="analytics.html" class="action-btn">
-📈 Analytics
-</a>
-
-</div>
+</style>
 
 <!-- DASHBOARD GRID -->
 
@@ -369,8 +439,8 @@ Active
 <div class="campaign-item">
 
 <div>
-<h3>Website Visit</h3>
-<p>Completed</p>
+<h3>Website Visit Campaign</h3>
+<p>Campaign Completed</p>
 </div>
 
 <span class="completed-badge">
@@ -381,47 +451,102 @@ Completed
 
 </div>
 
-<!-- PERFORMANCE -->
+<!-- PERFORMANCE OVERVIEW -->
 
 <div class="dashboard-card">
 
 <h2>Performance Overview</h2>
 
 <div class="performance-item">
-
-<span>Clicks</span>
-
+<span>Total Clicks</span>
 <strong>24,500</strong>
-
 </div>
 
 <div class="performance-item">
-
 <span>Conversions</span>
-
 <strong>8,240</strong>
-
 </div>
 
 <div class="performance-item">
-
 <span>CTR</span>
-
 <strong>12.4%</strong>
-
 </div>
 
 <div class="performance-item">
-
 <span>Cost Per Task</span>
-
 <strong>$0.18</strong>
-
 </div>
 
 </div>
 
 </div>
+
+<!-- PART 3 STARTS HERE -->
+<style>
+
+.full-width{
+grid-column:1/-1;
+}
+
+.payment-row{
+display:grid;
+grid-template-columns:1fr 2fr 1fr 1fr;
+gap:10px;
+padding:15px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.success{
+color:#22c55e;
+font-weight:700;
+}
+
+.pending{
+color:#f59e0b;
+font-weight:700;
+}
+
+.analytics-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:25px;
+}
+
+.campaign-rank,
+.live-stat{
+display:flex;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.api-status{
+margin-top:25px;
+}
+
+.status-online{
+display:inline-block;
+background:#22c55e;
+padding:10px 15px;
+border-radius:12px;
+font-weight:700;
+margin:15px 0;
+}
+
+@media(max-width:991px){
+
+.analytics-grid{
+grid-template-columns:1fr;
+}
+
+.payment-row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
 
 <!-- RECENT PAYMENTS -->
 
@@ -429,12 +554,12 @@ Completed
 
 <h2>Recent Payments</h2>
 
-<div class="payment-row header">
+<div class="payment-row">
 
-<div>Date</div>
-<div>Campaign</div>
-<div>Amount</div>
-<div>Status</div>
+<div><strong>Date</strong></div>
+<div><strong>Campaign</strong></div>
+<div><strong>Amount</strong></div>
+<div><strong>Status</strong></div>
 
 </div>
 
@@ -443,9 +568,7 @@ Completed
 <div>2026-06-23</div>
 <div>App Install Campaign</div>
 <div>$250</div>
-<div class="success">
-Paid
-</div>
+<div class="success">Paid</div>
 
 </div>
 
@@ -454,9 +577,7 @@ Paid
 <div>2026-06-21</div>
 <div>Survey Campaign</div>
 <div>$150</div>
-<div class="pending">
-Pending
-</div>
+<div class="pending">Pending</div>
 
 </div>
 
@@ -465,79 +586,101 @@ Pending
 <div>2026-06-19</div>
 <div>Website Visit Campaign</div>
 <div>$100</div>
-<div class="success">
-Paid
-</div>
+<div class="success">Paid</div>
 
 </div>
 
 </div>
 
-  <!-- ANALYTICS SECTION --><div class="analytics-grid"><div class="dashboard-card"><h2>Top Performing Campaigns</h2><div class="campaign-rank"><span>#1 Mobile App Install</span>
+<!-- ANALYTICS -->
 
+<div class="analytics-grid">
+
+<div class="dashboard-card">
+
+<h2>Top Performing Campaigns</h2>
+
+<div class="campaign-rank">
+<span>#1 Mobile App Install</span>
 <strong>4,250 Tasks</strong>
+</div>
 
-</div><div class="campaign-rank"><span>#2 Survey Campaign</span>
-
+<div class="campaign-rank">
+<span>#2 Survey Campaign</span>
 <strong>2,840 Tasks</strong>
+</div>
 
-</div><div class="campaign-rank"><span>#3 Website Visit</span>
-
+<div class="campaign-rank">
+<span>#3 Website Visit</span>
 <strong>1,920 Tasks</strong>
+</div>
 
-</div></div><div class="dashboard-card"><h2>Live Statistics</h2><div class="live-stat"><span>Today's Clicks</span>
+</div>
 
-<strong id="todayClicks">
-1,245
-</strong></div><div class="live-stat"><span>Today's Completions</span>
+<div class="dashboard-card">
 
-<strong id="todayCompletions">
-425
-</strong></div><div class="live-stat"><span>Current Budget</span>
+<h2>Live Statistics</h2>
 
-<strong id="currentBudget">
-$2,450
-</strong></div></div></div><!-- API STATUS --><div class="dashboard-card api-status"><h2>Cloudflare Worker Status</h2><div class="status-online">🟢 Connected
+<div class="live-stat">
+<span>Today's Clicks</span>
+<strong id="todayClicks">1,245</strong>
+</div>
 
-</div><p>
+<div class="live-stat">
+<span>Today's Completions</span>
+<strong id="todayCompletions">425</strong>
+</div>
+
+<div class="live-stat">
+<span>Current Budget</span>
+<strong id="currentBudget">$2,450</strong>
+</div>
+
+</div>
+
+</div>
+
+<!-- API STATUS -->
+
+<div class="dashboard-card api-status">
+
+<h2>Cloudflare Worker Status</h2>
+
+<div class="status-online">
+🟢 Connected
+</div>
+
+<p>
 Campaign data is syncing successfully with CoinGrid API.
-</p></div>
-</div><script>
+</p>
+
+</div>
+
+</div>
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END DASHBOARD -->
+
+<script>
 
 const menuBtn =
-document.getElementById(
-"menuBtn"
-);
+document.getElementById("menuBtn");
 
 const sidebar =
-document.getElementById(
-"sidebar"
-);
+document.getElementById("sidebar");
 
-menuBtn.addEventListener(
-"click",
-()=>{
+menuBtn.addEventListener("click",()=>{
 
-sidebar.classList.toggle(
-"active"
-);
+sidebar.classList.toggle("active");
 
 });
 
-
-  /*
-
-Cloudflare Worker Endpoints
-
-GET /api/sponsor/dashboard
-
-GET /api/sponsor/campaigns
-
-GET /api/sponsor/analytics
-
-*/
+/* CLOUDLFARE API */
 
 async function loadSponsorDashboard(){
+
+try{
 
 /*
 
@@ -570,6 +713,12 @@ console.log(
 'Sponsor dashboard loaded'
 );
 
+}catch(error){
+
+console.error(error);
+
+}
+
 }
 
 loadSponsorDashboard();
@@ -581,4 +730,9 @@ setInterval(()=>{
 loadSponsorDashboard();
 
 },30000);
-</script></body></html>
+
+</script>
+
+</body>
+</html>
+  
