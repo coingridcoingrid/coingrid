@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Login | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+overflow-x:hidden;
+}
+
+.container{
+width:100%;
+max-width:1300px;
+display:grid;
+grid-template-columns:1fr 1fr;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+border-radius:30px;
+overflow:hidden;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+background:linear-gradient(135deg,#facc15,#eab308);
+padding:80px 60px;
+color:#000;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.logo{
+font-size:42px;
+font-weight:800;
+margin-bottom:25px;
+}
+
+.logo span{
+color:white;
+}
+
+.left-panel h1{
+font-size:55px;
+line-height:1.2;
+margin-bottom:20px;
+}
+
+.left-panel p{
+font-size:18px;
+line-height:1.8;
+}
+
+.stats{
+margin-top:40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.stat-card{
+background:rgba(255,255,255,0.25);
+padding:20px;
+border-radius:15px;
+}
+
+.stat-card h3{
+font-size:28px;
+}
+
+.stat-card p{
+font-size:14px;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+background:#0f172a;
+padding:60px;
+display:flex;
+align-items:center;
+}
+
+.form-box{
+width:100%;
+max-width:500px;
+margin:auto;
+color:white;
+}
+
+.form-box h2{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#94a3b8;
+margin-bottom:35px;
+}
+
+.input-group{
+margin-bottom:20px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+}
+
+.input-group input{
+width:100%;
+padding:16px;
+background:#1e293b;
+border:none;
+outline:none;
+border-radius:12px;
+color:white;
+font-size:15px;
+}
+
+.input-group input:focus{
+border:1px solid #facc15;
+}
+
+@media(max-width:991px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.left-panel{
+padding:50px 30px;
+}
+
+.left-panel h1{
+font-size:40px;
+}
+
+.right-panel{
+padding:40px 25px;
+}
+
+}
+
+
+.form-options{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+font-size:14px;
+}
+
+.remember-me{
+display:flex;
+align-items:center;
+gap:8px;
+cursor:pointer;
+color:#cbd5e1;
+}
+
+.form-options a{
+color:#facc15;
+}
+
+.login-btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.login-btn:hover{
+transform:translateY(-2px);
+}
+
+.divider{
+text-align:center;
+margin:25px 0;
+position:relative;
+}
+
+.divider span{
+background:#0f172a;
+padding:0 15px;
+position:relative;
+z-index:2;
+}
+
+.divider::before{
+content:'';
+position:absolute;
+top:50%;
+left:0;
+width:100%;
+height:1px;
+background:#334155;
+}
+
+.google-btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:white;
+color:black;
+font-weight:600;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+cursor:pointer;
+}
+
+.google-btn img{
+width:22px;
+height:22px;
+}
+
+.register-link{
+text-align:center;
+margin-top:25px;
+color:#94a3b8;
+}
+
+.register-link a{
+color:#facc15;
+font-weight:600;
+}
+
+.popup-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:400px;
+text-align:center;
+color:white;
+}
+
+.popup-box h2{
+margin-bottom:10px;
+}
+
+.popup-box p{
+margin-bottom:20px;
+color:#94a3b8;
+}
+
+.popup-input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#0f172a;
+color:white;
+margin-bottom:20px;
+}
+
+.popup-box button{
+padding:14px 25px;
+border:none;
+border-radius:10px;
+background:#facc15;
+font-weight:700;
+cursor:pointer;
+}
+
+@media(max-width:600px){
+
+.form-options{
+flex-direction:column;
+gap:12px;
+align-items:flex-start;
+}
+
+}
+
+
+</style></head><body><div class="container"><div class="left-panel"><div class="logo">
+Coin<span>Grid</span>
+</div><h1>
+Welcome Back
+</h1><p>
+Login to your CoinGrid account and continue earning rewards,
+completing tasks, tracking earnings, and managing withdrawals.
+</p><div class="stats"><div class="stat-card">
+<h3>25K+</h3>
+<p>Active Members</p>
+</div><div class="stat-card">
+<h3>100K+</h3>
+<p>Tasks Completed</p>
+</div><div class="stat-card">
+<h3>$500K+</h3>
+<p>Total Rewards Paid</p>
+</div><div class="stat-card">
+<h3>99.9%</h3>
+<p>Platform Uptime</p>
+</div></div></div><div class="right-panel"><div class="form-box"><h2>Login</h2><p class="subtitle">
+Access your CoinGrid account securely.
+</p><form id="loginForm"><div class="input-group"><label>Email Address</label>
+
+<input
+type="email"
+placeholder="Enter your email">
+
+</div><div class="input-group"><label>Password</label>
+
+<input
+type="password"
+placeholder="Enter your password">
+
+</div>
+<!-- REMEMBER & FORGOT --><div class="form-options"><label class="remember-me"><input type="checkbox" id="rememberMe"><span>Remember Me</span>
+
+</label><a href="#" id="forgotPassword">
+Forgot Password?
+</a></div><!-- LOGIN BUTTON --><button
+type="submit"
+class="login-btn">
+
+Login To Account
+
+</button><!-- DIVIDER --><div class="divider"><span>OR</span>
+
+</div><!-- GOOGLE LOGIN --><button
+type="button"
+class="google-btn">
+
+<img
+src="../images/icons/google.png"
+alt="Google">
+
+Continue With Google
+
+</button><!-- REGISTER LINK --><div class="register-link">Don't have an account?
+
+<a href="register.html">Create Account
+
+</a></div></form><!-- FORGOT PASSWORD POPUP --><div id="forgotPopup" class="popup-overlay"><div class="popup-box"><h2>Reset Password</h2><p>
+Enter your registered email address.
+</p><input
+type="email"
+placeholder="Email Address"
+class="popup-input">
+
+<button>
+Send Reset Link
+</button></div></div>
+</form></div></div></div>
+
+<script>const forgotBtn =
+document.getElementById("forgotPassword");
+
+const forgotPopup =
+document.getElementById("forgotPopup");
+
+forgotBtn.addEventListener("click",(e)=>{
+
+e.preventDefault();
+
+forgotPopup.style.display="flex";
+
+});
+
+forgotPopup.addEventListener("click",(e)=>{
+
+if(e.target===forgotPopup){
+
+forgotPopup.style.display="none";
+
+}
+
+});</script></body>
+</html>
