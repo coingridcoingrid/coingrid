@@ -252,6 +252,84 @@ gap:8px;
 }
 
 }
+
+  .transaction-section{
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:25px;
+}
+
+.transaction-table{
+margin-top:20px;
+}
+
+.transaction-row{
+display:grid;
+grid-template-columns:1.5fr 1.5fr 1fr 1fr;
+padding:15px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.success{
+color:#22c55e;
+font-weight:600;
+}
+
+.pending-status{
+color:#f59e0b;
+font-weight:600;
+}
+
+/* POPUP */
+
+.popup-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#1e293b;
+padding:35px;
+border-radius:25px;
+text-align:center;
+width:90%;
+max-width:400px;
+}
+
+.popup-icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.popup-box button{
+margin-top:20px;
+padding:14px 25px;
+border:none;
+background:#facc15;
+color:#000;
+border-radius:10px;
+font-weight:700;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.transaction-row{
+grid-template-columns:1fr;
+gap:8px;
+}
+
+  }
 </style></head><body><div class="container"><div class="page-header"><h1>My Wallet</h1><p>
 Manage your earnings, withdrawals, and transaction history.
 </p></div><!-- WALLET OVERVIEW --><div class="wallet-overview"><h2>
@@ -311,4 +389,104 @@ Pending
 Approved
 </div></div></div></div>
 
-</div></body></html>
+  <!-- TRANSACTION HISTORY --><div class="transaction-section"><h2>Transaction History</h2><div class="transaction-table"><div class="transaction-row header"><div>Date</div>
+<div>Type</div>
+<div>Amount</div>
+<div>Status</div></div><div class="transaction-row"><div>2026-06-23</div>
+<div>Task Reward</div>
+<div>+$4.00</div>
+<div class="success">Completed</div></div><div class="transaction-row"><div>2026-06-22</div>
+<div>Withdrawal</div>
+<div>-$20.00</div>
+<div class="pending-status">Processing</div></div><div class="transaction-row"><div>2026-06-21</div>
+<div>Referral Bonus</div>
+<div>+$5.00</div>
+<div class="success">Completed</div></div><div class="transaction-row"><div>2026-06-20</div>
+<div>Survey Reward</div>
+<div>+$2.50</div>
+<div class="success">Completed</div></div></div></div><!-- SUCCESS POPUP --><div id="withdrawPopup" class="popup-overlay"><div class="popup-box"><div class="popup-icon">
+✅
+</div><h2>Withdrawal Requested</h2><p>
+Your withdrawal request has been submitted successfully.
+</p><button onclick="closeWithdrawPopup()">
+Continue
+</button></div></div>
+
+</div>
+
+<script>
+
+  /* WITHDRAW FORM */
+
+const withdrawForm =
+document.getElementById(
+"withdrawForm"
+);
+
+if(withdrawForm){
+
+withdrawForm.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+document.getElementById(
+"withdrawPopup"
+).style.display =
+"flex";
+
+/*
+
+Cloudflare Worker API
+
+POST /api/withdraw
+
+{
+amount:50,
+method:"UPI",
+account:"example@upi"
+}
+
+*/
+
+});
+
+}
+
+/* CLOSE POPUP */
+
+function closeWithdrawPopup(){
+
+document.getElementById(
+"withdrawPopup"
+).style.display =
+"none";
+
+}
+
+/* WALLET DATA */
+
+async function loadWallet(){
+
+/*
+
+const response =
+await fetch(
+'https://api.coingrid.in/wallet'
+);
+
+const data =
+await response.json();
+
+document.querySelector(
+'.wallet-balance'
+).innerText =
+'$' + data.balance;
+
+*/
+
+}
+
+loadWallet();
+</script></body></html>
