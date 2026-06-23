@@ -171,6 +171,63 @@ background:#ef4444;
 color:white;
 cursor:pointer;
   }
+
+  .appearance-card{
+margin-top:25px;
+}
+
+.danger-zone{
+margin-top:25px;
+border:1px solid rgba(239,68,68,.4);
+}
+
+#deleteAccountBtn{
+margin-top:20px;
+padding:15px 25px;
+border:none;
+border-radius:12px;
+background:#ef4444;
+color:white;
+font-weight:700;
+cursor:pointer;
+}
+
+.settings-popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-content{
+background:#1e293b;
+padding:35px;
+border-radius:25px;
+text-align:center;
+max-width:400px;
+width:90%;
+}
+
+.popup-icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.popup-content button{
+margin-top:20px;
+padding:14px 25px;
+border:none;
+border-radius:10px;
+background:#facc15;
+font-weight:700;
+cursor:pointer;
+  }
 </style></head><body><div class="container"><div class="page-header"><h1>Settings</h1><p>
 Manage your CoinGrid account preferences and settings.
 </p></div><div class="settings-grid"><!-- ACCOUNT SETTINGS --><div class="settings-card"><h2>Account Settings</h2><div class="form-group"><label>Full Name</label>
@@ -237,7 +294,29 @@ Active
 <p>Last Active: 2 Hours Ago</p></div><button class="logout-btn">Logout
 
 </button></div></div></div>
+<!-- APPEARANCE SETTINGS --><div class="settings-card appearance-card"><h2>Appearance</h2><div class="form-group"><label>Theme Preference</label>
 
+<select id="themeSelect"><option value="dark">
+Dark Mode
+</option><option value="light">
+Light Mode
+</option><option value="system">
+System Default
+</option></select></div></div><!-- SAVE SETTINGS --><div class="settings-card"><h2>Save Preferences</h2><p class="security-text">Save all account settings and preferences.
+
+</p><button id="saveSettingsBtn" class="save-btn">Save All Settings
+
+</button></div><!-- DANGER ZONE --><div class="settings-card danger-zone"><h2>Danger Zone</h2><p>
+Permanently delete your CoinGrid account and all associated data.
+</p><button id="deleteAccountBtn">Delete Account
+
+</button></div><!-- SUCCESS POPUP --><div id="settingsPopup" class="settings-popup"><div class="popup-content"><div class="popup-icon">
+✅
+</div><h2>Settings Saved</h2><p>
+Your preferences have been updated successfully.
+</p><button onclick="closeSettingsPopup()">Continue
+
+</button></div></div>
 </div><script>
 
 document
@@ -266,6 +345,114 @@ e.preventDefault();
 
 alert(
 "Password updated successfully!"
+);
+
+});
+
+  /* SAVE SETTINGS */
+
+document
+.getElementById(
+"saveSettingsBtn"
+)
+.addEventListener(
+"click",
+async()=>{
+
+document
+.getElementById(
+"settingsPopup"
+)
+.style.display =
+"flex";
+
+/*
+
+Cloudflare Worker API
+
+PUT /api/settings
+
+{
+theme:"dark",
+notifications:true,
+language:"English"
+}
+
+await fetch(
+'https://api.coingrid.in/settings',
+{
+method:'PUT',
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify(settings)
+}
+);
+
+*/
+
+});
+
+/* CLOSE POPUP */
+
+function closeSettingsPopup(){
+
+document
+.getElementById(
+"settingsPopup"
+)
+.style.display =
+"none";
+
+}
+
+/* DELETE ACCOUNT */
+
+document
+.getElementById(
+"deleteAccountBtn"
+)
+.addEventListener(
+"click",
+()=>{
+
+const confirmDelete =
+confirm(
+"Are you sure you want to delete your account?"
+);
+
+if(confirmDelete){
+
+/*
+
+DELETE API
+
+DELETE /api/account
+
+*/
+
+alert(
+"Account deletion request submitted."
+);
+
+}
+
+});
+
+/* THEME STORAGE */
+
+const themeSelect =
+document.getElementById(
+"themeSelect"
+);
+
+themeSelect.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"coingrid_theme",
+themeSelect.value
 );
 
 });
