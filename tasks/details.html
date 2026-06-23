@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Task Details | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:25px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.task-layout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+}
+
+/* MAIN CARD */
+
+.task-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
+border-radius:25px;
+}
+
+.task-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;
+margin-bottom:25px;
+}
+
+.reward{
+font-size:38px;
+font-weight:800;
+color:#facc15;
+}
+
+.difficulty{
+padding:10px 18px;
+border-radius:30px;
+font-weight:600;
+}
+
+.easy{
+background:#22c55e;
+}
+
+.medium{
+background:#f59e0b;
+}
+
+.hard{
+background:#ef4444;
+}
+
+.task-card h1{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.task-description{
+color:#cbd5e1;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+/* REQUIREMENTS */
+
+.requirements{
+margin-top:25px;
+}
+
+.requirements h2{
+margin-bottom:15px;
+}
+
+.requirements ul{
+padding-left:20px;
+}
+
+.requirements li{
+margin-bottom:12px;
+color:#cbd5e1;
+}
+
+/* SIDEBAR */
+
+.sidebar-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:25px;
+margin-bottom:20px;
+}
+
+.sidebar-card h3{
+margin-bottom:15px;
+}
+
+.info-row{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.info-row:last-child{
+border-bottom:none;
+}
+
+/* BUTTON */
+
+.start-btn{
+width:100%;
+padding:16px;
+border:none;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+border-radius:12px;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+.task-layout{
+grid-template-columns:1fr;
+}
+
+.task-card h1{
+font-size:28px;
+}
+
+.reward{
+font-size:30px;
+}
+
+}
+.task-steps,
+.task-timer,
+.progress-section,
+.proof-section{
+margin-top:35px;
+}
+
+.step-item{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:15px;
+padding:15px;
+background:#1e293b;
+border-radius:12px;
+}
+
+.step-item span{
+width:35px;
+height:35px;
+background:#facc15;
+color:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-weight:700;
+}
+
+#timer{
+margin-top:15px;
+font-size:42px;
+font-weight:800;
+color:#facc15;
+}
+
+.progress-bar{
+width:100%;
+height:14px;
+background:#1e293b;
+border-radius:50px;
+overflow:hidden;
+margin-top:15px;
+}
+
+#progressFill{
+width:0%;
+height:100%;
+background:#facc15;
+transition:.4s;
+}
+
+#progressText{
+margin-top:10px;
+color:#94a3b8;
+}
+
+.proof-section input,
+.proof-section textarea{
+width:100%;
+padding:15px;
+margin-top:10px;
+margin-bottom:20px;
+border:none;
+border-radius:12px;
+background:#1e293b;
+color:white;
+}
+
+.proof-section textarea{
+height:140px;
+resize:none;
+}
+
+#submitTaskBtn{
+width:100%;
+padding:16px;
+border:none;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+border-radius:12px;
+cursor:pointer;
+  }
+</style></head><body><div class="container"><div class="task-layout"><!-- MAIN --><div class="task-card"><div class="task-header"><div class="reward">
+$4.00
+</div><div class="difficulty medium">
+Medium
+</div></div><h1>
+Install Mobile Application
+</h1><p class="task-description">Download the sponsor application, create an account,
+and keep the app installed for at least 24 hours.
+After completing the task, submit proof for review.
+
+</p><div class="requirements"><h2>
+Task Requirements
+</h2><ul><li>Download the application using the provided link.</li><li>Create a new account.</li><li>Verify your email address.</li><li>Keep the application installed for 24 hours.</li><li>Submit screenshot proof.</li></ul></div></div><!-- SIDEBAR --><div><div class="sidebar-card"><h3>
+Task Information
+</h3><div class="info-row">
+<span>Category</span>
+<span>Apps</span>
+</div><div class="info-row">
+<span>Time Needed</span>
+<span>10 Min</span>
+</div><div class="info-row">
+<span>Available Slots</span>
+<span>65</span>
+</div><div class="info-row">
+<span>Approval Time</span>
+<span>24 Hours</span>
+</div><button class="start-btn">
+Start Task
+</button></div><div class="sidebar-card"><h3>
+Sponsor
+</h3><p>
+Verified advertiser with 98% approval rate and over
+500 completed campaigns.
+</p></div></div></div>
+<!-- TASK STEPS --><div class="task-steps"><h2>Step-by-Step Instructions</h2><div class="step-item">
+<span>1</span>
+<p>Click the Start Task button.</p>
+</div><div class="step-item">
+<span>2</span>
+<p>Download and install the application.</p>
+</div><div class="step-item">
+<span>3</span>
+<p>Create an account using a valid email address.</p>
+</div><div class="step-item">
+<span>4</span>
+<p>Verify your email and login.</p>
+</div><div class="step-item">
+<span>5</span>
+<p>Take a screenshot and submit proof.</p>
+</div></div><!-- TASK TIMER --><div class="task-timer"><h2>Task Timer</h2><div id="timer">
+10:00
+</div></div><!-- PROGRESS --><div class="progress-section"><h2>Completion Progress</h2><div class="progress-bar"><div id="progressFill"></div></div><p id="progressText">
+0% Complete
+</p></div><!-- PROOF SUBMISSION --><div class="proof-section"><h2>Submit Proof</h2><label>Screenshot Upload</label>
+
+<input
+type="file"
+id="proofImage"
+accept="image/*">
+
+<label>Proof URL (Optional)</label>
+
+<input
+type="url"
+placeholder="https://">
+
+<label>Additional Notes</label>
+
+<textarea
+placeholder="Enter notes for reviewer"></textarea><button id="submitTaskBtn">
+Submit Task
+</button></div>
+</div>
+<script>
+
+/* TIMER */
+
+let time = 600;
+
+const timer =
+document.getElementById("timer");
+
+setInterval(()=>{
+
+if(time>0){
+
+time--;
+
+let min =
+Math.floor(time/60);
+
+let sec =
+time%60;
+
+timer.innerText =
+`${min}:${sec<10?'0':''}${sec}`;
+
+}
+
+},1000);
+
+/* PROGRESS */
+
+let progress = 0;
+
+const fill =
+document.getElementById(
+"progressFill"
+);
+
+const text =
+document.getElementById(
+"progressText"
+);
+
+const interval =
+setInterval(()=>{
+
+if(progress<100){
+
+progress += 20;
+
+fill.style.width =
+progress + "%";
+
+text.innerText =
+progress + "% Complete";
+
+}
+
+},2000);
+
+</script>
+</body></html>
