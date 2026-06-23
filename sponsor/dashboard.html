@@ -250,6 +250,42 @@ gap:8px;
 }
 
   }
+
+  .analytics-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-top:25px;
+}
+
+.campaign-rank,
+.live-stat{
+display:flex;
+justify-content:space-between;
+padding:15px 0;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.api-status{
+margin-top:25px;
+}
+
+.status-online{
+display:inline-block;
+padding:10px 15px;
+background:#22c55e;
+border-radius:12px;
+font-weight:700;
+margin:15px 0;
+}
+
+@media(max-width:991px){
+
+.analytics-grid{
+grid-template-columns:1fr;
+}
+
+}
 </style></head><body><div class="dashboard"><!-- SIDEBAR --><div class="sidebar" id="sidebar"><div class="logo">
 CoinGrid
 </div><div class="nav-links"><a href="dashboard.html" class="active">
@@ -436,6 +472,36 @@ Paid
 </div>
 
 </div>
+
+  <!-- ANALYTICS SECTION --><div class="analytics-grid"><div class="dashboard-card"><h2>Top Performing Campaigns</h2><div class="campaign-rank"><span>#1 Mobile App Install</span>
+
+<strong>4,250 Tasks</strong>
+
+</div><div class="campaign-rank"><span>#2 Survey Campaign</span>
+
+<strong>2,840 Tasks</strong>
+
+</div><div class="campaign-rank"><span>#3 Website Visit</span>
+
+<strong>1,920 Tasks</strong>
+
+</div></div><div class="dashboard-card"><h2>Live Statistics</h2><div class="live-stat"><span>Today's Clicks</span>
+
+<strong id="todayClicks">
+1,245
+</strong></div><div class="live-stat"><span>Today's Completions</span>
+
+<strong id="todayCompletions">
+425
+</strong></div><div class="live-stat"><span>Current Budget</span>
+
+<strong id="currentBudget">
+$2,450
+</strong></div></div></div><!-- API STATUS --><div class="dashboard-card api-status"><h2>Cloudflare Worker Status</h2><div class="status-online">🟢 Connected
+
+</div><p>
+Campaign data is syncing successfully with CoinGrid API.
+</p></div>
 </div><script>
 
 const menuBtn =
@@ -458,4 +524,61 @@ sidebar.classList.toggle(
 
 });
 
+
+  /*
+
+Cloudflare Worker Endpoints
+
+GET /api/sponsor/dashboard
+
+GET /api/sponsor/campaigns
+
+GET /api/sponsor/analytics
+
+*/
+
+async function loadSponsorDashboard(){
+
+/*
+
+const response =
+await fetch(
+'https://api.coingrid.in/sponsor/dashboard'
+);
+
+const data =
+await response.json();
+
+document.getElementById(
+'todayClicks'
+).innerText =
+data.clicks;
+
+document.getElementById(
+'todayCompletions'
+).innerText =
+data.completions;
+
+document.getElementById(
+'currentBudget'
+).innerText =
+'$' + data.budget;
+
+*/
+
+console.log(
+'Sponsor dashboard loaded'
+);
+
+}
+
+loadSponsorDashboard();
+
+/* AUTO REFRESH */
+
+setInterval(()=>{
+
+loadSponsorDashboard();
+
+},30000);
 </script></body></html>
