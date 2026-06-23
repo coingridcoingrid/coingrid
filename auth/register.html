@@ -159,6 +159,129 @@ padding:40px 25px;
 
 }
 
+
+select{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+background:#1e293b;
+color:white;
+border-radius:12px;
+font-size:15px;
+}
+
+.password-strength{
+margin-bottom:20px;
+}
+
+.strength-bar{
+width:100%;
+height:8px;
+background:#1e293b;
+border-radius:50px;
+overflow:hidden;
+}
+
+#strengthFill{
+width:0%;
+height:100%;
+background:red;
+transition:.3s;
+}
+
+#strengthText{
+margin-top:8px;
+font-size:13px;
+color:#94a3b8;
+}
+
+.terms-container{
+display:flex;
+align-items:flex-start;
+gap:10px;
+margin-bottom:25px;
+font-size:14px;
+color:#cbd5e1;
+}
+
+.terms-container a{
+color:#facc15;
+}
+
+.register-btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.register-btn:hover{
+transform:translateY(-2px);
+}
+
+.divider{
+text-align:center;
+margin:25px 0;
+position:relative;
+}
+
+.divider span{
+background:#0f172a;
+padding:0 15px;
+position:relative;
+z-index:2;
+}
+
+.divider::before{
+content:'';
+position:absolute;
+top:50%;
+left:0;
+width:100%;
+height:1px;
+background:#334155;
+}
+
+.google-btn{
+width:100%;
+padding:16px;
+background:#fff;
+color:#000;
+border:none;
+border-radius:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+font-weight:600;
+cursor:pointer;
+}
+
+.google-btn img{
+width:22px;
+height:22px;
+}
+
+.login-link{
+text-align:center;
+margin-top:25px;
+color:#94a3b8;
+}
+
+.login-link a{
+color:#facc15;
+font-weight:600;
+}
+
+
+
 </style></head><body><div class="container"><div class="left-panel"><div class="logo">
 Coin<span>Grid</span>
 </div><h1>
@@ -193,5 +316,121 @@ Create your CoinGrid account in less than a minute.
 </div><div class="input-group">
 <label>Confirm Password</label>
 <input type="password" placeholder="Confirm password">
-</div></form></div></div></div></body>
+</div>
+<!-- ACCOUNT TYPE --><div class="input-group"><label>Account Type</label>
+
+<select id="accountType"><option value="worker">Worker Account</option><option value="sponsor">Sponsor Account</option></select></div><!-- REFERRAL --><div class="input-group"><label>Referral Code (Optional)</label>
+
+<input
+type="text"
+id="referralCode"
+placeholder="Enter referral code">
+
+</div><!-- PASSWORD STRENGTH --><div class="password-strength"><div class="strength-bar">
+<div id="strengthFill"></div>
+</div><p id="strengthText">
+Password Strength
+</p></div><!-- TERMS --><div class="terms-container"><input
+type="checkbox"
+id="terms">
+
+<label for="terms">I agree to the
+
+<a href="../terms-and-conditions.html">
+Terms & Conditions
+</a>and
+
+<a href="../privacy-policy.html">
+Privacy Policy
+</a></label></div><!-- REGISTER BUTTON --><button
+type="submit"
+class="register-btn">
+
+Create Account
+
+</button><!-- DIVIDER --><div class="divider"><span>OR</span>
+
+</div><!-- GOOGLE BUTTON --><button
+type="button"
+class="google-btn">
+
+<img
+src="../images/icons/google.png"
+alt="Google">
+
+Continue With Google
+
+</button><!-- LOGIN LINK --><div class="login-link">Already have an account?
+
+<a href="login.html">Login Here
+
+</a></div></form></div></div></div><!-- SCRIPT --><script>
+
+const passwordInput =
+document.querySelectorAll("input[type='password']")[0];
+
+const fill =
+document.getElementById("strengthFill");
+
+const text =
+document.getElementById("strengthText");
+
+passwordInput.addEventListener("input",()=>{
+
+let val=passwordInput.value.length;
+
+if(val<5){
+
+fill.style.width="25%";
+fill.style.background="red";
+text.innerText="Weak Password";
+
+}
+else if(val<8){
+
+fill.style.width="60%";
+fill.style.background="orange";
+text.innerText="Medium Password";
+
+}
+else{
+
+fill.style.width="100%";
+fill.style.background="limegreen";
+text.innerText="Strong Password";
+
+}
+
+});
+
+/*
+
+Cloudflare Worker API
+
+POST /api/register
+
+Example:
+
+fetch('/api/register',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json'
+},
+
+body:JSON.stringify({
+
+name:'',
+email:'',
+password:'',
+role:'worker'
+
+})
+
+});
+
+*/
+
+</script></body>
 </html>
