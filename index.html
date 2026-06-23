@@ -1,49 +1,329 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CoinGrid | Earn Through Real Effort</title><meta name="description"
-content="CoinGrid is an effort-based earning platform where users complete real tasks, build skills, and earn rewards.">
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CoinGrid - Earn Money Online By Completing Tasks</title><meta name="description" content="Join CoinGrid and earn rewards by completing tasks, surveys, offers, watching videos, and more. Secure payouts and easy earning opportunities."><meta name="keywords" content="earn money online, paid tasks, surveys, rewards, coingrid, online earning"><meta name="author" content="CoinGrid"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></head><body><!-- =========================
-     NAVBAR
-========================= --><header><div class="container"><nav class="navbar"><div class="logo">
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+width:90%;
+max-width:1400px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+background:rgba(15,23,42,0.9);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+}
+
+.logo{
+font-size:30px;
+font-weight:800;
+color:#facc15;
+}
+
+.logo span{
+color:white;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+align-items:center;
+}
+
+.nav-links a{
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#facc15;
+}
+
+.auth-buttons{
+display:flex;
+gap:15px;
+}
+
+.btn{
+padding:12px 25px;
+border-radius:12px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn-login{
+border:1px solid #facc15;
+}
+
+.btn-login:hover{
+background:#facc15;
+color:#000;
+}
+
+.btn-register{
+background:#facc15;
+color:#000;
+}
+
+.btn-register:hover{
+transform:translateY(-2px);
+}
+
+.menu-btn{
+display:none;
+font-size:30px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+padding-top:150px;
+padding-bottom:100px;
+}
+
+.hero-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.hero-text h1{
+font-size:60px;
+line-height:1.2;
+margin-bottom:20px;
+}
+
+.hero-text h1 span{
+color:#facc15;
+}
+
+.hero-text p{
+font-size:18px;
+line-height:1.8;
+color:#cbd5e1;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.primary-btn{
+background:#facc15;
+color:#000;
+padding:15px 35px;
+border-radius:14px;
+font-weight:700;
+}
+
+.secondary-btn{
+border:1px solid #334155;
+padding:15px 35px;
+border-radius:14px;
+}
+
+.hero-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:30px;
+}
+
+.balance{
+font-size:45px;
+font-weight:800;
+color:#facc15;
+}
+
+.card-grid{
+margin-top:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.small-card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+}
+
+.small-card h3{
+font-size:14px;
+color:#94a3b8;
+}
+
+.small-card p{
+font-size:24px;
+font-weight:700;
+margin-top:10px;
+}
+
+/* STATS */
+
+.stats{
+padding:80px 0;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+.stat-card{
+background:rgba(255,255,255,0.05);
+padding:35px;
+border-radius:20px;
+text-align:center;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.stat-card h2{
+font-size:40px;
+color:#facc15;
+margin-bottom:10px;
+}
+
+.stat-card p{
+color:#cbd5e1;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+.hero-content{
+grid-template-columns:1fr;
+}
+
+.hero-text h1{
+font-size:45px;
+}
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.nav-links,
+.auth-buttons{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-text h1{
+font-size:34px;
+}
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.card-grid{
+grid-template-columns:1fr;
+}
+
+.logo{
+font-size:24px;
+}
+
+}
+
+</style></head>
+<body><header><div class="container navbar"><div class="logo">
 Coin<span>Grid</span>
-</div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="tasks/browse.html">Tasks</a></li><li><a href="tasks/categories.html">Categories</a></li><li><a href="about.html">About</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul><div class="auth-buttons"><a href="auth/login.html" class="btn btn-outline">
-Login
-</a><a href="auth/register.html" class="btn btn-primary">
-Register
-</a></div><button class="mobile-menu-btn">
-☰
-</button></nav></div></header><!-- =========================
-     HERO SECTION
-========================= --><section class="hero"><div class="container"><div class="hero-content"><span class="badge">
-✓ Trusted Effort-Based Earning Platform
-</span><h1 class="hero-title">Earn Through
-<span>Real Effort</span>
-
-</h1><p class="hero-subtitle">Complete genuine tasks,
-build valuable skills,
-and earn rewards based on
-the work you do.
-
-</p><div class="hero-buttons"><a href="auth/register.html"
-class="btn btn-primary">
-
+</div><div class="nav-links">
+<a href="index.html">Home</a>
+<a href="tasks/browse.html">Tasks</a>
+<a href="about.html">About</a>
+<a href="faq.html">FAQ</a>
+<a href="contact.html">Contact</a>
+</div><div class="auth-buttons">
+<a href="auth/login.html" class="btn btn-login">Login</a>
+<a href="auth/register.html" class="btn btn-register">Register</a>
+</div><div class="menu-btn">☰</div></div></header><section class="hero"><div class="container hero-content"><div class="hero-text"><h1>
+Earn Rewards With
+<span>CoinGrid</span>
+Every Day
+</h1><p>
+Join thousands of users completing simple online tasks, surveys,
+offers, app installs, and video activities to earn real rewards.
+CoinGrid provides a secure platform for both workers and sponsors.
+</p><div class="hero-buttons"><a href="auth/register.html" class="primary-btn">
 Start Earning
-
-</a><a href="tasks/browse.html"
-class="btn btn-outline">
-
+</a><a href="tasks/browse.html" class="secondary-btn">
 Browse Tasks
-
-</a><a href="sponsor/create-task.html"
-class="btn btn-outline">
-
-Become Sponsor
-
-</a></div><!-- Stats --><div class="stats"><div class="card"><h2>1000+</h2><p>Tasks Available</p></div><div class="card"><h2>500+</h2><p>Active Users</p></div><div class="card"><h2>50+</h2><p>Verified Sponsors</p></div></div></div><div class="hero-image"><img
-src="images/hero/hero.webp"
-alt="CoinGrid Hero">
-
-</div></div></section><script src="js/app.js"></script></body>
+</a></div></div><div class="hero-card"><h3>Today's Earnings</h3><div class="balance">
+$125.75
+</div><div class="card-grid"><div class="small-card">
+<h3>Completed Tasks</h3>
+<p>320</p>
+</div><div class="small-card">
+<h3>Available Tasks</h3>
+<p>1,250</p>
+</div><div class="small-card">
+<h3>Total Users</h3>
+<p>25K+</p>
+</div><div class="small-card">
+<h3>Total Payouts</h3>
+<p>$50K+</p>
+</div></div></div></div></section><section class="stats"><div class="container"><div class="stats-grid"><div class="stat-card">
+<h2>25K+</h2>
+<p>Active Members</p>
+</div><div class="stat-card">
+<h2>100K+</h2>
+<p>Tasks Completed</p>
+</div><div class="stat-card">
+<h2>$500K+</h2>
+<p>Total Rewards Paid</p>
+</div><div class="stat-card">
+<h2>99.9%</h2>
+<p>Platform Uptime</p>
+</div></div></div></section></body>
 </html>
