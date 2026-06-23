@@ -281,6 +281,138 @@ font-weight:600;
 }
 
 
+.role-selection{
+margin-bottom:25px;
+}
+
+.role-selection h3{
+margin-bottom:15px;
+font-size:16px;
+}
+
+.role-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.role-card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+cursor:pointer;
+border:2px solid transparent;
+transition:.3s;
+text-align:center;
+}
+
+.role-card:hover{
+border-color:#facc15;
+}
+
+.role-card.active{
+border-color:#facc15;
+background:#243246;
+}
+
+.role-icon{
+font-size:35px;
+margin-bottom:10px;
+}
+
+.role-card h4{
+margin-bottom:8px;
+}
+
+.role-card p{
+font-size:13px;
+color:#94a3b8;
+}
+
+.popup-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#1e293b;
+padding:40px;
+border-radius:25px;
+text-align:center;
+max-width:400px;
+width:90%;
+}
+
+.popup-icon{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.popup-box button{
+margin-top:20px;
+padding:14px 25px;
+border:none;
+background:#facc15;
+border-radius:10px;
+font-weight:700;
+cursor:pointer;
+}
+
+#loadingOverlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.loader{
+width:60px;
+height:60px;
+border:5px solid #334155;
+border-top:5px solid #facc15;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+#loadingOverlay p{
+margin-top:20px;
+font-size:18px;
+}
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+@media(max-width:600px){
+
+.role-grid{
+grid-template-columns:1fr;
+}
+
+}
 
 </style></head><body><div class="container"><div class="left-panel"><div class="logo">
 Coin<span>Grid</span>
@@ -364,7 +496,22 @@ Continue With Google
 
 <a href="login.html">Login Here
 
-</a></div></form></div></div></div><!-- SCRIPT --><script>
+</a></div>
+<!-- ROLE CARDS --><div class="role-selection"><h3>Select Your Role</h3><div class="role-grid"><div class="role-card active" data-role="worker"><div class="role-icon">💰</div><h4>Worker</h4><p>
+Complete tasks and earn rewards.
+</p></div><div class="role-card" data-role="sponsor"><div class="role-icon">📢</div><h4>Sponsor</h4><p>
+Create tasks and promote services.
+</p></div></div><input
+type="hidden"
+id="selectedRole"
+value="worker">
+
+</div><!-- SUCCESS POPUP --><div id="successPopup" class="popup-overlay"><div class="popup-box"><div class="popup-icon">✅</div><h2>Registration Successful</h2><p>
+Your CoinGrid account has been created successfully.
+</p><button onclick="closePopup()">
+Continue
+</button></div></div><!-- LOADING --><div id="loadingOverlay"><div class="loader"></div><p>Creating Account...</p></div>
+</form></div></div></div><!-- SCRIPT --><script>
 
 const passwordInput =
 document.querySelectorAll("input[type='password']")[0];
@@ -427,6 +574,109 @@ password:'',
 role:'worker'
 
 })
+
+});
+
+*/
+
+  
+
+/* ROLE SELECTOR */
+
+const roleCards =
+document.querySelectorAll(".role-card");
+
+const selectedRole =
+document.getElementById("selectedRole");
+
+roleCards.forEach(card=>{
+
+card.addEventListener("click",()=>{
+
+roleCards.forEach(c=>
+c.classList.remove("active")
+);
+
+card.classList.add("active");
+
+selectedRole.value =
+card.dataset.role;
+
+});
+
+});
+
+/* FORM SUBMIT */
+
+const registerForm =
+document.getElementById("registerForm");
+
+registerForm.addEventListener("submit",(e)=>{
+
+e.preventDefault();
+
+const loading =
+document.getElementById("loadingOverlay");
+
+loading.style.display="flex";
+
+setTimeout(()=>{
+
+loading.style.display="none";
+
+document.getElementById(
+"successPopup"
+).style.display="flex";
+
+},2500);
+
+});
+
+/* CLOSE POPUP */
+
+function closePopup(){
+
+window.location.href=
+"login.html";
+
+}
+
+/*
+
+Cloudflare Worker Registration
+
+POST /api/register
+
+{
+name:"",
+email:"",
+password:"",
+role:"worker"
+}
+
+Example:
+
+fetch("https://api.coingrid.in/register",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+name:name,
+email:email,
+password:password,
+role:selectedRole.value
+
+})
+
+})
+
+.then(res=>res.json())
+.then(data=>{
 
 });
 
