@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sponsor Settings | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:25px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.page-header{
+margin-bottom:30px;
+}
+
+.page-header h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.page-header p{
+color:#94a3b8;
+}
+
+.settings-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.settings-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
+border-radius:25px;
+}
+
+.settings-card h2{
+margin-bottom:20px;
+color:#facc15;
+}
+
+.form-group{
+margin-bottom:20px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+width:100%;
+padding:15px;
+background:#1e293b;
+border:none;
+border-radius:12px;
+color:white;
+}
+
+.form-group textarea{
+height:120px;
+resize:none;
+}
+
+.toggle-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.toggle{
+width:50px;
+height:26px;
+background:#334155;
+border-radius:30px;
+position:relative;
+cursor:pointer;
+}
+
+.toggle::after{
+content:'';
+position:absolute;
+width:20px;
+height:20px;
+background:white;
+border-radius:50%;
+top:3px;
+left:3px;
+transition:.3s;
+}
+
+.toggle.active{
+background:#facc15;
+}
+
+.toggle.active::after{
+left:27px;
+}
+
+@media(max-width:768px){
+
+.settings-grid{
+grid-template-columns:1fr;
+}
+
+.page-header h1{
+font-size:30px;
+}
+
+}
+
+
+  .security-section{
+margin-top:30px;
+display:grid;
+gap:25px;
+}
+
+.security-text{
+color:#94a3b8;
+margin-bottom:20px;
+}
+
+.save-btn,
+.invite-btn{
+padding:15px 20px;
+border:none;
+border-radius:12px;
+background:#facc15;
+color:#000;
+font-weight:700;
+cursor:pointer;
+}
+
+.team-member{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.remove-btn{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#ef4444;
+color:white;
+cursor:pointer;
+}
+
+  .popup-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#1e293b;
+padding:35px;
+border-radius:20px;
+text-align:center;
+width:90%;
+max-width:400px;
+}
+
+.popup-icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.popup-box button{
+margin-top:20px;
+padding:14px 25px;
+border:none;
+border-radius:10px;
+background:#facc15;
+font-weight:700;
+cursor:pointer;
+  }
+</style></head><body><div class="container"><div class="page-header"><h1>Sponsor Settings</h1><p>
+Manage company profile, account settings and notifications.
+</p></div><div class="settings-grid"><!-- COMPANY --><div class="settings-card"><h2>Company Information</h2><div class="form-group"><label>Company Name</label>
+
+<input
+type="text"
+value="CoinGrid Media">
+
+</div><div class="form-group"><label>Website</label>
+
+<input
+type="url"
+placeholder="https://">
+
+</div><div class="form-group"><label>Company Description</label>
+
+<textarea
+placeholder="Describe your company"></textarea></div></div><!-- ACCOUNT --><div class="settings-card"><h2>Account Settings</h2><div class="form-group"><label>Contact Name</label>
+
+<input
+type="text"
+value="Sponsor Name">
+
+</div><div class="form-group"><label>Email Address</label>
+
+<input
+type="email"
+value="sponsor@example.com">
+
+</div><div class="form-group"><label>Phone Number</label>
+
+<input
+type="tel"
+placeholder="+91 XXXXX XXXXX">
+
+</div></div><!-- NOTIFICATIONS --><div class="settings-card"><h2>Notification Preferences</h2><div class="toggle-row"><span>Email Notifications</span>
+
+<div class="toggle active"></div></div><div class="toggle-row"><span>Campaign Updates</span>
+
+<div class="toggle active"></div></div><div class="toggle-row"><span>Billing Alerts</span>
+
+<div class="toggle active"></div></div><div class="toggle-row"><span>Marketing Emails</span>
+
+<div class="toggle"></div></div></div>
+
+<!-- SECURITY SETTINGS --><div class="security-section"><div class="settings-card"><h2>Security Settings</h2><div class="form-group"><label>Current Password</label>
+
+<input
+type="password"
+placeholder="Current Password">
+
+</div><div class="form-group"><label>New Password</label>
+
+<input
+type="password"
+placeholder="New Password">
+
+</div><div class="form-group"><label>Confirm Password</label>
+
+<input
+type="password"
+placeholder="Confirm Password">
+
+</div><button class="save-btn">Update Password
+
+</button></div><!-- TWO FACTOR --><div class="settings-card"><h2>Two-Factor Authentication</h2><p class="security-text">Protect your sponsor account with an additional security layer.
+
+</p><div class="toggle-row"><span>Enable 2FA</span>
+
+<div class="toggle"></div></div></div><!-- TEAM ACCESS --><div class="settings-card"><h2>Team Access</h2><div class="form-group"><label>Invite Team Member</label>
+
+<input
+type="email"
+placeholder="team@example.com">
+
+</div><div class="form-group"><label>Role</label>
+
+<select><option>Admin</option>
+<option>Manager</option>
+<option>Viewer</option></select></div><button class="invite-btn">Invite Member
+
+</button><hr style="margin:25px 0;border-color:#334155;"><div class="team-member"><div><strong>john@example.com</strong>
+
+<p>Manager</p></div><button class="remove-btn">Remove
+
+</button></div></div></div>
+
+
+
+<!-- ACCOUNT PREFERENCES --><div class="settings-card"><h2>Account Preferences</h2><div class="form-group"><label>Default Campaign Visibility</label>
+
+<select id="campaignVisibility"><option>Public</option>
+<option>Private</option>
+<option>Invite Only</option></select></div><div class="form-group"><label>Default Campaign Status</label>
+
+<select id="campaignStatus"><option>Active</option>
+<option>Draft</option>
+<option>Paused</option></select></div></div><!-- APPEARANCE --><div class="settings-card"><h2>Appearance</h2><div class="form-group"><label>Theme</label>
+
+<select id="themeSelect"><option value="dark">
+Dark Mode
+</option><option value="light">
+Light Mode
+</option><option value="system">
+System Default
+</option></select></div></div><!-- SAVE SETTINGS --><div class="settings-card"><h2>Save Configuration</h2><p class="security-text">Save all sponsor account settings and preferences.
+
+</p><button id="saveSettingsBtn" class="save-btn">Save All Settings
+
+</button></div><!-- SUCCESS POPUP --><div id="settingsPopup" class="popup-overlay"><div class="popup-box"><div class="popup-icon">
+✅
+</div><h2>
+Settings Saved
+</h2><p>
+Your sponsor settings have been updated successfully.
+</p><button onclick="closeSettingsPopup()">
+Continue
+</button></div></div>
+  
+</div><script>
+
+document
+.querySelectorAll(".toggle")
+.forEach(toggle=>{
+
+toggle.addEventListener(
+"click",
+()=>{
+
+toggle.classList.toggle(
+"active"
+);
+
+});
+
+});
+
+
+  
+
+document
+.querySelector(".invite-btn")
+.addEventListener(
+"click",
+()=>{
+
+alert(
+"Invitation sent successfully."
+);
+
+});
+
+document
+.querySelector(".save-btn")
+.addEventListener(
+"click",
+()=>{
+
+alert(
+"Password updated successfully."
+);
+
+});
+<script>
+
+/* SAVE SETTINGS */
+
+document
+.getElementById(
+"saveSettingsBtn"
+)
+.addEventListener(
+"click",
+async()=>{
+
+document.getElementById(
+"settingsPopup"
+).style.display =
+"flex";
+
+/*
+
+Cloudflare Worker API
+
+PUT /api/sponsor/settings
+
+{
+companyName:"",
+email:"",
+theme:"dark",
+notifications:true,
+visibility:"public"
+}
+
+await fetch(
+'https://api.coingrid.in/sponsor/settings',
+{
+method:'PUT',
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify(settings)
+}
+);
+
+*/
+
+});
+
+/* CLOSE POPUP */
+
+function closeSettingsPopup(){
+
+document.getElementById(
+"settingsPopup"
+).style.display =
+"none";
+
+}
+
+/* THEME STORAGE */
+
+const themeSelect =
+document.getElementById(
+"themeSelect"
+);
+
+if(themeSelect){
+
+themeSelect.addEventListener(
+"change",
+()=>{
+
+localStorage.setItem(
+"coingrid_sponsor_theme",
+themeSelect.value
+);
+
+});
+
+}
+
+</script>
+
+</script></div></body></html>
