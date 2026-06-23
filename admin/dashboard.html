@@ -1,5 +1,15 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Dashboard | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | CoinGrid</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
 
 *{
 margin:0;
@@ -10,7 +20,8 @@ font-family:'Poppins',sans-serif;
 
 body{
 background:#0f172a;
-color:white;
+color:#fff;
+overflow-x:hidden;
 }
 
 .dashboard{
@@ -18,13 +29,19 @@ display:flex;
 min-height:100vh;
 }
 
+/* SIDEBAR */
+
 .sidebar{
 width:280px;
 background:#020617;
-padding:25px;
 position:fixed;
+left:0;
+top:0;
 height:100vh;
+padding:25px;
 overflow-y:auto;
+border-right:1px solid rgba(255,255,255,.08);
+z-index:1000;
 }
 
 .logo{
@@ -32,6 +49,7 @@ font-size:32px;
 font-weight:800;
 color:#facc15;
 margin-bottom:40px;
+text-align:center;
 }
 
 .nav-links{
@@ -41,11 +59,18 @@ gap:12px;
 }
 
 .nav-links a{
-padding:15px;
 background:#0f172a;
+padding:15px;
 border-radius:12px;
-text-decoration:none;
 color:#cbd5e1;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#1e293b;
+transform:translateX(5px);
 }
 
 .nav-links a.active{
@@ -54,29 +79,48 @@ color:#000;
 font-weight:700;
 }
 
+/* MAIN CONTENT */
+
 .main-content{
 margin-left:280px;
 flex:1;
-padding:25px;
+padding:30px;
 }
+
+/* TOPBAR */
 
 .topbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
-.topbar h1{
+.topbar-left h1{
 font-size:36px;
+font-weight:800;
+}
+
+.topbar-left p{
+color:#94a3b8;
+margin-top:6px;
 }
 
 .admin-badge{
 background:#facc15;
 color:#000;
-padding:10px 18px;
-border-radius:25px;
+padding:12px 20px;
+border-radius:50px;
 font-weight:700;
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+margin-bottom:15px;
 }
 
 /* STATS */
@@ -88,10 +132,16 @@ gap:20px;
 }
 
 .stat-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
 padding:25px;
 border-radius:20px;
+backdrop-filter:blur(10px);
+transition:.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-5px);
 }
 
 .stat-card h2{
@@ -100,18 +150,17 @@ color:#facc15;
 margin-bottom:10px;
 }
 
-.menu-btn{
-display:none;
-font-size:28px;
-cursor:pointer;
+.stat-card p{
+color:#94a3b8;
 }
+
+/* MOBILE */
 
 @media(max-width:991px){
 
 .sidebar{
 left:-100%;
 transition:.3s;
-z-index:1000;
 }
 
 .sidebar.active{
@@ -120,6 +169,7 @@ left:0;
 
 .main-content{
 margin-left:0;
+padding:20px;
 }
 
 .menu-btn{
@@ -134,17 +184,126 @@ grid-template-columns:1fr 1fr;
 
 @media(max-width:600px){
 
-.stats-grid{
-grid-template-columns:1fr;
-}
-
 .topbar{
 flex-direction:column;
 align-items:flex-start;
 gap:15px;
 }
 
+.stats-grid{
+grid-template-columns:1fr;
 }
+
+.topbar-left h1{
+font-size:28px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+CoinGrid
+</div>
+
+<div class="nav-links">
+
+<a href="/coingrid/admin/dashboard.html" class="active">
+📊 Dashboard
+</a>
+
+<a href="/coingrid/admin/users.html">
+👥 Users
+</a>
+
+<a href="/coingrid/admin/sponsors.html">
+🏢 Sponsors
+</a>
+
+<a href="/coingrid/admin/tasks.html">
+📋 Tasks
+</a>
+
+<a href="/coingrid/admin/payouts.html">
+💰 Payouts
+</a>
+
+<a href="/coingrid/admin/reports.html">
+📑 Reports
+</a>
+
+<a href="/coingrid/admin/settings.html">
+⚙ Settings
+</a>
+
+</div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content">
+
+<div class="topbar">
+
+<div class="topbar-left">
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+<h1>Admin Dashboard</h1>
+
+<p>
+Manage the complete CoinGrid platform.
+</p>
+
+</div>
+
+<div class="admin-badge">
+Administrator
+</div>
+
+</div>
+
+<!-- PLATFORM STATS -->
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2>12,450</h2>
+<p>Total Users</p>
+</div>
+
+<div class="stat-card">
+<h2>245</h2>
+<p>Total Sponsors</p>
+</div>
+
+<div class="stat-card">
+<h2>3,420</h2>
+<p>Active Tasks</p>
+</div>
+
+<div class="stat-card">
+<h2>$52,800</h2>
+<p>Total Revenue</p>
+</div>
+
+</div>
+
+<!-- PART 2 STARTS HERE -->
+<style>
+
 .quick-actions{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -160,6 +319,11 @@ text-align:center;
 border-radius:15px;
 text-decoration:none;
 font-weight:700;
+transition:.3s;
+}
+
+.action-card:hover{
+transform:translateY(-4px);
 }
 
 .dashboard-grid{
@@ -170,10 +334,11 @@ margin-top:30px;
 }
 
 .dashboard-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
 padding:25px;
 border-radius:20px;
+backdrop-filter:blur(10px);
 }
 
 .dashboard-card h2{
@@ -186,7 +351,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,0.08);
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .status-active{
@@ -194,6 +359,7 @@ background:#22c55e;
 padding:8px 12px;
 border-radius:20px;
 font-size:12px;
+font-weight:700;
 }
 
 .status-pending{
@@ -201,6 +367,7 @@ background:#f59e0b;
 padding:8px 12px;
 border-radius:20px;
 font-size:12px;
+font-weight:700;
 }
 
 .full-width{
@@ -210,8 +377,9 @@ grid-column:1/-1;
 .task-row{
 display:grid;
 grid-template-columns:2fr 1.5fr 1fr 1fr;
+gap:10px;
 padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,0.08);
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .header{
@@ -221,19 +389,193 @@ color:#facc15;
 
 @media(max-width:991px){
 
-.quick-actions,
+.quick-actions{
+grid-template-columns:1fr;
+}
+
 .dashboard-grid{
 grid-template-columns:1fr;
 }
 
 .task-row{
 grid-template-columns:1fr;
-gap:8px;
 }
 
-  }
+}
 
-  .analytics-section{
+</style>
+
+<!-- QUICK ACTIONS -->
+
+<div class="quick-actions">
+
+<a href="/coingrid/admin/users.html" class="action-card">
+👥 Manage Users
+</a>
+
+<a href="/coingrid/admin/sponsors.html" class="action-card">
+🏢 Manage Sponsors
+</a>
+
+<a href="/coingrid/admin/tasks.html" class="action-card">
+📋 Review Tasks
+</a>
+
+<a href="/coingrid/admin/payouts.html" class="action-card">
+💰 Review Payouts
+</a>
+
+</div>
+
+<!-- DASHBOARD GRID -->
+
+<div class="dashboard-grid">
+
+<!-- RECENT USERS -->
+
+<div class="dashboard-card">
+
+<h2>Recent Users</h2>
+
+<div class="activity-item">
+
+<div>
+<strong>Rajkumar</strong>
+<p>Joined Today</p>
+</div>
+
+<span class="status-active">
+Active
+</span>
+
+</div>
+
+<div class="activity-item">
+
+<div>
+<strong>John Smith</strong>
+<p>Joined Yesterday</p>
+</div>
+
+<span class="status-active">
+Active
+</span>
+
+</div>
+
+<div class="activity-item">
+
+<div>
+<strong>Priya</strong>
+<p>Joined Yesterday</p>
+</div>
+
+<span class="status-active">
+Active
+</span>
+
+</div>
+
+</div>
+
+<!-- RECENT SPONSORS -->
+
+<div class="dashboard-card">
+
+<h2>Recent Sponsors</h2>
+
+<div class="activity-item">
+
+<div>
+<strong>ABC Media</strong>
+<p>New Sponsor</p>
+</div>
+
+<span class="status-pending">
+Review
+</span>
+
+</div>
+
+<div class="activity-item">
+
+<div>
+<strong>Tech Ads Ltd</strong>
+<p>Approved</p>
+</div>
+
+<span class="status-active">
+Approved
+</span>
+
+</div>
+
+<div class="activity-item">
+
+<div>
+<strong>Growth Labs</strong>
+<p>Pending Verification</p>
+</div>
+
+<span class="status-pending">
+Pending
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RECENT TASKS -->
+
+<div class="dashboard-card full-width">
+
+<h2>Recent Tasks</h2>
+
+<div class="task-row header">
+
+<div>Task</div>
+<div>Sponsor</div>
+<div>Reward</div>
+<div>Status</div>
+
+</div>
+
+<div class="task-row">
+
+<div>App Install Campaign</div>
+<div>ABC Media</div>
+<div>$0.50</div>
+<div class="status-active">Active</div>
+
+</div>
+
+<div class="task-row">
+
+<div>Survey Completion</div>
+<div>Tech Ads Ltd</div>
+<div>$1.00</div>
+<div class="status-pending">Review</div>
+
+</div>
+
+<div class="task-row">
+
+<div>Website Visit</div>
+<div>Growth Labs</div>
+<div>$0.20</div>
+<div class="status-active">Active</div>
+
+</div>
+
+</div>
+
+<!-- PART 3 STARTS HERE -->
+
+  <style>
+
+.analytics-section{
 margin-top:30px;
 }
 
@@ -244,16 +586,18 @@ gap:20px;
 }
 
 .analytics-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
 padding:25px;
 border-radius:20px;
 text-align:center;
+backdrop-filter:blur(10px);
 }
 
 .analytics-card h1{
 color:#facc15;
 margin-bottom:10px;
+font-size:32px;
 }
 
 .system-status{
@@ -284,123 +628,95 @@ grid-template-columns:1fr 1fr;
 grid-template-columns:1fr;
 }
 
-  }
-</style></head><body><div class="dashboard"><div class="sidebar" id="sidebar"><div class="logo">
-CoinGrid
-</div><div class="nav-links"><a href="dashboard.html" class="active">
-📊 Dashboard
-</a><a href="users.html">
-👥 Users
-</a><a href="sponsors.html">
-🏢 Sponsors
-</a><a href="tasks.html">
-📋 Tasks
-</a><a href="payouts.html">
-💰 Payouts
-</a><a href="reports.html">
-📑 Reports
-</a><a href="settings.html">
-⚙ Settings
-</a></div></div><div class="main-content"><div class="topbar"><div><div class="menu-btn" id="menuBtn">
-☰
-</div><h1>Admin Dashboard</h1><p>
-Manage the complete CoinGrid platform.
-</p></div><div class="admin-badge">Administrator
+}
 
-</div></div><div class="stats-grid"><div class="stat-card"><h2>12,450</h2><p>Total Users</p></div><div class="stat-card"><h2>245</h2><p>Total Sponsors</p></div><div class="stat-card"><h2>3,420</h2><p>Active Tasks</p></div><div class="stat-card"><h2>$52,800</h2><p>Total Revenue</p></div></div></div>
+</style>
 
-<!-- QUICK ACTIONS --><div class="quick-actions"><a href="users.html" class="action-card">
-👥 Manage Users
-</a><a href="sponsors.html" class="action-card">
-🏢 Manage Sponsors
-</a><a href="tasks.html" class="action-card">
-📋 Review Tasks
-</a><a href="payouts.html" class="action-card">
-💰 Review Payouts
-</a></div><!-- DASHBOARD GRID --><div class="dashboard-grid"><!-- RECENT USERS --><div class="dashboard-card"><h2>Recent Users</h2><div class="activity-item"><div><strong>Rajkumar</strong>
+<!-- PLATFORM ANALYTICS -->
 
-<p>Joined Today</p></div><span class="status-active">
-Active
-</span></div><div class="activity-item"><div><strong>John Smith</strong>
+<div class="analytics-section">
 
-<p>Joined Yesterday</p></div><span class="status-active">
-Active
-</span></div><div class="activity-item"><div><strong>Priya</strong>
+<h2 style="margin-bottom:20px;color:#facc15;">
+Platform Analytics
+</h2>
 
-<p>Joined Yesterday</p></div><span class="status-active">
-Active
-</span></div></div><!-- RECENT SPONSORS --><div class="dashboard-card"><h2>Recent Sponsors</h2><div class="activity-item"><div><strong>ABC Media</strong>
+<div class="analytics-grid">
 
-<p>New Sponsor</p></div><span class="status-pending">
-Review
-</span></div><div class="activity-item"><div><strong>Tech Ads Ltd</strong>
+<div class="analytics-card">
+<h1 id="platformRevenue">$52,800</h1>
+<p>Total Revenue</p>
+</div>
 
-<p>Approved</p></div><span class="status-active">
-Approved
-</span></div><div class="activity-item"><div><strong>Growth Labs</strong>
+<div class="analytics-card">
+<h1 id="totalPayouts">$18,450</h1>
+<p>Total Payouts</p>
+</div>
 
-<p>Pending Verification</p></div><span class="status-pending">
-Pending
-</span></div></div></div><!-- RECENT TASKS --><div class="dashboard-card full-width"><h2>Recent Tasks</h2><div class="task-row header"><div>Task</div>
-<div>Sponsor</div>
-<div>Reward</div>
-<div>Status</div></div><div class="task-row"><div>App Install Campaign</div>
-<div>ABC Media</div>
-<div>$0.50</div>
-<div class="status-active">
-Active
-</div></div><div class="task-row"><div>Survey Completion</div>
-<div>Tech Ads Ltd</div>
-<div>$1.00</div>
-<div class="status-pending">
-Review
-</div></div><div class="task-row"><div>Website Visit</div>
-<div>Growth Labs</div>
-<div>$0.20</div>
-<div class="status-active">
-Active
-</div></div></div>
-<!-- REVENUE ANALYTICS --><div class="analytics-section"><h2>Platform Analytics</h2><div class="analytics-grid"><div class="analytics-card"><h1 id="platformRevenue">
-$52,800
-</h1><p>Total Revenue</p></div><div class="analytics-card"><h1 id="totalPayouts">
-$18,450
-</h1><p>Total Payouts</p></div><div class="analytics-card"><h1 id="activeUsers">
-8,920
-</h1><p>Active Users</p></div><div class="analytics-card"><h1 id="activeSponsors">
-245
-</h1><p>Active Sponsors</p></div></div></div><!-- SYSTEM STATUS --><div class="dashboard-card"><h2>System Status</h2><div class="system-status"><div class="status-online">🟢 Cloudflare Workers
+<div class="analytics-card">
+<h1 id="activeUsers">8,920</h1>
+<p>Active Users</p>
+</div>
 
-</div><div class="status-online">🟢 D1 Database
+<div class="analytics-card">
+<h1 id="activeSponsors">245</h1>
+<p>Active Sponsors</p>
+</div>
 
-</div><div class="status-online">🟢 Authentication
+</div>
 
-</div><div class="status-online">🟢 Payment System
+</div>
 
-</div></div><p>
+<!-- SYSTEM STATUS -->
+
+<div class="dashboard-card" style="margin-top:25px;">
+
+<h2>System Status</h2>
+
+<div class="system-status">
+
+<div class="status-online">
+🟢 Cloudflare Workers
+</div>
+
+<div class="status-online">
+🟢 D1 Database
+</div>
+
+<div class="status-online">
+🟢 Authentication
+</div>
+
+<div class="status-online">
+🟢 Payment System
+</div>
+
+</div>
+
+<p>
 All CoinGrid services are operating normally.
-</p></div>
-</div><script>
+</p>
+
+</div>
+
+</div>
+<!-- END MAIN CONTENT -->
+
+</div>
+<!-- END DASHBOARD -->
+
+<script>
 
 const menuBtn =
-document.getElementById(
-"menuBtn"
-);
+document.getElementById("menuBtn");
 
 const sidebar =
-document.getElementById(
-"sidebar"
-);
+document.getElementById("sidebar");
 
-menuBtn.addEventListener(
-"click",
-()=>{
+menuBtn.addEventListener("click",()=>{
 
-sidebar.classList.toggle(
-"active"
-);
+sidebar.classList.toggle("active");
 
 });
-
 
 /*
 
@@ -413,6 +729,8 @@ GET /api/admin/system-status
 */
 
 async function loadAdminDashboard(){
+
+try{
 
 /*
 
@@ -447,8 +765,14 @@ data.sponsors;
 */
 
 console.log(
-'Admin dashboard refreshed'
+'Admin dashboard loaded'
 );
+
+}catch(error){
+
+console.error(error);
+
+}
 
 }
 
@@ -460,5 +784,8 @@ loadAdminDashboard();
 
 },30000);
 
+</script>
 
-</script></body></html>
+</body>
+</html>
+  
