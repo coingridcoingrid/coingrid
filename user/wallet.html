@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Wallet | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:25px;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+.page-header{
+margin-bottom:30px;
+}
+
+.page-header h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.page-header p{
+color:#94a3b8;
+}
+
+/* WALLET OVERVIEW */
+
+.wallet-overview{
+background:linear-gradient(
+135deg,
+#facc15,
+#eab308
+);
+color:#000;
+padding:35px;
+border-radius:25px;
+margin-bottom:30px;
+}
+
+.wallet-overview h2{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.wallet-balance{
+font-size:52px;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.wallet-overview p{
+font-size:15px;
+}
+
+/* BALANCE CARDS */
+
+.balance-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.balance-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:20px;
+}
+
+.balance-card h3{
+font-size:15px;
+color:#94a3b8;
+margin-bottom:15px;
+}
+
+.balance-card h2{
+font-size:30px;
+color:#facc15;
+margin-bottom:10px;
+}
+
+.balance-card p{
+color:#cbd5e1;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.balance-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.balance-grid{
+grid-template-columns:1fr;
+}
+
+.wallet-balance{
+font-size:38px;
+}
+
+.page-header h1{
+font-size:30px;
+}
+
+}
+/* WITHDRAW SECTION */
+
+.withdraw-section,
+.withdraw-form-section,
+.recent-withdrawals{
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:25px;
+border-radius:25px;
+}
+
+.withdraw-section h2,
+.withdraw-form-section h2,
+.recent-withdrawals h2{
+margin-bottom:20px;
+}
+
+/* METHODS */
+
+.methods-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.method-card{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+text-align:center;
+font-size:30px;
+}
+
+.method-card h3{
+margin-top:15px;
+font-size:18px;
+}
+
+.method-card p{
+font-size:13px;
+margin-top:10px;
+color:#94a3b8;
+}
+
+/* FORM */
+
+.withdraw-info{
+margin-bottom:20px;
+padding:15px;
+background:#1e293b;
+border-radius:12px;
+}
+
+.form-group{
+margin-bottom:20px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:8px;
+}
+
+.form-group input,
+.form-group select{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#1e293b;
+color:white;
+}
+
+.withdraw-btn{
+width:100%;
+padding:16px;
+border:none;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+border-radius:12px;
+cursor:pointer;
+}
+
+/* TABLE */
+
+.withdraw-table{
+margin-top:20px;
+}
+
+.withdraw-row{
+display:grid;
+grid-template-columns:1.5fr 1fr 1fr 1fr;
+padding:15px;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.header{
+font-weight:700;
+color:#facc15;
+}
+
+.approved{
+color:#22c55e;
+font-weight:600;
+}
+
+.pending{
+color:#f59e0b;
+font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.methods-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.methods-grid{
+grid-template-columns:1fr;
+}
+
+.withdraw-row{
+grid-template-columns:1fr;
+gap:8px;
+}
+
+}
+</style></head><body><div class="container"><div class="page-header"><h1>My Wallet</h1><p>
+Manage your earnings, withdrawals, and transaction history.
+</p></div><!-- WALLET OVERVIEW --><div class="wallet-overview"><h2>
+Available Balance
+</h2><div class="wallet-balance">
+$245.80
+</div><p>
+Ready for withdrawal to your preferred payment method.
+</p></div><!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2>$1,860</h2><p>Lifetime earnings</p></div><div class="balance-card"><h3>Pending Rewards</h3><h2>$34.20</h2><p>Awaiting approval</p></div><div class="balance-card"><h3>Total Withdrawn</h3><h2>$1,580</h2><p>Successfully paid</p></div><div class="balance-card"><h3>Referral Earnings</h3><h2>$89.50</h2><p>Referral commissions</p></div></div>
+<!-- WITHDRAWAL METHODS --><div class="withdraw-section"><h2>Withdrawal Methods</h2><div class="methods-grid"><div class="method-card">
+💳
+<h3>UPI</h3>
+<p>Instant withdrawals</p>
+</div><div class="method-card">
+🏦
+<h3>Bank Transfer</h3>
+<p>1-3 business days</p>
+</div><div class="method-card">
+🅿️
+<h3>PayPal</h3>
+<p>International payments</p>
+</div><div class="method-card">
+₿
+<h3>Crypto</h3>
+<p>USDT / BTC / ETH</p>
+</div></div></div><!-- WITHDRAWAL FORM --><div class="withdraw-form-section"><h2>Request Withdrawal</h2><div class="withdraw-info">Minimum Withdrawal:
+<strong>$5.00</strong>
+
+</div><form id="withdrawForm"><div class="form-group"><label>Withdrawal Method</label>
+
+<select><option>UPI</option>
+<option>Bank Transfer</option>
+<option>PayPal</option>
+<option>Crypto</option></select></div><div class="form-group"><label>Account / UPI ID</label>
+
+<input
+type="text"
+placeholder="Enter payment details">
+
+</div><div class="form-group"><label>Amount</label>
+
+<input
+type="number"
+placeholder="Enter amount">
+
+</div><button
+type="submit"
+class="withdraw-btn">
+
+Request Withdrawal
+
+</button></form></div><!-- RECENT WITHDRAWALS --><div class="recent-withdrawals"><h2>Recent Withdrawals</h2><div class="withdraw-table"><div class="withdraw-row header"><div>Date</div><div>Method</div><div>Amount</div><div>Status</div></div><div class="withdraw-row"><div>2026-06-23</div><div>UPI</div><div>$20</div><div class="approved">
+Approved
+</div></div><div class="withdraw-row"><div>2026-06-20</div><div>PayPal</div><div>$50</div><div class="pending">
+Pending
+</div></div><div class="withdraw-row"><div>2026-06-18</div><div>Bank</div><div>$100</div><div class="approved">
+Approved
+</div></div></div></div>
+
+</div></body></html>
