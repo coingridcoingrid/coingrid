@@ -239,6 +239,65 @@ font-weight:700;
 border-radius:12px;
 cursor:pointer;
   }
+
+  .preview-section,
+.status-card{
+margin-top:35px;
+}
+
+#imagePreview{
+width:100%;
+max-height:300px;
+object-fit:cover;
+border-radius:15px;
+margin-top:15px;
+display:none;
+}
+
+#taskStatus{
+margin-top:15px;
+padding:18px;
+background:#1e293b;
+border-radius:12px;
+font-weight:600;
+}
+
+.popup-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#1e293b;
+padding:35px;
+border-radius:25px;
+text-align:center;
+max-width:400px;
+width:90%;
+}
+
+.success-icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+.popup-box button{
+margin-top:20px;
+padding:14px 25px;
+border:none;
+border-radius:10px;
+background:#facc15;
+font-weight:700;
+cursor:pointer;
+  }
 </style></head><body><div class="container"><div class="task-layout"><!-- MAIN --><div class="task-card"><div class="task-header"><div class="reward">
 $4.00
 </div><div class="difficulty medium">
@@ -311,6 +370,23 @@ placeholder="https://">
 placeholder="Enter notes for reviewer"></textarea><button id="submitTaskBtn">
 Submit Task
 </button></div>
+
+  <!-- IMAGE PREVIEW --><div class="preview-section"><h2>Screenshot Preview</h2><img
+id="imagePreview"
+src=""
+alt="Preview">
+
+</div><!-- STATUS CARD --><div class="status-card"><h2>Verification Status</h2><div id="taskStatus">🟡 Not Submitted
+
+</div></div><!-- SUCCESS POPUP --><div id="successPopup" class="popup-overlay"><div class="popup-box"><div class="success-icon">
+✅
+</div><h2>
+Task Submitted
+</h2><p>
+Your proof has been submitted successfully and is awaiting review.
+</p><button onclick="closePopup()">
+Continue
+</button></div></div>
 </div>
 <script>
 
@@ -371,5 +447,94 @@ progress + "% Complete";
 
 },2000);
 
+
+  /* IMAGE PREVIEW */
+
+const proofImage =
+document.getElementById(
+"proofImage"
+);
+
+const imagePreview =
+document.getElementById(
+"imagePreview"
+);
+
+proofImage.addEventListener(
+"change",
+function(){
+
+const file =
+this.files[0];
+
+if(file){
+
+imagePreview.src =
+URL.createObjectURL(file);
+
+imagePreview.style.display =
+"block";
+
+}
+
+}
+);
+
+/* SUBMIT TASK */
+
+const submitBtn =
+document.getElementById(
+"submitTaskBtn"
+);
+
+submitBtn.addEventListener(
+"click",
+async()=>{
+
+document.getElementById(
+"taskStatus"
+).innerHTML =
+"🟠 Under Review";
+
+document.getElementById(
+"successPopup"
+).style.display =
+"flex";
+
+/*
+
+Cloudflare Worker API
+
+POST /api/task/submit
+
+const formData =
+new FormData();
+
+formData.append(
+'proof',
+proofImage.files[0]
+);
+
+await fetch(
+'https://api.coingrid.in/task/submit',
+{
+method:'POST',
+body:formData
+}
+);
+
+*/
+
+}
+);
+
+function closePopup(){
+
+document.getElementById(
+"successPopup"
+).style.display =
+"none";
+
+  }
 </script>
 </body></html>
