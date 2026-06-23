@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Create Campaign | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+padding:25px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.page-header{
+margin-bottom:30px;
+}
+
+.page-header h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.page-header p{
+color:#94a3b8;
+}
+
+.form-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
+border-radius:25px;
+}
+
+.form-card h2{
+margin-bottom:25px;
+color:#facc15;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.form-group{
+margin-bottom:20px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:8px;
+font-weight:500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:15px;
+background:#1e293b;
+border:none;
+border-radius:12px;
+color:white;
+}
+
+.form-group textarea{
+height:140px;
+resize:none;
+}
+
+.summary-box{
+margin-top:25px;
+padding:20px;
+background:#1e293b;
+border-radius:15px;
+}
+
+.summary-box h3{
+margin-bottom:15px;
+color:#facc15;
+}
+
+.summary-row{
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+}
+
+.next-btn{
+width:100%;
+padding:16px;
+margin-top:25px;
+border:none;
+border-radius:12px;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.page-header h1{
+font-size:30px;
+}
+
+}
+
+</style></head><body><div class="container"><div class="page-header"><h1>Create Campaign</h1><p>
+Create a new task campaign and reach thousands of CoinGrid workers.
+</p></div><div class="form-card"><h2>Campaign Details</h2><form id="campaignForm"><div class="form-grid"><div class="form-group"><label>Campaign Title</label>
+
+<input
+type="text"
+placeholder="Enter campaign title">
+
+</div><div class="form-group"><label>Task Category</label>
+
+<select><option>Survey</option>
+<option>App Install</option>
+<option>Website Visit</option>
+<option>Social Media</option>
+<option>Offer Wall</option></select></div><div class="form-group"><label>Reward Per Task ($)</label>
+
+<input
+type="number"
+placeholder="0.50">
+
+</div><div class="form-group"><label>Total Budget ($)</label>
+
+<input
+type="number"
+placeholder="100">
+
+</div></div><div class="form-group"><label>Campaign Description</label>
+
+<textarea
+placeholder="Describe your campaign and requirements..."></textarea></div>
+  <!-- TARGET AUDIENCE --><h2 style="margin:30px 0 20px;color:#facc15;">
+Target Audience
+</h2><div class="form-grid"><div class="form-group"><label>Target Country</label>
+
+<select><option>Worldwide</option>
+<option>India</option>
+<option>United States</option>
+<option>United Kingdom</option>
+<option>Canada</option>
+<option>Australia</option></select></div><div class="form-group"><label>Device Type</label>
+
+<select><option>All Devices</option>
+<option>Android</option>
+<option>iPhone (iOS)</option>
+<option>Desktop</option></select></div><div class="form-group"><label>Minimum Account Level</label>
+
+<select><option>Level 1+</option>
+<option>Level 3+</option>
+<option>Level 5+</option>
+<option>Level 10+</option></select></div><div class="form-group"><label>Maximum Completions</label>
+
+<input
+type="number"
+placeholder="1000">
+
+</div></div><!-- TASK REQUIREMENTS --><h2 style="margin:30px 0 20px;color:#facc15;">
+Task Requirements
+</h2><div class="form-group"><label>Task Instructions</label>
+
+<textarea
+placeholder="Step 1: Visit website&#10;Step 2: Register account&#10;Step 3: Verify email"></textarea></div><div class="form-group"><label>Proof Required</label>
+
+<select><option>Screenshot</option>
+<option>Screenshot + URL</option>
+<option>Email Address</option>
+<option>Username</option>
+<option>Custom Proof</option></select></div><div class="form-group"><label>Verification Notes</label>
+
+<textarea
+placeholder="Explain how submissions will be verified"></textarea></div><!-- FILE UPLOAD --><h2 style="margin:30px 0 20px;color:#facc15;">
+Campaign Assets
+</h2><div class="upload-box"><input
+type="file"
+id="campaignFile">
+
+<p>
+Upload images, banners, screenshots or documents
+</p></div><div id="fileName">
+No file selected
+</div>
+  
+  <div class="summary-box"><h3>Campaign Summary</h3><div class="summary-row"><span>Reward Per User</span>
+
+<span>$0.50</span>
+
+</div><div class="summary-row"><span>Total Budget</span>
+
+<span>$100</span>
+
+</div><div class="summary-row"><span>Estimated Completions</span>
+
+<span>200</span>
+
+</div></div>
+  
+  <!-- TASK PREVIEW --><div class="preview-section"><h2>Campaign Preview</h2><div class="preview-card"><h3 id="previewTitle">
+Your Campaign Title
+</h3><p id="previewDescription">
+Campaign description preview will appear here.
+</p><div class="preview-stats"><div>
+<strong>$0.50</strong>
+<span>Reward</span>
+</div><div>
+<strong>200</strong>
+<span>Completions</span>
+</div><div>
+<strong>$100</strong>
+<span>Budget</span>
+</div></div></div></div><!-- PUBLISH BUTTON --><button
+type="submit"
+class="publish-btn">
+
+🚀 Publish Campaign
+
+</button><!-- SUCCESS POPUP --><div id="publishPopup" class="popup-overlay"><div class="popup-box"><div class="popup-icon">
+✅
+</div><h2>
+Campaign Published
+</h2><p>
+Your campaign has been submitted successfully and is now awaiting review.
+</p><button onclick="closePublishPopup()">
+Continue
+</button></div></div>
+  <button
+type="button"
+class="next-btn">
+
+Continue To Targeting
+
+</button></form></div></div></body></html>
