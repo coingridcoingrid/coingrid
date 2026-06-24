@@ -438,16 +438,16 @@ Create your free account and begin your journey.
 Create your CoinGrid account in less than a minute.
 </p><form id="registerForm"><div class="input-group">
 <label>Full Name</label>
-<input type="text" placeholder="Enter your full name">
+<input type="text" id="fullName" placeholder="Enter your full name">
 </div><div class="input-group">
 <label>Email Address</label>
-<input type="email" placeholder="Enter your email">
+<input type="email" id="email" placeholder="Enter your email">
 </div><div class="input-group">
 <label>Password</label>
-<input type="password" placeholder="Create password">
+<input type="password" id="password" placeholder="Create password">
 </div><div class="input-group">
 <label>Confirm Password</label>
-<input type="password" placeholder="Confirm password">
+<input type="password" id="confirmPassword" placeholder="Confirm password">
 </div>
 <!-- ACCOUNT TYPE --><div class="input-group"><label>Account Type</label>
 
@@ -608,27 +608,94 @@ card.dataset.role;
 
 /* FORM SUBMIT */
 
+/* FORM SUBMIT */
+
 const registerForm =
 document.getElementById("registerForm");
 
-registerForm.addEventListener("submit",(e)=>{
+registerForm.addEventListener(
+"submit",
+async (e)=>{
 
 e.preventDefault();
+
+const name =
+document.getElementById("fullName").value.trim();
+
+const email =
+document.getElementById("email").value.trim();
+
+const password =
+document.getElementById("password").value;
+
+const confirmPassword =
+document.getElementById("confirmPassword").value;
+
+const role =
+document.getElementById("selectedRole").value;
+
+if(password !== confirmPassword){
+
+alert("Passwords do not match");
+
+return;
+
+}
 
 const loading =
 document.getElementById("loadingOverlay");
 
 loading.style.display="flex";
 
-setTimeout(()=>{
+try{
+
+const response = await fetch(
+"https://coingrid-api.coingridcoingrid.workers.dev/auth/register",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+name,
+email,
+password,
+role
+})
+}
+);
+
+const data =
+await response.json();
 
 loading.style.display="none";
+
+if(data.success){
 
 document.getElementById(
 "successPopup"
 ).style.display="flex";
 
-},2500);
+}else{
+
+alert(
+data.message ||
+"Registration Failed"
+);
+
+}
+
+}catch(error){
+
+loading.style.display="none";
+
+console.error(error);
+
+alert(
+"Unable to connect to server"
+);
+
+}
 
 });
 
