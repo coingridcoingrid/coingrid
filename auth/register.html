@@ -449,9 +449,48 @@ Create your CoinGrid account in less than a minute.
 <label>Confirm Password</label>
 <input type="password" id="confirmPassword" placeholder="Confirm password">
 </div>
-<!-- ACCOUNT TYPE --><div class="input-group"><label>Account Type</label>
+<!-- ACCOUNT TYPE -->
+  <div class="role-selection">
 
-<select id="accountType"><option value="worker">Worker Account</option><option value="sponsor">Sponsor Account</option></select></div><!-- REFERRAL --><div class="input-group"><label>Referral Code (Optional)</label>
+<h3>Select Your Role</h3>
+
+<div class="role-grid">
+
+<div class="role-card active"
+data-role="worker">
+
+<div class="role-icon">💰</div>
+
+<h4>Worker</h4>
+
+<p>
+Complete tasks and earn rewards.
+</p>
+
+</div>
+
+<div class="role-card"
+data-role="sponsor">
+
+<div class="role-icon">📢</div>
+
+<h4>Sponsor</h4>
+
+<p>
+Create tasks and promote services.
+</p>
+
+</div>
+
+</div>
+
+<input
+type="hidden"
+id="selectedRole"
+value="worker">
+
+  </div>
+  <!-- REFERRAL --><div class="input-group"><label>Referral Code (Optional)</label>
 
 <input
 type="text"
