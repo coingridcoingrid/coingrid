@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Users Management | CoinGrid</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+overflow-x:hidden;
+}
+
+.dashboard{
+display:flex;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:280px;
+background:#020617;
+position:fixed;
+left:0;
+top:0;
+height:100vh;
+padding:25px;
+overflow-y:auto;
+border-right:1px solid rgba(255,255,255,.08);
+z-index:1000;
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+color:#facc15;
+text-align:center;
+margin-bottom:40px;
+}
+
+.nav-links{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.nav-links a{
+background:#0f172a;
+padding:15px;
+border-radius:12px;
+color:#cbd5e1;
+text-decoration:none;
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#1e293b;
+}
+
+.nav-links a.active{
+background:#facc15;
+color:#000;
+font-weight:700;
+}
+
+/* MAIN */
+
+.main-content{
+margin-left:280px;
+flex:1;
+padding:30px;
+}
+
+/* HEADER */
+
+.page-header{
+margin-bottom:30px;
+}
+
+.page-header h1{
+font-size:36px;
+margin-bottom:8px;
+}
+
+.page-header p{
+color:#94a3b8;
+}
+
+/* MOBILE MENU */
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+margin-bottom:15px;
+}
+
+/* STATS */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.stat-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+}
+
+.stat-card h2{
+font-size:30px;
+color:#facc15;
+margin-bottom:10px;
+}
+
+.stat-card p{
+color:#94a3b8;
+}
+
+/* SEARCH */
+
+.search-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+margin-bottom:30px;
+}
+
+.search-card input{
+width:100%;
+padding:15px;
+border:none;
+outline:none;
+border-radius:12px;
+background:#1e293b;
+color:white;
+}
+
+/* USER LIST */
+
+.users-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+}
+
+.users-card h2{
+margin-bottom:20px;
+color:#facc15;
+}
+
+.user-row{
+display:grid;
+grid-template-columns:2fr 2fr 1fr 1fr;
+gap:15px;
+padding:15px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.header{
+font-weight:700;
+color:#facc15;
+}
+
+.active{
+color:#22c55e;
+font-weight:700;
+}
+
+/* PART 2 CSS PASTE HERE */
+.actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.view-btn,
+.suspend-btn,
+.delete-btn{
+border:none;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+font-weight:600;
+}
+
+.view-btn{
+background:#3b82f6;
+color:white;
+}
+
+.suspend-btn{
+background:#f59e0b;
+color:white;
+}
+
+.delete-btn{
+background:#ef4444;
+color:white;
+}
+
+.popup-overlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:500px;
+}
+
+.popup-box h2{
+margin-bottom:15px;
+color:#facc15;
+}
+
+.popup-box p{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+.popup-close{
+margin-top:20px;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#facc15;
+color:#000;
+font-weight:700;
+cursor:pointer;
+}
+
+/* PART 3 */
+
+  .activity-card{
+margin-top:30px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+}
+
+.activity-card h2{
+color:#facc15;
+margin-bottom:20px;
+}
+
+.activity-row{
+display:grid;
+grid-template-columns:1fr 2fr 1fr;
+gap:15px;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.analytics-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;
+}
+
+.analytics-box{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+text-align:center;
+}
+
+.analytics-box h2{
+color:#facc15;
+margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.analytics-grid{
+grid-template-columns:1fr;
+}
+
+.activity-row{
+grid-template-columns:1fr;
+}
+
+}
+@media(max-width:991px){
+
+.sidebar{
+left:-100%;
+transition:.3s;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.main-content{
+margin-left:0;
+}
+
+.menu-btn{
+display:block;
+}
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.user-row{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.page-header h1{
+font-size:28px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+CoinGrid
+</div>
+
+<div class="nav-links">
+
+<a href="dashboard.html">
+📊 Dashboard
+</a>
+
+<a href="users.html" class="active">
+👥 Users
+</a>
+
+<a href="sponsors.html">
+🏢 Sponsors
+</a>
+
+<a href="tasks.html">
+📋 Tasks
+</a>
+
+<a href="payouts.html">
+💰 Payouts
+</a>
+
+<a href="reports.html">
+📑 Reports
+</a>
+
+<a href="settings.html">
+⚙ Settings
+</a>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-content">
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+
+<div class="page-header">
+
+<h1>User Management</h1>
+
+<p>
+Manage all registered CoinGrid users.
+</p>
+
+</div>
+
+<!-- USER STATS -->
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h2>12,450</h2>
+<p>Total Users</p>
+</div>
+
+<div class="stat-card">
+<h2>8,920</h2>
+<p>Active Users</p>
+</div>
+
+<div class="stat-card">
+<h2>320</h2>
+<p>New This Month</p>
+</div>
+
+<div class="stat-card">
+<h2>98%</h2>
+<p>Verified Users</p>
+</div>
+
+</div>
+
+<!-- SEARCH USERS -->
+
+<div class="search-card">
+
+<input
+type="text"
+placeholder="Search users by name, email or ID...">
+
+</div>
+
+<!-- USER LIST -->
+
+<div class="users-card">
+
+<h2>Users List</h2>
+
+<div class="user-row header">
+
+<div>Name</div>
+<div>Email</div>
+<div>Status</div>
+<div>User ID</div>
+
+</div>
+
+<div class="user-row">
+
+<div>Rajkumar</div>
+<div>raj@example.com</div>
+<div class="active">Active</div>
+<div>#1001</div>
+
+</div>
+
+<div class="user-row">
+
+<div>John Smith</div>
+<div>john@example.com</div>
+<div class="active">Active</div>
+<div>#1002</div>
+
+</div>
+
+<div class="user-row">
+
+<div>Priya</div>
+<div>priya@example.com</div>
+<div class="active">Active</div>
+<div>#1003</div>
+
+</div>
+
+</div>
+
+<!-- PART 2 -->
+
+  <!-- USER ACTION LIST -->
+
+<div class="users-card" style="margin-top:30px;">
+
+<h2>User Actions</h2>
+
+<div class="user-row header">
+
+<div>Name</div>
+<div>Email</div>
+<div>Status</div>
+<div>Actions</div>
+
+</div>
+
+<div class="user-row">
+
+<div>Rajkumar</div>
+<div>raj@example.com</div>
+<div class="active">Active</div>
+
+<div class="actions">
+
+<button class="view-btn">
+View
+</button>
+
+<button class="suspend-btn">
+Suspend
+</button>
+
+<button class="delete-btn">
+Delete
+</button>
+
+</div>
+
+</div>
+
+<div class="user-row">
+
+<div>John Smith</div>
+<div>john@example.com</div>
+<div class="active">Active</div>
+
+<div class="actions">
+
+<button class="view-btn">
+View
+</button>
+
+<button class="suspend-btn">
+Suspend
+</button>
+
+<button class="delete-btn">
+Delete
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- USER DETAILS POPUP -->
+
+<div class="popup-overlay" id="userPopup">
+
+<div class="popup-box">
+
+<h2 id="popupTitle">
+User Details
+</h2>
+
+<p id="popupContent">
+Loading...
+</p>
+
+<button
+class="popup-close"
+onclick="closePopup()">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- PART 3  -->
+
+  <!-- USER ANALYTICS -->
+
+<div class="analytics-grid">
+
+<div class="analytics-box">
+
+<h2 id="totalUsers">
+12,450
+</h2>
+
+<p>Total Users</p>
+
+</div>
+
+<div class="analytics-box">
+
+<h2 id="activeUsers">
+8,920
+</h2>
+
+<p>Active Users</p>
+
+</div>
+
+<div class="analytics-box">
+
+<h2 id="verifiedUsers">
+12,201
+</h2>
+
+<p>Verified Users</p>
+
+</div>
+
+</div>
+
+<!-- USER ACTIVITY LOGS -->
+
+<div class="activity-card">
+
+<h2>User Activity Logs</h2>
+
+<div class="activity-row">
+
+<div>2026-06-24</div>
+<div>User Login</div>
+<div>Rajkumar</div>
+
+</div>
+
+<div class="activity-row">
+
+<div>2026-06-24</div>
+<div>Withdrawal Request</div>
+<div>John Smith</div>
+
+</div>
+
+<div class="activity-row">
+
+<div>2026-06-23</div>
+<div>Task Completed</div>
+<div>Priya</div>
+
+</div>
+
+<div class="activity-row">
+
+<div>2026-06-23</div>
+<div>Account Verified</div>
+<div>David</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const sidebar =
+document.getElementById("sidebar");
+
+menuBtn.addEventListener("click",()=>{
+
+sidebar.classList.toggle("active");
+
+});
+
+/* PART 2  */
+
+  const popup =
+document.getElementById(
+"userPopup"
+);
+
+const popupTitle =
+document.getElementById(
+"popupTitle"
+);
+
+const popupContent =
+document.getElementById(
+"popupContent"
+);
+
+function closePopup(){
+
+popup.style.display="none";
+
+}
+
+document
+.querySelectorAll(".view-btn")
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+()=>{
+
+popupTitle.innerText =
+"User Details";
+
+popupContent.innerHTML = `
+Name: Rajkumar<br>
+Email: raj@example.com<br>
+Status: Active<br>
+Joined: 2026-06-01
+`;
+
+popup.style.display =
+"flex";
+
+});
+
+});
+
+document
+.querySelectorAll(".suspend-btn")
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+()=>{
+
+if(confirm(
+"Suspend this user?"
+)){
+
+alert(
+"User suspended successfully."
+);
+
+}
+
+});
+
+});
+
+document
+.querySelectorAll(".delete-btn")
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+()=>{
+
+if(confirm(
+"Delete this user?"
+)){
+
+alert(
+"User deleted successfully."
+);
+
+}
+
+});
+
+});
+
+/* PART 3  */
+
+  /*
+
+Cloudflare Worker APIs
+
+GET /api/admin/users
+
+GET /api/admin/user-logs
+
+PUT /api/admin/user/{id}/suspend
+
+DELETE /api/admin/user/{id}
+
+*/
+
+async function loadUsers(){
+
+try{
+
+/*
+
+const response =
+await fetch(
+'https://api.coingrid.in/admin/users'
+);
+
+const data =
+await response.json();
+
+document.getElementById(
+'totalUsers'
+).innerText =
+data.totalUsers;
+
+document.getElementById(
+'activeUsers'
+).innerText =
+data.activeUsers;
+
+document.getElementById(
+'verifiedUsers'
+).innerText =
+data.verifiedUsers;
+
+*/
+
+console.log(
+'Users loaded successfully'
+);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+loadUsers();
+
+/* AUTO REFRESH */
+
+setInterval(()=>{
+
+loadUsers();
+
+},30000);
+
+</script>
+
+</body>
+</html>
