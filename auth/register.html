@@ -501,7 +501,16 @@ placeholder="Enter referral code">
 <div id="strengthFill"></div>
 </div><p id="strengthText">
 Password Strength
-</p></div><!-- TERMS --><div class="terms-container"><input
+</p></div>
+  <p id="passwordError"
+style="
+color:#ef4444;
+font-size:13px;
+margin-top:8px;
+display:none;
+">
+  </p>
+  <!-- TERMS --><div class="terms-container"><input
 type="checkbox"
 id="terms">
 
@@ -546,7 +555,7 @@ Continue
 </form></div></div></div><!-- SCRIPT --><script>
 
 const passwordInput =
-document.querySelectorAll("input[type='password']")[0];
+document.getElementById("password");
 
 const fill =
 document.getElementById("strengthFill");
@@ -555,31 +564,71 @@ const text =
 document.getElementById("strengthText");
 
 passwordInput.addEventListener("input",()=>{
+const passwordError =
+document.getElementById("passwordError");
 
-let val=passwordInput.value.length;
+const validPassword =
+/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!]).{8,}$/;
 
-if(val<5){
+const password =
+passwordInput.value;
 
-fill.style.width="25%";
-fill.style.background="red";
-text.innerText="Weak Password";
+const hasUpper =
+/[A-Z]/.test(password);
+
+const hasLower =
+/[a-z]/.test(password);
+
+const hasNumber =
+/[0-9]/.test(password);
+
+const hasSpecial =
+/[@#$%^&*!]/.test(password);
+
+const hasLength =
+password.length >= 8;
+
+let score = 0;
+
+if(hasUpper) score++;
+if(hasLower) score++;
+if(hasNumber) score++;
+if(hasSpecial) score++;
+if(hasLength) score++;
+
+if(score <= 2){
+
+fill.style.width = "30%";
+fill.style.background = "red";
+
+text.innerText =
+"Weak - Add Uppercase, Number & Special Character";
 
 }
-else if(val<8){
+else if(score <= 4){
 
-fill.style.width="60%";
-fill.style.background="orange";
-text.innerText="Medium Password";
+fill.style.width = "70%";
+fill.style.background = "orange";
+
+text.innerText =
+"Medium - Improve Security";
 
 }
 else{
 
-fill.style.width="100%";
-fill.style.background="limegreen";
-text.innerText="Strong Password";
+fill.style.width = "100%";
+fill.style.background = "limegreen";
+
+text.innerText =
+"Strong Password ✓";
 
 }
+if(validPassword.test(password)){
 
+passwordError.style.display =
+"none";
+
+}
 });
 
 /*
@@ -665,6 +714,18 @@ document.getElementById("confirmPassword").value;
 
 const role =
 document.getElementById("selectedRole").value;
+const termsAccepted =
+document.getElementById("terms").checked;
+
+if(!termsAccepted){
+
+alert(
+"You must agree to Terms & Conditions and Privacy Policy."
+);
+
+return;
+
+}
 
 if(password !== confirmPassword){
 
@@ -673,7 +734,31 @@ alert("Passwords do not match");
 return;
 
 }
+const passwordError =
+document.getElementById("passwordError");
 
+const strongPassword =
+/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!]).{8,}$/;
+
+if(!strongPassword.test(password)){
+
+passwordError.style.display =
+"block";
+
+passwordError.innerHTML =
+"Password must contain:<br>" +
+"• 8+ characters<br>" +
+"• One uppercase letter<br>" +
+"• One lowercase letter<br>" +
+"• One number<br>" +
+"• One special character (@#$%^&*!)";
+
+return;
+
+}
+
+passwordError.style.display =
+"none";
 const loading =
 document.getElementById("loadingOverlay");
 
