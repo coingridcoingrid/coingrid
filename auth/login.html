@@ -382,12 +382,14 @@ Access your CoinGrid account securely.
 </p><form id="loginForm"><div class="input-group"><label>Email Address</label>
 
 <input
+id="email"
 type="email"
 placeholder="Enter your email">
 
 </div><div class="input-group"><label>Password</label>
 
 <input
+id="password"
 type="password"
 placeholder="Enter your password">
 
@@ -418,17 +420,21 @@ Login To Account
 
 </button><!-- DIVIDER --><div class="divider"><span>OR</span>
 
-</div><!-- GOOGLE LOGIN --><button
-type="button"
-class="google-btn">
+</div><!-- GOOGLE LOGIN --><div
+id="g_id_onload"
+data-client_id="526661796875-eipejuo2qpf1lbdopr999gqr2rq7b104.apps.googleusercontent.com"
+data-callback="handleGoogleLogin">
+</div>
 
-<img
-src="../images/icons/google.png"
-alt="Google">
-
-Continue With Google
-
-</button><!-- REGISTER LINK --><div class="register-link">Don't have an account?
+<div
+class="g_id_signin"
+data-type="standard"
+data-size="large"
+data-theme="outline"
+data-text="continue_with"
+data-shape="rectangular"
+data-logo_alignment="left">
+</div><!-- REGISTER LINK --><div class="register-link">Don't have an account?
 
 <a href="register.html">Create Account
 
@@ -546,35 +552,70 @@ await response.json();
 
 */
 
-setTimeout(()=>{
+try{
+
+const response = await fetch(
+"https://coingrid-api.coingridcoingrid.workers.dev/auth/login",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+email,
+password
+})
+});
+
+const data = await response.json();
 
 document.getElementById(
-'loadingOverlay'
-).style.display='none';
+"loadingOverlay"
+).style.display="none";
 
-document.getElementById(
-'successPopup'
-).style.display='flex';
+if(!data.success){
+
+alert(data.message);
+
+return;
+
+}
+
+localStorage.setItem(
+"coingrid_user",
+JSON.stringify(data.user)
+);
 
 if(remember){
 
 localStorage.setItem(
-'coingrid_email',
+"coingrid_email",
 email
 );
 
 }
 
-setTimeout(()=>{
+if(data.role==="worker"){
 
-window.location.href =
-'../user/dashboard.html';
+window.location.href=
+"../user/dashboard.html";
 
-},2000);
+}else{
 
-},2000);
+window.location.href=
+"../sponsor/dashboard.html";
 
-});
+}
+
+}catch(error){
+
+document.getElementById(
+"loadingOverlay"
+).style.display="none";
+
+alert(error.message);
+
+}
 
 /* AUTO FILL EMAIL */
 
@@ -600,5 +641,62 @@ document.getElementById(
 }
 
 });
-</script></body>
+
+  async function handleGoogleLogin(response){
+
+const role="worker";
+
+try{
+
+const apiResponse=await fetch(
+"https://coingrid-api.coingridcoingrid.workers.dev/auth/google",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+token:response.credential,
+role:role
+})
+}
+);
+
+const data=await apiResponse.json();
+
+if(data.success){
+
+localStorage.setItem(
+"coingrid_user",
+JSON.stringify(data.user)
+);
+
+if(data.role==="worker"){
+
+window.location.href=
+"../user/dashboard.html";
+
+}else{
+
+window.location.href=
+"../sponsor/dashboard.html";
+
+}
+
+}else{
+
+alert(data.message);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+alert("Google Login Failed");
+
+}
+
+  }
+</script><script src="https://accounts.google.com/gsi/client" async defer></script></body>
 </html>
