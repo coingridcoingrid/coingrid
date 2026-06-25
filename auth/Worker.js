@@ -146,7 +146,60 @@ async function register(request, env) {
 
     }
 
-    
+    await env.DB.prepare(`
+INSERT INTO users
+(name,email,password_hash,provider,email_verified)
+VALUES (?,?,?,?,0)
+`)
+.bind(
+  name,
+  email,
+  password,
+  "email"
+)
+.run();
+
+const user = await env.DB
+.prepare(
+"SELECT * FROM users WHERE email=?"
+)
+.bind(email)
+.first();
+
+await env.DB.prepare(`
+INSERT INTO accounts
+(user_id,role)
+VALUES (?,?)
+`)
+.bind(
+  user.id,
+  role
+)
+.run();
+
+const account = await env.DB
+.prepare(`
+SELECT *
+FROM accounts
+WHERE user_id=?
+AND role=?
+`)
+.bind(
+  user.id,
+  role
+)
+.first();
+
+await env.DB.prepare(`
+INSERT INTO wallets
+(account_id)
+VALUES (?)
+`)
+.bind(
+  account.id
+)
+.run();
+
 const token = crypto.randomUUID();
 
 const expires = new Date(
