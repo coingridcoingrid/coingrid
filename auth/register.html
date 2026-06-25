@@ -853,6 +853,11 @@ document.getElementById("confirmPassword").value;
 
 const role =
 document.getElementById("selectedRole").value;
+
+  const referralCode =
+document.getElementById("referralCode").value.trim();
+
+  
 const termsAccepted =
 document.getElementById("terms").checked;
 
@@ -916,22 +921,24 @@ body:JSON.stringify({
 name,
 email,
 password,
-role
+role,
+referralCode
 })
 }
 );
 
 console.log("Status:", response.status);
 
-const responseText = await response.text();
-
-console.log("Response:", responseText);
-
-const data = JSON.parse(responseText);
+const data = await response.json();
 
 loading.style.display="none";
 
 if(data.success){
+
+localStorage.setItem(
+"coingrid_user",
+JSON.stringify(data.user)
+);
 
 document.getElementById(
 "successPopup"
