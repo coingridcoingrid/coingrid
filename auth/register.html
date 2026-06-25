@@ -921,8 +921,13 @@ role
 }
 );
 
-const data =
-await response.json();
+console.log("Status:", response.status);
+
+const responseText = await response.text();
+
+console.log("Response:", responseText);
+
+const data = JSON.parse(responseText);
 
 loading.style.display="none";
 
@@ -945,13 +950,11 @@ data.message ||
 
 loading.style.display="none";
 
-console.error(error);
+console.error("Register Error:", error);
 
-alert(
-"Unable to connect to server"
-);
+alert(error.message);
 
-}
+  }
 
 });
 
