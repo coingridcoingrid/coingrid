@@ -1,4 +1,4 @@
-const corsHeaders = {
+hereconst corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type"
@@ -27,54 +27,78 @@ export default {
       });
     }
 
-    const url = new URL(request.url);
+    try {
 
-    if (url.pathname === "/") {
+      const url = new URL(request.url);
+
+      if (
+        url.pathname === "/" &&
+        request.method === "GET"
+      ) {
+
+        return jsonResponse({
+          success: true,
+          message: "CoinGrid API Running"
+        });
+
+      }
+
+      if (
+        url.pathname === "/auth/register" &&
+        request.method === "POST"
+      ) {
+
+        return await register(request, env);
+
+      }
+
+      if (
+        url.pathname === "/auth/login" &&
+        request.method === "POST"
+      ) {
+
+        return await login(request, env);
+
+      }
+
+      if (
+        url.pathname === "/auth/google" &&
+        request.method === "POST"
+      ) {
+
+        return await googleLogin(request, env);
+
+      }
+
+      if (
+        url.pathname === "/auth/verify" &&
+        request.method === "GET"
+      ) {
+
+        return await verifyEmail(request, env);
+
+      }
+
       return jsonResponse({
-        success: true,
-        message: "CoinGrid API Running"
-      });
-    }
-
-    if (
-      url.pathname === "/auth/register" &&
-      request.method === "POST"
-    ) {
-      return register(request, env);
-    }
-
-    if (
-      url.pathname === "/auth/login" &&
-      request.method === "POST"
-    ) {
-      return login(request, env);
-    }
-
-    if (
-      url.pathname === "/auth/google" &&
-      request.method === "POST"
-    ) {
-      return googleLogin(request, env);
-    }
-
-    if (
-      url.pathname === "/auth/verify" &&
-      request.method === "GET"
-    ) {
-      return verifyEmail(request, env);
-    }
-
-    return jsonResponse(
-      {
         success: false,
         message: "Route Not Found"
-      },
-      404
-    );
+      }, 404);
+
+    } catch (error) {
+
+      console.log("Worker Error:", error);
+
+      return jsonResponse({
+        success: false,
+        message: error.message
+      }, 500);
+
+    }
 
   }
 
 };
+
 async function register(request, env) {
 
   try {
@@ -87,29 +111,37 @@ async function register(request, env) {
     const role = body.role || "worker";
 
     if (!name || !email || !password) {
+
       return jsonResponse({
         success: false,
         message: "All fields are required."
       }, 400);
+
     }
 
     const existingUser = await env.DB
-      .prepare("SELECT * FROM users WHERE email=?")
+      .prepare(`
+SELECT id
+FROM users
+WHERE email=?
+`)
       .bind(email)
       .first();
 
     if (existingUser) {
+
       return jsonResponse({
         success: false,
         message: "Email already registered."
       }, 409);
+
     }
 
     await env.DB.prepare(`
-      INSERT INTO users
-      (name,email,password_hash,provider,email_verified)
-      VALUES (?,?,?,?,?)
-    `)
+INSERT INTO users
+(name,email,password_hash,provider,email_verified)
+VALUES (?,?,?,?,?)
+`)
     .bind(
       name,
       email,
@@ -120,35 +152,42 @@ async function register(request, env) {
     .run();
 
     const user = await env.DB
-      .prepare("SELECT * FROM users WHERE email=?")
+      .prepare(`
+SELECT *
+FROM users
+WHERE email=?
+`)
       .bind(email)
       .first();
 
     if (!user) {
+
       return jsonResponse({
         success: false,
-        message: "Failed to create user."
+        message: "User creation failed."
       }, 500);
+
     }
 
     await env.DB.prepare(`
-      INSERT INTO accounts
-      (user_id,role)
-      VALUES (?,?)
-    `)
+INSERT INTO accounts
+(user_id,role,status)
+VALUES (?,?,?)
+`)
     .bind(
       user.id,
-      role
+      role,
+      "active"
     )
     .run();
 
     const account = await env.DB
       .prepare(`
-        SELECT *
-        FROM accounts
-        WHERE user_id=?
-        AND role=?
-      `)
+SELECT *
+FROM accounts
+WHERE user_id=?
+AND role=?
+`)
       .bind(
         user.id,
         role
@@ -156,17 +195,19 @@ async function register(request, env) {
       .first();
 
     if (!account) {
+
       return jsonResponse({
         success: false,
-        message: "Failed to create account."
+        message: "Account creation failed."
       }, 500);
+
     }
 
     await env.DB.prepare(`
-      INSERT INTO wallets
-      (account_id)
-      VALUES (?)
-    `)
+INSERT INTO wallets
+(account_id)
+VALUES (?)
+`)
     .bind(account.id)
     .run();
 
@@ -177,10 +218,10 @@ async function register(request, env) {
     ).toISOString();
 
     await env.DB.prepare(`
-      INSERT INTO email_verifications
-      (user_id,token,expires_at)
-      VALUES (?,?,?)
-    `)
+INSERT INTO email_verifications
+(user_id,token,expires_at)
+VALUES (?,?,?)
+`)
     .bind(
       user.id,
       token,
@@ -196,14 +237,25 @@ async function register(request, env) {
     );
 
     return jsonResponse({
+
       success: true,
-      message: "Registration successful. Please verify your email.",
-      role: role
+
+      message:
+      "Registration successful. Please verify your email.",
+
+      role: role,
+
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+
     });
 
   } catch (error) {
 
-    console.log(error);
+    console.log("Register Error:", error);
 
     return jsonResponse({
       success: false,
@@ -212,7 +264,7 @@ async function register(request, env) {
 
   }
 
-      }
+}
 
 async function sendVerificationEmail(
   env,
@@ -229,7 +281,6 @@ async function sendVerificationEmail(
     const response = await fetch(
       "https://api.resend.com/emails",
       {
-
         method: "POST",
 
         headers: {
@@ -251,9 +302,10 @@ async function sendVerificationEmail(
 <html>
 
 <body style="
-font-family:Arial,sans-serif;
-background:#f5f5f5;
+margin:0;
 padding:30px;
+background:#f4f4f4;
+font-family:Arial,sans-serif;
 ">
 
 <div style="
@@ -262,6 +314,7 @@ margin:auto;
 background:#ffffff;
 padding:40px;
 border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 ">
 
 <h2 style="color:#0f172a;">
@@ -274,10 +327,7 @@ Hello <b>${name}</b>,
 
 <p>
 Thank you for creating your CoinGrid account.
-</p>
-
-<p>
-Please verify your email address by clicking the button below.
+Please verify your email address to activate your account.
 </p>
 
 <p style="margin:35px 0;">
@@ -338,13 +388,15 @@ please ignore this email.
         error
       );
 
-    } else {
-
-      console.log(
-        "Verification email sent successfully."
-      );
+      return false;
 
     }
+
+    console.log(
+      "Verification email sent successfully."
+    );
+
+    return true;
 
   } catch (error) {
 
@@ -353,9 +405,11 @@ please ignore this email.
       error.message
     );
 
+    return false;
+
   }
 
-        }
+}
 
 async function verifyEmail(request, env) {
 
@@ -381,13 +435,13 @@ headers:{
     }
 
     const verification = await env.DB
-    .prepare(`
+      .prepare(`
 SELECT *
 FROM email_verifications
 WHERE token=?
 `)
-    .bind(token)
-    .first();
+      .bind(token)
+      .first();
 
     if (!verification) {
 
@@ -533,7 +587,155 @@ headers:{
 
   }
 
+}
+
+async function verifyEmail(request, env) {
+
+  try {
+
+    const url = new URL(request.url);
+
+    const token = url.searchParams.get("token");
+
+    if (!token) {
+      return new Response(`
+<h2>Invalid verification link.</h2>
+`, {
+        headers: {
+          "Content-Type": "text/html"
         }
+      });
+    }
+
+    const verification = await env.DB
+      .prepare(`
+SELECT *
+FROM email_verifications
+WHERE token=?
+`)
+      .bind(token)
+      .first();
+
+    if (!verification) {
+      return new Response(`
+<h2>Verification link is invalid.</h2>
+`, {
+        headers: {
+          "Content-Type": "text/html"
+        }
+      });
+    }
+
+    if (new Date() > new Date(verification.expires_at)) {
+      return new Response(`
+<h2>Verification link has expired.</h2>
+`, {
+        headers: {
+          "Content-Type": "text/html"
+        }
+      });
+    }
+
+    await env.DB.prepare(`
+UPDATE users
+SET email_verified=1
+WHERE id=?
+`)
+    .bind(verification.user_id)
+    .run();
+
+    await env.DB.prepare(`
+DELETE FROM email_verifications
+WHERE id=?
+`)
+    .bind(verification.id)
+    .run();
+
+    return new Response(`
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>CoinGrid</title>
+
+<style>
+
+body{
+margin:0;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial,sans-serif;
+color:white;
+}
+
+.card{
+background:#1e293b;
+padding:40px;
+border-radius:20px;
+text-align:center;
+max-width:500px;
+width:90%;
+}
+
+h1{
+color:#22c55e;
+}
+
+a{
+display:inline-block;
+margin-top:25px;
+padding:15px 30px;
+background:#facc15;
+color:#000;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>✅ Email Verified</h1>
+
+<p>Your CoinGrid account has been verified successfully.</p>
+
+<p>You can now login to your account.</p>
+
+<a href="https://coingridcoingrid.github.io/coingrid/auth/login.html">
+Login Now
+</a>
+
+</div>
+
+</body>
+</html>
+`, {
+      headers: {
+        "Content-Type": "text/html"
+      }
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    return jsonResponse({
+      success: false,
+      message: error.message
+    }, 500);
+
+  }
+
+}
 
 async function login(request, env) {
 
@@ -617,14 +819,6 @@ LIMIT 1
 
     }
 
-    await env.DB.prepare(`
-UPDATE accounts
-SET last_login=CURRENT_TIMESTAMP
-WHERE id=?
-`)
-    .bind(account.id)
-    .run();
-
     return jsonResponse({
 
       success: true,
@@ -653,7 +847,7 @@ WHERE id=?
 
   }
 
-  }
+      }
 
 async function googleLogin(request, env) {
 
@@ -673,9 +867,13 @@ async function googleLogin(request, env) {
 
     }
 
-    // TODO:
-    // Verify Google's ID token here.
-    // Replace these demo values with actual Google user data.
+    /*
+      TODO:
+      Verify Google's ID Token here.
+
+      Replace these demo values with the
+      actual values received from Google.
+    */
 
     const email = "demo@gmail.com";
     const name = "Demo User";
@@ -784,14 +982,6 @@ VALUES (?)
 
     }
 
-    await env.DB.prepare(`
-UPDATE accounts
-SET last_login=CURRENT_TIMESTAMP
-WHERE id=?
-`)
-    .bind(account.id)
-    .run();
-
     return jsonResponse({
 
       success: true,
@@ -821,3 +1011,4 @@ WHERE id=?
   }
 
         }
+
