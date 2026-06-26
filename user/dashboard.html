@@ -575,7 +575,7 @@ View Wallet
   <div id="taskList"></div>
   <!-- NOTIFICATIONS --><div class="dashboard-card"><div class="section-header"><h2>Notifications</h2><a href="notifications.html">
 View All
-</a></div><div class="notificationList">
+</a></div><div id="notificationList">
 
 
 </div></div></div><!-- LEADERBOARD -->
@@ -602,17 +602,23 @@ menuBtn.addEventListener("click", () => {
     sidebar.classList.toggle("active");
 });
 
-const API_BASE = "https://coingrid-api.your-subdomain.workers.dev";
+const API_BASE = "https://coingrid-api.coingridcoingrid.workers.dev";
 
 async function loadDashboard() {
 
-    const userId = localStorage.getItem("user_id");
+    const user = JSON.parse(localStorage.getItem("coingrid_user"));
 
-    if (!userId) {
-        alert("User not logged in.");
-        window.location.href = "../auth/login.html";
-        return;
-    }
+if (!user || !user.id) {
+
+    alert("User not logged in.");
+
+    window.location.href = "../auth/login.html";
+
+    return;
+
+}
+
+const userId = user.id;
 
     try {
 
