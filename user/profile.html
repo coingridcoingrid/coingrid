@@ -337,6 +337,7 @@ async function loadProfile() {
         if (!data.success) {
 
             alert(data.message);
+
             return;
 
         }
@@ -358,8 +359,8 @@ async function loadProfile() {
 
         document.getElementById("verificationStatus").textContent =
         profile.verified
-        ? "✅ Verified Account"
-        : "❌ Email Not Verified";
+            ? "✅ Verified Account"
+            : "❌ Email Not Verified";
 
         document.getElementById("levelBadge").textContent =
         "Level " + profile.level;
@@ -378,17 +379,17 @@ async function loadProfile() {
 
         document.getElementById("totalEarnings").textContent =
         "$" +
-        Number(profile.lifetime_earnings).toFixed(2);
+        Number(profile.lifetime_earnings || 0).toFixed(2);
 
         document.getElementById("completedTasks").textContent =
-        profile.completed_tasks;
+        profile.completed_tasks || 0;
 
         document.getElementById("accountLevel").textContent =
-        profile.level;
+        profile.level || 1;
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Profile Error:", error);
 
         alert("Unable to load profile.");
 
