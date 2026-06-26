@@ -1002,7 +1002,7 @@ localStorage.setItem(
 JSON.stringify(
 data.user
 )
-
+localStorage.setItem("user_id", data.user.id);
 );
 
 if(remember){
@@ -1133,8 +1133,10 @@ localStorage.setItem(
 JSON.stringify(
 data.user
 )
-
+localStorage.setItem("user_id", data.user.id);
 );
+
+  
 
 if(data.role==="worker"){
 
