@@ -524,81 +524,65 @@ Level 1
     <h2 id="lifetime">$0.00</h2>
     <p>Total earnings from all tasks</p>
  </div>
-</div><!-- STATISTICS --><div class="stats-grid"><div class="stat-box"><h3>1,245</h3><p>Total Tasks Completed</p></div><div class="stat-box"><h3>92%</h3><p>Approval Rate</p></div><div class="stat-box"><h3>24</h3><p>Active Referrals</p></div><div class="stat-box"><h3>15</h3><p>Tasks In Progress</p></div></div><!-- WALLET SUMMARY --><div class="wallet-summary"><div class="section-header"><h2>Wallet Summary</h2><a href="wallet.html">
+</div><!-- STATISTICS -->
+  <div class="stats-grid">
+
+<div class="stat-box">
+<h3 id="completedTasks">0</h3>
+<p>Completed Tasks</p>
+</div>
+
+<div class="stat-box">
+<h3 id="pendingTasks">0</h3>
+<p>Pending Tasks</p>
+</div>
+
+<div class="stat-box">
+<h3 id="rejectedTasks">0</h3>
+<p>Rejected Tasks</p>
+</div>
+
+<div class="stat-box">
+<h3 id="accountLevel">1</h3>
+<p>Account Level</p>
+</div>
+
+  </div>
+  <!-- WALLET SUMMARY --><div class="wallet-summary"><div class="section-header"><h2>Wallet Summary</h2><a href="wallet.html">
 View Wallet
 </a></div><div class="wallet-content"><div class="wallet-item"><span>Available Balance</span>
 
-<strong>$245.80</strong>
+<strong id="walletBalance">$0.00</strong>
 
 </div><div class="wallet-item"><span>Pending Balance</span>
 
-<strong>$34.20</strong>
+<strong id="walletPending">$0.00</strong>
 
 </div><div class="wallet-item"><span>Total Withdrawn</span>
 
-<strong>$1,580.00</strong>
+<strong id="walletWithdrawn">$0.00</strong>
 
 </div><div class="wallet-item"><span>Lifetime Earnings</span>
 
-<strong>$1,860.00</strong>
+<strong id="walletLifetime">$0.00</strong>
 
-</div></div></div><!-- RECENT ACTIVITY --><div class="activity-section"><div class="section-header"><h2>Recent Activity</h2><a href="transactions.html">
+</div></div></div><!-- RECENT ACTIVITY -->
+  <div class="activity-table" id="activityTable"></div>
+<!-- TASKS + NOTIFICATIONS --><div class="dashboard-grid">
+  
+  <!-- AVAILABLE TASKS -->
+  
+  <div id="taskList"></div>
+  <!-- NOTIFICATIONS --><div class="dashboard-card"><div class="section-header"><h2>Notifications</h2><a href="notifications.html">
 View All
-</a></div><div class="activity-table"><div class="activity-row activity-head"><div>Task</div><div>Reward</div><div>Status</div><div>Date</div></div><div class="activity-row"><div>Survey Completion</div><div>$2.50</div><div class="success">
-Approved
-</div><div>Today</div></div><div class="activity-row"><div>Video Task</div><div>$0.75</div><div class="pending">
-Pending
-</div><div>Today</div></div><div class="activity-row"><div>Referral Bonus</div><div>$5.00</div><div class="success">
-Approved
-</div><div>Yesterday</div></div><div class="activity-row"><div>Offer Wall</div><div>$10.00</div><div class="success">
-Approved
-</div><div>Yesterday</div></div></div></div>
-<!-- TASKS + NOTIFICATIONS --><div class="dashboard-grid"><!-- AVAILABLE TASKS --><div class="dashboard-card"><div class="section-header"><h2>Available Tasks</h2><a href="../tasks/browse.html">
-View Tasks
-</a></div><div class="task-item"><div>
-<h4>Survey Task</h4>
-<p>Complete a short survey</p>
-</div><span>$2.50</span>
+</a></div><div class="notificationList">
 
-</div><div class="task-item"><div>
-<h4>Watch Video</h4>
-<p>Watch sponsored content</p>
-</div><span>$0.75</span>
 
-</div><div class="task-item"><div>
-<h4>App Install</h4>
-<p>Install and open application</p>
-</div><span>$4.00</span>
-
-</div></div><!-- NOTIFICATIONS --><div class="dashboard-card"><div class="section-header"><h2>Notifications</h2><a href="notifications.html">
-View All
-</a></div><div class="notification-item">
-🔔 New survey available.
-</div><div class="notification-item">
-💰 Withdrawal approved.
-</div><div class="notification-item">
-🎉 Referral bonus received.
-</div><div class="notification-item">
-📢 New sponsor campaign added.
-</div></div></div><!-- LEADERBOARD --><div class="leaderboard-section"><div class="section-header"><h2>Top Earners</h2><a href="#">
-Monthly Ranking
-</a></div><div class="leaderboard-list"><div class="leader-item"><div>
-🥇 CryptoKing
-</div><strong>$1,245</strong>
-
-</div><div class="leader-item"><div>
-🥈 TaskMaster
-</div><strong>$1,037</strong>
-
-</div><div class="leader-item"><div>
-🥉 RewardHunter
-</div><strong>$968</strong>
-
-</div><div class="leader-item"><div>
-4. CoinWorker
-</div><strong>$812</strong>
-
-</div></div></div><!-- QUICK ACTIONS --><div class="quick-actions"><h2>Quick Actions</h2><div class="actions-grid"><a href="../tasks/browse.html" class="action-btn">
+</div></div></div><!-- LEADERBOARD -->
+  
+  
+  
+  <!-- QUICK ACTIONS --><div class="quick-actions"><h2>Quick Actions</h2><div class="actions-grid"><a href="../tasks/browse.html" class="action-btn">
 📋 Browse Tasks
 </a><a href="wallet.html" class="action-btn">
 💰 Wallet
@@ -608,59 +592,180 @@ Monthly Ranking
 👤 Profile
 </a></div></div>
 
-</div></div><script>
+</div></div>
 
-const menuBtn =
-document.getElementById("menuBtn");
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
-const sidebar =
-document.getElementById("sidebar");
-
-menuBtn.addEventListener("click",()=>{
-
-sidebar.classList.toggle("active");
-
+menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
 });
 
-  /*
+const API_BASE = "https://coingrid-api.your-subdomain.workers.dev";
 
-Cloudflare Worker APIs
+async function loadDashboard() {
 
-GET /api/dashboard
+    const userId = localStorage.getItem("user_id");
 
-Response:
+    if (!userId) {
+        alert("User not logged in.");
+        window.location.href = "../auth/login.html";
+        return;
+    }
 
-{
-balance:245.80,
-todayEarnings:12.45,
-pendingRewards:34.20,
-referrals:24
-}
+    try {
 
-GET /api/tasks
+        const response = await fetch(
+            `${API_BASE}/api/dashboard?user_id=${userId}`
+        );
 
-GET /api/notifications
+        if (!response.ok) {
+            throw new Error("Failed to load dashboard");
+        }
 
-GET /api/leaderboard
+        const data = await response.json();
 
-Example:
+        /* USER */
 
-async function loadDashboard(){
+        document.getElementById("userName").textContent =
+            data.user.name;
 
-const response =
-await fetch(
-'https://api.coingrid.in/dashboard'
-);
+        document.getElementById("profileName").textContent =
+            data.user.name;
 
-const data =
-await response.json();
+        document.getElementById("userRole").textContent =
+            data.account.role;
 
-console.log(data);
+        document.getElementById("memberSince").textContent =
+            "Member since " +
+            new Date(data.user.created_at).getFullYear();
+
+        document.getElementById("verificationStatus").textContent =
+            data.user.email_verified
+                ? "Verified Account"
+                : "Email Not Verified";
+
+        document.getElementById("levelBadge").textContent =
+            "Level " + data.account.level;
+
+        document.getElementById("accountLevel").textContent =
+            data.account.level;
+
+        document.getElementById("userAvatar").textContent =
+            data.user.name.charAt(0).toUpperCase();
+
+        /* WALLET */
+
+        document.getElementById("balance").textContent =
+            "$" + Number(data.wallet.balance).toFixed(2);
+
+        document.getElementById("pendingBalance").textContent =
+            "$" + Number(data.wallet.pending_balance).toFixed(2);
+
+        document.getElementById("points").textContent =
+            data.wallet.points;
+
+        document.getElementById("lifetime").textContent =
+            "$" + Number(data.wallet.lifetime_earnings).toFixed(2);
+
+        document.getElementById("walletBalance").textContent =
+            "$" + Number(data.wallet.balance).toFixed(2);
+
+        document.getElementById("walletPending").textContent =
+            "$" + Number(data.wallet.pending_balance).toFixed(2);
+
+        document.getElementById("walletWithdrawn").textContent =
+            "$" + Number(data.wallet.total_withdrawn).toFixed(2);
+
+        document.getElementById("walletLifetime").textContent =
+            "$" + Number(data.wallet.lifetime_earnings).toFixed(2);
+
+        /* STATISTICS */
+
+        document.getElementById("completedTasks").textContent =
+            data.statistics.completed_tasks;
+
+        document.getElementById("pendingTasks").textContent =
+            data.statistics.pending_tasks;
+
+        document.getElementById("rejectedTasks").textContent =
+            data.statistics.rejected_tasks;
+
+        /* TASKS */
+
+        const taskList = document.getElementById("taskList");
+        taskList.innerHTML = "";
+
+        data.tasks.forEach(task => {
+
+            taskList.innerHTML += `
+                <div class="task-item">
+                    <div>
+                        <h4>${task.title}</h4>
+                        <p>${task.category}</p>
+                    </div>
+                    <span>$${Number(task.reward).toFixed(2)}</span>
+                </div>
+            `;
+
+        });
+
+        /* NOTIFICATIONS */
+
+        const notificationList =
+            document.getElementById("notificationList");
+
+        notificationList.innerHTML = "";
+
+        data.notifications.forEach(notification => {
+
+            notificationList.innerHTML += `
+                <div class="notification-item">
+                    <strong>${notification.title}</strong><br>
+                    ${notification.message}
+                </div>
+            `;
+
+        });
+
+        /* TRANSACTIONS */
+
+        const activityTable =
+            document.getElementById("activityTable");
+
+        activityTable.innerHTML = `
+            <div class="activity-row activity-head">
+                <div>Description</div>
+                <div>Amount</div>
+                <div>Status</div>
+                <div>Date</div>
+            </div>
+        `;
+
+        data.transactions.forEach(tx => {
+
+            activityTable.innerHTML += `
+                <div class="activity-row">
+                    <div>${tx.description}</div>
+                    <div>$${Number(tx.amount).toFixed(2)}</div>
+                    <div>${tx.status}</div>
+                    <div>${tx.created_at}</div>
+                </div>
+            `;
+
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Unable to load dashboard.");
+
+    }
 
 }
 
 loadDashboard();
-
-*/
-
-</script></body></html>
+                         </script>
+</body></html>
