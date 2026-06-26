@@ -1127,13 +1127,13 @@ return;
 }
 
 localStorage.setItem(
+    "coingrid_user",
+    JSON.stringify(data.user)
+);
 
-"coingrid_user",
-
-JSON.stringify(
-data.user
-)
-localStorage.setItem("user_id", data.user.id);
+localStorage.setItem(
+    "user_id",
+    data.user.id
 );
 
   
