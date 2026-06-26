@@ -306,19 +306,18 @@ Loading...
 </div></div>
 <!-- EDIT PROFILE --><!-- ACCOUNT STATS --><!-- SECURITY --><!-- VERIFICATION -->
 </div>
-<script>
+
+    <script>
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
-async function loadProfile(){
+async function loadProfile() {
 
     const user = JSON.parse(
         localStorage.getItem("coingrid_user")
     );
 
-    if(!user){
-
-        alert("User not logged in.");
+    if (!user || !user.id) {
 
         window.location.href =
         "../auth/login.html";
@@ -327,7 +326,7 @@ async function loadProfile(){
 
     }
 
-    try{
+    try {
 
         const response = await fetch(
             `${API_BASE}/api/profile?user_id=${user.id}`
@@ -335,10 +334,9 @@ async function loadProfile(){
 
         const data = await response.json();
 
-        if(!data.success){
+        if (!data.success) {
 
             alert(data.message);
-
             return;
 
         }
@@ -370,7 +368,7 @@ async function loadProfile(){
         profile.name;
 
         document.getElementById("userId").textContent =
-        profile.id;
+        "CG" + String(profile.id).padStart(6, "0");
 
         document.getElementById("accountRole").textContent =
         profile.role;
@@ -388,13 +386,7 @@ async function loadProfile(){
         document.getElementById("accountLevel").textContent =
         profile.level;
 
-        document.getElementById("editName").value =
-        profile.name;
-
-        document.getElementById("editEmail").value =
-        profile.email;
-
-    }catch(error){
+    } catch (error) {
 
         console.error(error);
 
@@ -404,83 +396,6 @@ async function loadProfile(){
 
 }
 
-document
-.getElementById("profileForm")
-.addEventListener(
-"submit",
-async function(e){
-
-    e.preventDefault();
-
-    const user = JSON.parse(
-        localStorage.getItem("coingrid_user")
-    );
-
-    const name =
-    document.getElementById("editName")
-    .value
-    .trim();
-
-    try{
-
-        const response = await fetch(
-            `${API_BASE}/api/profile`,
-            {
-
-                method:"PUT",
-
-                headers:{
-                    "Content-Type":
-                    "application/json"
-                },
-
-                body:JSON.stringify({
-
-                    user_id:user.id,
-
-                    name:name
-
-                })
-
-            }
-        );
-
-        const data =
-        await response.json();
-
-        if(!data.success){
-
-            alert(data.message);
-
-            return;
-
-        }
-
-        user.name = name;
-
-        localStorage.setItem(
-            "coingrid_user",
-            JSON.stringify(user)
-        );
-
-        alert(
-            "Profile updated successfully."
-        );
-
-        loadProfile();
-
-    }catch(error){
-
-        console.error(error);
-
-        alert(
-            "Unable to update profile."
-        );
-
-    }
-
-});
-
 loadProfile();
-</script>
+    </script>
 </body></html>
