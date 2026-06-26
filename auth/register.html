@@ -1031,9 +1031,9 @@ method:"POST",
 headers:{
 "Content-Type":"application/json"
 },
-body:JSON.stringify({
-token:response.credential,
-role:role
+body: JSON.stringify({
+    token: response.credential,
+    role: selectedRole.value
 })
 }
 );
