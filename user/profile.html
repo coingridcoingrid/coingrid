@@ -257,212 +257,230 @@ grid-template-columns:1fr;
 }
 
   }
-</style></head><body><div class="container"><div class="profile-header"><div class="avatar">
-R
-</div><div class="profile-info"><h1>Rajkumar</h1><p>rajkumar@example.com</p><p>Member Since: June 2026</p><p>Verified Worker Account</p><div class="level-badge">
-Level 5 Earner
-</div></div></div><div class="info-grid"><div class="info-card"><h3>Account Information</h3><div class="info-row">
+</style></head><body><div class="container"><div class="profile-header"><div class="avatar" id="profileAvatar">
+U
+</div>
+  
+  <div class="profile-info"><h1 id="profileName">Loading...</h1>
+    <p id="profileEmail">Loading...</p>
+    <p id="memberSince">Loading...</p>
+    
+    <p id="verificationStatus">Loading...</p>
+    
+<div
+class="level-badge"
+id="levelBadge">
+Loading...
+</div>
+  
+  </div></div><div class="info-grid"><div class="info-card"><h3>Account Information</h3><div class="info-row">
 <span>Username</span>
-<span>Rajkumar</span>
+<span id="userName">Loading...</span>
+
+    
 </div><div class="info-row">
 <span>User ID</span>
-<span>CG100245</span>
+<span id="userId">Loading...</span>
+  
 </div><div class="info-row">
 <span>Account Type</span>
-<span>Worker</span>
+<span id="accountRole">Loading...</span>
+  
 </div><div class="info-row">
 <span>Status</span>
-<span>Active</span>
+<span id="accountStatus">Loading...</span>
+  
 </div></div><div class="info-card"><h3>Earning Summary</h3><div class="info-row">
 <span>Total Earnings</span>
-<span>$1,860</span>
+<span id="totalEarnings">$0.00</span>
+  
 </div><div class="info-row">
 <span>Completed Tasks</span>
-<span>1,245</span>
-</div><div class="info-row">
-<span>Referrals</span>
-<span>24</span>
-</div><div class="info-row">
-<span>Approval Rate</span>
-<span>92%</span>
-</div></div></div>
-<!-- EDIT PROFILE --><div class="edit-profile-section"><h2>Edit Profile</h2><form id="profileForm"><div class="form-grid"><div class="form-group"><label>Full Name</label>
-
-<input
-type="text"
-value="Rajkumar">
-
-</div><div class="form-group"><label>Email Address</label>
-
-<input
-type="email"
-value="rajkumar@example.com">
-
-</div><div class="form-group"><label>Phone Number</label>
-
-<input
-type="tel"
-placeholder="+91 XXXXX XXXXX">
-
-</div><div class="form-group"><label>Country</label>
-
-<input
-type="text"
-placeholder="India">
-
-</div><div class="form-group"><label>City</label>
-
-<input
-type="text"
-placeholder="Salem">
-
-</div><div class="form-group"><label>Date of Birth</label>
-
-<input
-type="date">
-
-</div></div><div class="form-group"><label>Bio</label>
-
-<textarea
-placeholder="Tell us about yourself..."></textarea></div><button
-type="submit"
-class="save-btn">
-
-Save Changes
-
-</button></form></div><!-- ACCOUNT STATS --><div class="profile-stats"><div class="stat-card"><h2>125</h2><p>Tasks This Month</p></div><div class="stat-card"><h2>$145</h2><p>Monthly Earnings</p></div><div class="stat-card"><h2>24</h2><p>Referrals</p></div><div class="stat-card"><h2>5</h2><p>Account Level</p></div></div>
-
-<!-- PROFILE PHOTO --><div class="profile-photo-section"><h2>Profile Picture</h2><div class="photo-container"><img
-id="profilePreview"
-src="../images/icons/user.png"
-alt="Profile">
-
-<input
-type="file"
-id="profileImage"
-accept="image/*">
-
-</div></div><!-- SECURITY --><div class="security-section"><h2>Security Settings</h2><form id="passwordForm"><div class="password-grid"><div class="form-group"><label>Current Password</label>
-
-<input
-type="password"
-placeholder="Current password">
-
-</div><div class="form-group"><label>New Password</label>
-
-<input
-type="password"
-placeholder="New password">
-
-</div></div><button
-type="submit"
-class="change-password-btn">
-
-Change Password
-
-</button></form></div><!-- VERIFICATION --><div class="verification-section"><h2>Verification Status</h2><div class="verify-badge">✅ Email Verified
-
+<span id="completedTasks">0</span>
+  
+</div>
+<div class="info-row">
+<span>Account Level</span>
+<span id="accountLevel">1</span>
+</div>
 </div></div>
+<!-- EDIT PROFILE --><!-- ACCOUNT STATS --><!-- SECURITY --><!-- VERIFICATION -->
 </div>
 <script>
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+async function loadProfile(){
+
+    const user = JSON.parse(
+        localStorage.getItem("coingrid_user")
+    );
+
+    if(!user){
+
+        alert("User not logged in.");
+
+        window.location.href =
+        "../auth/login.html";
+
+        return;
+
+    }
+
+    try{
+
+        const response = await fetch(
+            `${API_BASE}/api/profile?user_id=${user.id}`
+        );
+
+        const data = await response.json();
+
+        if(!data.success){
+
+            alert(data.message);
+
+            return;
+
+        }
+
+        const profile = data.profile;
+
+        document.getElementById("profileAvatar").textContent =
+        profile.name.charAt(0).toUpperCase();
+
+        document.getElementById("profileName").textContent =
+        profile.name;
+
+        document.getElementById("profileEmail").textContent =
+        profile.email;
+
+        document.getElementById("memberSince").textContent =
+        "Member Since: " +
+        new Date(profile.created_at).toLocaleDateString();
+
+        document.getElementById("verificationStatus").textContent =
+        profile.verified
+        ? "✅ Verified Account"
+        : "❌ Email Not Verified";
+
+        document.getElementById("levelBadge").textContent =
+        "Level " + profile.level;
+
+        document.getElementById("userName").textContent =
+        profile.name;
+
+        document.getElementById("userId").textContent =
+        profile.id;
+
+        document.getElementById("accountRole").textContent =
+        profile.role;
+
+        document.getElementById("accountStatus").textContent =
+        profile.status;
+
+        document.getElementById("totalEarnings").textContent =
+        "$" +
+        Number(profile.lifetime_earnings).toFixed(2);
+
+        document.getElementById("completedTasks").textContent =
+        profile.completed_tasks;
+
+        document.getElementById("accountLevel").textContent =
+        profile.level;
+
+        document.getElementById("editName").value =
+        profile.name;
+
+        document.getElementById("editEmail").value =
+        profile.email;
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Unable to load profile.");
+
+    }
+
+}
 
 document
 .getElementById("profileForm")
 .addEventListener(
 "submit",
-function(e){
+async function(e){
 
-e.preventDefault();
+    e.preventDefault();
 
-alert(
-"Profile updated successfully!"
-);
+    const user = JSON.parse(
+        localStorage.getItem("coingrid_user")
+    );
 
-/*
+    const name =
+    document.getElementById("editName")
+    .value
+    .trim();
 
-Cloudflare Worker API
+    try{
 
-PUT /api/profile
+        const response = await fetch(
+            `${API_BASE}/api/profile`,
+            {
 
-{
-name:"",
-email:"",
-phone:"",
-country:"",
-city:"",
-bio:""
-}
+                method:"PUT",
 
-*/
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
 
-});
-/* PROFILE IMAGE PREVIEW */
+                body:JSON.stringify({
 
-const profileImage =
-document.getElementById(
-"profileImage"
-);
+                    user_id:user.id,
 
-const profilePreview =
-document.getElementById(
-"profilePreview"
-);
+                    name:name
 
-profileImage.addEventListener(
-"change",
-function(){
+                })
 
-const file =
-this.files[0];
+            }
+        );
 
-if(file){
+        const data =
+        await response.json();
 
-profilePreview.src =
-URL.createObjectURL(file);
+        if(!data.success){
 
-}
+            alert(data.message);
 
-}
-);
+            return;
 
-/* PASSWORD FORM */
+        }
 
-document
-.getElementById("passwordForm")
-.addEventListener(
-"submit",
-function(e){
+        user.name = name;
 
-e.preventDefault();
+        localStorage.setItem(
+            "coingrid_user",
+            JSON.stringify(user)
+        );
 
-alert(
-"Password changed successfully!"
-);
+        alert(
+            "Profile updated successfully."
+        );
 
-/*
+        loadProfile();
 
-Cloudflare Worker API
+    }catch(error){
 
-POST /api/change-password
+        console.error(error);
 
-{
-currentPassword:"",
-newPassword:""
-}
+        alert(
+            "Unable to update profile."
+        );
 
-*/
+    }
 
 });
 
-/*
-
-UPLOAD PROFILE PHOTO
-
-POST /api/profile/upload
-
-FormData:
-image
-
-*/
+loadProfile();
 </script>
 </body></html>
