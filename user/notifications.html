@@ -223,31 +223,12 @@ grid-template-columns:1fr;
 
 </style></head><body><div class="container"><div class="page-header"><h1>Notifications</h1><p>
 Stay updated with your account activities and rewards.
-</p></div><div class="notifications-list"><div class="notification-card"><div class="notification-icon reward">
-💰
-</div><div class="notification-content"><h3>Reward Approved</h3><p>
-Your survey task reward of $2.50 has been approved and added to your wallet.
-</p><div class="notification-time">
-2 minutes ago
-</div></div></div><div class="notification-card"><div class="notification-icon info">
-📢
-</div><div class="notification-content"><h3>New Task Available</h3><p>
-A new sponsor campaign has been added. Complete it to earn rewards.
-</p><div class="notification-time">
-15 minutes ago
-</div></div></div><div class="notification-card"><div class="notification-icon warning">
-🏦
-</div><div class="notification-content"><h3>Withdrawal Processing</h3><p>
-Your withdrawal request of $20 is currently being processed.
-</p><div class="notification-time">
-1 hour ago
-</div></div></div><div class="notification-card"><div class="notification-icon reward">
-🎉
-</div><div class="notification-content"><h3>Referral Bonus</h3><p>
-You earned a $5 referral commission from a new signup.
-</p><div class="notification-time">
-Yesterday
-</div></div></div></div>
+</p></div>
+<div
+class="notifications-list"
+id="notificationList">
+</div>
+  
 <!-- FILTER TABS --><div class="filter-tabs"><button class="filter-btn active">
 All
 </button><button class="filter-btn">
@@ -262,24 +243,16 @@ Tasks
 Mark All Read
 </button><button id="deleteSelected">
 Delete Selected
-</button></div><!-- READ / UNREAD EXAMPLES --><div class="notification-card unread"><div class="notification-icon info">
-🔔
-</div><div class="notification-content"><h3>
-Account Update
-</h3><p>
-Your profile information was updated successfully.
-</p><div class="notification-time">
-Unread • Just now
-</div></div><button class="read-btn">
-Mark Read
-</button></div>
+</button></div><!-- READ / UNREAD EXAMPLES -->
+
+  
 
   <!-- NOTIFICATION SUMMARY --><div class="notification-summary"><div class="summary-card"><h2 id="totalNotifications">
-25
+0
 </h2><p>Total Notifications</p></div><div class="summary-card"><h2 id="unreadNotifications">
-5
+0
 </h2><p>Unread Notifications</p></div><div class="summary-card"><h2 id="rewardNotifications">
-12
+0
 </h2><p>Reward Updates</p></div></div><!-- LIVE STATUS --><div class="live-status"><span class="status-dot"></span>
 
 Real-Time Notification Service Active
@@ -289,33 +262,216 @@ Real-Time Notification Service Active
 
 <script>
 
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+/* LOAD NOTIFICATIONS */
+
+async function loadNotifications() {
+
+    const user =
+    JSON.parse(
+        localStorage.getItem("coingrid_user")
+    );
+
+    if (!user || !user.id) {
+
+        alert("User not logged in.");
+
+        window.location.href =
+        "../auth/login.html";
+
+        return;
+
+    }
+
+    try {
+
+        const response =
+        await fetch(
+`${API_BASE}/api/notifications?user_id=${user.id}`
+        );
+
+        const data =
+        await response.json();
+
+        if (!data.success) {
+
+            alert(data.message);
+
+            return;
+
+        }
+
+        /* SUMMARY */
+
+        document.getElementById(
+            "totalNotifications"
+        ).textContent =
+        data.summary.total;
+
+        document.getElementById(
+            "unreadNotifications"
+        ).textContent =
+        data.summary.unread;
+
+        document.getElementById(
+            "rewardNotifications"
+        ).textContent =
+        data.summary.reward;
+
+        /* LIST */
+
+        const list =
+        document.getElementById(
+            "notificationList"
+        );
+
+        list.innerHTML = "";
+
+        if(data.notifications.length===0){
+
+            list.innerHTML =
+
+            `<div class="notification-card">
+
+                <div class="notification-content">
+
+                    <h3>No Notifications</h3>
+
+                    <p>
+                    You're all caught up.
+                    </p>
+
+                </div>
+
+            </div>`;
+
+            return;
+
+        }
+
+        data.notifications.forEach(item=>{
+
+            let icon = "🔔";
+            let iconClass = "info";
+
+            const title =
+            item.title.toLowerCase();
+
+            if(title.includes("reward")){
+
+                icon="💰";
+                iconClass="reward";
+
+            }
+
+            else if(
+            title.includes("withdraw")
+            ){
+
+                icon="🏦";
+                iconClass="warning";
+
+            }
+
+            else if(
+            title.includes("task")
+            ){
+
+                icon="📋";
+                iconClass="info";
+
+            }
+
+            list.innerHTML += `
+
+<div class="notification-card ${item.is_read ? "" : "unread"}">
+
+<div class="notification-icon ${iconClass}">
+${icon}
+</div>
+
+<div class="notification-content">
+
+<h3>${item.title}</h3>
+
+<p>${item.message}</p>
+
+<div class="notification-time">
+
+${item.created_at}
+
+</div>
+
+</div>
+
+${
+!item.is_read ?
+
+`<button
+class="read-btn"
+onclick="markRead(${item.id})">
+
+Mark Read
+
+</button>`
+
+:
+
+""
+
+}
+
+</div>
+
+`;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Unable to load notifications."
+        );
+
+    }
+
+}
+
 /* MARK READ */
 
-document
-.querySelectorAll(".read-btn")
-.forEach(btn=>{
+async function markRead(id){
 
-btn.addEventListener(
-"click",
-function(){
+    await fetch(
 
-const card =
-this.closest(
-".notification-card"
+`${API_BASE}/api/notifications/read`,
+
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+notification_id:id
+
+})
+
+}
+
 );
 
-card.classList.remove(
-"unread"
-);
+loadNotifications();
 
-this.innerText =
-"Read";
-
-this.disabled = true;
-
-});
-
-});
+}
 
 /* MARK ALL */
 
@@ -325,24 +481,42 @@ document
 )
 .addEventListener(
 "click",
-()=>{
+async()=>{
 
-document
-.querySelectorAll(
-".notification-card"
+const user =
+JSON.parse(
+localStorage.getItem(
+"coingrid_user"
 )
-.forEach(card=>{
-
-card.classList.remove(
-"unread"
 );
 
-});
+await fetch(
+
+`${API_BASE}/api/notifications/read-all`,
+
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+user_id:user.id
+
+})
+
+}
+
+);
+
+loadNotifications();
 
 });
 
-
-  /* DELETE NOTIFICATIONS */
+/* DELETE ALL READ NOTIFICATIONS */
 
 document
 .getElementById(
@@ -350,25 +524,55 @@ document
 )
 .addEventListener(
 "click",
-()=>{
+async()=>{
 
-document
-.querySelectorAll(
-".notification-card"
+const response =
+await fetch(
+
+`${API_BASE}/api/notifications?user_id=${
+JSON.parse(
+localStorage.getItem(
+"coingrid_user"
 )
-.forEach(card=>{
+).id
+}`
 
-if(
-card.classList.contains(
-"unread"
-)
-){
+);
 
-card.remove();
+const data =
+await response.json();
+
+for(const item of data.notifications){
+
+if(item.is_read){
+
+await fetch(
+
+`${API_BASE}/api/notifications/delete`,
+
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+notification_id:item.id
+
+})
 
 }
 
-});
+);
+
+}
+
+}
+
+loadNotifications();
 
 });
 
@@ -376,56 +580,11 @@ card.remove();
 
 setInterval(()=>{
 
-console.log(
-"Checking notifications..."
-);
-
-/*
-
-Cloudflare Worker API
-
-GET /api/notifications
-
-const response =
-await fetch(
-'https://api.coingrid.in/notifications'
-);
-
-const data =
-await response.json();
-
-*/
+loadNotifications();
 
 },30000);
 
-/* LOAD COUNTS */
+loadNotifications();
 
-async function loadCounts(){
-
-/*
-
-const response =
-await fetch(
-'https://api.coingrid.in/notification-stats'
-);
-
-const data =
-await response.json();
-
-document.getElementById(
-'totalNotifications'
-).innerText =
-data.total;
-
-document.getElementById(
-'unreadNotifications'
-).innerText =
-data.unread;
-
-*/
-
-}
-
-loadCounts();
 </script>
 </body></html>
