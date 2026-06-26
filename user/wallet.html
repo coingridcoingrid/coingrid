@@ -334,11 +334,14 @@ gap:8px;
 Manage your earnings, withdrawals, and transaction history.
 </p></div><!-- WALLET OVERVIEW --><div class="wallet-overview"><h2>
 Available Balance
-</h2><div class="wallet-balance">
-$245.80
-</div><p>
+</h2><div class="wallet-balance" id="walletBalance">
+$0.00
+</div>
+  <p>
 Ready for withdrawal to your preferred payment method.
-</p></div><!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2>$1,860</h2><p>Lifetime earnings</p></div><div class="balance-card"><h3>Pending Rewards</h3><h2>$34.20</h2><p>Awaiting approval</p></div><div class="balance-card"><h3>Total Withdrawn</h3><h2>$1,580</h2><p>Successfully paid</p></div><div class="balance-card"><h3>Referral Earnings</h3><h2>$89.50</h2><p>Referral commissions</p></div></div>
+</p></div><!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2 id="lifetimeEarnings">$0.00</h2><p>Lifetime earnings</p></div>
+  <div class="balance-card"><h3>Pending Rewards</h3><h2 id="pendingBalance">$0.00</h2><p>Awaiting approval</p></div>
+  <div class="balance-card"><h3>Total Withdrawn</h3><h2 id="totalWithdrawn">$0.00</h2><p>Successfully paid</p></div><div class="balance-card"><h3>TotalPoints </h3><h2 id="totalPoints">0</h2><p> </p></div></div>
 <!-- WITHDRAWAL METHODS --><div class="withdraw-section"><h2>Withdrawal Methods</h2><div class="methods-grid"><div class="method-card">
 💳
 <h3>UPI</h3>
@@ -360,18 +363,18 @@ Ready for withdrawal to your preferred payment method.
 
 </div><form id="withdrawForm"><div class="form-group"><label>Withdrawal Method</label>
 
-<select><option>UPI</option>
+<select id="withdrawMethod"><option>UPI</option>
 <option>Bank Transfer</option>
 <option>PayPal</option>
 <option>Crypto</option></select></div><div class="form-group"><label>Account / UPI ID</label>
 
 <input
 type="text"
-placeholder="Enter payment details">
+placeholder="Enter payment details" id="withdrawAccount">
 
 </div><div class="form-group"><label>Amount</label>
 
-<input
+<input id="withdrawAmount"
 type="number"
 placeholder="Enter amount">
 
@@ -381,30 +384,13 @@ class="withdraw-btn">
 
 Request Withdrawal
 
-</button></form></div><!-- RECENT WITHDRAWALS --><div class="recent-withdrawals"><h2>Recent Withdrawals</h2><div class="withdraw-table"><div class="withdraw-row header"><div>Date</div><div>Method</div><div>Amount</div><div>Status</div></div><div class="withdraw-row"><div>2026-06-23</div><div>UPI</div><div>$20</div><div class="approved">
-Approved
-</div></div><div class="withdraw-row"><div>2026-06-20</div><div>PayPal</div><div>$50</div><div class="pending">
-Pending
-</div></div><div class="withdraw-row"><div>2026-06-18</div><div>Bank</div><div>$100</div><div class="approved">
-Approved
-</div></div></div></div>
+</button></form></div><!-- RECENT WITHDRAWALS --><div class="withdraw-table" id="withdrawTable">
+</div>
 
-  <!-- TRANSACTION HISTORY --><div class="transaction-section"><h2>Transaction History</h2><div class="transaction-table"><div class="transaction-row header"><div>Date</div>
-<div>Type</div>
-<div>Amount</div>
-<div>Status</div></div><div class="transaction-row"><div>2026-06-23</div>
-<div>Task Reward</div>
-<div>+$4.00</div>
-<div class="success">Completed</div></div><div class="transaction-row"><div>2026-06-22</div>
-<div>Withdrawal</div>
-<div>-$20.00</div>
-<div class="pending-status">Processing</div></div><div class="transaction-row"><div>2026-06-21</div>
-<div>Referral Bonus</div>
-<div>+$5.00</div>
-<div class="success">Completed</div></div><div class="transaction-row"><div>2026-06-20</div>
-<div>Survey Reward</div>
-<div>+$2.50</div>
-<div class="success">Completed</div></div></div></div><!-- SUCCESS POPUP --><div id="withdrawPopup" class="popup-overlay"><div class="popup-box"><div class="popup-icon">
+  <!-- TRANSACTION HISTORY --><div class="transaction-table" id="transactionTable">
+  </div>
+  
+  <!-- SUCCESS POPUP --><div id="withdrawPopup" class="popup-overlay"><div class="popup-box"><div class="popup-icon">
 ✅
 </div><h2>Withdrawal Requested</h2><p>
 Your withdrawal request has been submitted successfully.
@@ -416,77 +402,305 @@ Continue
 
 <script>
 
-  /* WITHDRAW FORM */
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
 
-const withdrawForm =
-document.getElementById(
-"withdrawForm"
-);
+/* LOAD WALLET */
 
-if(withdrawForm){
+async function loadWallet() {
 
-withdrawForm.addEventListener(
-"submit",
-function(e){
+    const user =
+    JSON.parse(
+        localStorage.getItem("coingrid_user")
+    );
 
-e.preventDefault();
+    if (!user || !user.id) {
 
-document.getElementById(
-"withdrawPopup"
-).style.display =
-"flex";
+        alert("User not logged in.");
 
-/*
+        window.location.href =
+        "../auth/login.html";
 
-Cloudflare Worker API
+        return;
 
-POST /api/withdraw
+    }
 
-{
-amount:50,
-method:"UPI",
-account:"example@upi"
+    try {
+
+        const response =
+        await fetch(
+
+`${API_BASE}/api/wallet?user_id=${user.id}`
+
+        );
+
+        const data =
+        await response.json();
+
+        if (!data.success) {
+
+            alert(data.message);
+
+            return;
+
+        }
+
+        /* WALLET */
+
+        document.getElementById(
+        "walletBalance"
+        ).textContent =
+        "$" +
+        Number(
+        data.wallet.balance
+        ).toFixed(2);
+
+        document.getElementById(
+        "lifetimeEarnings"
+        ).textContent =
+        "$" +
+        Number(
+        data.wallet.lifetime_earnings
+        ).toFixed(2);
+
+        document.getElementById(
+        "pendingBalance"
+        ).textContent =
+        "$" +
+        Number(
+        data.wallet.pending_balance
+        ).toFixed(2);
+
+        document.getElementById(
+        "totalWithdrawn"
+        ).textContent =
+        "$" +
+        Number(
+        data.wallet.total_withdrawn
+        ).toFixed(2);
+
+        document.getElementById(
+        "totalPoints"
+        ).textContent =
+        data.wallet.points;
+
+        /* WITHDRAWALS */
+
+        const withdrawTable =
+        document.getElementById(
+        "withdrawTable"
+        );
+
+        withdrawTable.innerHTML = `
+
+<div class="withdraw-row header">
+
+<div>Date</div>
+
+<div>Method</div>
+
+<div>Amount</div>
+
+<div>Status</div>
+
+</div>
+
+`;
+
+        data.withdrawals.forEach(item=>{
+
+            withdrawTable.innerHTML += `
+
+<div class="withdraw-row">
+
+<div>${item.created_at}</div>
+
+<div>${item.method}</div>
+
+<div>$${Number(item.amount).toFixed(2)}</div>
+
+<div class="${item.status}">
+
+${item.status}
+
+</div>
+
+</div>
+
+`;
+
+        });
+
+        /* TRANSACTIONS */
+
+        const transactionTable =
+        document.getElementById(
+        "transactionTable"
+        );
+
+        transactionTable.innerHTML = `
+
+<div class="transaction-row header">
+
+<div>Date</div>
+
+<div>Type</div>
+
+<div>Amount</div>
+
+<div>Status</div>
+
+</div>
+
+`;
+
+        data.transactions.forEach(item=>{
+
+            transactionTable.innerHTML += `
+
+<div class="transaction-row">
+
+<div>${item.created_at}</div>
+
+<div>${item.description}</div>
+
+<div>$${Number(item.amount).toFixed(2)}</div>
+
+<div class="${item.status}">
+
+${item.status}
+
+</div>
+
+</div>
+
+`;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Unable to load wallet."
+        );
+
+    }
+
 }
 
-*/
+/* WITHDRAW */
+
+document
+.getElementById("withdrawForm")
+.addEventListener(
+"submit",
+async function(e){
+
+    e.preventDefault();
+
+    const user =
+    JSON.parse(
+        localStorage.getItem(
+        "coingrid_user"
+        )
+    );
+
+    const method =
+    document.getElementById(
+    "withdrawMethod"
+    ).value;
+
+    const account =
+    document.getElementById(
+    "withdrawAccount"
+    ).value.trim();
+
+    const amount =
+    Number(
+    document.getElementById(
+    "withdrawAmount"
+    ).value
+    );
+
+    try{
+
+        const response =
+        await fetch(
+
+`${API_BASE}/api/withdraw`
+
+        ,{
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":
+                "application/json"
+
+            },
+
+            body:JSON.stringify({
+
+                user_id:user.id,
+
+                amount,
+
+                method,
+
+                account
+
+            })
+
+        });
+
+        const data =
+        await response.json();
+
+        if(!data.success){
+
+            alert(
+            data.message
+            );
+
+            return;
+
+        }
+
+        document.getElementById(
+        "withdrawPopup"
+        ).style.display =
+        "flex";
+
+        loadWallet();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+        "Withdrawal failed."
+        );
+
+    }
 
 });
 
-}
-
-/* CLOSE POPUP */
-
 function closeWithdrawPopup(){
 
-document.getElementById(
-"withdrawPopup"
-).style.display =
-"none";
-
-}
-
-/* WALLET DATA */
-
-async function loadWallet(){
-
-/*
-
-const response =
-await fetch(
-'https://api.coingrid.in/wallet'
-);
-
-const data =
-await response.json();
-
-document.querySelector(
-'.wallet-balance'
-).innerText =
-'$' + data.balance;
-
-*/
+    document.getElementById(
+    "withdrawPopup"
+    ).style.display =
+    "none";
 
 }
 
 loadWallet();
+
 </script></body></html>
