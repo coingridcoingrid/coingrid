@@ -393,6 +393,17 @@ id="password"
 type="password"
 placeholder="Enter your password">
 
+  <div
+id="loginError"
+style="
+display:none;
+margin-top:10px;
+color:#ef4444;
+font-size:14px;
+font-weight:500;
+">
+  </div>
+
 </div>
 <!-- REMEMBER & FORGOT --><div class="form-options">
 
@@ -573,9 +584,18 @@ document.getElementById(
 "loadingOverlay"
 ).style.display="none";
 
+const loginError =
+document.getElementById("loginError");
+
+loginError.style.display="none";
+
 if(!data.success){
 
-alert(data.message);
+loginError.style.display="block";
+
+loginError.innerText =
+data.message ||
+"Check your email or password.";
 
 return;
 
@@ -598,12 +618,21 @@ email
 if(data.role==="worker"){
 
 window.location.href=
-"../user/dashboard.html";
+"https://coingridcoingrid.github.io/coingrid/user/dashboard.html";
 
-}else{
+}
+else if(data.role==="sponsor"){
 
 window.location.href=
-"../sponsor/dashboard.html";
+"https://coingridcoingrid.github.io/coingrid/sponsor/dashboard.html";
+
+}
+else{
+
+loginError.style.display="block";
+
+loginError.innerText =
+"Invalid account role.";
 
 }
 
