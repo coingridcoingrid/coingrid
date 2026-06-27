@@ -285,112 +285,311 @@ font-weight:700;
 
 </style></head><body><div class="container"><div class="page-header"><div><h1>Browse Tasks</h1><p>
 Find tasks and start earning rewards instantly.
-</p></div></div><!-- SEARCH --><div class="search-section"><div class="search-box"><input
+</p></div></div><!-- SEARCH -->
+  <div class="search-section">
+  <div class="search-box">
+<input
+id="searchInput"
 type="text"
 placeholder="Search tasks...">
 
-<button>
+<button id="searchBtn">
+
 Search
-</button></div><div class="filters"><div class="filter-btn active">
+
+</button>
+  </div>
+    
+    <div class="filters">
+
+<div
+class="filter-btn active"
+data-category="All">
 All
-</div><div class="filter-btn">
+</div>
+
+<div
+class="filter-btn"
+data-category="Surveys">
 Surveys
-</div><div class="filter-btn">
+</div>
+
+<div
+class="filter-btn"
+data-category="Videos">
 Videos
-</div><div class="filter-btn">
+</div>
+
+<div
+class="filter-btn"
+data-category="Apps">
 Apps
-</div><div class="filter-btn">
+</div>
+
+<div
+class="filter-btn"
+data-category="Offers">
 Offers
-</div><div class="filter-btn">
+</div>
+
+<div
+class="filter-btn"
+data-category="Social">
 Social
-</div></div><!-- STATS --><div class="stats-grid"><div class="stat-card"><h2>320</h2><p>Available Tasks</p></div><div class="stat-card"><h2>$1,250</h2><p>Total Rewards</p></div><div class="stat-card"><h2>45</h2><p>New Today</p></div><div class="stat-card"><h2>98%</h2><p>Approval Rate</p></div></div><div class="sort-bar"><h3>Available Opportunities</h3><select><option>Highest Reward</option>
+</div>
+
+    </div>
+    
+    
+    <!-- STATS --><div class="stats-grid"><div class="stat-card"><h2 id="availableTasks">0</h2><p>Available Tasks</p></div>
+  <div class="stat-card"><h2 id="totalRewards">$0.00</h2><p>Total Rewards</p></div>
+  <div class="stat-card"><h2 id="newToday">0</h2><p>New Today</p></div>
+  <div class="stat-card"><h2 id="approvalRate">0%</h2><p>Approval Rate</p></div></div><div class="sort-bar"><h3>Available Opportunities</h3>
+    <select id="sortSelect"><option>Highest Reward</option>
 <option>Newest First</option>
 <option>Lowest Effort</option>
 <option>Most Popular</option></select></div></div><!-- TASK CARDS WILL COME IN PART 2 -->
 <!-- FEATURED TASKS --><h2 class="section-title">
 🔥 Featured Tasks
-</h2><div class="task-grid"><!-- TASK 1 --><div class="task-card"><div class="task-top"><span class="reward">
-$2.50
-</span><span class="difficulty easy">
-Easy
-</span></div><h3>Complete Survey</h3><p>
-Answer a short survey and earn rewards instantly.
-</p><div class="task-info"><span>⏱ 5 Min</span>
+</h2>
+  
+  <div
+class="task-grid"
+id="taskGrid">
 
-<span>👥 120 Left</span>
+  </div>
+  
+  
+  <!-- PAGINATION -->
+  
+</div>
+<script>
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
 
-</div><a href="details.html" class="task-btn">
-Start Task
-</a></div><!-- TASK 2 --><div class="task-card"><div class="task-top"><span class="reward">
-$4.00
-</span><span class="difficulty medium">
-Medium
-</span></div><h3>Install Mobile App</h3><p>
-Install an app and keep it for 24 hours.
-</p><div class="task-info"><span>⏱ 10 Min</span>
+let currentCategory = "All";
 
-<span>👥 65 Left</span>
+let currentSearch = "";
 
-</div><a href="details.html" class="task-btn">
-Start Task
-</a></div><!-- TASK 3 --><div class="task-card"><div class="task-top"><span class="reward">
-$0.75
-</span><span class="difficulty easy">
-Easy
-</span></div><h3>Watch Video Ad</h3><p>
-Watch a promotional video until completion.
-</p><div class="task-info"><span>⏱ 2 Min</span>
+let currentSort = "newest";
 
-<span>👥 500 Left</span>
+async function loadTasks(){
 
-</div><a href="details.html" class="task-btn">
-Start Task
-</a></div><!-- TASK 4 --><div class="task-card"><div class="task-top"><span class="reward">
-$8.00
-</span><span class="difficulty hard">
-Hard
-</span></div><h3>Create Account</h3><p>
-Register on a partner platform and verify email.
-</p><div class="task-info"><span>⏱ 15 Min</span>
+    try{
 
-<span>👥 30 Left</span>
+        const url =
+        `${API_BASE}/api/tasks?category=${encodeURIComponent(currentCategory)}&search=${encodeURIComponent(currentSearch)}&sort=${currentSort}`;
 
-</div><a href="details.html" class="task-btn">
-Start Task
-</a></div><!-- TASK 5 --><div class="task-card"><div class="task-top"><span class="reward">
-$1.20
-</span><span class="difficulty easy">
-Easy
-</span></div><h3>Visit Website</h3><p>
-Visit sponsor website and stay for 60 seconds.
-</p><div class="task-info"><span>⏱ 1 Min</span>
+        const response =
+        await fetch(url);
 
-<span>👥 300 Left</span>
+        const data =
+        await response.json();
 
-</div><a href="details.html" class="task-btn">
-Start Task
-</a></div><!-- TASK 6 --><div class="task-card"><div class="task-top"><span class="reward">
-$6.50
-</span><span class="difficulty medium">
-Medium
-</span></div><h3>Social Media Task</h3><p>
-Follow, like, and engage with sponsor content.
-</p><div class="task-info"><span>⏱ 8 Min</span>
+        if(!data.success){
 
-<span>👥 80 Left</span>
+            alert(data.message);
 
-</div><a href="details.html" class="task-btn">
-Start Task
-</a></div></div><!-- PAGINATION --><div class="pagination"><button>← Prev</button>
+            return;
 
-<button class="active-page">1</button>
+        }
 
-<button>2</button>
+        document.getElementById("availableTasks").textContent =
+        data.stats.available_tasks;
 
-<button>3</button>
+        document.getElementById("totalRewards").textContent =
+        "$" +
+        Number(data.stats.total_rewards).toFixed(2);
 
-<button>Next →</button>
+        document.getElementById("newToday").textContent =
+        data.stats.new_today;
+
+        document.getElementById("approvalRate").textContent =
+        data.stats.approval_rate + "%";
+
+        const grid =
+        document.getElementById("taskGrid");
+
+        grid.innerHTML = "";
+
+        if(data.tasks.length===0){
+
+            grid.innerHTML =
+            "<h3>No tasks available.</h3>";
+
+            return;
+
+        }
+
+        data.tasks.forEach(task=>{
+
+            const difficulty =
+            task.reward>=5
+            ? "hard"
+            : task.reward>=2
+            ? "medium"
+            : "easy";
+
+            const difficultyText =
+            task.reward>=5
+            ? "Hard"
+            : task.reward>=2
+            ? "Medium"
+            : "Easy";
+
+            grid.innerHTML += `
+
+<div class="task-card">
+
+<div class="task-top">
+
+<span class="reward">
+
+$${Number(task.reward).toFixed(2)}
+
+</span>
+
+<span class="difficulty ${difficulty}">
+
+${difficultyText}
+
+</span>
 
 </div>
-  
-</div></body></html>
+
+<h3>
+
+${task.title}
+
+</h3>
+
+<p>
+
+${task.description ?? ""}
+
+</p>
+
+<div class="task-info">
+
+<span>
+
+📂 ${task.category}
+
+</span>
+
+<span>
+
+ID #${task.id}
+
+</span>
+
+</div>
+
+<a
+href="details.html?id=${task.id}"
+class="task-btn">
+
+Start Task
+
+</a>
+
+</div>
+
+`;
+
+        });
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Unable to load tasks.");
+
+    }
+
+}
+
+document
+.querySelectorAll(".filter-btn")
+.forEach(button=>{
+
+    button.addEventListener(
+    "click",
+    ()=>{
+
+        document
+        .querySelectorAll(".filter-btn")
+        .forEach(btn=>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        currentCategory =
+        button.dataset.category;
+
+        loadTasks();
+
+    });
+
+});
+
+document
+.getElementById("searchBtn")
+.addEventListener(
+"click",
+()=>{
+
+    currentSearch =
+    document
+    .getElementById("searchInput")
+    .value
+    .trim();
+
+    loadTasks();
+
+});
+
+document
+.getElementById("sortSelect")
+.addEventListener(
+"change",
+function(){
+
+    switch(this.selectedIndex){
+
+        case 0:
+
+            currentSort =
+            "reward";
+
+            break;
+
+        case 1:
+
+            currentSort =
+            "newest";
+
+            break;
+
+        case 2:
+
+            currentSort =
+            "oldest";
+
+            break;
+
+        default:
+
+            currentSort =
+            "newest";
+
+    }
+
+    loadTasks();
+
+});
+
+loadTasks();
+</script>
+</body></html>
