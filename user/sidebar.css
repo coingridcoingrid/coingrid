@@ -85,6 +85,27 @@ z-index:999;
 display:block;
 }
 
+
+.topbar{
+display:flex;
+align-items:center;
+margin-bottom:20px;
+}
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+color:#fff;
+}
+
+@media(max-width:991px){
+
+.menu-btn{
+display:block;
+}
+
+}
 /* MAIN CONTENT */
 
 .main-content{
