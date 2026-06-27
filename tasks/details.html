@@ -298,35 +298,75 @@ background:#facc15;
 font-weight:700;
 cursor:pointer;
   }
-</style></head><body><div class="container"><div class="task-layout"><!-- MAIN --><div class="task-card"><div class="task-header"><div class="reward">
-$4.00
-</div><div class="difficulty medium">
-Medium
-</div></div><h1>
-Install Mobile Application
-</h1><p class="task-description">Download the sponsor application, create an account,
-and keep the app installed for at least 24 hours.
-After completing the task, submit proof for review.
+</style></head><body><div class="container"><div class="task-layout"><!-- MAIN --><div class="task-card"><div class="task-header">
+  
+<div
+class="reward"
+id="taskReward">
+Loading...
+</div>
+  
+  <div
+class="difficulty"
+id="taskDifficulty">
+Loading...
+  </div>
 
-</p><div class="requirements"><h2>
+</div><h1 id="taskTitle">
+Loading...
+</h1>
+  
+  <p
+class="task-description"
+id="taskDescription">
+Loading...
+  </p>
+  
+  <div class="requirements"><h2>
 Task Requirements
-</h2><ul><li>Download the application using the provided link.</li><li>Create a new account.</li><li>Verify your email address.</li><li>Keep the application installed for 24 hours.</li><li>Submit screenshot proof.</li></ul></div></div><!-- SIDEBAR --><div><div class="sidebar-card"><h3>
+  </h2><ul
+id="requirementsList">
+
+  </ul>
+  </div>
+</div><!-- SIDEBAR --><div><div class="sidebar-card"><h3>
 Task Information
 </h3><div class="info-row">
 <span>Category</span>
-<span>Apps</span>
+<span id="taskCategory">
+Loading...
+</span>
+  
 </div><div class="info-row">
 <span>Time Needed</span>
-<span>10 Min</span>
+<span id="taskTime">
+Loading...
+</span>
+
+  
 </div><div class="info-row">
 <span>Available Slots</span>
-<span>65</span>
+<span id="taskSlots">
+Loading...
+</span>
+
+  
 </div><div class="info-row">
 <span>Approval Time</span>
-<span>24 Hours</span>
-</div><button class="start-btn">
+<span id="approvalTime">
+Loading...
+</span>
+
+  
+</div><button
+id="startTaskBtn"
+class="start-btn">
+
 Start Task
-</button></div><div class="sidebar-card"><h3>
+
+</button>
+
+</div><div class="sidebar-card"><h3>
 Sponsor
 </h3><p>
 Verified advertiser with 98% approval rate and over
@@ -335,19 +375,13 @@ Verified advertiser with 98% approval rate and over
 <!-- TASK STEPS --><div class="task-steps"><h2>Step-by-Step Instructions</h2><div class="step-item">
 <span>1</span>
 <p>Click the Start Task button.</p>
-</div><div class="step-item">
-<span>2</span>
-<p>Download and install the application.</p>
-</div><div class="step-item">
-<span>3</span>
-<p>Create an account using a valid email address.</p>
-</div><div class="step-item">
-<span>4</span>
-<p>Verify your email and login.</p>
-</div><div class="step-item">
-<span>5</span>
-<p>Take a screenshot and submit proof.</p>
-</div></div><!-- TASK TIMER --><div class="task-timer"><h2>Task Timer</h2><div id="timer">
+</div><div
+class="task-steps"
+id="taskSteps">
+
+</div>
+  
+  <!-- TASK TIMER --><div class="task-timer"><h2>Task Timer</h2><div id="timer">
 10:00
 </div></div><!-- PROGRESS --><div class="progress-section"><h2>Completion Progress</h2><div class="progress-bar"><div id="progressFill"></div></div><p id="progressText">
 0% Complete
@@ -362,14 +396,25 @@ accept="image/*">
 
 <input
 type="url"
+id="proofUrl"
 placeholder="https://">
 
 <label>Additional Notes</label>
 
 <textarea
-placeholder="Enter notes for reviewer"></textarea><button id="submitTaskBtn">
+id="proofNotes"
+placeholder="Enter notes for reviewer">
+</textarea>
+  
+  
+  <button
+id="submitTaskBtn">
+
 Submit Task
-</button></div>
+
+  </button>
+
+</div>
 
   <!-- IMAGE PREVIEW --><div class="preview-section"><h2>Screenshot Preview</h2><img
 id="imagePreview"
