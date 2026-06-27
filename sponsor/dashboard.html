@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +12,29 @@
 
 <style>
 
+:root{
+
+--bg:#0f172a;
+--sidebar:#020617;
+--card:rgba(255,255,255,.05);
+--cardBorder:rgba(255,255,255,.08);
+
+--primary:#facc15;
+--primaryDark:#eab308;
+
+--green:#22c55e;
+--red:#ef4444;
+--blue:#3b82f6;
+--orange:#f59e0b;
+
+--text:#ffffff;
+--muted:#94a3b8;
+
+--radius:20px;
+--transition:.3s;
+
+}
+
 *{
 margin:0;
 padding:0;
@@ -17,163 +42,591 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-body{
-background:#0f172a;
-color:#fff;
-overflow-x:hidden;
+html{
+
+scroll-behavior:smooth;
+
 }
 
+body{
+
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+
+}
+
+/* MAIN LAYOUT */
+
 .dashboard{
+
 display:flex;
 min-height:100vh;
+
 }
 
 /* SIDEBAR */
 
 .sidebar{
+
 width:280px;
-background:#020617;
+background:var(--sidebar);
+
 position:fixed;
 left:0;
 top:0;
+
 height:100vh;
+
 padding:25px;
+
 overflow-y:auto;
-border-right:1px solid rgba(255,255,255,.08);
+
+border-right:1px solid var(--cardBorder);
+
 z-index:1000;
+
+transition:var(--transition);
+
+}
+
+.sidebar-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:35px;
+
 }
 
 .logo{
+
 font-size:32px;
 font-weight:800;
-color:#facc15;
-margin-bottom:40px;
-text-align:center;
+color:var(--primary);
+
+}
+
+.logo span{
+
+color:white;
+
+}
+
+.close-sidebar{
+
+display:none;
+
+width:42px;
+height:42px;
+
+border:none;
+
+border-radius:12px;
+
+background:#1e293b;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
 }
 
 .nav-links{
+
 display:flex;
 flex-direction:column;
 gap:12px;
+
 }
 
 .nav-links a{
-background:#0f172a;
+
+display:flex;
+align-items:center;
+gap:12px;
+
 padding:15px;
-border-radius:12px;
+
+border-radius:14px;
+
+background:#0f172a;
+
 color:#cbd5e1;
+
 text-decoration:none;
-transition:.3s;
+
+transition:var(--transition);
+
 font-weight:500;
+
 }
 
 .nav-links a:hover{
+
 background:#1e293b;
-transform:translateX(5px);
+
+transform:translateX(4px);
+
 }
 
 .nav-links a.active{
-background:#facc15;
+
+background:var(--primary);
+
 color:#000;
+
 font-weight:700;
+
 }
 
-/* MAIN */
+/* OVERLAY */
+
+.sidebar-overlay{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.65);
+
+z-index:999;
+
+}
+
+.sidebar-overlay.active{
+
+display:block;
+
+}
+
+/* MAIN CONTENT */
 
 .main-content{
+
 margin-left:280px;
+
 flex:1;
+
 padding:30px;
+
+transition:var(--transition);
+
 }
 
 /* TOPBAR */
 
 .topbar{
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
+gap:20px;
+
 margin-bottom:35px;
+
 }
 
-.topbar-left h1{
-font-size:36px;
-font-weight:800;
-}
+.topbar-left{
 
-.topbar-left p{
-color:#94a3b8;
-margin-top:6px;
-}
+display:flex;
 
-.profile-box{
-background:#1e293b;
-padding:12px 20px;
-border-radius:50px;
-font-weight:600;
+align-items:center;
+
+gap:18px;
+
 }
 
 .menu-btn{
+
 display:none;
+
 font-size:28px;
+
 cursor:pointer;
-margin-bottom:15px;
+
+user-select:none;
+
 }
 
-/* OVERVIEW */
+.page-title h1{
 
-.overview-grid{
+font-size:34px;
+font-weight:800;
+
+margin-bottom:6px;
+
+}
+
+.page-title p{
+
+color:var(--muted);
+
+}
+
+/* PROFILE */
+
+.profile-box{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+background:#1e293b;
+
+padding:12px 18px;
+
+border-radius:50px;
+
+}
+
+.profile-avatar{
+
+width:48px;
+height:48px;
+
+border-radius:50%;
+
+background:var(--primary);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:20px;
+
+font-weight:700;
+
+color:black;
+
+}
+
+.profile-details h3{
+
+font-size:15px;
+
+}
+
+.profile-details p{
+
+font-size:13px;
+
+color:var(--muted);
+
+}
+
+/* STATISTICS */
+
+.stats-grid{
+
 display:grid;
-grid-template-columns:repeat(4,1fr);
+
+grid-template-columns:repeat(6,1fr);
+
 gap:20px;
+
+margin-top:20px;
+
 }
 
-.overview-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:20px;
+.stat-card{
+
+background:var(--card);
+
+border:1px solid var(--cardBorder);
+
+border-radius:22px;
+
 padding:25px;
+
+transition:var(--transition);
+
 backdrop-filter:blur(10px);
-transition:.3s;
+
 }
 
-.overview-card:hover{
+.stat-card:hover{
+
 transform:translateY(-5px);
+
 }
 
-.overview-card h2{
-font-size:32px;
-color:#facc15;
+.stat-icon{
+
+font-size:28px;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-size:30px;
+
+color:var(--primary);
+
 margin-bottom:10px;
+
 }
 
-.overview-card p{
-color:#94a3b8;
+.stat-card p{
+
+color:var(--muted);
+
+font-size:14px;
+
+}
+
+/* QUICK ACTIONS */
+
+.quick-actions{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-top:35px;
+
+}
+
+.action-card{
+
+background:linear-gradient(135deg,var(--primary),var(--primaryDark));
+
+padding:22px;
+
+border-radius:20px;
+
+color:black;
+
+text-decoration:none;
+
+transition:var(--transition);
+
+}
+
+.action-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.action-card h3{
+
+margin-top:12px;
+
+margin-bottom:8px;
+
+}
+
+.action-card p{
+
+font-size:14px;
+
+}
+
+/* COMMON CARD */
+
+.card{
+
+background:var(--card);
+
+border:1px solid var(--cardBorder);
+
+border-radius:22px;
+
+padding:25px;
+
+margin-top:30px;
+
+backdrop-filter:blur(10px);
+
+}
+
+.card-title{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.card-title h2{
+
+color:var(--primary);
+
+}
+
+/* TABLE */
+
+.table{
+
+width:100%;
+
+overflow-x:auto;
+
+}
+
+/* BADGES */
+
+.badge{
+
+display:inline-block;
+
+padding:8px 14px;
+
+border-radius:30px;
+
+font-size:12px;
+
+font-weight:700;
+
+}
+
+.badge.green{
+
+background:var(--green);
+
+}
+
+.badge.orange{
+
+background:var(--orange);
+
+}
+
+.badge.red{
+
+background:var(--red);
+
+}
+
+.badge.blue{
+
+background:var(--blue);
+
+}
+
+/* BUTTON */
+
+.btn{
+
+padding:12px 20px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:700;
+
+transition:var(--transition);
+
+}
+
+.btn-primary{
+
+background:var(--primary);
+
+color:black;
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-2px);
+
 }
 
 /* MOBILE */
 
+@media(max-width:1200px){
+
+.stats-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
 @media(max-width:991px){
 
 .sidebar{
+
 left:-100%;
-transition:.3s;
+
 }
 
 .sidebar.active{
+
 left:0;
+
+}
+
+.close-sidebar{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.sidebar-overlay.active{
+
+display:block;
+
 }
 
 .main-content{
+
 margin-left:0;
+
 padding:20px;
+
 }
 
 .menu-btn{
+
 display:block;
+
 }
 
-.overview-grid{
+.quick-actions{
+
 grid-template-columns:1fr 1fr;
+
+}
+
+.stats-grid{
+
+grid-template-columns:1fr 1fr;
+
 }
 
 }
@@ -181,60 +634,109 @@ grid-template-columns:1fr 1fr;
 @media(max-width:600px){
 
 .topbar{
+
 flex-direction:column;
+
 align-items:flex-start;
-gap:15px;
+
 }
 
-.overview-grid{
+.quick-actions{
+
 grid-template-columns:1fr;
+
 }
 
-.topbar-left h1{
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.page-title h1{
+
 font-size:28px;
+
+}
+
+.profile-box{
+
+width:100%;
+
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="dashboard">
 
+  <!-- SIDEBAR OVERLAY -->
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <!-- SIDEBAR -->
 
 <div class="sidebar" id="sidebar">
 
+<div class="sidebar-header">
+
 <div class="logo">
-CoinGrid
+Coin<span>Grid</span>
+</div>
+
+<button
+id="closeSidebar"
+class="close-sidebar">
+✕
+</button>
+
 </div>
 
 <div class="nav-links">
 
-<a href="/coingrid/sponsor/dashboard.html" class="active">
+<a href="dashboard.html" class="active">
 📊 Dashboard
 </a>
 
-<a href="/coingrid/sponsor/create-task.html">
+<a href="create-task.html">
 ➕ Create Task
 </a>
 
-<a href="/coingrid/sponsor/task-management.html">
-📋 Manage Tasks
+<a href="task-management.html">
+📋 My Tasks
 </a>
 
-<a href="/coingrid/sponsor/payments.html">
-💳 Payments
+<a href="submissions.html">
+📂 Review Proofs
 </a>
 
-<a href="/coingrid/sponsor/analytics.html">
+<a href="wallet.html">
+💳 Wallet & Billing
+</a>
+
+<a href="subscription.html">
+⭐ Subscription
+</a>
+
+<a href="analytics.html">
 📈 Analytics
 </a>
 
-<a href="/coingrid/sponsor/settings.html">
+<a href="notifications.html">
+🔔 Notifications
+</a>
+
+<a href="settings.html">
 ⚙ Settings
+</a>
+
+<a href="../auth/login.html" id="logoutBtn">
+🚪 Logout
 </a>
 
 </div>
@@ -245,494 +747,3687 @@ CoinGrid
 
 <div class="main-content">
 
+<!-- TOPBAR -->
+
 <div class="topbar">
 
 <div class="topbar-left">
 
-<div class="menu-btn" id="menuBtn">
+<div
+class="menu-btn"
+id="menuBtn">
+
 ☰
+
 </div>
 
-<h1>Sponsor Dashboard</h1>
+<div class="page-title">
+
+<h1>
+Sponsor Dashboard
+</h1>
 
 <p>
-Manage campaigns, track performance, and monitor budgets.
+
+Create tasks, review submissions and manage your CoinGrid campaigns.
+
 </p>
+
+</div>
 
 </div>
 
 <div class="profile-box">
-Sponsor Account
-</div>
+
+<div
+class="profile-avatar"
+id="profileAvatar">
+
+S
 
 </div>
 
-<!-- OVERVIEW CARDS -->
+<div class="profile-details">
 
-<div class="overview-grid">
+<h3 id="sponsorName">
 
-<div class="overview-card">
-<h2>24</h2>
-<p>Active Campaigns</p>
-</div>
+Loading...
 
-<div class="overview-card">
-<h2>12,540</h2>
-<p>Total Completions</p>
-</div>
+</h3>
 
-<div class="overview-card">
-<h2>$2,450</h2>
-<p>Campaign Budget</p>
-</div>
+<p id="sponsorEmail">
 
-<div class="overview-card">
-<h2>98%</h2>
-<p>Approval Rate</p>
-</div>
+Loading...
 
-</div>
-
-<!-- PART 2 STARTS HERE -->
-
-  <!-- QUICK ACTIONS -->
-
-<div class="quick-actions">
-
-<a href="/coingrid/sponsor/create-task.html" class="action-btn">
-➕ Create Campaign
-</a>
-
-<a href="/coingrid/sponsor/task-management.html" class="action-btn">
-📋 Manage Tasks
-</a>
-
-<a href="/coingrid/sponsor/payments.html" class="action-btn">
-💳 Add Funds
-</a>
-
-<a href="/coingrid/sponsor/analytics.html" class="action-btn">
-📈 Analytics
-</a>
-
-</div>
-
-<style>
-
-.quick-actions{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-margin-top:30px;
-}
-
-.action-btn{
-background:#facc15;
-color:#000;
-padding:18px;
-border-radius:15px;
-text-align:center;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.action-btn:hover{
-transform:translateY(-4px);
-}
-
-.dashboard-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-margin-top:30px;
-}
-
-.dashboard-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-padding:25px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-}
-
-.dashboard-card h2{
-margin-bottom:20px;
-color:#facc15;
-}
-
-.campaign-item,
-.performance-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.active-badge{
-background:#22c55e;
-padding:8px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:700;
-}
-
-.completed-badge{
-background:#3b82f6;
-padding:8px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:700;
-}
-
-@media(max-width:991px){
-
-.quick-actions{
-grid-template-columns:1fr;
-}
-
-.dashboard-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
-
-<!-- DASHBOARD GRID -->
-
-<div class="dashboard-grid">
-
-<!-- RECENT CAMPAIGNS -->
-
-<div class="dashboard-card">
-
-<h2>Recent Campaigns</h2>
-
-<div class="campaign-item">
-
-<div>
-<h3>Mobile App Install</h3>
-<p>Started 2 days ago</p>
-</div>
-
-<span class="active-badge">
-Active
-</span>
-
-</div>
-
-<div class="campaign-item">
-
-<div>
-<h3>Survey Campaign</h3>
-<p>Started 5 days ago</p>
-</div>
-
-<span class="active-badge">
-Active
-</span>
-
-</div>
-
-<div class="campaign-item">
-
-<div>
-<h3>Website Visit Campaign</h3>
-<p>Campaign Completed</p>
-</div>
-
-<span class="completed-badge">
-Completed
-</span>
-
-</div>
-
-</div>
-
-<!-- PERFORMANCE OVERVIEW -->
-
-<div class="dashboard-card">
-
-<h2>Performance Overview</h2>
-
-<div class="performance-item">
-<span>Total Clicks</span>
-<strong>24,500</strong>
-</div>
-
-<div class="performance-item">
-<span>Conversions</span>
-<strong>8,240</strong>
-</div>
-
-<div class="performance-item">
-<span>CTR</span>
-<strong>12.4%</strong>
-</div>
-
-<div class="performance-item">
-<span>Cost Per Task</span>
-<strong>$0.18</strong>
-</div>
-
-</div>
-
-</div>
-
-<!-- PART 3 STARTS HERE -->
-<style>
-
-.full-width{
-grid-column:1/-1;
-}
-
-.payment-row{
-display:grid;
-grid-template-columns:1fr 2fr 1fr 1fr;
-gap:10px;
-padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.success{
-color:#22c55e;
-font-weight:700;
-}
-
-.pending{
-color:#f59e0b;
-font-weight:700;
-}
-
-.analytics-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-margin-top:25px;
-}
-
-.campaign-rank,
-.live-stat{
-display:flex;
-justify-content:space-between;
-padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.api-status{
-margin-top:25px;
-}
-
-.status-online{
-display:inline-block;
-background:#22c55e;
-padding:10px 15px;
-border-radius:12px;
-font-weight:700;
-margin:15px 0;
-}
-
-@media(max-width:991px){
-
-.analytics-grid{
-grid-template-columns:1fr;
-}
-
-.payment-row{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
-
-<!-- RECENT PAYMENTS -->
-
-<div class="dashboard-card full-width">
-
-<h2>Recent Payments</h2>
-
-<div class="payment-row">
-
-<div><strong>Date</strong></div>
-<div><strong>Campaign</strong></div>
-<div><strong>Amount</strong></div>
-<div><strong>Status</strong></div>
-
-</div>
-
-<div class="payment-row">
-
-<div>2026-06-23</div>
-<div>App Install Campaign</div>
-<div>$250</div>
-<div class="success">Paid</div>
-
-</div>
-
-<div class="payment-row">
-
-<div>2026-06-21</div>
-<div>Survey Campaign</div>
-<div>$150</div>
-<div class="pending">Pending</div>
-
-</div>
-
-<div class="payment-row">
-
-<div>2026-06-19</div>
-<div>Website Visit Campaign</div>
-<div>$100</div>
-<div class="success">Paid</div>
-
-</div>
-
-</div>
-
-<!-- ANALYTICS -->
-
-<div class="analytics-grid">
-
-<div class="dashboard-card">
-
-<h2>Top Performing Campaigns</h2>
-
-<div class="campaign-rank">
-<span>#1 Mobile App Install</span>
-<strong>4,250 Tasks</strong>
-</div>
-
-<div class="campaign-rank">
-<span>#2 Survey Campaign</span>
-<strong>2,840 Tasks</strong>
-</div>
-
-<div class="campaign-rank">
-<span>#3 Website Visit</span>
-<strong>1,920 Tasks</strong>
-</div>
-
-</div>
-
-<div class="dashboard-card">
-
-<h2>Live Statistics</h2>
-
-<div class="live-stat">
-<span>Today's Clicks</span>
-<strong id="todayClicks">1,245</strong>
-</div>
-
-<div class="live-stat">
-<span>Today's Completions</span>
-<strong id="todayCompletions">425</strong>
-</div>
-
-<div class="live-stat">
-<span>Current Budget</span>
-<strong id="currentBudget">$2,450</strong>
-</div>
-
-</div>
-
-</div>
-
-<!-- API STATUS -->
-
-<div class="dashboard-card api-status">
-
-<h2>Cloudflare Worker Status</h2>
-
-<div class="status-online">
-🟢 Connected
-</div>
-
-<p>
-Campaign data is syncing successfully with CoinGrid API.
 </p>
 
 </div>
 
 </div>
-<!-- END MAIN CONTENT -->
 
 </div>
-<!-- END DASHBOARD -->
 
-<script>
+<!-- DASHBOARD STATISTICS -->
 
-const menuBtn =
-document.getElementById("menuBtn");
+<div class="stats-grid">
 
-const sidebar =
-document.getElementById("sidebar");
+<div class="stat-card">
 
-menuBtn.addEventListener("click",()=>{
+<div class="stat-icon">
+📋
+</div>
 
-sidebar.classList.toggle("active");
+<h2 id="activeTasks">
 
-});
+0
 
-/* CLOUDLFARE API */
+</h2>
 
-async function loadSponsorDashboard(){
+<p>
 
-try{
+Active Tasks
 
-/*
+</p>
 
-const response =
-await fetch(
-'https://api.coingrid.in/sponsor/dashboard'
-);
+</div>
 
-const data =
-await response.json();
+<div class="stat-card">
 
-document.getElementById(
-'todayClicks'
-).innerText =
-data.clicks;
+<div class="stat-icon">
+⏳
+</div>
 
-document.getElementById(
-'todayCompletions'
-).innerText =
-data.completions;
+<h2 id="pendingReviews">
 
-document.getElementById(
-'currentBudget'
-).innerText =
-'$' + data.budget;
+0
 
-*/
+</h2>
 
-console.log(
-'Sponsor dashboard loaded'
-);
+<p>
 
-}catch(error){
+Pending Reviews
 
-console.error(error);
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+✅
+</div>
+
+<h2 id="approvedUsers">
+
+0
+
+</h2>
+
+<p>
+
+Approved Users
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+💰
+</div>
+
+<h2 id="walletBalance">
+
+$0.00
+
+</h2>
+
+<p>
+
+Wallet Balance
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+⭐
+</div>
+
+<h2 id="subscriptionPlan">
+
+Free
+
+</h2>
+
+<p>
+
+Current Plan
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+🎯
+</div>
+
+<h2 id="creditsRemaining">
+
+0
+
+</h2>
+
+<p>
+
+Task Credits Left
+
+</p>
+
+</div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+
+<div class="quick-actions">
+
+<a
+href="create-task.html"
+class="action-card">
+
+<h3>
+
+➕ Create Task
+
+</h3>
+
+<p>
+
+Publish a new task for CoinGrid users.
+
+</p>
+
+</a>
+
+<a
+href="task-management.html"
+class="action-card">
+
+<h3>
+
+📋 Manage Tasks
+
+</h3>
+
+<p>
+
+Edit, pause, duplicate or delete tasks.
+
+</p>
+
+</a>
+
+<a
+href="submissions.html"
+class="action-card">
+
+<h3>
+
+📂 Review Proofs
+
+</h3>
+
+<p>
+
+Approve or reject user submissions.
+
+</p>
+
+</a>
+
+<a
+href="wallet.html"
+class="action-card">
+
+<h3>
+
+💳 Wallet & Billing
+
+</h3>
+
+<p>
+
+Recharge wallet and manage subscription.
+
+</p>
+
+</a>
+
+  </div>
+
+  <!-- SUBSCRIPTION & WALLET -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+💎 Subscription & Wallet
+</h2>
+
+<button
+class="btn btn-primary"
+onclick="window.location.href='subscription.html'">
+
+Upgrade Plan
+
+</button>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+⭐
+</div>
+
+<h2 id="planName">
+
+Free
+
+</h2>
+
+<p>
+
+Current Subscription
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+📦
+</div>
+
+<h2 id="taskQuota">
+
+100
+
+</h2>
+
+<p>
+
+Monthly Task Quota
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+🚀
+</div>
+
+<h2 id="tasksUsed">
+
+0
+
+</h2>
+
+<p>
+
+Tasks Used This Month
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+💳
+</div>
+
+<h2 id="walletCredits">
+
+$0.00
+
+</h2>
+
+<p>
+
+Available Credits
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+📅
+</div>
+
+<h2 id="renewalDate">
+
+--
+
+</h2>
+
+<p>
+
+Renewal Date
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+🔥
+</div>
+
+<h2 id="quotaRemaining">
+
+100
+
+</h2>
+
+<p>
+
+Remaining Task Slots
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RECENT BILLING -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+💳 Recent Billing
+
+</h2>
+
+<button
+class="btn btn-primary"
+onclick="window.location.href='wallet.html'">
+
+View All
+
+</button>
+
+</div>
+
+<div class="table">
+
+<table
+style="width:100%;border-collapse:collapse;">
+
+<thead>
+
+<tr>
+
+<th align="left">
+Date
+</th>
+
+<th align="left">
+Description
+</th>
+
+<th align="left">
+Amount
+</th>
+
+<th align="left">
+Status
+</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="billingTable">
+
+<tr>
+
+<td colspan="4"
+style="padding:25px;text-align:center;color:#94a3b8;">
+
+Loading billing history...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- SPENDING SUMMARY -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+📊 Monthly Spending
+
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+💵
+
+</div>
+
+<h2 id="spentThisMonth">
+
+$0.00
+
+</h2>
+
+<p>
+
+Spent This Month
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+📈
+
+</div>
+
+<h2 id="avgTaskCost">
+
+$0.00
+
+</h2>
+
+<p>
+
+Average Cost Per Task
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+👥
+
+</div>
+
+<h2 id="usersReached">
+
+0
+
+</h2>
+
+<p>
+
+Users Reached
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🏆
+
+</div>
+
+<h2 id="completionRate">
+
+0%
+
+</h2>
+
+<p>
+
+Completion Rate
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+💰
+
+</div>
+
+<h2 id="remainingBudget">
+
+$0.00
+
+</h2>
+
+<p>
+
+Remaining Budget
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⚡
+
+</div>
+
+<h2 id="avgApprovalTime">
+
+0h
+
+</h2>
+
+<p>
+
+Average Approval Time
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+  <!-- RECENT TASKS -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+📋 My Recent Tasks
+</h2>
+
+<button
+class="btn btn-primary"
+onclick="window.location.href='create-task.html'">
+
++ New Task
+
+</button>
+
+</div>
+
+<div class="table">
+
+<table
+style="width:100%;border-collapse:collapse;">
+
+<thead>
+
+<tr>
+
+<th align="left">Task</th>
+
+<th align="left">Category</th>
+
+<th align="left">Reward</th>
+
+<th align="left">Completed</th>
+
+<th align="left">Budget Left</th>
+
+<th align="left">Status</th>
+
+<th align="center">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody id="taskTable">
+
+<tr>
+
+<td colspan="7"
+style="padding:30px;text-align:center;color:#94a3b8;">
+
+Loading tasks...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- TASK SUMMARY -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+📊 Task Summary
+
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🟢
+
+</div>
+
+<h2 id="liveTasks">
+
+0
+
+</h2>
+
+<p>
+
+Running Tasks
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⏸
+
+</div>
+
+<h2 id="pausedTasks">
+
+0
+
+</h2>
+
+<p>
+
+Paused Tasks
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+📝
+
+</div>
+
+<h2 id="draftTasks">
+
+0
+
+</h2>
+
+<p>
+
+Draft Tasks
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🏁
+
+</div>
+
+<h2 id="completedTasks">
+
+0
+
+</h2>
+
+<p>
+
+Completed Tasks
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+👥
+
+</div>
+
+<h2 id="totalParticipants">
+
+0
+
+</h2>
+
+<p>
+
+Participants
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⭐
+
+</div>
+
+<h2 id="approvalRateCard">
+
+0%
+
+</h2>
+
+<p>
+
+Approval Rate
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EMPTY TASK STATE -->
+
+<div
+class="card"
+id="emptyTaskCard"
+style="display:none;text-align:center;">
+
+<h2
+style="color:#facc15;margin-bottom:15px;">
+
+No Tasks Yet
+
+</h2>
+
+<p
+style="color:#94a3b8;margin-bottom:25px;">
+
+Create your first CoinGrid task and start reaching thousands of users.
+
+</p>
+
+<button
+class="btn btn-primary"
+onclick="window.location.href='create-task.html'">
+
+Create First Task
+
+</button>
+
+</div>
+
+<!-- ACTION MENU TEMPLATE -->
+
+<template id="taskActionTemplate">
+
+<div
+style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+
+<button
+class="btn btn-primary action-edit">
+
+Edit
+
+</button>
+
+<button
+class="btn action-duplicate">
+
+Duplicate
+
+</button>
+
+<button
+class="btn action-pause">
+
+Pause
+
+</button>
+
+<button
+class="btn action-resume">
+
+Resume
+
+</button>
+
+<button
+class="btn action-delete"
+style="background:#ef4444;color:white;">
+
+Delete
+
+</button>
+
+</div>
+
+</template>
+
+<style>
+
+table th{
+
+padding:16px 12px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+color:#facc15;
+
+font-size:14px;
+
+}
+
+table td{
+
+padding:18px 12px;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+vertical-align:middle;
+
+}
+
+.action-edit{
+
+background:#3b82f6;
+color:white;
+
+}
+
+.action-duplicate{
+
+background:#22c55e;
+color:white;
+
+}
+
+.action-pause{
+
+background:#f59e0b;
+color:black;
+
+}
+
+.action-resume{
+
+background:#22c55e;
+color:black;
+
+}
+
+.action-delete:hover{
+
+opacity:.9;
+
+}
+
+@media(max-width:991px){
+
+.table{
+
+overflow-x:auto;
+
+}
+
+table{
+
+min-width:1100px;
 
 }
 
 }
 
-loadSponsorDashboard();
+  </style>
 
-/* AUTO REFRESH */
+  <!-- ========================================= -->
+<!-- PENDING PROOF REVIEW -->
+<!-- ========================================= -->
 
-setInterval(()=>{
+<div class="card">
 
-loadSponsorDashboard();
+<div class="card-title">
 
-},30000);
+<h2>
+📂 Pending Proof Reviews
+</h2>
 
-</script>
+<button
+class="btn btn-primary"
+onclick="window.location.href='submissions.html'">
 
-</body>
-</html>
-  
+View All
+
+</button>
+
+</div>
+
+<div class="table">
+
+<table style="width:100%;border-collapse:collapse;">
+
+<thead>
+
+<tr>
+
+<th align="left">
+User
+</th>
+
+<th align="left">
+Task
+</th>
+
+<th align="left">
+Submitted
+</th>
+
+<th align="left">
+Proof
+</th>
+
+<th align="left">
+Status
+</th>
+
+<th align="center">
+Actions
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="submissionTable">
+
+<tr>
+
+<td colspan="6"
+style="padding:30px;text-align:center;color:#94a3b8;">
+
+Loading submissions...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- REVIEW SUMMARY -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+📈 Review Statistics
+
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+📂
+
+</div>
+
+<h2 id="totalSubmissions">
+
+0
+
+</h2>
+
+<p>
+
+Total Submitted
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⏳
+
+</div>
+
+<h2 id="pendingSubmissions">
+
+0
+
+</h2>
+
+<p>
+
+Awaiting Review
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+✅
+
+</div>
+
+<h2 id="approvedSubmissions">
+
+0
+
+</h2>
+
+<p>
+
+Approved
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+❌
+
+</div>
+
+<h2 id="rejectedSubmissions">
+
+0
+
+</h2>
+
+<p>
+
+Rejected
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⚡
+
+</div>
+
+<h2 id="reviewToday">
+
+0
+
+</h2>
+
+<p>
+
+Reviewed Today
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⭐
+
+</div>
+
+<h2 id="reviewAccuracy">
+
+100%
+
+</h2>
+
+<p>
+
+Approval Accuracy
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PROOF PREVIEW MODAL -->
+
+<div
+id="proofModal"
+style="display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;">
+
+<div
+style="
+width:95%;
+max-width:900px;
+background:#111827;
+border-radius:20px;
+padding:30px;
+max-height:90vh;
+overflow:auto;">
+
+<div
+style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;">
+
+<h2 style="color:#facc15;">
+
+Submission Proof
+
+</h2>
+
+<button
+onclick="closeProofModal()"
+class="btn">
+
+✕
+
+</button>
+
+</div>
+
+<div
+style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;">
+
+<div>
+
+<img
+id="proofImage"
+src=""
+style="
+width:100%;
+border-radius:15px;
+background:#1e293b;
+display:none;">
+
+<div
+id="proofPlaceholder"
+style="
+height:320px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#1e293b;
+border-radius:15px;
+color:#94a3b8;">
+
+No Preview
+
+</div>
+
+</div>
+
+<div>
+
+<h3
+style="margin-bottom:20px;">
+
+Submission Details
+
+</h3>
+
+<p>
+
+<strong>User :</strong>
+
+<span id="proofUser">
+
+-
+
+</span>
+
+</p>
+
+<br>
+
+<p>
+
+<strong>Task :</strong>
+
+<span id="proofTask">
+
+-
+
+</span>
+
+</p>
+
+<br>
+
+<p>
+
+<strong>Submitted :</strong>
+
+<span id="proofDate">
+
+-
+
+</span>
+
+</p>
+
+<br>
+
+<p>
+
+<strong>Comment :</strong>
+
+</p>
+
+<p
+id="proofComment"
+style="
+margin-top:10px;
+color:#94a3b8;
+line-height:1.7;">
+
+-
+
+</p>
+
+<br>
+
+<div
+style="
+display:flex;
+gap:12px;
+flex-wrap:wrap;">
+
+<button
+id="approveBtn"
+class="btn btn-primary">
+
+Approve
+
+</button>
+
+<button
+id="rejectBtn"
+class="btn"
+style="
+background:#ef4444;
+color:white;">
+
+Reject
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<style>
+
+#submissionTable td{
+
+padding:18px 12px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.view-proof{
+
+background:#3b82f6;
+color:white;
+
+}
+
+.approve-proof{
+
+background:#22c55e;
+color:black;
+
+}
+
+.reject-proof{
+
+background:#ef4444;
+color:white;
+
+}
+
+@media(max-width:991px){
+
+#proofModal>div{
+
+width:98%;
+
+}
+
+#proofModal>div>div:nth-child(2){
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+  </style>
+
+  <!-- ========================================= -->
+<!-- NOTIFICATIONS -->
+<!-- ========================================= -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+🔔 Notifications
+</h2>
+
+<button
+class="btn btn-primary"
+onclick="window.location.href='notifications.html'">
+
+View All
+
+</button>
+
+</div>
+
+<div
+id="notificationList">
+
+<div
+style="
+padding:30px;
+text-align:center;
+color:#94a3b8;">
+
+Loading notifications...
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- ACTIVITY TIMELINE -->
+<!-- ========================================= -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+📜 Activity Timeline
+
+</h2>
+
+</div>
+
+<div
+id="activityTimeline">
+
+<div
+style="
+padding:30px;
+text-align:center;
+color:#94a3b8;">
+
+Loading activity...
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- LIVE CAMPAIGN MONITOR -->
+<!-- ========================================= -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+📊 Live Campaign Monitor
+
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+👀
+
+</div>
+
+<h2 id="liveVisitors">
+
+0
+
+</h2>
+
+<p>
+
+Users Viewing Tasks
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+⚡
+
+</div>
+
+<h2 id="todayStarts">
+
+0
+
+</h2>
+
+<p>
+
+Tasks Started Today
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+📂
+
+</div>
+
+<h2 id="todayProofs">
+
+0
+
+</h2>
+
+<p>
+
+Proofs Submitted Today
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🏆
+
+</div>
+
+<h2 id="todayApproved">
+
+0
+
+</h2>
+
+<p>
+
+Approved Today
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+💵
+
+</div>
+
+<h2 id="todaySpent">
+
+$0.00
+
+</h2>
+
+<p>
+
+Today's Spending
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🚀
+
+</div>
+
+<h2 id="liveCompletionRate">
+
+0%
+
+</h2>
+
+<p>
+
+Live Completion Rate
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- SYSTEM STATUS -->
+<!-- ========================================= -->
+
+<div class="card">
+
+<div class="card-title">
+
+<h2>
+
+🛰 Platform Status
+
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🟢
+
+</div>
+
+<h2>
+
+Online
+
+</h2>
+
+<p>
+
+Cloudflare Worker
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+💾
+
+</div>
+
+<h2>
+
+Healthy
+
+</h2>
+
+<p>
+
+Cloudflare D1
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+☁️
+
+</div>
+
+<h2>
+
+Connected
+
+</h2>
+
+<p>
+
+Cloudflare R2
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🔒
+
+</div>
+
+<h2>
+
+Secure
+
+</h2>
+
+<p>
+
+Authentication
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+📡
+
+</div>
+
+<h2 id="apiLatency">
+
+0 ms
+
+</h2>
+
+<p>
+
+API Response
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-icon">
+
+🔄
+
+</div>
+
+<h2 id="lastSync">
+
+--
+
+</h2>
+
+<p>
+
+Last Sync
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<style>
+
+.notification-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+gap:20px;
+
+padding:18px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.notification-item:last-child{
+
+border-bottom:none;
+
+}
+
+.notification-title{
+
+font-weight:700;
+
+margin-bottom:6px;
+
+}
+
+.notification-time{
+
+font-size:13px;
+
+color:#94a3b8;
+
+margin-top:6px;
+
+}
+
+.activity-item{
+
+display:flex;
+
+gap:20px;
+
+padding:18px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.activity-item:last-child{
+
+border-bottom:none;
+
+}
+
+.activity-icon{
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+background:#1e293b;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:20px;
+
+}
+
+.activity-content{
+
+flex:1;
+
+}
+
+.activity-content h4{
+
+margin-bottom:6px;
+
+}
+
+.activity-content p{
+
+color:#94a3b8;
+
+line-height:1.6;
+
+}
+
+.activity-date{
+
+font-size:13px;
+
+margin-top:8px;
+
+color:#64748b;
+
+}
+
+@media(max-width:768px){
+
+.notification-item{
+
+flex-direction:column;
+
+}
+
+.activity-item{
+
+flex-direction:column;
+
+}
+
+}
+
+  </style>
+
+  <!-- ========================================= -->
+<!-- CREATE TASK MODAL -->
+<!-- ========================================= -->
+
+<div
+id="createTaskModal"
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+justify-content:center;
+align-items:center;
+z-index:9999;
+padding:20px;
+overflow:auto;">
+
+<div
+style="
+width:100%;
+max-width:1100px;
+background:#111827;
+border-radius:25px;
+padding:35px;
+position:relative;">
+
+<div class="card-title">
+
+<h2>
+
+➕ Create New Task
+
+</h2>
+
+<button
+class="btn"
+onclick="closeCreateTask()">
+
+✕
+
+</button>
+
+</div>
+
+<form id="createTaskForm">
+
+<!-- BASIC DETAILS -->
+
+<div class="stats-grid">
+
+<div class="form-group">
+
+<label>
+
+Task Title
+
+</label>
+
+<input
+id="taskTitle"
+type="text"
+placeholder="Example : Install CoinGrid App"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Category
+
+</label>
+
+<select id="taskCategory">
+
+<option value="App Install">
+App Install
+</option>
+
+<option value="Website Visit">
+Website Visit
+</option>
+
+<option value="Survey">
+Survey
+</option>
+
+<option value="Social Media">
+Social Media
+</option>
+
+<option value="YouTube">
+YouTube
+</option>
+
+<option value="Telegram">
+Telegram
+</option>
+
+<option value="Discord">
+Discord
+</option>
+
+<option value="Newsletter">
+Newsletter
+</option>
+
+<option value="Product Testing">
+Product Testing
+</option>
+
+<option value="Beta Testing">
+Beta Testing
+</option>
+
+<option value="AI Data Collection">
+AI Data Collection
+</option>
+
+<option value="Bug Testing">
+Bug Testing
+</option>
+
+<option value="Software Testing">
+Software Testing
+</option>
+
+<option value="Research">
+Research
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Reward Per User ($)
+
+</label>
+
+<input
+id="taskReward"
+type="number"
+step="0.01"
+placeholder="0.50">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Maximum Users
+
+</label>
+
+<input
+id="maximumUsers"
+type="number"
+placeholder="100">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Available Slots
+
+</label>
+
+<input
+id="availableSlots"
+type="number"
+placeholder="100">
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Estimated Time
+
+</label>
+
+<input
+id="timeRequired"
+type="text"
+placeholder="5 Minutes">
+
+</div>
+
+</div>
+
+<!-- TASK URL -->
+
+<div class="form-group">
+
+<label>
+
+Task URL
+
+</label>
+
+<input
+id="taskUrl"
+type="url"
+placeholder="https://example.com">
+
+</div>
+
+<!-- APPROVAL -->
+
+<div class="stats-grid">
+
+<div class="form-group">
+
+<label>
+
+Approval Time
+
+</label>
+
+<select id="approvalTime">
+
+<option value="Instant">
+
+Instant
+
+</option>
+
+<option value="24 Hours">
+
+24 Hours
+
+</option>
+
+<option value="48 Hours">
+
+48 Hours
+
+</option>
+
+<option value="Manual">
+
+Manual Review
+
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Difficulty
+
+</label>
+
+<select id="difficulty">
+
+<option>
+
+Easy
+
+</option>
+
+<option>
+
+Medium
+
+</option>
+
+<option>
+
+Hard
+
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<!-- REQUIREMENTS -->
+
+<div class="form-group">
+
+<label>
+
+Requirements
+
+</label>
+
+<textarea
+id="requirements"
+placeholder="Minimum Android 10, Valid Email, New User Only..."></textarea>
+
+</div>
+
+<!-- STEPS -->
+
+<div class="form-group">
+
+<label>
+
+Step-by-Step Instructions
+
+</label>
+
+<textarea
+id="taskSteps"
+placeholder="1. Install App&#10;2. Register&#10;3. Verify Email&#10;4. Complete Profile&#10;5. Upload Screenshot"></textarea>
+
+</div>
+
+<!-- PROOF -->
+
+<h3
+style="
+margin:30px 0 20px;
+color:#facc15;">
+
+Proof Required
+
+</h3>
+
+<div class="proof-grid">
+
+<label>
+
+<input
+type="checkbox"
+value="Screenshot">
+
+Screenshot
+
+</label>
+
+<label>
+
+<input
+type="checkbox"
+value="Completion Code">
+
+Completion Code
+
+</label>
+
+<label>
+
+<input
+type="checkbox"
+value="Profile Link">
+
+Profile Link
+
+</label>
+
+<label>
+
+<input
+type="checkbox"
+value="Username">
+
+Username
+
+</label>
+
+<label>
+
+<input
+type="checkbox"
+value="Video">
+
+Screen Recording
+
+</label>
+
+<label>
+
+<input
+type="checkbox"
+value="File">
+
+File Upload
+
+</label>
+
+</div>
+
+<!-- BUDGET -->
+
+<div class="card"
+style="margin-top:30px;">
+
+<h3
+style="margin-bottom:20px;">
+
+Budget Summary
+
+</h3>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<h2 id="rewardSummary">
+
+$0.00
+
+</h2>
+
+<p>
+
+Reward/User
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="userSummary">
+
+0
+
+</h2>
+
+<p>
+
+Maximum Users
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="platformFee">
+
+$0.00
+
+</h2>
+
+<p>
+
+CoinGrid Fee
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="totalBudget">
+
+$0.00
+
+</h2>
+
+<p>
+
+Total Budget
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div
+style="
+display:flex;
+justify-content:flex-end;
+gap:15px;
+margin-top:30px;
+flex-wrap:wrap;">
+
+<button
+type="button"
+class="btn"
+onclick="closeCreateTask()">
+
+Cancel
+
+</button>
+
+<button
+type="submit"
+class="btn btn-primary">
+
+🚀 Publish Task
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<style>
+
+.form-group{
+
+display:flex;
+
+flex-direction:column;
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+margin-bottom:8px;
+
+font-weight:600;
+
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+padding:15px;
+
+background:#1e293b;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:12px;
+
+color:white;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+.form-group textarea{
+
+min-height:140px;
+
+resize:vertical;
+
+}
+
+.proof-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:15px;
+
+}
+
+.proof-grid label{
+
+background:#1e293b;
+
+padding:15px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.proof-grid input{
+
+width:18px;
+
+height:18px;
+
+}
+
+@media(max-width:768px){
+
+.proof-grid{
+
+grid-template-columns:1fr;
+
+}
+
+#createTaskModal>div{
+
+padding:20px;
+
+}
+
+}
+
+</style>
+
+  <!-- ========================================= -->
+<!-- PROOF REVIEW MODAL -->
+<!-- ========================================= -->
+
+<div
+id="reviewModal"
+style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.88);
+z-index:99999;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow:auto;">
+
+<div
+style="
+width:100%;
+max-width:1200px;
+background:#111827;
+border-radius:25px;
+padding:30px;">
+
+<div class="card-title">
+
+<h2>
+
+📂 Review Submission
+
+</h2>
+
+<button
+class="btn"
+onclick="closeReviewModal()">
+
+✕
+
+</button>
+
+</div>
+
+<div class="review-grid">
+
+<!-- LEFT SIDE -->
+
+<div>
+
+<div class="card">
+
+<h3
+style="margin-bottom:20px;">
+
+Proof Preview
+
+</h3>
+
+<img
+id="reviewImage"
+src=""
+style="
+width:100%;
+border-radius:15px;
+display:none;
+background:#1e293b;">
+
+<div
+id="reviewPlaceholder"
+style="
+height:400px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#1e293b;
+border-radius:15px;
+color:#94a3b8;">
+
+Proof Preview
+
+</div>
+
+<div
+style="
+display:flex;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;">
+
+<button
+class="btn btn-primary"
+id="downloadProofBtn">
+
+⬇ Download
+
+</button>
+
+<button
+class="btn"
+id="openProofBtn">
+
+🔗 Open File
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div>
+
+<div class="card">
+
+<h3
+style="margin-bottom:20px;">
+
+Submission Information
+
+</h3>
+
+<div class="info-row">
+
+<strong>
+
+Submission ID
+
+</strong>
+
+<span id="submissionId">
+
+-
+
+</span>
+
+</div>
+
+<div class="info-row">
+
+<strong>
+
+Task
+
+</strong>
+
+<span id="submissionTask">
+
+-
+
+</span>
+
+</div>
+
+<div class="info-row">
+
+<strong>
+
+User
+
+</strong>
+
+<span id="submissionUser">
+
+-
+
+</span>
+
+</div>
+
+<div class="info-row">
+
+<strong>
+
+Email
+
+</strong>
+
+<span id="submissionEmail">
+
+-
+
+</span>
+
+</div>
+
+<div class="info-row">
+
+<strong>
+
+Submitted
+
+</strong>
+
+<span id="submissionDate">
+
+-
+
+</span>
+
+</div>
+
+<div class="info-row">
+
+<strong>
+
+Status
+
+</strong>
+
+<span
+class="badge orange"
+id="submissionStatus">
+
+Pending
+
+</span>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3
+style="margin-bottom:20px;">
+
+User Message
+
+</h3>
+
+<p
+id="submissionComment"
+style="
+line-height:1.8;
+color:#cbd5e1;">
+
+No comment.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3
+style="margin-bottom:20px;">
+
+Sponsor Review
+
+</h3>
+
+<div class="form-group">
+
+<label>
+
+Review Note
+
+</label>
+
+<textarea
+id="reviewNote"
+placeholder="Reason for approval or rejection...">
+
+</textarea>
+
+</div>
+
+<div
+style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;">
+
+<button
+id="approveSubmissionBtn"
+class="btn btn-primary">
+
+✅ Approve
+
+</button>
+
+<button
+id="rejectSubmissionBtn"
+class="btn"
+style="
+background:#ef4444;
+color:white;">
+
+❌ Reject
+
+</button>
+
+<button
+id="requestResubmitBtn"
+class="btn"
+style="
+background:#f59e0b;
+color:black;">
+
+🔄 Request Resubmission
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- TOAST NOTIFICATION -->
+<!-- ========================================= -->
+
+<div
+id="toastMessage"
+style="
+position:fixed;
+bottom:25px;
+right:25px;
+background:#22c55e;
+color:white;
+padding:18px 25px;
+border-radius:12px;
+display:none;
+z-index:999999;
+font-weight:600;
+box-shadow:0 15px 35px rgba(0,0,0,.35);">
+
+Action Completed
+
+</div>
+
+<style>
+
+.review-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:30px;
+
+margin-top:20px;
+
+}
+
+.info-row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.info-row:last-child{
+
+border-bottom:none;
+
+}
+
+#reviewNote{
+
+height:120px;
+
+}
+
+@media(max-width:991px){
+
+.review-grid{
+
+grid-template-columns:1fr;
+
+}
+
+#reviewImage{
+
+max-height:350px;
+
+object-fit:contain;
+
+}
+
+}
+
+</style>
+
+  <script>
+
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+/* ===========================
+   AUTHENTICATION
+=========================== */
+
+let sponsor = null;
+
+function getSponsor(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "coingrid_sponsor"
+        )
+    );
+
+}
+
+async function verifySponsor(){
+
+    sponsor = getSponsor();
+
+    if(!sponsor || !sponsor.id){
+
+        window.location.href =
+        "../auth/login.html";
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/* ===========================
+   API HELPER
+=========================== */
+
+async function api(endpoint, options={}){
+
+    const token =
+    sponsor?.token || "";
+
+    const response =
+    await fetch(
+
+        API_BASE + endpoint,
+
+        {
+
+            headers:{
+
+                "Content-Type":
+                "application/json",
+
+                "Authorization":
+                "Bearer " + token
+
+            },
+
+            ...options
+
+        }
+
+    );
+
+    return await response.json();
+
+}
+
+/* ===========================
+   DASHBOARD LOAD
+=========================== */
+
+async function loadDashboard(){
+
+    if(!await verifySponsor()){
+
+        return;
+
+    }
+
+    try{
+
+        const data =
+        await api(
+
+        "/api/sponsor/dashboard"
+
+        );
+
+        if(!data.success){
+
+            alert(data.message);
+
+            return;
+
+        }
+
+        loadSponsorInfo(
+            data.sponsor
+        );
+
+        loadStatistics(
+            data.statistics
+        );
+
+        loadSubscription(
+            data.subscription
+        );
+
+        loadWallet(
+            data.wallet
+        );
+
+        loadRecentTasks(
+            data.tasks
+        );
+
+        loadPendingProofs(
+            data.pending_proofs
+        );
+
+        loadNotifications(
+            data.notifications
+        );
+
+        loadAnalytics(
+            data.analytics
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+
+        "Unable to load dashboard."
+
+        );
+
+    }
+
+}
+
+/* ===========================
+   SPONSOR PROFILE
+=========================== */
+
+function loadSponsorInfo(info){
+
+    if(!info) return;
+
+    const profile =
+
+    document.getElementById(
+        "profileName"
+    );
+
+    if(profile){
+
+        profile.textContent =
+        info.company_name;
+
+    }
+
+    const company =
+
+    document.getElementById(
+        "companyName"
+    );
+
+    if(company){
+
+        company.textContent =
+        info.company_name;
+
+    }
+
+    const email =
+
+    document.getElementById(
+        "companyEmail"
+    );
+
+    if(email){
+
+        email.textContent =
+        info.email;
+
+    }
+
+}
+
+/* ===========================
+   STATISTICS
+=========================== */
+
+function loadStatistics(stats){
+
+    if(!stats) return;
+
+    const map = {
+
+        activeCampaigns:
+        stats.active_tasks,
+
+        totalCompletions:
+        stats.total_completed,
+
+        pendingReviews:
+        stats.pending_reviews,
+
+        totalSpent:
+        "$" +
+        Number(
+        stats.total_spent
+        ).toFixed(2),
+
+        approvalRate:
+        stats.approval_rate + "%",
+
+        todayClicks:
+        stats.today_clicks,
+
+        todayCompletions:
+        stats.today_completed
+
+    };
+
+    Object.keys(map)
+    .forEach(id=>{
+
+        const el =
+        document.getElementById(id);
+
+        if(el){
+
+            el.textContent =
+            map[id];
+
+        }
+
+    });
+
+}
+
+/* ===========================
+   SUBSCRIPTION
+=========================== */
+
+function loadSubscription(plan){
+
+    if(!plan) return;
+
+    const current =
+
+    document.getElementById(
+        "currentPlan"
+    );
+
+    if(current){
+
+        current.textContent =
+        plan.name;
+
+    }
+
+    const remain =
+
+    document.getElementById(
+        "tasksRemaining"
+    );
+
+    if(remain){
+
+        remain.textContent =
+
+        plan.remaining_tasks +
+
+        " Tasks Remaining";
+
+    }
+
+    const expiry =
+
+    document.getElementById(
+        "planExpiry"
+    );
+
+    if(expiry){
+
+        expiry.textContent =
+
+        plan.expiry;
+
+    }
+
+}
+
+/* ===========================
+   WALLET
+=========================== */
+
+function loadWallet(wallet){
+
+    if(!wallet) return;
+
+    const balance =
+
+    document.getElementById(
+        "walletBalance"
+    );
+
+    if(balance){
+
+        balance.textContent =
+
+        "$" +
+
+        Number(
+        wallet.balance
+        ).toFixed(2);
+
+    }
+
+}
+
+    /* ===========================
+   RECENT TASKS
+=========================== */
+
+function loadRecentTasks(tasks){
+
+    const table =
+    document.getElementById(
+        "recentTasks"
+    );
+
+    if(!table) return;
+
+    table.innerHTML = "";
+
+    if(!tasks || tasks.length===0){
+
+        table.innerHTML =
+
+        `<tr>
+
+            <td colspan="8">
+
+            No tasks created yet.
+
+            </td>
+
+        </tr>`;
+
+        return;
+
+    }
+
+    tasks.forEach(task=>{
+
+        table.innerHTML += `
+
+<tr>
+
+<td>${task.id}</td>
+
+<td>${task.title}</td>
+
+<td>${task.category}</td>
+
+<td>${task.reward}</td>
+
+<td>${task.completed}</td>
+
+<td>${task.available_slots}</td>
+
+<td>
+
+<span class="status ${task.status}">
+
+${task.status}
+
+</span>
+
+</td>
+
+<td>
+
+<button
+
+class="small-btn"
+
+onclick="viewTask(${task.id})">
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+    });
+
+}
+
+/* ===========================
+   PENDING PROOFS
+=========================== */
+
+function loadPendingProofs(list){
+
+    const container =
+
+    document.getElementById(
+        "proofList"
+    );
+
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    if(!list || list.length===0){
+
+        container.innerHTML =
+
+        "<p>No pending submissions.</p>";
+
+        return;
+
+    }
+
+    list.forEach(item=>{
+
+        container.innerHTML += `
+
+<div class="proof-card">
+
+<div class="proof-top">
+
+<h3>${item.user_name}</h3>
+
+<span>
+
+Task #${item.task_id}
+
+</span>
+
+</div>
+
+<p>
+
+${item.task_title}
+
+</p>
+
+<p>
+
+Submitted:
+
+${item.created_at}
+
+</p>
+
+<button
+
+class="primary-btn"
+
+onclick="openProof(${item.id})">
+
+Review Proof
+
+</button>
+
+</div>
+
+`;
+
+    });
+
+}
+
+/* ===========================
+   NOTIFICATIONS
+=========================== */
+
+function loadNotifications(list){
+
+    const box =
+
+    document.getElementById(
+        "notificationList"
+    );
+
+    if(!box) return;
+
+    box.innerHTML = "";
+
+    if(!list || list.length===0){
+
+        box.innerHTML =
+
+        "<p>No notifications.</p>";
+
+        return;
+
+    }
+
+    list.forEach(item=>{
+
+        box.innerHTML += `
+
+<div class="notification-item">
+
+<div>
+
+<strong>
+
+${item.title}
+
+</strong>
+
+</div>
+
+<div>
+
+${item.message}
+
+</div>
+
+<small>
+
+${item.created_at}
+
+</small>
+
+</div>
+
+`;
+
+    });
+
+}
+
+/* ===========================
+   ACTIVITY TIMELINE
+=========================== */
+
+function loadTimeline(events){
+
+    const timeline =
+
+    document.getElementById(
+        "activityTimeline"
+    );
+
+    if(!timeline) return;
+
+    timeline.innerHTML = "";
+
+    if(!events || events.length===0){
+
+        timeline.innerHTML =
+
+        "<p>No recent activity.</p>";
+
+        return;
+
+    }
+
+    events.forEach(event=>{
+
+        timeline.innerHTML += `
+
+<div class="timeline-item">
+
+<h4>
+
+${event.title}
+
+</h4>
+
+<p>
+
+${event.description}
+
+</p>
+
+<span>
+
+${event.created_at}
+
+</span>
+
+</div>
+
+`;
+
+    });
+
+}
+
+/* ===========================
+   ANALYTICS
+=========================== */
+
+function loadAnalytics(data){
+
+    if(!data) return;
+
+    const analytics = {
+
+        totalViews:
+        data.total_views,
+
+        totalClicks:
+        data.total_clicks,
+
+        conversionRate:
+        data.conversion_rate + "%",
+
+        avgCompletion:
+        data.avg_completion + "%",
+
+        rejectedProofs:
+        data.rejected,
+
+        approvedProofs:
+        data.approved
+
+    };
+
+    Object.keys(analytics)
+    .forEach(id=>{
+
+        const element =
+
+        document.getElementById(id);
+
+        if(element){
+
+            element.textContent =
+
+            analytics[id];
+
+        }
+
+    });
+
+}
+
+/* ===========================
+   REFRESH DASHBOARD
+=========================== */
+
+async function refreshDashboard(){
+
+    await loadDashboard();
+
+}
+
+setInterval(
+
+refreshDashboard,
+
+30000
+
+);
