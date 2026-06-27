@@ -31,7 +31,27 @@ min-height:100vh;
 
 
 
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
 
+.page-title h1{
+font-size:32px;
+}
+
+.page-title p{
+color:#94a3b8;
+margin-top:5px;
+}
+
+.top-actions{
+display:flex;
+align-items:center;
+gap:15px;
+}
   
 
 /* EARNINGS */
@@ -395,7 +415,7 @@ View All
 </div></div>
 </div>
 
-
+  <script src="components/sidebar.js"></script>
 <script>
 
 
@@ -571,5 +591,5 @@ const userId = user.id;
 
 loadDashboard();
                          </script>
-  <script src="components/sidebar.js"></script>
+
 </body></html>
