@@ -1,5 +1,8 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="components/sidebar.css">
+  <style>
 
 *{
 margin:0;
@@ -346,9 +349,11 @@ grid-template-columns:1fr;
 
 }
 
-</style></head><body><div class="dashboard"><!-- SIDEBAR -->
+</style></head><body>
   
+  <div class="dashboard"><!-- SIDEBAR -->
   
+  <div id="sidebar-container"></div>
   
   <!-- MAIN --><div class="main-content"><div class="topbar"><div><div class="menu-btn" id="menuBtn">
 ☰
@@ -462,7 +467,9 @@ View All
 </a></div></div>
 
 </div></div>
+</div>
 
+<script src="components/sidebar.js"></script>
 <script>
 
 
