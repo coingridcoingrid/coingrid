@@ -4431,3 +4431,939 @@ refreshDashboard,
 30000
 
 );
+
+
+    /* ===========================
+   CREATE TASK
+=========================== */
+
+const createTaskForm =
+document.getElementById(
+"createTaskForm"
+);
+
+if(createTaskForm){
+
+createTaskForm.addEventListener(
+"submit",
+createTask
+);
+
+}
+
+async function createTask(e){
+
+if(e)e.preventDefault();
+
+try{
+
+const payload={
+
+sponsor_id:sponsor.id,
+
+title:
+document.getElementById(
+"taskTitle"
+).value.trim(),
+
+category:
+document.getElementById(
+"taskCategory"
+).value,
+
+reward:
+Number(
+document.getElementById(
+"taskReward"
+).value
+),
+
+time_required:
+Number(
+document.getElementById(
+"timeRequired"
+).value
+),
+
+available_slots:
+Number(
+document.getElementById(
+"availableSlots"
+).value
+),
+
+approval_time:
+document.getElementById(
+"approvalTime"
+).value,
+
+requirements:
+document.getElementById(
+"requirements"
+).value.trim(),
+
+steps:
+document.getElementById(
+"steps"
+).value.trim(),
+
+task_url:
+document.getElementById(
+"taskUrl"
+).value.trim()
+
+};
+
+/* Validation */
+
+if(
+
+payload.title==="" ||
+
+payload.reward<=0 ||
+
+payload.available_slots<=0
+
+){
+
+showToast(
+
+"Please fill all required fields."
+
+);
+
+return;
+
+}
+
+const result=
+
+await api(
+
+"/api/sponsor/tasks",
+
+{
+
+method:"POST",
+
+body:JSON.stringify(payload)
+
+}
+
+);
+
+if(!result.success){
+
+showToast(
+
+result.message
+
+);
+
+return;
+
+}
+
+showToast(
+
+"Task created successfully."
+
+);
+
+createTaskForm.reset();
+
+closeCreateTask();
+
+await loadDashboard();
+
+}
+
+catch(error){
+
+console.error(error);
+
+showToast(
+
+"Unable to create task."
+
+);
+
+}
+
+}
+
+/* ===========================
+   CREATE TASK MODAL
+=========================== */
+
+function openCreateTask(){
+
+const modal=
+
+document.getElementById(
+"createTaskModal"
+);
+
+if(modal){
+
+modal.style.display="flex";
+
+}
+
+}
+
+function closeCreateTask(){
+
+const modal=
+
+document.getElementById(
+"createTaskModal"
+);
+
+if(modal){
+
+modal.style.display="none";
+
+}
+
+}
+
+/* ===========================
+   VIEW TASK
+=========================== */
+
+async function viewTask(id){
+
+try{
+
+const result=
+
+await api(
+
+"/api/sponsor/tasks/"+id
+
+);
+
+if(!result.success){
+
+showToast(
+
+result.message
+
+);
+
+return;
+
+}
+
+console.log(result.task);
+
+/*
+
+Later
+
+Open View Task Modal
+
+Populate edit form
+
+*/
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
+
+}
+
+/* ===========================
+   DELETE TASK
+=========================== */
+
+async function deleteTask(id){
+
+if(
+
+!confirm(
+
+"Delete this task?"
+
+)
+
+){
+
+return;
+
+}
+
+const result=
+
+await api(
+
+"/api/sponsor/tasks/"+id,
+
+{
+
+method:"DELETE"
+
+}
+
+);
+
+showToast(
+
+result.message
+
+);
+
+loadDashboard();
+
+}
+
+/* ===========================
+   PAUSE TASK
+=========================== */
+
+async function pauseTask(id){
+
+const result=
+
+await api(
+
+"/api/sponsor/tasks/"+id+"/pause",
+
+{
+
+method:"POST"
+
+}
+
+);
+
+showToast(
+
+result.message
+
+);
+
+loadDashboard();
+
+}
+
+/* ===========================
+   RESUME TASK
+=========================== */
+
+async function resumeTask(id){
+
+const result=
+
+await api(
+
+"/api/sponsor/tasks/"+id+"/resume",
+
+{
+
+method:"POST"
+
+}
+
+);
+
+showToast(
+
+result.message
+
+);
+
+loadDashboard();
+
+    }
+
+    /* ===========================
+   PROOF REVIEW MODAL
+=========================== */
+
+let currentProofId = null;
+
+async function openProof(id){
+
+    currentProofId = id;
+
+    try{
+
+        const result =
+        await api(
+
+        "/api/sponsor/proofs/" + id
+
+        );
+
+        if(!result.success){
+
+            showToast(result.message);
+
+            return;
+
+        }
+
+        const proof =
+        result.proof;
+
+        document.getElementById(
+        "proofUser"
+        ).textContent =
+        proof.user_name;
+
+        document.getElementById(
+        "proofTask"
+        ).textContent =
+        proof.task_title;
+
+        document.getElementById(
+        "proofDate"
+        ).textContent =
+        proof.created_at;
+
+        document.getElementById(
+        "proofDescription"
+        ).textContent =
+        proof.description || "-";
+
+        document.getElementById(
+        "proofLink"
+        ).href =
+        proof.proof_link || "#";
+
+        document.getElementById(
+        "proofLink"
+        ).textContent =
+        proof.proof_link || "No Link";
+
+        const image =
+        document.getElementById(
+        "proofImage"
+        );
+
+        if(proof.image){
+
+            image.src = proof.image;
+
+            image.style.display =
+            "block";
+
+        }
+
+        else{
+
+            image.style.display =
+            "none";
+
+        }
+
+        document.getElementById(
+        "proofModal"
+        ).style.display =
+        "flex";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+        "Unable to load proof."
+        );
+
+    }
+
+}
+
+/* ===========================
+   CLOSE MODAL
+=========================== */
+
+function closeProof(){
+
+    document.getElementById(
+    "proofModal"
+    ).style.display =
+    "none";
+
+}
+
+/* ===========================
+   APPROVE PROOF
+=========================== */
+
+async function approveProof(){
+
+    if(!currentProofId) return;
+
+    try{
+
+        const result =
+        await api(
+
+        "/api/sponsor/proofs/approve",
+
+        {
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                proof_id:
+                currentProofId
+
+            })
+
+        }
+
+        );
+
+        showToast(result.message);
+
+        closeProof();
+
+        loadDashboard();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+        "Approval failed."
+        );
+
+    }
+
+}
+
+/* ===========================
+   REJECT PROOF
+=========================== */
+
+async function rejectProof(){
+
+    if(!currentProofId) return;
+
+    const reason =
+
+    document.getElementById(
+    "rejectReason"
+    ).value.trim();
+
+    if(reason===""){
+
+        showToast(
+
+        "Please enter rejection reason."
+
+        );
+
+        return;
+
+    }
+
+    try{
+
+        const result =
+
+        await api(
+
+        "/api/sponsor/proofs/reject",
+
+        {
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                proof_id:
+                currentProofId,
+
+                reason
+
+            })
+
+        }
+
+        );
+
+        showToast(result.message);
+
+        closeProof();
+
+        loadDashboard();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+        "Unable to reject proof."
+        );
+
+    }
+
+}
+
+/* ===========================
+   DELETE PROOF
+=========================== */
+
+async function deleteProof(id){
+
+    if(
+
+    !confirm(
+
+    "Delete this proof?"
+
+    )
+
+    ){
+
+        return;
+
+    }
+
+    try{
+
+        const result =
+
+        await api(
+
+        "/api/sponsor/proofs/"+id,
+
+        {
+
+            method:"DELETE"
+
+        }
+
+        );
+
+        showToast(result.message);
+
+        loadDashboard();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+/* ===========================
+   DOWNLOAD PROOF
+=========================== */
+
+function downloadProof(){
+
+    const link =
+
+    document.getElementById(
+    "proofLink"
+    );
+
+    if(link.href!=="#"){
+
+        window.open(
+
+        link.href,
+
+        "_blank"
+
+        );
+
+    }
+
+  }
+
+    /* ===========================
+   SPONSOR WALLET
+=========================== */
+
+async function addFunds(){
+
+    const amount = Number(
+
+        document.getElementById(
+        "fundAmount"
+        ).value
+
+    );
+
+    if(amount <= 0){
+
+        showToast(
+        "Enter a valid amount."
+        );
+
+        return;
+
+    }
+
+    try{
+
+        const result = await api(
+
+        "/api/sponsor/wallet/add",
+
+        {
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                sponsor_id:sponsor.id,
+
+                amount
+
+            })
+
+        }
+
+        );
+
+        showToast(result.message);
+
+        loadDashboard();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+/* ===========================
+   SUBSCRIPTION
+=========================== */
+
+async function subscribe(plan){
+
+    try{
+
+        const result =
+
+        await api(
+
+        "/api/sponsor/subscription",
+
+        {
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                sponsor_id:sponsor.id,
+
+                plan
+
+            })
+
+        }
+
+        );
+
+        showToast(result.message);
+
+        loadDashboard();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+/* ===========================
+   PAYMENT HISTORY
+=========================== */
+
+async function loadPayments(){
+
+    try{
+
+        const result =
+
+        await api(
+
+        "/api/sponsor/payments"
+
+        );
+
+        if(!result.success) return;
+
+        const table =
+
+        document.getElementById(
+        "paymentTable"
+        );
+
+        if(!table) return;
+
+        table.innerHTML = "";
+
+        result.payments.forEach(item=>{
+
+            table.innerHTML += `
+
+<tr>
+
+<td>${item.created_at}</td>
+
+<td>${item.type}</td>
+
+<td>$${Number(item.amount).toFixed(2)}</td>
+
+<td>${item.status}</td>
+
+</tr>
+
+`;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+/* ===========================
+   TOAST
+=========================== */
+
+function showToast(message){
+
+    const toast =
+
+    document.getElementById(
+    "toast"
+    );
+
+    if(!toast){
+
+        alert(message);
+
+        return;
+
+    }
+
+    toast.textContent = message;
+
+    toast.classList.add(
+    "show"
+    );
+
+    setTimeout(()=>{
+
+        toast.classList.remove(
+        "show"
+        );
+
+    },3000);
+
+}
+
+/* ===========================
+   LOGOUT
+=========================== */
+
+function logout(){
+
+    if(!confirm(
+
+    "Logout?"
+
+    )) return;
+
+    localStorage.removeItem(
+    "coingrid_sponsor"
+    );
+
+    window.location.href =
+    "../auth/login.html";
+
+}
+
+/* ===========================
+   AUTO REFRESH
+=========================== */
+
+setInterval(()=>{
+
+    loadDashboard();
+
+},30000);
+
+/* ===========================
+   INITIALIZE
+=========================== */
+
+window.addEventListener(
+
+"DOMContentLoaded",
+
+async()=>{
+
+    await loadDashboard();
+
+    await loadPayments();
+
+    const createBtn =
+
+    document.getElementById(
+    "openCreateTask"
+    );
+
+    if(createBtn){
+
+        createBtn.onclick =
+        openCreateTask;
+
+    }
+
+    const logoutBtn =
+
+    document.getElementById(
+    "logoutBtn"
+    );
+
+    if(logoutBtn){
+
+        logoutBtn.onclick =
+        logout;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
