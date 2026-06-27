@@ -1,5 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Profile | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Profile | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="components/sidebar.css">
+  <style>
 
 *{
 margin:0;
@@ -257,7 +261,15 @@ grid-template-columns:1fr;
 }
 
   }
-</style></head><body><div class="container"><div class="profile-header"><div class="avatar" id="profileAvatar">
+</style></head><body>
+  
+  <div id="sidebar-container"></div>
+  
+  <div class="main-content">
+
+<div class="container">
+    
+    <div class="profile-header"><div class="avatar" id="profileAvatar">
 U
 </div>
   
@@ -306,7 +318,9 @@ Loading...
 </div></div>
 <!-- EDIT PROFILE --><!-- ACCOUNT STATS --><!-- SECURITY --><!-- VERIFICATION -->
 </div>
+  </div>
 
+  <script src="components/sidebar.js"></script>
     <script>
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
