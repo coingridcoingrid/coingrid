@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="stylesheet" href="../components/sidebar.css">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Browse Tasks | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><style>
 
 *{
@@ -283,7 +285,20 @@ color:black !important;
 font-weight:700;
 }
 
-</style></head><body><div class="container"><div class="page-header"><div><h1>Browse Tasks</h1><p>
+</style></head><body>
+
+<div id="sidebar-container"></div>
+
+<div class="main-content">
+
+<div class="container">
+  <div class="topbar">
+    <div class="menu-btn" id="menuBtn">
+        ☰
+    </div>
+  </div>
+  
+  <div class="page-header"><div><h1>Browse Tasks</h1><p>
 Find tasks and start earning rewards instantly.
 </p></div></div><!-- SEARCH -->
   <div class="search-section">
@@ -592,4 +607,11 @@ function(){
 
 loadTasks();
 </script>
-</body></html>
+
+<script src="../components/sidebar.js"></script>
+
+</div>
+
+</body>
+
+</html>
