@@ -434,66 +434,288 @@ Continue
 </button></div></div>
 </div>
 <script>
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
 
-/* TIMER */
+const params =
+new URLSearchParams(window.location.search);
 
-let time = 600;
+const taskId =
+params.get("id");
 
-const timer =
-document.getElementById("timer");
+const user =
+JSON.parse(
+localStorage.getItem("coingrid_user")
+);
 
-setInterval(()=>{
+if(!user){
 
-if(time>0){
+alert("Please login first.");
 
-time--;
-
-let min =
-Math.floor(time/60);
-
-let sec =
-time%60;
-
-timer.innerText =
-`${min}:${sec<10?'0':''}${sec}`;
+window.location.href =
+"../auth/login.html";
 
 }
 
-},1000);
+async function loadTask(){
 
-/* PROGRESS */
+try{
 
-let progress = 0;
-
-const fill =
-document.getElementById(
-"progressFill"
+const response =
+await fetch(
+`${API_BASE}/api/task?id=${taskId}`
 );
 
-const text =
-document.getElementById(
-"progressText"
-);
+const data =
+await response.json();
 
-const interval =
-setInterval(()=>{
+if(!data.success){
 
-if(progress<100){
+alert(data.message);
 
-progress += 20;
-
-fill.style.width =
-progress + "%";
-
-text.innerText =
-progress + "% Complete";
+return;
 
 }
 
-},2000);
+const task =
+data.task;
 
+document.getElementById(
+"taskReward"
+).innerText =
+"$"+Number(task.reward).toFixed(2);
 
-  /* IMAGE PREVIEW */
+const difficulty =
+document.getElementById(
+"taskDifficulty"
+);
+
+if(task.reward>=5){
+
+difficulty.className =
+"difficulty hard";
+
+difficulty.innerText =
+"Hard";
+
+}else if(task.reward>=2){
+
+difficulty.className =
+"difficulty medium";
+
+difficulty.innerText =
+"Medium";
+
+}else{
+
+difficulty.className =
+"difficulty easy";
+
+difficulty.innerText =
+"Easy";
+
+}
+
+document.getElementById(
+"taskTitle"
+).innerText =
+task.title;
+
+document.getElementById(
+"taskDescription"
+).innerText =
+task.description;
+
+document.getElementById(
+"taskCategory"
+).innerText =
+task.category;
+
+document.getElementById(
+"taskTime"
+).innerText =
+"10 Min";
+
+document.getElementById(
+"taskSlots"
+).innerText =
+"Unlimited";
+
+document.getElementById(
+"approvalTime"
+).innerText =
+"24 Hours";
+
+const requirements =
+document.getElementById(
+"requirementsList"
+);
+
+requirements.innerHTML="";
+
+[
+"Read all instructions carefully.",
+"Complete the task honestly.",
+"Submit valid proof.",
+"Duplicate submissions are rejected."
+].forEach(item=>{
+
+requirements.innerHTML +=
+`<li>${item}</li>`;
+
+});
+
+const steps =
+document.getElementById(
+"taskSteps"
+);
+
+steps.innerHTML="";
+
+[
+"Click Start Task.",
+"Complete the task.",
+"Upload proof.",
+"Submit for review."
+].forEach((step,index)=>{
+
+steps.innerHTML +=
+
+`<div class="step-item">
+
+<span>${index+1}</span>
+
+<p>${step}</p>
+
+</div>`;
+
+});
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Unable to load task."
+);
+
+}
+
+}
+
+document
+.getElementById(
+"startTaskBtn"
+)
+.addEventListener(
+"click",
+async()=>{
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/api/tasks/start`,
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+user_id:user.id,
+
+task_id:taskId
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+alert(data.message);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+});
+
+document
+.getElementById(
+"submitTaskBtn"
+)
+.addEventListener(
+"click",
+async()=>{
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/api/tasks/submit`,
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+user_id:user.id,
+
+task_id:taskId
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+if(data.success){
+
+document.getElementById(
+"taskStatus"
+).innerHTML =
+"🟠 Under Review";
+
+document.getElementById(
+"successPopup"
+).style.display =
+"flex";
+
+}else{
+
+alert(data.message);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Unable to submit task."
+);
+
+}
+
+});
 
 const proofImage =
 document.getElementById(
@@ -522,56 +744,7 @@ imagePreview.style.display =
 
 }
 
-}
-);
-
-/* SUBMIT TASK */
-
-const submitBtn =
-document.getElementById(
-"submitTaskBtn"
-);
-
-submitBtn.addEventListener(
-"click",
-async()=>{
-
-document.getElementById(
-"taskStatus"
-).innerHTML =
-"🟠 Under Review";
-
-document.getElementById(
-"successPopup"
-).style.display =
-"flex";
-
-/*
-
-Cloudflare Worker API
-
-POST /api/task/submit
-
-const formData =
-new FormData();
-
-formData.append(
-'proof',
-proofImage.files[0]
-);
-
-await fetch(
-'https://api.coingrid.in/task/submit',
-{
-method:'POST',
-body:formData
-}
-);
-
-*/
-
-}
-);
+});
 
 function closePopup(){
 
@@ -580,6 +753,8 @@ document.getElementById(
 ).style.display =
 "none";
 
-  }
+}
+
+loadTask();
 </script>
 </body></html>
