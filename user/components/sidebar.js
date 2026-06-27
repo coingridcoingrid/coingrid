@@ -7,9 +7,12 @@ async function loadSidebar() {
 
     try {
 
-        const response =
-        await fetch("components/sidebar.html");
+        const sidebarPath =
+window.location.pathname.includes("/tasks/")
+    ? "../components/sidebar.html"
+    : "components/sidebar.html";
 
+const response = await fetch(sidebarPath);
         container.innerHTML =
         await response.text();
 
