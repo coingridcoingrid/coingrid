@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<!DOCTYPE html><html lang="en"><head>
+  <link rel="stylesheet" href="components/sidebar.css">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Profile | CoinGrid</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   
@@ -268,7 +270,13 @@ grid-template-columns:1fr;
   <div class="main-content">
 
 <div class="container">
-    
+    <div class="topbar">
+    <div class="menu-btn" id="menuBtn">
+        ☰
+    </div>
+    </div>
+
+  
     <div class="profile-header"><div class="avatar" id="profileAvatar">
 U
 </div>
@@ -413,4 +421,11 @@ async function loadProfile() {
 
 loadProfile();
     </script>
-</body></html>
+
+<script src="components/sidebar.js"></script>
+
+</div>
+
+</body>
+
+</html>
