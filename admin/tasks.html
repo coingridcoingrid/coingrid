@@ -132,7 +132,34 @@ border-radius:12px;
 background:#1e293b;
 color:white;
 }
+.form-group{
+margin-bottom:18px;
+}
 
+.form-group label{
+display:block;
+margin-bottom:8px;
+font-weight:600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+width:100%;
+padding:14px;
+border:none;
+outline:none;
+border-radius:12px;
+background:#1e293b;
+color:#fff;
+
+}
+
+.form-group textarea{
+height:120px;
+resize:none;
+}
 /* TASK LIST */
 
 .tasks-card{
@@ -387,7 +414,82 @@ Manage and review all tasks across CoinGrid.
 type="text"
 placeholder="Search tasks by title, sponsor or ID...">
 
-</div><!-- TASK LIST --><div class="tasks-card">
+</div>
+  
+  <!-- ADD NEW TASK -->
+
+<div class="tasks-card" style="margin-bottom:30px;">
+
+<h2>Add New Task</h2>
+
+<div class="form-group">
+<label>Task Title</label>
+<input type="text" id="taskTitle">
+</div>
+
+<div class="form-group">
+<label>Short Description</label>
+<textarea id="taskDescription"></textarea>
+</div>
+
+<div class="form-group">
+<label>Reward ($)</label>
+<input type="number" id="taskReward" step="0.01">
+</div>
+
+<div class="form-group">
+<label>Category</label>
+<input type="text" id="taskCategory">
+</div>
+
+<div class="form-group">
+<label>Required Pass Level</label>
+<input type="number" id="taskPassLevel" value="1">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+
+<select id="taskStatus">
+
+<option value="active">
+Active
+</option>
+
+<option value="inactive">
+Inactive
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+<input
+type="checkbox"
+id="taskFeatured">
+
+ Featured Task
+
+</label>
+
+</div>
+
+<button
+id="addTaskBtn"
+class="approve-btn"
+style="padding:15px 30px;">
+
+➕ Create Task
+
+</button>
+
+</div>
+  
+  <!-- TASK LIST --><div class="tasks-card">
 
 <h2>Task List</h2>
 
