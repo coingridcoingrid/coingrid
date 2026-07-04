@@ -364,7 +364,10 @@ Manage and review all tasks across CoinGrid.
 <h2 id="totalTasks">0</h2>
 <p>Total Tasks</p>
 </div>
+<!-- TASK STATS -->
 
+<div class="stats-grid">
+  
 <div class="stat-card">
 <h2 id="featuredTasks">0</h2>
 <p>Featured Tasks</p>
@@ -379,7 +382,7 @@ Manage and review all tasks across CoinGrid.
 <h2 id="inactiveTasks">0</h2>
 <p>Inactive Tasks</p>
 </div>
-  
+</div>
   <!-- SEARCH TASKS --><div class="search-card"><input
 type="text"
 placeholder="Search tasks by title, sponsor or ID...">
@@ -393,7 +396,17 @@ placeholder="Search tasks by title, sponsor or ID...">
   
   <script>
 
+const menuBtn =
+document.getElementById("menuBtn");
 
+const sidebar =
+document.getElementById("sidebar");
+
+menuBtn.addEventListener("click",()=>{
+
+sidebar.classList.toggle("active");
+
+});
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
@@ -459,5 +472,6 @@ console.error(error);
 }
 
 }
+    loadTasks();
 </script></body>
   </html>
