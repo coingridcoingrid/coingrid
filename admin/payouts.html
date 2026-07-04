@@ -361,17 +361,19 @@ CoinGrid
 </div><div class="page-header"><h1>Payout Management</h1><p>
 Review and manage user withdrawal requests.
 </p></div><!-- PAYOUT STATS --><div class="stats-grid"><div class="stat-card">
-<h2>1,280</h2>
+<h2 id="totalWithdrawals">0</h2>
 <p>Total Withdrawals</p>
-</div><div class="stat-card">
-<h2>1,050</h2>
+
+<h2 id="approvedWithdrawals">0</h2>
 <p>Approved Payouts</p>
-</div><div class="stat-card">
-<h2>180</h2>
+
+<h2 id="pendingWithdrawals">0</h2>
 <p>Pending Requests</p>
-</div><div class="stat-card">
-<h2>$18,450</h2>
+
+<h2 id="totalPaid">$0</h2>
 <p>Total Paid</p>
+
+  
 </div></div><!-- SEARCH WITHDRAWALS --><div class="search-card"><input
 type="text"
 placeholder="Search withdrawals by user, email or payout ID...">
@@ -379,194 +381,19 @@ placeholder="Search withdrawals by user, email or payout ID...">
 </div><!-- WITHDRAWAL LIST --><div class="payouts-card"><h2>Withdrawal Requests</h2><div class="payout-row header"><div>User</div>
 <div>Method</div>
 <div>Amount</div>
-<div>Status</div></div><div class="payout-row"><div>Rajkumar</div>
-<div>UPI</div>
-<div>$25</div>
-<div class="pending">Pending</div></div><div class="payout-row"><div>John Smith</div>
-<div>PayPal</div>
-<div>$50</div>
-<div class="pending">Pending</div></div><div class="payout-row"><div>Priya</div>
-<div>Bank Transfer</div>
-<div>$100</div>
-<div class="pending">Pending</div></div></div><!-- PART 2  -->
+<div>Status</div></div>
+  
+  
+<div id="payoutList">
+
+  
+</div><!-- PART 2  -->
 <!-- PAYOUT ACTIONS -->
 
-<div class="payouts-card" style="margin-top:30px;">
+<script>
 
-<h2>Payout Review Actions</h2>
-
-<div class="payout-row header">
-
-<div>User</div>
-<div>Amount</div>
-<div>Status</div>
-<div>Actions</div>
-
-</div>
-
-<div class="payout-row">
-
-<div>Rajkumar</div>
-<div>$25</div>
-<div class="pending">Pending</div>
-
-<div class="actions">
-
-<button class="view-btn">
-View
-</button>
-
-<button class="approve-btn">
-Approve
-</button>
-
-<button class="reject-btn">
-Reject
-</button>
-
-</div>
-
-</div>
-
-<div class="payout-row">
-
-<div>John Smith</div>
-<div>$50</div>
-<div class="pending">Pending</div>
-
-<div class="actions">
-
-<button class="view-btn">
-View
-</button>
-
-<button class="approve-btn">
-Approve
-</button>
-
-<button class="reject-btn">
-Reject
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PAYOUT DETAILS POPUP -->
-
-<div
-class="popup-overlay"
-id="payoutPopup">
-
-<div class="popup-box">
-
-<h2 id="popupTitle">
-Withdrawal Details
-</h2>
-
-<p id="popupContent">
-Loading...
-</p>
-
-<button
-class="popup-close"
-onclick="closePopup()">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-
-<!-- PART 3 -->
-<!-- PAYOUT ANALYTICS -->
-
-<div class="analytics-grid">
-
-<div class="analytics-box">
-
-<h2 id="totalPayouts">
-1280
-</h2>
-
-<p>Total Withdrawals</p>
-
-</div>
-
-<div class="analytics-box">
-
-<h2
-id="approvedPayouts"
-class="approved-count">
-
-1050
-
-</h2>
-
-<p>Approved Payouts</p>
-
-</div>
-
-<div class="analytics-box">
-
-<h2
-id="pendingPayouts"
-class="pending-count">
-
-180
-
-</h2>
-
-<p>Pending Requests</p>
-
-</div>
-
-</div>
-
-<!-- PAYOUT ACTIVITY LOGS -->
-
-<div class="activity-card">
-
-<h2>Payout Activity Logs</h2>
-
-<div class="activity-row">
-
-<div>2026-06-24</div>
-<div>Payout Approved</div>
-<div>Rajkumar</div>
-
-</div>
-
-<div class="activity-row">
-
-<div>2026-06-24</div>
-<div>Withdrawal Submitted</div>
-<div>John Smith</div>
-
-</div>
-
-<div class="activity-row">
-
-<div>2026-06-23</div>
-<div>Payout Rejected</div>
-<div>Priya</div>
-
-</div>
-
-<div class="activity-row">
-
-<div>2026-06-23</div>
-<div>Bank Transfer Completed</div>
-<div>David</div>
-
-</div>
-
-</div>
-</div></div><script>
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
 
 const menuBtn =
 document.getElementById("menuBtn");
@@ -580,142 +407,66 @@ sidebar.classList.toggle("active");
 
 });
 
-/* PART 2  */
-
-  const popup =
-document.getElementById(
-"payoutPopup"
-);
-
-const popupTitle =
-document.getElementById(
-"popupTitle"
-);
-
-const popupContent =
-document.getElementById(
-"popupContent"
-);
-
-function closePopup(){
-
-popup.style.display="none";
-
-}
-
-document
-.querySelectorAll(".view-btn")
-.forEach(btn=>{
-
-btn.addEventListener(
-"click",
-()=>{
-
-popupTitle.innerText =
-"Withdrawal Details";
-
-popupContent.innerHTML = `
-User: Rajkumar<br>
-Method: UPI<br>
-Amount: $25<br>
-Account: raj@upi<br>
-Status: Pending Review
-`;
-
-popup.style.display =
-"flex";
-
-});
-
-});
-
-document
-.querySelectorAll(".approve-btn")
-.forEach(btn=>{
-
-btn.addEventListener(
-"click",
-()=>{
-
-alert(
-"Payout approved successfully."
-);
-
-});
-
-});
-
-document
-.querySelectorAll(".reject-btn")
-.forEach(btn=>{
-
-btn.addEventListener(
-"click",
-()=>{
-
-if(confirm(
-"Reject this payout request?"
-)){
-
-alert(
-"Payout rejected successfully."
-);
-
-}
-
-});
-
-});
-
-/* PART 3  */
-/*
-
-Cloudflare Worker APIs
-
-GET /api/admin/payouts
-
-GET /api/admin/payout-logs
-
-PUT /api/admin/payout/{id}/approve
-
-PUT /api/admin/payout/{id}/reject
-
-*/
-
 async function loadPayouts(){
 
 try{
 
-/*
-
 const response =
-await fetch(
-'https://api.coingrid.in/admin/payouts'
-);
+await fetch(`${API_BASE}/api/admin/payouts`);
 
 const data =
 await response.json();
 
-document.getElementById(
-'totalPayouts'
-).innerText =
-data.totalPayouts;
+if(!data.success){
 
-document.getElementById(
-'approvedPayouts'
-).innerText =
-data.approvedPayouts;
+alert(data.message);
 
-document.getElementById(
-'pendingPayouts'
-).innerText =
-data.pendingPayouts;
+return;
 
-*/
+}
 
-console.log(
-'Payouts loaded successfully'
-);
+document.getElementById("totalWithdrawals").textContent =
+data.stats.total_withdrawals;
+
+document.getElementById("approvedWithdrawals").textContent =
+data.stats.approved_withdrawals;
+
+document.getElementById("pendingWithdrawals").textContent =
+data.stats.pending_withdrawals;
+
+document.getElementById("totalPaid").textContent =
+"$" + Number(data.stats.total_paid).toFixed(2);
+
+const payoutList =
+document.getElementById("payoutList");
+
+payoutList.innerHTML = "";
+
+data.payouts.forEach(payout=>{
+
+payoutList.innerHTML += `
+
+<div class="payout-row">
+
+<div>#${payout.account_id}</div>
+
+<div>${payout.method || "-"}</div>
+
+<div>$${Number(payout.amount).toFixed(2)}</div>
+
+<div class="${
+payout.status==="pending"
+? "pending"
+: ""
+}">
+${payout.status}
+</div>
+
+</div>
+
+`;
+
+});
 
 }catch(error){
 
@@ -727,12 +478,9 @@ console.error(error);
 
 loadPayouts();
 
-/* AUTO REFRESH */
+setInterval(loadPayouts,30000);
 
-setInterval(()=>{
+</script>
 
-loadPayouts();
-
-},30000); 
-</script></body>
+</body>
   </html>
