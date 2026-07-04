@@ -530,6 +530,81 @@ sidebar.classList.toggle("active");
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
+    
+
+async function createTask(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/api/admin/tasks`,
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+title:
+document.getElementById("taskTitle").value,
+
+description:
+document.getElementById("taskDescription").value,
+
+reward:Number(
+document.getElementById("taskReward").value
+),
+
+category:
+document.getElementById("taskCategory").value,
+
+required_pass_level:Number(
+document.getElementById("taskPassLevel").value
+),
+
+featured:
+document.getElementById("taskFeatured").checked,
+
+status:
+document.getElementById("taskStatus").value
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+alert(data.message);
+
+if(data.success){
+
+document.getElementById("taskTitle").value="";
+document.getElementById("taskDescription").value="";
+document.getElementById("taskReward").value="";
+document.getElementById("taskCategory").value="";
+document.getElementById("taskPassLevel").value=1;
+document.getElementById("taskFeatured").checked=false;
+document.getElementById("taskStatus").value="active";
+
+loadTasks();
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
 async function loadTasks(){
 
 try{
@@ -593,5 +668,12 @@ console.error(error);
 
 }
     loadTasks();
+
+document
+.getElementById("addTaskBtn")
+.addEventListener(
+"click",
+createTask
+);
 </script></body>
   </html>
