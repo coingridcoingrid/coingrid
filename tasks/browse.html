@@ -456,6 +456,11 @@ async function loadTasks(){
 
 <div class="task-card">
 
+<img
+src="${task.thumbnail || 'assets/images/default-task.webp'}"
+alt="${task.title}"
+style="width:100%;height:180px;object-fit:cover;border-radius:15px;margin-bottom:15px;">
+
 <div class="task-top">
 
 <span class="reward">
@@ -464,47 +469,31 @@ $${Number(task.reward).toFixed(2)}
 
 </span>
 
-<span class="difficulty ${difficulty}">
-
-${difficultyText}
-
-</span>
+${
+task.featured
+? '<span class="difficulty easy">⭐ Featured</span>'
+: `<span class="difficulty easy">Level ${task.required_pass_level}</span>`
+}
 
 </div>
 
-<h3>
+<h3>${task.title}</h3>
 
-${task.title}
-
-</h3>
-
-<p>
-
-${task.description ?? ""}
-
-</p>
+<p>${task.short_description || task.description || ""}</p>
 
 <div class="task-info">
 
-<span>
+<span>📂 ${task.category}</span>
 
-📂 ${task.category}
-
-</span>
-
-<span>
-
-ID #${task.id}
-
-</span>
+<span>⏱ ${task.estimated_minutes} min</span>
 
 </div>
 
 <a
-href="details.html?id=${task.id}"
+href="task-learning.html?id=${task.id}"
 class="task-btn">
 
-Start Task
+Learn & Start
 
 </a>
 
