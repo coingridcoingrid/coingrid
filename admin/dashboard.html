@@ -276,26 +276,27 @@ Administrator
 </div>
 
 <!-- PLATFORM STATS -->
+<!-- PLATFORM STATS -->
 
 <div class="stats-grid">
 
 <div class="stat-card">
-<h2>12,450</h2>
+<h2 id="totalUsers">0</h2>
 <p>Total Users</p>
 </div>
 
 <div class="stat-card">
-<h2>245</h2>
-<p>Total Sponsors</p>
+<h2 id="totalTasks">0</h2>
+<p>Total Tasks</p>
 </div>
 
 <div class="stat-card">
-<h2>3,420</h2>
-<p>Active Tasks</p>
+<h2 id="pendingWithdrawals">0</h2>
+<p>Pending Withdrawals</p>
 </div>
 
 <div class="stat-card">
-<h2>$52,800</h2>
+<h2 id="totalRevenue">$0.00</h2>
 <p>Total Revenue</p>
 </div>
 
@@ -407,14 +408,12 @@ grid-template-columns:1fr;
 
 <!-- QUICK ACTIONS -->
 
+<!-- QUICK ACTIONS -->
+
 <div class="quick-actions">
 
 <a href="/coingrid/admin/users.html" class="action-card">
 👥 Manage Users
-</a>
-
-<a href="/coingrid/admin/sponsors.html" class="action-card">
-🏢 Manage Sponsors
 </a>
 
 <a href="/coingrid/admin/tasks.html" class="action-card">
@@ -427,282 +426,7 @@ grid-template-columns:1fr;
 
 </div>
 
-<!-- DASHBOARD GRID -->
 
-<div class="dashboard-grid">
-
-<!-- RECENT USERS -->
-
-<div class="dashboard-card">
-
-<h2>Recent Users</h2>
-
-<div class="activity-item">
-
-<div>
-<strong>Rajkumar</strong>
-<p>Joined Today</p>
-</div>
-
-<span class="status-active">
-Active
-</span>
-
-</div>
-
-<div class="activity-item">
-
-<div>
-<strong>John Smith</strong>
-<p>Joined Yesterday</p>
-</div>
-
-<span class="status-active">
-Active
-</span>
-
-</div>
-
-<div class="activity-item">
-
-<div>
-<strong>Priya</strong>
-<p>Joined Yesterday</p>
-</div>
-
-<span class="status-active">
-Active
-</span>
-
-</div>
-
-</div>
-
-<!-- RECENT SPONSORS -->
-
-<div class="dashboard-card">
-
-<h2>Recent Sponsors</h2>
-
-<div class="activity-item">
-
-<div>
-<strong>ABC Media</strong>
-<p>New Sponsor</p>
-</div>
-
-<span class="status-pending">
-Review
-</span>
-
-</div>
-
-<div class="activity-item">
-
-<div>
-<strong>Tech Ads Ltd</strong>
-<p>Approved</p>
-</div>
-
-<span class="status-active">
-Approved
-</span>
-
-</div>
-
-<div class="activity-item">
-
-<div>
-<strong>Growth Labs</strong>
-<p>Pending Verification</p>
-</div>
-
-<span class="status-pending">
-Pending
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- RECENT TASKS -->
-
-<div class="dashboard-card full-width">
-
-<h2>Recent Tasks</h2>
-
-<div class="task-row header">
-
-<div>Task</div>
-<div>Sponsor</div>
-<div>Reward</div>
-<div>Status</div>
-
-</div>
-
-<div class="task-row">
-
-<div>App Install Campaign</div>
-<div>ABC Media</div>
-<div>$0.50</div>
-<div class="status-active">Active</div>
-
-</div>
-
-<div class="task-row">
-
-<div>Survey Completion</div>
-<div>Tech Ads Ltd</div>
-<div>$1.00</div>
-<div class="status-pending">Review</div>
-
-</div>
-
-<div class="task-row">
-
-<div>Website Visit</div>
-<div>Growth Labs</div>
-<div>$0.20</div>
-<div class="status-active">Active</div>
-
-</div>
-
-</div>
-
-<!-- PART 3 STARTS HERE -->
-
-  <style>
-
-.analytics-section{
-margin-top:30px;
-}
-
-.analytics-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-}
-
-.analytics-card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-padding:25px;
-border-radius:20px;
-text-align:center;
-backdrop-filter:blur(10px);
-}
-
-.analytics-card h1{
-color:#facc15;
-margin-bottom:10px;
-font-size:32px;
-}
-
-.system-status{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-margin:20px 0;
-}
-
-.status-online{
-background:#22c55e;
-padding:10px 15px;
-border-radius:12px;
-font-weight:700;
-}
-
-@media(max-width:991px){
-
-.analytics-grid{
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-@media(max-width:600px){
-
-.analytics-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-</style>
-
-<!-- PLATFORM ANALYTICS -->
-
-<div class="analytics-section">
-
-<h2 style="margin-bottom:20px;color:#facc15;">
-Platform Analytics
-</h2>
-
-<div class="analytics-grid">
-
-<div class="analytics-card">
-<h1 id="platformRevenue">$52,800</h1>
-<p>Total Revenue</p>
-</div>
-
-<div class="analytics-card">
-<h1 id="totalPayouts">$18,450</h1>
-<p>Total Payouts</p>
-</div>
-
-<div class="analytics-card">
-<h1 id="activeUsers">8,920</h1>
-<p>Active Users</p>
-</div>
-
-<div class="analytics-card">
-<h1 id="activeSponsors">245</h1>
-<p>Active Sponsors</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- SYSTEM STATUS -->
-
-<div class="dashboard-card" style="margin-top:25px;">
-
-<h2>System Status</h2>
-
-<div class="system-status">
-
-<div class="status-online">
-🟢 Cloudflare Workers
-</div>
-
-<div class="status-online">
-🟢 D1 Database
-</div>
-
-<div class="status-online">
-🟢 Authentication
-</div>
-
-<div class="status-online">
-🟢 Payment System
-</div>
-
-</div>
-
-<p>
-All CoinGrid services are operating normally.
-</p>
-
-</div>
-
-</div>
-<!-- END MAIN CONTENT -->
-
-</div>
-<!-- END DASHBOARD -->
 
 <script>
 
@@ -728,49 +452,44 @@ GET /api/admin/system-status
 
 */
 
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
 async function loadAdminDashboard(){
 
 try{
 
-/*
-
 const response =
-await fetch(
-'https://api.coingrid.in/admin/dashboard'
-);
+await fetch(`${API_BASE}/api/admin/dashboard`);
 
 const data =
 await response.json();
 
-document.getElementById(
-'platformRevenue'
-).innerText =
-'$' + data.revenue;
+if(!data.success){
 
-document.getElementById(
-'totalPayouts'
-).innerText =
-'$' + data.payouts;
+alert(data.message);
 
-document.getElementById(
-'activeUsers'
-).innerText =
-data.users;
+return;
 
-document.getElementById(
-'activeSponsors'
-).innerText =
-data.sponsors;
+}
 
-*/
+document.getElementById("totalUsers").textContent =
+data.stats.total_users;
 
-console.log(
-'Admin dashboard loaded'
-);
+document.getElementById("totalTasks").textContent =
+data.stats.total_tasks;
+
+document.getElementById("pendingWithdrawals").textContent =
+data.stats.pending_withdrawals;
+
+document.getElementById("totalRevenue").textContent =
+"$" + Number(data.stats.total_revenue).toFixed(2);
 
 }catch(error){
 
 console.error(error);
+
+alert("Unable to load dashboard.");
 
 }
 
