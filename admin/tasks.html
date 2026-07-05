@@ -447,6 +447,21 @@ placeholder="Search tasks by title, sponsor or ID...">
 <input type="number" id="taskPassLevel" value="1">
 </div>
 
+  <div class="form-group">
+
+<label>
+
+Task Redirect URL
+
+</label>
+
+<input
+type="url"
+id="taskRedirectUrl"
+placeholder="https://example.com/task-page">
+
+  </div>
+  
 <div class="form-group">
 <label>Status</label>
 
@@ -570,7 +585,10 @@ featured:
 document.getElementById("taskFeatured").checked,
 
 status:
-document.getElementById("taskStatus").value
+document.getElementById("taskStatus").value,
+
+  redirect_url:
+document.getElementById("taskRedirectUrl").value
 
 })
 
