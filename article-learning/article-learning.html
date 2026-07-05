@@ -536,6 +536,170 @@ line-height:1.9;
 margin-bottom:0;
 
 }
+  /* =======================================
+   PARTS 2-5 ADDITIONAL CSS
+======================================= */
+
+.progress-section{
+width:min(1100px,92%);
+margin:auto;
+padding:70px 0 100px;
+text-align:center;
+}
+
+.progress-section h2{
+font-size:38px;
+color:#facc15;
+margin-bottom:25px;
+}
+
+.progress-section p{
+font-size:18px;
+color:#cbd5e1;
+margin-top:20px;
+}
+
+.progress-bar{
+width:100%;
+height:18px;
+background:#1e293b;
+border-radius:50px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.progress-fill{
+height:100%;
+width:0;
+background:linear-gradient(
+90deg,
+#facc15,
+#f59e0b
+);
+border-radius:50px;
+transition:width 1s ease;
+}
+
+strong{
+color:#facc15;
+}
+
+.learn-card p,
+.stat-card p{
+margin-top:12px;
+line-height:1.8;
+font-size:16px;
+color:#cbd5e1;
+}
+
+.notice-card ul{
+padding-left:25px;
+margin-top:20px;
+}
+
+.notice-card li{
+margin-bottom:12px;
+color:#d1d5db;
+}
+
+.hero-buttons{
+margin-top:35px;
+}
+
+section{
+scroll-margin-top:60px;
+}
+
+/* Smooth fade animation */
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(50px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* Mobile */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:42px;
+}
+
+.section-title h2{
+font-size:34px;
+}
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.learning-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:70px 20px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero-description{
+font-size:17px;
+}
+
+.section-title h2{
+font-size:30px;
+}
+
+.notice-card{
+padding:30px;
+}
+
+.progress-section h2{
+font-size:30px;
+}
+
+}
+
+@media(max-width:500px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+width:100%;
+}
+
+.learn-card{
+font-size:16px;
+}
+
+.notice-card h2{
+font-size:28px;
+}
+
+}
   
 </style>
 
