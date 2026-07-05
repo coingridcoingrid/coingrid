@@ -599,7 +599,10 @@ status:
 document.getElementById("taskStatus").value,
 
   redirect_url:
-document.getElementById("taskRedirectUrl").value
+document.getElementById("taskRedirectUrl").value,
+
+  thumbnail:
+document.getElementById("taskThumbnail").value,
 
 })
 
@@ -621,7 +624,8 @@ document.getElementById("taskCategory").value="";
 document.getElementById("taskPassLevel").value=1;
 document.getElementById("taskFeatured").checked=false;
 document.getElementById("taskStatus").value="active";
-
+  document.getElementById("taskThumbnail").value="";
+document.getElementById("taskRedirectUrl").value="";
 loadTasks();
 
 }
