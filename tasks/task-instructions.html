@@ -899,6 +899,78 @@ font-size:38px;
 }
 
   }
+  /* ===========================================
+   TASK SUBMISSION FORM
+=========================================== */
+
+.form-group{
+
+display:flex;
+
+flex-direction:column;
+
+margin-top:25px;
+
+}
+
+.form-group label{
+
+font-size:16px;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+color:#facc15;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+width:100%;
+
+padding:16px 18px;
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,.12);
+
+background:rgba(255,255,255,.05);
+
+color:#fff;
+
+font-size:16px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+color:#94a3b8;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+border-color:#facc15;
+
+box-shadow:0 0 0 3px rgba(250,204,21,.15);
+
+}
+
+.form-group textarea{
+
+resize:vertical;
+
+min-height:140px;
+
+}
   </style>
 
 </head>
@@ -3635,23 +3707,81 @@ If your article is approved, published and generates eligible revenue, your earn
 
 </div>
 
-<div class="hero-buttons" style="margin-top:35px;">
+<!-- ========================================= -->
+<!-- SUBMISSION FORM -->
+<!-- ========================================= -->
+
+<div class="summary-card">
+
+<h2>
+
+📤 Submit Your Task
+
+</h2>
+
+<p>
+
+Paste the Google Drive folder link containing your ZIP project below. Make sure the folder access is set to <strong>Anyone with the link</strong> before submitting.
+
+</p>
+
+<form id="taskSubmissionForm">
+
+<div class="form-group">
+
+<label for="taskUrl">
+
+Google Drive ZIP Folder URL
+
+</label>
+
+<input
+type="url"
+id="taskUrl"
+name="taskUrl"
+placeholder="Paste your task ZIP Google Drive folder URL here..."
+required>
+
+</div>
+
+<div class="form-group">
+
+<label for="creatorNote">
+
+Additional Notes (Optional)
+
+</label>
+
+<textarea
+id="creatorNote"
+name="creatorNote"
+rows="5"
+placeholder="Add any notes for the review team..."></textarea>
+
+</div>
+
+<div class="hero-buttons">
 
 <button
-class="secondary-btn"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
+type="reset"
+class="secondary-btn">
 
-Review Instructions
+Reset
 
 </button>
 
 <button
+type="submit"
 class="primary-btn"
 id="submitTaskBtn">
 
-📤 Go To Submission Form
+📤 Submit Task
 
 </button>
+
+</div>
+
+</form>
 
 </div>
 
