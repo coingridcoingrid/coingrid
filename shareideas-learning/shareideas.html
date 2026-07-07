@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+CoinGrid Academy |
+Innovation Research Masterclass
+
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#020617;
+color:#fff;
+overflow-x:hidden;
+line-height:1.7;
+
+}
+
+/* HERO */
+
+.hero{
+
+position:relative;
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:80px 20px;
+
+background:
+
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b
+);
+
+overflow:hidden;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+background:
+
+radial-gradient(
+circle,
+rgba(250,204,21,.18),
+transparent 70%
+);
+
+top:-250px;
+right:-200px;
+
+filter:blur(20px);
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+background:
+
+radial-gradient(
+circle,
+rgba(59,130,246,.15),
+transparent 70%
+);
+
+left:-180px;
+bottom:-180px;
+
+filter:blur(20px);
+
+}
+
+.hero-overlay{
+
+position:absolute;
+inset:0;
+
+background:
+
+rgba(0,0,0,.25);
+
+backdrop-filter:
+
+blur(2px);
+
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:5;
+
+max-width:900px;
+
+text-align:center;
+
+animation:
+
+fadeUp 1s ease;
+
+}
+
+.course-tag{
+
+display:inline-block;
+
+padding:
+
+10px 22px;
+
+border-radius:50px;
+
+background:
+
+rgba(250,204,21,.12);
+
+border:
+
+1px solid rgba(250,204,21,.35);
+
+color:#facc15;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+letter-spacing:.5px;
+
+}
+
+.hero h1{
+
+font-size:56px;
+
+font-weight:800;
+
+line-height:1.2;
+
+margin-bottom:25px;
+
+}
+
+.hero-description{
+
+max-width:760px;
+
+margin:auto;
+
+font-size:19px;
+
+color:#cbd5e1;
+
+margin-bottom:45px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+padding:
+
+16px 34px;
+
+border:none;
+
+border-radius:12px;
+
+background:#facc15;
+
+color:#000;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:
+
+0 15px 40px rgba(250,204,21,.25);
+
+}
+
+.primary-btn:hover{
+
+transform:
+
+translateY(-4px);
+
+box-shadow:
+
+0 25px 50px rgba(250,204,21,.35);
+
+}
+
+.secondary-btn{
+
+padding:
+
+16px 34px;
+
+background:transparent;
+
+color:#fff;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+border-radius:12px;
+
+border:
+
+1px solid rgba(255,255,255,.15);
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:
+
+rgba(255,255,255,.08);
+
+transform:
+
+translateY(-4px);
+
+}
+
+/* SECTIONS */
+
+.course-section{
+
+width:min(1200px,92%);
+
+margin:auto;
+
+padding:90px 0;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+color:#facc15;
+
+}
+
+.section-title p{
+
+color:#94a3b8;
+
+font-size:18px;
+
+}
+
+/* STATS */
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:
+
+rgba(255,255,255,.05);
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+padding:35px 25px;
+
+text-align:center;
+
+transition:.35s;
+
+backdrop-filter:
+
+blur(18px);
+
+}
+
+.stat-card:hover{
+
+transform:
+
+translateY(-8px);
+
+border-color:
+
+rgba(250,204,21,.35);
+
+box-shadow:
+
+0 20px 45px rgba(0,0,0,.35);
+
+}
+
+.icon{
+
+font-size:45px;
+
+margin-bottom:18px;
+
+}
+
+.stat-card h3{
+
+font-size:28px;
+
+color:#facc15;
+
+margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+color:#94a3b8;
+
+font-size:15px;
+
+}
+
+/* WHAT YOU WILL LEARN */
+
+.learning-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:22px;
+
+}
+
+.learn-card{
+
+background:
+rgba(255,255,255,.05);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+padding:24px;
+
+border-radius:18px;
+
+font-size:18px;
+
+font-weight:600;
+
+color:#e2e8f0;
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.learn-card::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+top:0;
+
+width:5px;
+height:100%;
+
+background:#facc15;
+
+}
+
+.learn-card:hover{
+
+transform:
+translateY(-6px);
+
+border-color:
+rgba(250,204,21,.35);
+
+background:
+rgba(250,204,21,.06);
+
+box-shadow:
+0 15px 35px rgba(0,0,0,.35);
+
+}
+
+/* NOTICE */
+
+.notice-section{
+
+width:min(1100px,92%);
+
+margin:auto;
+
+padding:20px 0 90px;
+
+}
+
+.notice-card{
+
+background:
+linear-gradient(
+135deg,
+rgba(250,204,21,.10),
+rgba(255,255,255,.05)
+);
+
+border:
+1px solid rgba(250,204,21,.25);
+
+padding:45px;
+
+border-radius:24px;
+
+backdrop-filter:blur(15px);
+
+}
+
+.notice-card h2{
+
+color:#facc15;
+
+font-size:34px;
+
+margin-bottom:25px;
+
+}
+
+.notice-card p{
+
+font-size:18px;
+
+color:#d1d5db;
+
+margin-bottom:18px;
+
+line-height:1.9;
+
+}
+
+/* Progress */
+
+.progress-section{
+
+width:min(1100px,92%);
+margin:auto;
+padding:70px 0 100px;
+text-align:center;
+
+}
+
+.progress-bar{
+
+width:100%;
+height:18px;
+background:#1e293b;
+border-radius:50px;
+overflow:hidden;
+
+}
+
+.progress-fill{
+
+height:100%;
+width:8%;
+background:linear-gradient(
+90deg,
+#facc15,
+#f59e0b
+);
+
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:42px;
+}
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.learning-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.hero-description{
+font-size:17px;
+}
+
+.section-title h2{
+font-size:30px;
+}
+
+.notice-card{
+padding:30px;
+}
+
+}
+
+@media(max-width:500px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+width:100%;
+}
+
+}
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<div class="course-tag">
+
+💡 CoinGrid Innovation Academy
+
+</div>
+
+<h1>
+
+Discover New Online Earning Ideas That Don't Already Exist
+
+</h1>
+
+<p class="hero-description">
+
+This learning course teaches you how to think creatively, research existing online earning methods, identify market gaps, and develop completely new, realistic earning concepts. Your final submission is a professional idea document—not a webpage or application.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+id="startLearning">
+
+Start Learning →
+
+</button>
+
+<button
+class="secondary-btn">
+
+Preview Course
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE INFORMATION -->
+
+<section class="course-section">
+
+<div class="section-title">
+
+<h2>
+
+Innovation Research Masterclass
+
+</h2>
+
+<p>
+
+Learn how successful entrepreneurs identify opportunities before anyone else.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">⏱</div>
+
+<h3>20 Minutes</h3>
+
+<p>Estimated Learning Time</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">📄</div>
+
+<h3>Document</h3>
+
+<p>Submission Format</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">💡</div>
+
+<h3>Creative</h3>
+
+<p>Innovation Challenge</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🏆</div>
+
+<h3>Unique Ideas</h3>
+
+<p>Highest Priority</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WHAT YOU WILL LEARN -->
+
+<section class="course-section">
+
+<div class="section-title">
+
+<h2>
+
+What You Will Learn
+
+</h2>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learn-card">
+
+✔ Identify real-world problems people face online.
+
+</div>
+
+<div class="learn-card">
+
+✔ Generate original online earning concepts.
+
+</div>
+
+<div class="learn-card">
+
+✔ Research whether an idea already exists.
+
+</div>
+
+<div class="learn-card">
+
+✔ Validate your concept using AI and search engines.
+
+</div>
+
+<div class="learn-card">
+
+✔ Think like an entrepreneur instead of copying others.
+
+</div>
+
+<div class="learn-card">
+
+✔ Write a professional innovation proposal.
+
+</div>
+
+<div class="learn-card">
+
+✔ Explain how your idea would work.
+
+</div>
+
+<div class="learn-card">
+
+✔ Avoid impossible or misleading earning methods.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IMPORTANT NOTICE -->
+
+<section class="notice-section">
+
+<div class="notice-card">
+
+<h2>
+
+⚠ Important Before You Continue
+
+</h2>
+
+<p>
+
+This is not a website development task.
+
+</p>
+
+<p>
+
+You are not expected to build an application, webpage, or software prototype.
+
+</p>
+
+<p>
+
+Instead, your goal is to create a professional document describing one or more unique online earning ideas that are practical, useful, and not already available.
+
+</p>
+
+<p>
+
+Before submitting any idea, research whether similar services already exist using Google, AI assistants, technology blogs, startup directories, and online communities.
+
+</p>
+
+<p>
+
+Ideas that simply copy existing platforms or promise unrealistic income are unlikely to be accepted.
+
+</p>
+
+<p>
+
+Focus on innovation, usefulness, feasibility, and long-term value for users.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- COURSE PROGRESS -->
+
+<section class="progress-section">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<div class="progress-bar">
+
+<div class="progress-fill"></div>
+
+</div>
+
+<p>
+
+Part 1 of 5
+
+</p>
+
+</section>
+
+<script>
+
+document
+.getElementById("startLearning")
+.addEventListener("click",()=>{
+
+window.location.href="part2.html";
+
+});
+
+document
+.querySelector(".secondary-btn")
+.addEventListener("click",()=>{
+
+alert(
+
+`Innovation Research Masterclass
+
+• Learn creative thinking
+• Research existing solutions
+• Validate your ideas
+• Create original concepts
+• Submit a professional proposal
+
+Estimated Time:
+20 Minutes`
+
+);
+
+});
+
+</script>
+
+</body>
+
+</html>
