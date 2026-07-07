@@ -341,7 +341,149 @@ transform:translateY(0);
 }
 
 }
+/* =======================================
+   SUBMISSION FORM
+======================================= */
 
+.notice-card{
+
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:40px;
+backdrop-filter:blur(16px);
+
+}
+
+.notice-card h2{
+
+color:#facc15;
+margin-bottom:20px;
+font-size:30px;
+
+}
+
+.notice-card p{
+
+color:#cbd5e1;
+margin-bottom:14px;
+line-height:1.8;
+
+}
+
+.form-group{
+
+margin-bottom:25px;
+
+}
+
+.form-group label{
+
+display:block;
+margin-bottom:10px;
+font-size:16px;
+font-weight:600;
+color:#ffffff;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+width:100%;
+padding:16px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.08);
+background:#0f172a;
+color:#ffffff;
+font-size:15px;
+outline:none;
+transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+border-color:#facc15;
+box-shadow:0 0 0 4px rgba(250,204,21,.12);
+
+}
+
+.form-group textarea{
+
+min-height:180px;
+resize:vertical;
+
+}
+
+.form-group input[type="file"]{
+
+padding:18px;
+background:#111827;
+cursor:pointer;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+color:#94a3b8;
+
+}
+
+.submit-box{
+
+margin-top:35px;
+text-align:center;
+
+}
+
+.submit-btn{
+
+background:#facc15;
+color:#000;
+padding:18px 42px;
+border:none;
+border-radius:14px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+transform:translateY(-4px);
+box-shadow:0 20px 40px rgba(250,204,21,.35);
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.notice-card{
+
+padding:25px;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+padding:14px;
+
+}
+
+.submit-btn{
+
+width:100%;
+
+}
+
+}
 </style>
 
 </head>
