@@ -1665,142 +1665,9 @@ style="display:none;">
 <!-- ====================================== -->
   <!-- TASK BUTTON SCRIPT -->
 
-<script>
-
-const timer =
-document.getElementById("timer");
-
-const countdownBox =
-document.getElementById("countdownBox");
-
-const startTaskBtn =
-document.getElementById("startTaskBtn");
-
-let seconds = 10;
-
-const countdown =
-setInterval(()=>{
-
-timer.textContent = seconds;
-
-seconds--;
-
-if(seconds < 0){
-
-clearInterval(countdown);
-
-countdownBox.innerHTML = `
-
-<h2>
-
-✅ Learning Completed
-
-</h2>
-
-<p>
-
-Congratulations!
-
-You have successfully completed the CoinGrid Innovation Learning Program.
-
-</p>
-
-<p>
-
-You may now continue to the Share Ideas task.
-
-</p>
-
-`;
-
-startTaskBtn.style.display="inline-block";
-
-}
-
-},1000);
-
-</script>
-
-<!-- START TASK BUTTON -->
-
-<script>
-
-startTaskBtn.addEventListener(
-
-"click",
-
-()=>{
-
-window.location.href =
-"share-ideas.html";
-
-}
-
-);
-
-</script>
-
-<!-- OPTIONAL SCROLL ANIMATION -->
-
-<script>
-
-const observer =
-
-new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.animate([
-
-{
-
-opacity:0,
-
-transform:"translateY(40px)"
 
 },
 
-{
-
-opacity:1,
-
-transform:"translateY(0)"
-
-}
-
-],{
-
-duration:700,
-
-fill:"forwards"
-
-});
-
-}
-
-});
-
-});
-
-document
-
-.querySelectorAll(
-
-".stat-card,.learn-card,.notice-card"
-
-)
-
-.forEach(card=>{
-
-card.style.opacity=0;
-
-observer.observe(card);
-
-});
-
-</script>
 
 <!-- FOOTER -->
 
@@ -1859,7 +1726,191 @@ font-size:15px;
 </div>
 
 </footer>
+<script>
+// ===========================
+// CoinGrid Learning Page JS
+// ===========================
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Countdown Elements
+    const timer = document.getElementById("timer");
+    const countdownBox = document.getElementById("countdownBox");
+    const startTaskBtn = document.getElementById("startTaskBtn");
+
+    // Change this to your actual task page
+    const TASK_URL = "share-ideas.html";
+
+    // Hide button initially
+    if (startTaskBtn) {
+        startTaskBtn.style.display = "none";
+    }
+
+    // --------------------------
+    // Countdown
+    // --------------------------
+
+    let seconds = 10;
+
+    if (timer) {
+
+        timer.textContent = seconds;
+
+        const countdown = setInterval(() => {
+
+            seconds--;
+
+            timer.textContent = seconds;
+
+            if (seconds <= 0) {
+
+                clearInterval(countdown);
+
+                if (countdownBox) {
+
+                    countdownBox.innerHTML = `
+                        <h2>✅ Learning Completed</h2>
+
+                        <p>
+                        Congratulations!
+                        </p>
+
+                        <p>
+                        You can now continue to the Share Ideas task.
+                        </p>
+                    `;
+
+                }
+
+                if (startTaskBtn) {
+
+                    startTaskBtn.style.display = "inline-block";
+
+                    startTaskBtn.style.animation =
+                    "fadeInUp .6s ease forwards";
+
+                }
+
+            }
+
+        },1000);
+
+    }
+
+    // --------------------------
+    // Button Click
+    // --------------------------
+
+    if(startTaskBtn){
+
+        startTaskBtn.addEventListener("click",()=>{
+
+            window.location.href = TASK_URL;
+
+        });
+
+    }
+
+    // --------------------------
+    // Scroll Animation
+    // --------------------------
+
+    const observer = new IntersectionObserver((entries)=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.style.opacity="1";
+
+                entry.target.style.transform="translateY(0)";
+
+            }
+
+        });
+
+    },{
+        threshold:0.15
+    });
+
+    document.querySelectorAll(
+
+        ".stat-card,.learn-card,.notice-card"
+
+    ).forEach(card=>{
+
+        card.style.opacity="0";
+
+        card.style.transform="translateY(40px)";
+
+        card.style.transition="all .7s ease";
+
+        observer.observe(card);
+
+    });
+
+    // --------------------------
+    // Smooth Scroll Buttons
+    // --------------------------
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+
+        anchor.addEventListener("click",function(e){
+
+            e.preventDefault();
+
+            const target =
+            document.querySelector(this.getAttribute("href"));
+
+            if(target){
+
+                target.scrollIntoView({
+
+                    behavior:"smooth"
+
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+// ===========================
+// Fade Animation
+// ===========================
+
+const style = document.createElement("style");
+
+style.innerHTML = `
+
+@keyframes fadeInUp{
+
+0%{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+`;
+
+document.head.appendChild(style);
+
+</script>
 </body>
 
 </html>
