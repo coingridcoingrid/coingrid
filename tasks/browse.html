@@ -524,6 +524,9 @@ Learn & Start
 
         });
 
+      document.getElementById("pageNumber").textContent =
+`Page ${currentPage}`;
+
     }catch(error){
 
         console.error(error);
@@ -612,18 +615,7 @@ function(){
     }
 
     loadTasks();
-  document.getElementById("pageNumber").textContent =
-`Page ${currentPage}`;
-
-  document.getElementById("prevBtn").onclick = () => {
-
-if(currentPage > 1){
-
-currentPage--;
-
-loadTasks();
-
-}
+  
 
 };
 
@@ -640,6 +632,28 @@ loadTasks();
 });
 currentPage = 1;
 loadTasks();
+  document.getElementById("pageNumber").textContent =
+`Page ${currentPage}`;
+
+document.getElementById("prevBtn").onclick = () => {
+
+if(currentPage > 1){
+
+currentPage--;
+
+loadTasks();
+
+}
+
+};
+
+document.getElementById("nextBtn").onclick = () => {
+
+currentPage++;
+
+loadTasks();
+
+};
 </script>
 
 <script src="components/sidebar.js"></script>
