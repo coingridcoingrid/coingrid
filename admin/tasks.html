@@ -556,87 +556,111 @@ sidebar.classList.toggle("active");
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
-    
+    let editingTaskId = null;
 
 async function createTask(){
 
-try{
+const body={
 
-const response =
-await fetch(
+title:taskTitle.value,
+description:taskDescription.value,
+reward:Number(taskReward.value),
+category:taskCategory.value,
+required_pass_level:Number(taskPassLevel.value),
+featured:taskFeatured.checked,
+status:taskStatus.value,
+redirect_url:taskRedirectUrl.value,
+thumbnail:taskThumbnail.value
+
+};
+
+if(editingTaskId){
+body.id=editingTaskId;
+}
+
+const response=await fetch(
 `${API_BASE}/api/admin/tasks`,
 {
-
-method:"POST",
-
+method:editingTaskId?"PUT":"POST",
 headers:{
 "Content-Type":"application/json"
 },
-
-body:JSON.stringify({
-
-title:
-document.getElementById("taskTitle").value,
-
-description:
-document.getElementById("taskDescription").value,
-
-reward:Number(
-document.getElementById("taskReward").value
-),
-
-category:
-document.getElementById("taskCategory").value,
-
-required_pass_level:Number(
-document.getElementById("taskPassLevel").value
-),
-
-featured:
-document.getElementById("taskFeatured").checked,
-
-status:
-document.getElementById("taskStatus").value,
-
-  redirect_url:
-document.getElementById("taskRedirectUrl").value,
-
-  thumbnail:
-document.getElementById("taskThumbnail").value,
-
-})
-
+body:JSON.stringify(body)
 }
-
 );
 
-const data =
-await response.json();
+const data=await response.json();
 
 alert(data.message);
 
 if(data.success){
 
-document.getElementById("taskTitle").value="";
-document.getElementById("taskDescription").value="";
-document.getElementById("taskReward").value="";
-document.getElementById("taskCategory").value="";
-document.getElementById("taskPassLevel").value=1;
-document.getElementById("taskFeatured").checked=false;
-document.getElementById("taskStatus").value="active";
-  document.getElementById("taskThumbnail").value="";
-document.getElementById("taskRedirectUrl").value="";
+editingTaskId=null;
+
+document.getElementById("addTaskBtn").innerHTML="➕ Create Task";
+
+taskTitle.value="";
+taskDescription.value="";
+taskReward.value="";
+taskCategory.value="";
+taskPassLevel.value=1;
+taskFeatured.checked=false;
+taskStatus.value="active";
+taskThumbnail.value="";
+taskRedirectUrl.value="";
+
 loadTasks();
 
 }
 
-}catch(error){
-
-console.error(error);
-
 }
+    async function editTask(id){
 
+const response=await fetch(`${API_BASE}/api/admin/tasks`);
+
+const data=await response.json();
+
+const task=data.tasks.find(t=>t.id===id);
+
+if(!task)return;
+
+editingTaskId=id;
+
+taskTitle.value=task.title;
+taskDescription.value=task.description;
+taskReward.value=task.reward;
+taskCategory.value=task.category;
+taskPassLevel.value=task.required_pass_level;
+taskFeatured.checked=task.featured;
+taskStatus.value=task.status;
+taskThumbnail.value=task.thumbnail;
+taskRedirectUrl.value=task.redirect_url;
+
+document.getElementById("addTaskBtn").innerHTML="💾 Save Changes";
+
+    }
+    async function deleteTask(id){
+
+if(!confirm("Delete this task?")) return;
+
+const response=await fetch(
+`${API_BASE}/api/admin/tasks`,
+{
+method:"DELETE",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({id})
 }
+);
+
+const data=await response.json();
+
+alert(data.message);
+
+loadTasks();
+
+    }
 
 async function loadTasks(){
 
@@ -685,7 +709,26 @@ taskList.innerHTML += `
 
 <div>$${Number(task.reward).toFixed(2)}</div>
 
-<div>${task.status}</div>
+<div>
+${task.status}
+
+<div class="actions">
+
+<button
+class="view-btn"
+onclick="editTask(${task.id})">
+✏ Edit
+</button>
+
+<button
+class="reject-btn"
+onclick="deleteTask(${task.id})">
+🗑 Delete
+</button>
+
+</div>
+
+</div>
 
 </div>
 
