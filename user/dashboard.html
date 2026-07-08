@@ -422,29 +422,31 @@ const API_BASE = "https://coingrid-api.coingridcoingrid.workers.dev";
 
 async function loadDashboard() {
 
-    const user = JSON.parse(localStorage.getItem("coingrid_user"));
+    
 
-if (!user || !user.id) {
+    try {
 
-    alert("User not logged in.");
+        const response = await fetch(
+`${API_BASE}/api/dashboard`,
+{
+    credentials: "include"
+}
+);
 
-    window.location.href = "../auth/login.html";
+        if (response.status === 401) {
+
+    window.location.href =
+    "../auth/login.html";
 
     return;
 
 }
 
-const userId = user.id;
+if (!response.ok) {
 
-    try {
+    throw new Error("Failed to load dashboard");
 
-        const response = await fetch(
-            `${API_BASE}/api/dashboard?user_id=${userId}`
-        );
-
-        if (!response.ok) {
-            throw new Error("Failed to load dashboard");
-        }
+}
 
         const data = await response.json();
 
