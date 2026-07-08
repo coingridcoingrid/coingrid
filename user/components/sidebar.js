@@ -122,3 +122,28 @@ document.addEventListener(
 "DOMContentLoaded",
 loadSidebar
 );
+
+async function logout(){
+
+    try{
+
+        await fetch(
+            "https://coingrid-api.coingridcoingrid.workers.dev/auth/logout",
+            {
+                method:"POST",
+                credentials:"include"
+            }
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+    localStorage.removeItem("coingrid_email");
+
+    window.location.href =
+    "../auth/login.html";
+
+}
