@@ -381,7 +381,21 @@ id="taskGrid">
 
   </div>
   
-  
+  <div class="pagination">
+
+<button id="prevBtn">
+⬅ Previous
+</button>
+
+<span id="pageNumber">
+Page 1
+</span>
+
+<button id="nextBtn">
+Next ➜
+</button>
+
+  </div>
   <!-- PAGINATION -->
   
 </div>
@@ -394,13 +408,13 @@ let currentCategory = "All";
 let currentSearch = "";
 
 let currentSort = "newest";
-
+let currentPage = 1;
 async function loadTasks(){
 
     try{
 
         const url =
-        `${API_BASE}/api/tasks?category=${encodeURIComponent(currentCategory)}&search=${encodeURIComponent(currentSearch)}&sort=${currentSort}`;
+`${API_BASE}/api/tasks?category=${encodeURIComponent(currentCategory)}&search=${encodeURIComponent(currentSearch)}&sort=${currentSort}&page=${currentPage}`;
 
         const response =
         await fetch(url);
@@ -598,9 +612,33 @@ function(){
     }
 
     loadTasks();
+  document.getElementById("pageNumber").textContent =
+`Page ${currentPage}`;
 
+  document.getElementById("prevBtn").onclick = () => {
+
+if(currentPage > 1){
+
+currentPage--;
+
+loadTasks();
+
+}
+
+};
+
+
+  document.getElementById("nextBtn").onclick = () => {
+
+currentPage++;
+
+loadTasks();
+
+};
+
+  
 });
-
+currentPage = 1;
 loadTasks();
 </script>
 
