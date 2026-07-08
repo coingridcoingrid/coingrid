@@ -914,9 +914,13 @@ const response = await fetch(
 "https://coingrid-api.coingridcoingrid.workers.dev/auth/register",
 {
 method:"POST",
+
+credentials:"include",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body:JSON.stringify({
 name,
 email,
@@ -935,10 +939,7 @@ loading.style.display="none";
 
 if(data.success){
 
-localStorage.setItem(
-"coingrid_user",
-JSON.stringify(data.user)
-);
+
 
 document.getElementById(
 "successPopup"
@@ -1028,9 +1029,13 @@ await fetch(
 "https://coingrid-api.coingridcoingrid.workers.dev/auth/google",
 {
 method:"POST",
+
+credentials:"include",
+
 headers:{
 "Content-Type":"application/json"
 },
+
 body: JSON.stringify({
     token: response.credential,
     role: selectedRole.value
@@ -1043,10 +1048,7 @@ await apiResponse.json();
 
 if(data.success){
 
-localStorage.setItem(
-"coingrid_user",
-JSON.stringify(data.user)
-);
+
 
 if(data.role==="worker"){
 
