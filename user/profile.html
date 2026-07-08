@@ -335,24 +335,25 @@ const API_BASE =
 
 async function loadProfile() {
 
-    const user = JSON.parse(
-        localStorage.getItem("coingrid_user")
-    );
-
-    if (!user || !user.id) {
-
-        window.location.href =
-        "../auth/login.html";
-
-        return;
-
-    }
+    
 
     try {
 
         const response = await fetch(
-            `${API_BASE}/api/profile?user_id=${user.id}`
-        );
+    `${API_BASE}/api/profile`,
+    {
+        credentials: "include"
+    }
+);
+
+if(response.status === 401){
+
+    window.location.href =
+    "../auth/login.html";
+
+    return;
+
+}
 
         const data = await response.json();
 
