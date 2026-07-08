@@ -640,34 +640,38 @@ async function(e){
     try{
 
         const response =
-        await fetch(
+await fetch(
 
 `${API_BASE}/api/withdraw`
 
-        ,{
+,{
+    method:"POST",
 
-            method:"POST",
+    credentials:"include",
 
-            headers:{
+    headers:{
+        "Content-Type":"application/json"
+    },
 
-                "Content-Type":
-                "application/json"
+    body:JSON.stringify({
 
-            },
+        amount,
 
-            body:JSON.stringify({
+        method,
 
-                user_id:user.id,
+        account
 
-                amount,
+    })
 
-                method,
+});
+      if(response.status === 401){
 
-                account
+    window.location.href =
+    "../auth/login.html";
 
-            })
+    return;
 
-        });
+      }
 
         const data =
         await response.json();
