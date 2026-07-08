@@ -425,30 +425,26 @@ const API_BASE =
 
 async function loadWallet() {
 
-    const user =
-    JSON.parse(
-        localStorage.getItem("coingrid_user")
-    );
-
-    if (!user || !user.id) {
-
-        alert("User not logged in.");
-
-        window.location.href =
-        "../auth/login.html";
-
-        return;
-
-    }
+    
 
     try {
 
         const response =
-        await fetch(
+await fetch(
+`${API_BASE}/api/wallet`,
+{
+    credentials:"include"
+}
+);
 
-`${API_BASE}/api/wallet?user_id=${user.id}`
+if(response.status === 401){
 
-        );
+    window.location.href =
+    "../auth/login.html";
+
+    return;
+
+}
 
         const data =
         await response.json();
