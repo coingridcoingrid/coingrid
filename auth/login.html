@@ -1094,6 +1094,8 @@ await fetch(
 
 method:"POST",
 
+credentials:"include",
+
 headers:{
 "Content-Type":"application/json"
 },
@@ -1107,7 +1109,6 @@ token:response.credential
 }
 
 );
-
 const data=
 await apiResponse.json();
 
