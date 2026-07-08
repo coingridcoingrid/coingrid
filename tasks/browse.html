@@ -580,51 +580,29 @@ document
 
 document
 .getElementById("sortSelect")
-.addEventListener(
-"change",
-function(){
+.addEventListener("change", function () {
 
     switch(this.selectedIndex){
 
         case 0:
-
-            currentSort =
-            "reward";
-
+            currentSort = "reward";
             break;
 
         case 1:
-
-            currentSort =
-            "newest";
-
+            currentSort = "newest";
             break;
 
         case 2:
-
-            currentSort =
-            "oldest";
-
+            currentSort = "oldest";
             break;
 
         default:
-
-            currentSort =
-            "newest";
+            currentSort = "newest";
 
     }
 
+    currentPage = 1;
     loadTasks();
-  
-
-};
-
-
-  document.getElementById("nextBtn").onclick = () => {
-
-currentPage++;
-
-loadTasks();
 
 });
 
@@ -632,28 +610,26 @@ loadTasks();
 });
 currentPage = 1;
 loadTasks();
-  document.getElementById("pageNumber").textContent =
-`Page ${currentPage}`;
+  document.getElementById("prevBtn").onclick = () => {
 
-document.getElementById("prevBtn").onclick = () => {
+    if(currentPage > 1){
 
-if(currentPage > 1){
+        currentPage--;
 
-currentPage--;
+        loadTasks();
 
-loadTasks();
-
-}
+    }
 
 };
 
 document.getElementById("nextBtn").onclick = () => {
 
-currentPage++;
+    currentPage++;
 
-loadTasks();
+    loadTasks();
 
 };
+
 </script>
 
 <script src="components/sidebar.js"></script>
