@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login | CoinGrid</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b
+);
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+/* Animated Background */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+background:
+radial-gradient(
+circle,
+rgba(250,204,21,.18),
+transparent 70%
+);
+
+top:-250px;
+left:-200px;
+
+animation:moveOne 12s linear infinite;
+
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:600px;
+height:600px;
+
+background:
+radial-gradient(
+circle,
+rgba(59,130,246,.15),
+transparent 70%
+);
+
+bottom:-220px;
+right:-180px;
+
+animation:moveTwo 15s linear infinite;
+
+}
+
+@keyframes moveOne{
+
+0%{
+transform:translate(0,0);
+}
+
+50%{
+transform:translate(60px,40px);
+}
+
+100%{
+transform:translate(0,0);
+}
+
+}
+
+@keyframes moveTwo{
+
+0%{
+transform:translate(0,0);
+}
+
+50%{
+transform:translate(-60px,-40px);
+}
+
+100%{
+transform:translate(0,0);
+}
+
+}
+
+/* Login Card */
+
+.login-card{
+
+position:relative;
+
+z-index:2;
+
+width:100%;
+max-width:450px;
+
+padding:45px;
+
+border-radius:28px;
+
+background:
+rgba(255,255,255,.06);
+
+border:
+1px solid
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.logo{
+
+font-size:38px;
+font-weight:800;
+
+text-align:center;
+
+margin-bottom:10px;
+
+color:white;
+
+}
+
+.logo span{
+
+color:#facc15;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:15px;
+
+color:#94a3b8;
+
+margin-bottom:35px;
+
+}
+
+/* Input */
+
+.form-group{
+
+margin-bottom:22px;
+
+}
+
+.form-group label{
+
+display:block;
+
+margin-bottom:10px;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#e2e8f0;
+
+}
+
+.input-box{
+
+position:relative;
+
+}
+
+.input-box input{
+
+width:100%;
+
+padding:16px 18px;
+
+padding-right:55px;
+
+background:#1e293b;
+
+border:1px solid
+rgba(255,255,255,.08);
+
+border-radius:14px;
+
+outline:none;
+
+font-size:15px;
+
+color:white;
+
+transition:.25s;
+
+}
+
+.input-box input:focus{
+
+border-color:#facc15;
+
+box-shadow:
+0 0 0 4px
+rgba(250,204,21,.15);
+
+}
+
+.input-icon{
+
+position:absolute;
+
+right:18px;
+top:50%;
+
+transform:translateY(-50%);
+
+font-size:18px;
+
+cursor:pointer;
+
+user-select:none;
+
+}
+
+/* Options */
+
+.options{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+font-size:14px;
+
+}
+
+.options label{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+color:#cbd5e1;
+
+cursor:pointer;
+
+}
+
+.options a{
+
+text-decoration:none;
+
+color:#facc15;
+
+font-weight:600;
+
+}
+
+/* Button */
+
+.login-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:14px;
+
+background:#facc15;
+
+color:#000;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.login-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 10px 25px
+rgba(250,204,21,.35);
+
+}
+
+/* Error */
+
+#errorMessage{
+
+display:none;
+
+margin-top:20px;
+
+padding:14px;
+
+border-radius:12px;
+
+background:
+rgba(239,68,68,.15);
+
+border:
+1px solid
+rgba(239,68,68,.4);
+
+color:#fecaca;
+
+font-size:14px;
+
+}
+
+/* Loading */
+
+.loading{
+
+display:none;
+
+margin-top:20px;
+
+text-align:center;
+
+color:#facc15;
+
+font-weight:600;
+
+}
+
+.spinner{
+
+width:24px;
+height:24px;
+
+margin:0 auto 12px;
+
+border:3px solid
+rgba(255,255,255,.2);
+
+border-top-color:#facc15;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:30px;
+
+text-align:center;
+
+font-size:13px;
+
+color:#94a3b8;
+
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+
+.login-card{
+
+padding:30px 22px;
+
+}
+
+.logo{
+
+font-size:30px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<div class="logo">
+
+Coin<span>Grid</span>
+
+</div>
+
+<p class="subtitle">
+
+Administrator Login Portal
+
+</p>
+
+<form id="adminLoginForm">
+
+<div class="form-group">
+
+<label>Email Address</label>
+
+<div class="input-box">
+
+<input
+type="email"
+id="email"
+placeholder="Enter admin email"
+required>
+
+<span class="input-icon">
+
+📧
+
+</span>
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<input
+type="password"
+id="password"
+placeholder="Enter password"
+required>
+
+<span
+id="togglePassword"
+class="input-icon">
+
+👁️
+
+</span>
+
+</div>
+
+</div>
+
+<div class="options">
+
+<label>
+
+<input
+type="checkbox"
+id="rememberMe">
+
+Remember Me
+
+</label>
+
+<a href="#">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<button
+type="submit"
+class="login-btn">
+
+Login to Admin Panel
+
+</button>
+
+<div
+id="errorMessage">
+
+</div>
+
+<div
+class="loading"
+id="loading">
+
+<div class="spinner"></div>
+
+Signing in...
+
+  </div>
+
+  <script>
+
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+/* Show / Hide Password */
+
+const passwordInput =
+document.getElementById("password");
+
+const togglePassword =
+document.getElementById("togglePassword");
+
+togglePassword.addEventListener(
+"click",
+()=>{
+
+if(passwordInput.type==="password"){
+
+passwordInput.type="text";
+
+togglePassword.textContent="🙈";
+
+}
+
+else{
+
+passwordInput.type="password";
+
+togglePassword.textContent="👁️";
+
+}
+
+});
+
+/* Remember Email */
+
+const savedEmail =
+localStorage.getItem(
+"coingrid_admin_email"
+);
+
+if(savedEmail){
+
+document.getElementById(
+"email"
+).value = savedEmail;
+
+document.getElementById(
+"rememberMe"
+).checked = true;
+
+}
+
+/* Login */
+
+document
+.getElementById(
+"adminLoginForm"
+)
+.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+const email =
+document
+.getElementById("email")
+.value
+.trim()
+.toLowerCase();
+
+const password =
+document
+.getElementById("password")
+.value;
+
+const remember =
+document
+.getElementById("rememberMe")
+.checked;
+
+const errorBox =
+document.getElementById(
+"errorMessage"
+);
+
+const loading =
+document.getElementById(
+"loading"
+);
+
+errorBox.style.display="none";
+
+loading.style.display="block";
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/auth/admin-login`,
+
+{
+
+method:"POST",
+
+credentials:"include",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+email,
+password
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+loading.style.display="none";
+
+if(!response.ok || !data.success){
+
+errorBox.textContent =
+data.message ||
+"Login failed.";
+
+errorBox.style.display="block";
+
+return;
+
+}
+
+/* Remember Email */
+
+if(remember){
+
+localStorage.setItem(
+
+"coingrid_admin_email",
+
+email
+
+);
+
+}
+
+else{
+
+localStorage.removeItem(
+
+"coingrid_admin_email"
+
+);
+
+}
+
+/* Success */
+
+window.location.href =
+"dashboard.html";
+
+}
+
+catch(error){
+
+loading.style.display="none";
+
+console.error(error);
+
+errorBox.textContent=
+
+"Unable to connect to the server.";
+
+errorBox.style.display="block";
+
+}
+
+}
+);
+
+  </script>
+
+  <div class="footer">
+
+© 2026 CoinGrid Admin Panel
+
+</div>
+
+</form>
+
+</div>
+
+<script>
+
+/* Check if admin is already logged in */
+
+async function checkAdminSession(){
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/auth/admin-check`,
+
+{
+
+credentials:"include"
+
+}
+
+);
+
+if(response.ok){
+
+const data =
+await response.json();
+
+if(data.success){
+
+window.location.replace(
+"dashboard.html"
+);
+
+}
+
+}
+
+}catch(error){
+
+console.log(
+"No active admin session."
+);
+
+}
+
+}
+
+checkAdminSession();
+
+/* Enter key support */
+
+document
+.getElementById("password")
+.addEventListener(
+
+"keypress",
+
+function(e){
+
+if(e.key==="Enter"){
+
+document
+.getElementById(
+"adminLoginForm"
+)
+.requestSubmit();
+
+}
+
+}
+
+);
+
+/* Disable button while logging in */
+
+const loginForm =
+document.getElementById(
+"adminLoginForm"
+);
+
+const loginButton =
+document.querySelector(
+".login-btn"
+);
+
+loginForm.addEventListener(
+
+"submit",
+
+()=>{
+
+loginButton.disabled = true;
+
+loginButton.textContent =
+"Signing In...";
+
+setTimeout(()=>{
+
+loginButton.disabled = false;
+
+loginButton.textContent =
+"Login to Admin Panel";
+
+},5000);
+
+}
+
+);
+
+</script>
+
+</body>
+
+</html>
