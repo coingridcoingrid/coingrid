@@ -733,25 +733,29 @@ localStorage.removeItem(
 
 /* Success */
 
-window.location.href =
-"dashboard.html";
-
+window.location.replace(
+"dashboard.html"
+);
+  
 }
 
 catch(error){
 
 loading.style.display="none";
 
+loginButton.disabled=false;
+
+loginButton.textContent=
+"Login to Admin Panel";
+
 console.error(error);
 
 errorBox.textContent=
-
 "Unable to connect to the server.";
 
 errorBox.style.display="block";
 
 }
-
 }
 );
 
@@ -790,8 +794,21 @@ credentials:"include"
 
 if(response.ok){
 
-const data =
+let data;
+
+try{
+
+data =
 await response.json();
+
+}catch{
+
+data={
+success:false,
+message:"Invalid server response."
+};
+
+}
 
 if(data.success){
 
@@ -813,7 +830,7 @@ console.log(
 
 }
 
-checkAdminSession();
+//checkAdminSession();
 
 /* Enter key support */
 
