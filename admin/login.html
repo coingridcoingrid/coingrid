@@ -690,7 +690,14 @@ loading.style.display="none";
 
 if(!response.ok || !data.success){
 
-errorBox.textContent =
+loading.style.display="none";
+
+loginButton.disabled=false;
+
+loginButton.textContent=
+"Login to Admin Panel";
+
+errorBox.textContent=
 data.message ||
 "Login failed.";
 
