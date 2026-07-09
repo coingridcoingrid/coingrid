@@ -331,6 +331,7 @@ font-weight:700;
 cursor:pointer;
 
 transition:.25s;
+  margin-top:10px;
 
 }
 
@@ -412,12 +413,34 @@ transform:rotate(360deg);
 }
 
 }
+@keyframes fadeIn{
 
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
 /* Footer */
 
 .footer{
 
-margin-top:30px;
+margin-top:25px;
+
+padding-top:20px;
+
+border-top:1px solid rgba(255,255,255,.08);
 
 text-align:center;
 
