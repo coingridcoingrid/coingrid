@@ -401,7 +401,12 @@ CoinGrid
 <a href="settings.html">
 ⚙ Settings
 </a>
+<a href="#"
+onclick="adminLogout()">
 
+🚪 Logout
+
+</a>
 </div>
 
 </div>
@@ -455,6 +460,7 @@ Manage all registered CoinGrid users.
 <div class="search-card">
 
 <input
+id="searchInput"
 type="text"
 placeholder="Search users by name, email or ID...">
 
@@ -503,14 +509,36 @@ async function loadUsers(){
 try{
 
 const response =
-await fetch(`${API_BASE}/api/admin/users`);
+await fetch(
+
+`${API_BASE}/api/admin/users`,
+
+{
+
+credentials:"include"
+
+}
+
+);
+
+if(response.status===401){
+
+window.location.replace(
+"login.html"
+);
+
+return;
+
+}
 
 const data =
 await response.json();
 
 if(!data.success){
 
-alert(data.message);
+window.location.replace(
+"login.html"
+);
 
 return;
 
@@ -555,14 +583,82 @@ userList.innerHTML += `
 
 }catch(error){
 
-console.error(error);
+console.error(
+
+"Users Load Error:",
+
+error
+
+);
+
+alert(
+
+"Unable to load users."
+
+);
 
 }
 
 }
 
-loadUsers();
+(async()=>{
 
+await loadUsers();
+
+})();
+
+  document.getElementById(
+
+"searchInput"
+
+).addEventListener(
+
+"input",
+
+function(){
+
+const keyword =
+this.value.toLowerCase();
+
+document
+.querySelectorAll(".user-row")
+.forEach((row,index)=>{
+
+if(index===0)return;
+
+row.style.display=
+row.textContent
+.toLowerCase()
+.includes(keyword)
+? ""
+: "none";
+
+});
+
+});
+
+
+  async function adminLogout(){
+
+await fetch(
+
+`${API_BASE}/auth/admin-logout`,
+
+{
+
+method:"POST",
+
+credentials:"include"
+
+}
+
+);
+
+window.location.replace(
+"login.html"
+);
+
+}
 </script>
 
 </body>
