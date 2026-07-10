@@ -382,7 +382,12 @@ CoinGrid
 <a href="payouts.html">💰 Payouts</a>
 <a href="reports.html">📑 Reports</a>
 <a href="settings.html">⚙ Settings</a>
+<a href="#"
+onclick="adminLogout()">
 
+🚪 Logout
+
+</a>
 </div></div><div class="main-content"><div class="menu-btn" id="menuBtn">
 ☰
 </div><div class="page-header"><h1>Task Management</h1><p>
@@ -411,6 +416,7 @@ Manage and review all tasks across CoinGrid.
 </div>
 </div>
   <!-- SEARCH TASKS --><div class="search-card"><input
+id="searchInput"
 type="text"
 placeholder="Search tasks by title, sponsor or ID...">
 
@@ -579,20 +585,39 @@ body.id=editingTaskId;
 }
 
 const response=await fetch(
+
 `${API_BASE}/api/admin/tasks`,
+
 {
-method:editingTaskId?"PUT":"POST",
+
+method:
+editingTaskId ? "PUT" : "POST",
+
+credentials:"include",
+
 headers:{
+
 "Content-Type":"application/json"
+
 },
+
 body:JSON.stringify(body)
+
 }
+
 );
 
 const data=await response.json();
 
+if(!data.success){
+
 alert(data.message);
 
+return;
+
+}
+
+alert(data.message);
 if(data.success){
 
 editingTaskId=null;
@@ -616,7 +641,17 @@ loadTasks();
 }
     async function editTask(id){
 
-const response=await fetch(`${API_BASE}/api/admin/tasks`);
+await fetch(
+
+`${API_BASE}/api/admin/tasks`,
+
+{
+
+credentials:"include"
+
+}
+
+);
 
 const data=await response.json();
 
@@ -644,17 +679,36 @@ document.getElementById("addTaskBtn").innerHTML="💾 Save Changes";
 if(!confirm("Delete this task?")) return;
 
 const response=await fetch(
+
 `${API_BASE}/api/admin/tasks`,
+
 {
+
 method:"DELETE",
+
+credentials:"include",
+
 headers:{
+
 "Content-Type":"application/json"
+
 },
+
 body:JSON.stringify({id})
+
 }
+
 );
 
 const data=await response.json();
+
+if(!data.success){
+
+alert(data.message);
+
+return;
+
+}
 
 alert(data.message);
 
@@ -667,14 +721,36 @@ async function loadTasks(){
 try{
 
 const response =
-await fetch(`${API_BASE}/api/admin/tasks`);
+await fetch(
+
+`${API_BASE}/api/admin/tasks`,
+
+{
+
+credentials:"include"
+
+}
+
+);
+
+if(response.status===401){
+
+window.location.replace(
+"login.html"
+);
+
+return;
+
+}
 
 const data =
 await response.json();
 
 if(!data.success){
 
-alert(data.message);
+window.location.replace(
+"login.html"
+);
 
 return;
 
@@ -743,13 +819,42 @@ console.error(error);
 }
 
 }
-    loadTasks();
+   (async()=>{
+
+await loadTasks();
 
 document
 .getElementById("addTaskBtn")
 .addEventListener(
+
 "click",
+
 createTask
+
 );
+
+})();
+
+    async function adminLogout(){
+
+await fetch(
+
+`${API_BASE}/auth/admin-logout`,
+
+{
+
+method:"POST",
+
+credentials:"include"
+
+}
+
+);
+
+window.location.replace(
+"login.html"
+);
+
+}
 </script></body>
   </html>
