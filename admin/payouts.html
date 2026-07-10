@@ -355,6 +355,9 @@ CoinGrid
 <a href="payouts.html" class="active">💰 Payouts</a>
 <a href="reports.html">📑 Reports</a>
 <a href="settings.html">⚙ Settings</a>
+  <a href="#" onclick="adminLogout()">
+🚪 Logout
+</a>
 
 </div></div><div class="main-content"><div class="menu-btn" id="menuBtn">
 ☰
@@ -387,6 +390,7 @@ Review and manage user withdrawal requests.
   </div>
   
   <!-- SEARCH WITHDRAWALS --><div class="search-card"><input
+id="searchInput"
 type="text"
 placeholder="Search withdrawals by user, email or payout ID...">
 
@@ -426,14 +430,36 @@ async function loadPayouts(){
 try{
 
 const response =
-await fetch(`${API_BASE}/api/admin/payouts`);
+await fetch(
+
+`${API_BASE}/api/admin/payouts`,
+
+{
+
+credentials:"include"
+
+}
+
+);
+
+if(response.status===401){
+
+window.location.replace(
+"login.html"
+);
+
+return;
+
+}
 
 const data =
 await response.json();
 
 if(!data.success){
 
-alert(data.message);
+window.location.replace(
+"login.html"
+);
 
 return;
 
@@ -484,16 +510,55 @@ ${payout.status}
 
 }catch(error){
 
-console.error(error);
+console.error(
+"Payout Load Error:",
+error
+);
+
+alert(
+"Unable to load payouts."
+);
 
 }
 
 }
 
-loadPayouts();
+(async()=>{
 
-setInterval(loadPayouts,30000);
+await loadPayouts();
 
+setInterval(
+
+loadPayouts,
+
+30000
+
+);
+
+})();
+
+
+  async function adminLogout(){
+
+await fetch(
+
+`${API_BASE}/auth/admin-logout`,
+
+{
+
+method:"POST",
+
+credentials:"include"
+
+}
+
+);
+
+window.location.replace(
+"login.html"
+);
+
+}
 </script>
 
 </body>
