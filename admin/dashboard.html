@@ -245,6 +245,9 @@ CoinGrid
 ⚙ Settings
 </a>
 
+  <a href="#" onclick="adminLogout()">
+🚪 Logout
+</a>
 </div>
 
 </div>
@@ -460,14 +463,36 @@ async function loadAdminDashboard(){
 try{
 
 const response =
-await fetch(`${API_BASE}/api/admin/dashboard`);
+await fetch(
+
+`${API_BASE}/api/admin/dashboard`,
+
+{
+
+credentials:"include"
+
+}
+
+);
+
+if(response.status===401){
+
+window.location.replace(
+"/coingrid/admin/login.html"
+);
+
+return;
+
+}
 
 const data =
 await response.json();
 
 if(!data.success){
 
-alert(data.message);
+window.location.replace(
+"/coingrid/admin/login.html"
+);
 
 return;
 
@@ -495,14 +520,40 @@ alert("Unable to load dashboard.");
 
 }
 
-loadAdminDashboard();
+(async()=>{
 
-setInterval(()=>{
+await loadAdminDashboard();
 
-loadAdminDashboard();
+setInterval(
 
-},30000);
+loadAdminDashboard,
 
+30000
+
+);
+
+})();
+async function adminLogout(){
+
+await fetch(
+
+`${API_BASE}/auth/admin-logout`,
+
+{
+
+method:"POST",
+
+credentials:"include"
+
+}
+
+);
+
+window.location.replace(
+"/coingrid/admin/login.html"
+);
+
+}
 </script>
 
 </body>
