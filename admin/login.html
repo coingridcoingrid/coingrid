@@ -737,7 +737,6 @@ loading.style.display="none";
 
 if(!response.ok || !data.success){
 
-loading.style.display="none";
 
 loginButton.disabled=false;
 
@@ -788,6 +787,8 @@ loginButton.textContent=
 window.location.replace(
 "dashboard.html"
 );
+
+return;
   
 }
 
@@ -850,11 +851,16 @@ message:"Invalid server response."
 
 }
 
-if(data.success){
+if(
+response.ok &&
+data.success
+){
 
 window.location.replace(
 "dashboard.html"
 );
+
+return;
 
 }
 
@@ -870,7 +876,7 @@ console.log(
 
 }
 
-//checkAdminSession();
+checkAdminSession();
 
 /* Enter key support */
 
@@ -914,22 +920,12 @@ loginForm.addEventListener(
 
 ()=>{
 
-loginButton.disabled = true;
+loginButton.disabled=true;
 
-loginButton.textContent =
+loginButton.textContent=
 "Signing In...";
 
-setTimeout(()=>{
-
-loginButton.disabled = false;
-
-loginButton.textContent =
-"Login to Admin Panel";
-
-},5000);
-
 }
-
 );
 
 </script>
