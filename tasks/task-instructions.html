@@ -3958,8 +3958,17 @@ const task_id = TASK_ID;
 
         const data = await response.json();
 
-        alert(data.message);
+if (data.success) {
 
+    alert(data.message);
+
+    window.location.href = "browse-tasks.html";
+
+} else {
+
+    alert(data.message);
+
+}
     }catch(error){
 
         console.error(error);
