@@ -3911,14 +3911,15 @@ console.log("CoinGrid Task Instructions Loaded");
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
+const TASK_ID = 13;
+
 document
 .getElementById("taskSubmissionForm")
 .addEventListener("submit", async function(e){
 
     e.preventDefault();
 
-    const task_id = 13; // Replace with the current task ID
-
+const task_id = TASK_ID;
     const submission_url =
         document.getElementById("taskUrl").value.trim();
 
