@@ -546,6 +546,168 @@ grid-template-columns:1fr;
 }
 
 }
+
+    /* PREMIUM PROFILE CARD */
+
+.premium-card{
+
+margin-top:25px;
+
+padding:30px;
+
+border-radius:25px;
+
+background:linear-gradient(135deg,#1e293b,#312e81,#0f172a);
+
+border:1px solid rgba(255,255,255,.12);
+
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.premium-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.profile-avatar{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#facc15,#f59e0b);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:36px;
+
+font-weight:800;
+
+color:#111827;
+
+}
+
+.premium-user{
+
+flex:1;
+
+}
+
+.premium-user h2{
+
+font-size:30px;
+
+margin-bottom:8px;
+
+}
+
+.premium-user p{
+
+margin:5px 0;
+
+color:#cbd5e1;
+
+}
+
+.premium-badge{
+
+padding:12px 20px;
+
+border-radius:30px;
+
+background:#facc15;
+
+color:#111827;
+
+font-weight:700;
+
+}
+
+.premium-divider{
+
+height:1px;
+
+background:rgba(255,255,255,.1);
+
+margin:25px 0;
+
+}
+
+.premium-bottom{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:20px;
+
+}
+
+.premium-bottom div{
+
+background:rgba(255,255,255,.05);
+
+padding:20px;
+
+border-radius:16px;
+
+text-align:center;
+
+}
+
+.premium-bottom span{
+
+display:block;
+
+font-size:14px;
+
+color:#94a3b8;
+
+margin-bottom:8px;
+
+}
+
+.premium-bottom strong{
+
+font-size:20px;
+
+color:#facc15;
+
+}
+
+@media(max-width:768px){
+
+.premium-top{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.premium-bottom{
+
+grid-template-columns:1fr;
+
+}
+
+}
 </style></head><body>
   
   <div class="dashboard"><!-- SIDEBAR -->
@@ -565,17 +727,71 @@ grid-template-columns:1fr;
 <br>
 <small id="userRole">Loading...</small>
 
-</div></div></div></div><!-- PROFILE CARD --><div class="profile-card"><div class="profile-info">
-  <div class="profile-avatar" id="userAvatar">  
-U  
-  </div>
-  <div class="profile-details"><h2 id="profileName">Loading...</h2>
-    <p id="memberSince">Member since --</p>
+</div></div></div></div>
     
-    <p id="verificationStatus">Loading...</p>
-  </div></div><div class="level-badge" id="levelBadge">
+    
+    <!-- PREMIUM PROFILE CARD -->
+
+<div class="premium-card">
+
+<div class="premium-top">
+
+<div class="profile-avatar" id="userAvatar">
+U
+</div>
+
+<div class="premium-user">
+
+<h2 id="profileName">Loading...</h2>
+
+<p id="userRole">Loading...</p>
+
+<p id="memberSince">Member Since --</p>
+
+</div>
+
+<div class="premium-badge">
+⭐ CoinGrid Member
+</div>
+
+</div>
+
+<div class="premium-divider"></div>
+
+<div class="premium-bottom">
+
+<div>
+
+<span>Account Level</span>
+
+<strong id="levelBadge">
 Level 1
-  </div>
+</strong>
+
+</div>
+
+<div>
+
+<span>Status</span>
+
+<strong id="verificationStatus">
+Loading...
+</strong>
+
+</div>
+
+<div>
+
+<span>Membership</span>
+
+<strong>
+Premium
+</strong>
+
+</div>
+
+</div>
+
 </div>
 
    <!-- TOP PERFORMER PROGRAM -->
