@@ -292,6 +292,101 @@ color:black !important;
 font-weight:700;
 }
 
+  /* TOP PERFORMER */
+
+.top-performer-banner{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+margin:30px 0;
+
+padding:28px;
+
+border-radius:22px;
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+border:1px solid rgba(255,255,255,.12);
+
+}
+
+.performer-icon{
+
+font-size:60px;
+
+}
+
+.performer-content{
+
+flex:1;
+
+}
+
+.performer-content h2{
+
+font-size:28px;
+
+margin-bottom:10px;
+
+}
+
+.performer-content p{
+
+line-height:1.8;
+
+color:#e2e8f0;
+
+}
+
+.performer-tags{
+
+display:flex;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+margin-top:18px;
+
+}
+
+.performer-tags span{
+
+background:#facc15;
+
+color:#000;
+
+padding:10px 16px;
+
+border-radius:30px;
+
+font-weight:700;
+
+font-size:14px;
+
+}
+
+@media(max-width:768px){
+
+.top-performer-banner{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.performer-icon{
+
+font-size:48px;
+
+}
+
+}
 </style></head><body>
 
 <div id="sidebar-container"></div>
@@ -307,7 +402,46 @@ font-weight:700;
   
   <div class="page-header"><div><h1>Browse Tasks</h1><p>
 Find tasks and start earning rewards instantly.
-</p></div></div><!-- SEARCH -->
+</p></div></div>
+
+<!-- TOP PERFORMER PROGRAM -->
+
+<div class="top-performer-banner">
+
+<div class="performer-icon">
+🏆
+</div>
+
+<div class="performer-content">
+
+<h2>Unlock Exclusive Rewards</h2>
+
+<p>
+Become a <strong>Top Performer</strong> by consistently submitting high-quality work. Eligible members may receive
+<strong>Private High-Paying Tasks</strong>,
+<strong>Instant Payments</strong>,
+<strong>₹0 Minimum Withdrawal</strong>,
+and exclusive
+<strong>Job Opportunities & Offer Letters</strong>.
+</p>
+
+<div class="performer-tags">
+
+<span>🔒 Private Tasks</span>
+
+<span>⚡ Instant Payment</span>
+
+<span>💰 ₹0 Min Payout</span>
+
+<span>💼 Job Opportunities</span>
+
+</div>
+
+</div>
+
+</div>
+  
+  <!-- SEARCH -->
   <div class="search-section">
   <div class="search-box">
 <input
