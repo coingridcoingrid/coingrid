@@ -325,6 +325,86 @@ font-weight:700;
 cursor:pointer;
 }
 
+
+  /* BEST PERFORMER */
+
+.best-performer-card{
+
+margin:30px 0;
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+padding:25px;
+
+border-radius:20px;
+
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+border:1px solid rgba(255,255,255,.1);
+
+}
+
+.bp-icon{
+
+font-size:60px;
+
+}
+
+.bp-content{
+
+flex:1;
+
+}
+
+.bp-content h2{
+
+margin-bottom:10px;
+
+font-size:24px;
+
+}
+
+.bp-content p{
+
+line-height:1.7;
+
+color:#e2e8f0;
+
+}
+
+.bp-badge{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:10px 18px;
+
+background:#facc15;
+
+color:#000;
+
+font-weight:700;
+
+border-radius:30px;
+
+}
+
+@media(max-width:768px){
+
+.best-performer-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
 @media(max-width:768px){
 
 .transaction-row{
@@ -355,7 +435,33 @@ $0.00
 </div>
   <p>
 Ready for withdrawal to your preferred payment method.
-</p></div><!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2 id="lifetimeEarnings">$0.00</h2><p>Lifetime earnings</p></div>
+</p></div>
+  
+  <!-- BEST PERFORMER CARD -->
+
+<div class="best-performer-card">
+
+<div class="bp-icon">🏆</div>
+
+<div class="bp-content">
+
+<h2>Best Performer Program</h2>
+
+<p>
+Top-performing members can unlock
+<strong>₹0 Minimum Withdrawal</strong>
+and withdraw earnings anytime after meeting quality requirements.
+</p>
+
+<span class="bp-badge">
+⭐ Exclusive Reward
+</span>
+
+</div>
+
+</div>
+  
+  <!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2 id="lifetimeEarnings">$0.00</h2><p>Lifetime earnings</p></div>
   <div class="balance-card"><h3>Pending Rewards</h3><h2 id="pendingBalance">$0.00</h2><p>Awaiting approval</p></div>
   <div class="balance-card"><h3>Total Withdrawn</h3><h2 id="totalWithdrawn">$0.00</h2><p>Successfully paid</p></div><div class="balance-card"><h3>TotalPoints </h3><h2 id="totalPoints">0</h2><p> </p></div></div>
 <!-- WITHDRAWAL METHODS --><div class="withdraw-section"><h2>Withdrawal Methods</h2><div class="methods-grid"><div class="method-card">
