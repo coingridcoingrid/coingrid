@@ -1151,11 +1151,10 @@ if (!response.ok) {
 
     } catch (err) {
 
-    
+    console.error(err);
+    alert(err.message);
 
-    window.location.href = "../auth/login.html";
-
-}
+    }
 
 }
 
