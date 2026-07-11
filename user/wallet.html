@@ -464,31 +464,50 @@ and withdraw earnings anytime after meeting quality requirements.
   <!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2 id="lifetimeEarnings">$0.00</h2><p>Lifetime earnings</p></div>
   <div class="balance-card"><h3>Pending Rewards</h3><h2 id="pendingBalance">$0.00</h2><p>Awaiting approval</p></div>
   <div class="balance-card"><h3>Total Withdrawn</h3><h2 id="totalWithdrawn">$0.00</h2><p>Successfully paid</p></div><div class="balance-card"><h3>TotalPoints </h3><h2 id="totalPoints">0</h2><p> </p></div></div>
-<!-- WITHDRAWAL METHODS --><div class="withdraw-section"><h2>Withdrawal Methods</h2><div class="methods-grid"><div class="method-card">
-💳
+<!-- WITHDRAWAL METHODS --><div class="withdraw-section"><h2>Withdrawal Methods</h2>
+  
+<div class="methods-grid">
+
+<div class="method-card">
+💸
 <h3>UPI</h3>
-<p>Instant withdrawals</p>
-</div><div class="method-card">
+<p>Instant payouts for Indian users.</p>
+</div>
+
+<div class="method-card">
 🏦
 <h3>Bank Transfer</h3>
-<p>1-3 business days</p>
-</div><div class="method-card">
-🅿️
+<p>Direct payment to your bank account.</p>
+</div>
+
+<div class="method-card">
+🌍
 <h3>PayPal</h3>
-<p>International payments</p>
-</div><div class="method-card">
-₿
-<h3>Crypto</h3>
-<p>USDT / BTC / ETH</p>
-</div></div></div><!-- WITHDRAWAL FORM --><div class="withdraw-form-section"><h2>Request Withdrawal</h2><div class="withdraw-info">Minimum Withdrawal:
+<p>Secure withdrawals for international users.</p>
+</div>
+
+</div>
+
+
+</div>
+  
+  
+  <!-- WITHDRAWAL FORM --><div class="withdraw-form-section"><h2>Request Withdrawal</h2><div class="withdraw-info">Minimum Withdrawal:
 <strong>₹1000</strong>
 
 </div><form id="withdrawForm"><div class="form-group"><label>Withdrawal Method</label>
 
-<select id="withdrawMethod"><option>UPI</option>
-<option>Bank Transfer</option>
-<option>PayPal</option>
-<option>Crypto</option></select></div><div class="form-group"><label>Account / UPI ID</label>
+<select id="withdrawMethod">
+
+<option value="UPI">🇮🇳 UPI</option>
+
+<option value="Bank Transfer">🏦 Bank Transfer</option>
+
+<option value="PayPal">🌍 PayPal</option>
+
+</select>
+
+</div><div class="form-group"><label>Account / UPI ID</label>
 
 <input
 type="text"
@@ -817,6 +836,47 @@ function closeWithdrawPopup(){
     "none";
 
 }
+
+const methodSelect =
+document.getElementById("withdrawMethod");
+
+const accountInput =
+document.getElementById("withdrawAccount");
+
+methodSelect.addEventListener("change",()=>{
+
+switch(methodSelect.value){
+
+case "UPI":
+
+accountInput.placeholder =
+"Enter UPI ID (example@upi)";
+
+break;
+
+case "Bank Transfer":
+
+accountInput.placeholder =
+"Enter Account Number & IFSC";
+
+break;
+
+case "PayPal":
+
+accountInput.placeholder =
+"Enter PayPal Email Address";
+
+break;
+
+}
+
+});
+
+methodSelect.dispatchEvent(
+new Event("change")
+);
+
+loadWallet();
 
 loadWallet();
 
