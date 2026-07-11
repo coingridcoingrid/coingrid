@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Milestone Rewards | CoinGrid</title>
+
+<link rel="stylesheet" href="components/sidebar.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:25px;
+}
+
+/* PAGE HEADER */
+
+.page-header{
+margin-bottom:30px;
+}
+
+.page-header h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.page-header p{
+color:#94a3b8;
+line-height:1.8;
+}
+
+/* HERO */
+
+.hero-card{
+
+margin-top:25px;
+
+padding:35px;
+
+border-radius:25px;
+
+background:linear-gradient(135deg,#f59e0b,#facc15);
+
+color:#111827;
+
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.hero-card h2{
+
+font-size:34px;
+
+margin-bottom:15px;
+
+}
+
+.hero-card p{
+
+font-size:16px;
+
+line-height:1.8;
+
+margin-bottom:25px;
+
+}
+
+/* NEXT REWARD */
+
+.next-reward{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.reward-box{
+
+background:rgba(255,255,255,.85);
+
+padding:20px;
+
+border-radius:18px;
+
+min-width:240px;
+
+text-align:center;
+
+}
+
+.reward-box h3{
+
+font-size:18px;
+
+margin-bottom:10px;
+
+}
+
+.reward-box h2{
+
+font-size:32px;
+
+}
+
+/* PROGRESS */
+
+.progress-card{
+
+margin-top:35px;
+
+padding:30px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.progress-card h2{
+
+margin-bottom:25px;
+
+}
+
+.progress-info{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:20px;
+
+margin-bottom:25px;
+
+}
+
+.info-box{
+
+background:#1e293b;
+
+padding:22px;
+
+border-radius:18px;
+
+text-align:center;
+
+}
+
+.info-box span{
+
+display:block;
+
+color:#94a3b8;
+
+margin-bottom:10px;
+
+}
+
+.info-box strong{
+
+font-size:30px;
+
+color:#facc15;
+
+}
+
+/* BAR */
+
+.progress-bar{
+
+width:100%;
+
+height:22px;
+
+background:#1e293b;
+
+border-radius:50px;
+
+overflow:hidden;
+
+margin-top:20px;
+
+}
+
+.progress-fill{
+
+width:90%;
+
+height:100%;
+
+background:linear-gradient(90deg,#22c55e,#16a34a);
+
+}
+
+.progress-text{
+
+margin-top:15px;
+
+font-size:15px;
+
+color:#cbd5e1;
+
+}
+
+/* SECTION TITLE */
+
+.section-title{
+
+margin:40px 0 20px;
+
+font-size:30px;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.progress-info{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.next-reward{
+
+flex-direction:column;
+
+}
+
+.hero-card{
+
+text-align:center;
+
+}
+
+.hero-card h2{
+
+font-size:28px;
+
+}
+
+.page-header h1{
+
+font-size:30px;
+
+}
+
+}
+
+
+  /* ===========================
+   MILESTONE REWARDS
+=========================== */
+
+.milestone-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+margin-top:30px;
+
+}
+
+.milestone-card{
+
+background:linear-gradient(135deg,#1e293b,#0f172a);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+padding:25px;
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+}
+
+.milestone-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#facc15;
+
+box-shadow:0 20px 40px rgba(250,204,21,.18);
+
+}
+
+.milestone-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:5px;
+
+background:#facc15;
+
+}
+
+/* CARD HEAD */
+
+.milestone-head{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+gap:15px;
+
+}
+
+.milestone-number{
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+.status{
+
+padding:8px 14px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:700;
+
+}
+
+/* STATUS COLORS */
+
+.claimed-status{
+
+background:#22c55e;
+
+color:#fff;
+
+}
+
+.current-status{
+
+background:#facc15;
+
+color:#111827;
+
+}
+
+.locked-status{
+
+background:#334155;
+
+color:#fff;
+
+}
+
+/* TEXT */
+
+.milestone-card h2{
+
+font-size:28px;
+
+margin-bottom:10px;
+
+color:#facc15;
+
+}
+
+.milestone-card h3{
+
+font-size:22px;
+
+margin-bottom:15px;
+
+}
+
+.milestone-card p{
+
+color:#cbd5e1;
+
+line-height:1.7;
+
+margin-bottom:18px;
+
+}
+
+/* MINI PROGRESS */
+
+.mini-progress{
+
+width:100%;
+
+height:12px;
+
+background:#334155;
+
+border-radius:50px;
+
+overflow:hidden;
+
+margin-bottom:20px;
+
+}
+
+.mini-fill{
+
+height:100%;
+
+background:linear-gradient(90deg,#22c55e,#16a34a);
+
+}
+
+/* BUTTONS */
+
+.milestone-card button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.claimed-btn{
+
+background:#22c55e;
+
+color:#fff;
+
+}
+
+.locked-btn{
+
+background:#334155;
+
+color:#cbd5e1;
+
+}
+
+.claim-btn{
+
+background:#facc15;
+
+color:#111827;
+
+}
+
+.claim-btn:hover{
+
+background:#fde047;
+
+}
+
+/* SPECIAL CARD */
+
+.premium{
+
+background:linear-gradient(135deg,#7c3aed,#2563eb);
+
+}
+
+.premium h2,
+
+.premium h3{
+
+color:#fff;
+
+}
+
+.premium p{
+
+color:#e2e8f0;
+
+}
+
+.premium::before{
+
+background:#fff;
+
+}
+
+/* RULES */
+
+.rules-card{
+
+margin-top:40px;
+
+padding:30px;
+
+border-radius:24px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.rules-card h2{
+
+margin-bottom:20px;
+
+font-size:28px;
+
+}
+
+.rules-card ul{
+
+padding-left:20px;
+
+}
+
+.rules-card li{
+
+margin-bottom:15px;
+
+line-height:1.8;
+
+color:#cbd5e1;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.milestone-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.milestone-head{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.milestone-card{
+
+padding:22px;
+
+}
+
+.milestone-card h2{
+
+font-size:24px;
+
+}
+
+.milestone-card h3{
+
+font-size:20px;
+
+}
+
+.rules-card{
+
+padding:22px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.milestone-card{
+
+padding:18px;
+
+border-radius:18px;
+
+}
+
+.milestone-number{
+
+font-size:18px;
+
+}
+
+.status{
+
+font-size:12px;
+
+padding:7px 12px;
+
+}
+
+.milestone-card button{
+
+padding:14px;
+
+}
+
+  }
+</style>
+
+</head>
+
+<body>
+
+<div id="sidebar-container"></div>
+
+<div class="main-content">
+
+<div class="container">
+
+<div class="topbar">
+
+<div class="menu-btn" id="menuBtn">
+
+☰
+
+</div>
+
+</div>
+
+<div class="page-header">
+
+<h1>🎁 Milestone Rewards</h1>
+
+<p>
+
+Complete approved tasks and unlock exciting Gift Cards worth up to the amounts shown. Every milestone brings you closer to exclusive rewards.
+
+</p>
+
+</div>
+
+<div class="hero-card">
+
+<h2>Earn More. Unlock More.</h2>
+
+<p>
+
+Every approved task moves you toward bigger rewards. Stay consistent, submit quality work, and claim milestone Gift Cards as you progress.
+
+</p>
+
+<div class="next-reward">
+
+<div class="reward-box">
+
+<h3>Next Reward</h3>
+
+<h2>₹600</h2>
+
+<p>Gift Card Worth Up To</p>
+
+</div>
+
+<div class="reward-box">
+
+<h3>Next Milestone</h3>
+
+<h2>20 Tasks</h2>
+
+<p>Only 2 Tasks Remaining</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="progress-card">
+
+<h2>Your Progress</h2>
+
+<div class="progress-info">
+
+<div class="info-box">
+
+<span>Approved Tasks</span>
+
+<strong id="approvedTasks">18</strong>
+
+</div>
+
+<div class="info-box">
+
+<span>Next Milestone</span>
+
+<strong id="nextMilestone">20</strong>
+
+</div>
+
+<div class="info-box">
+
+<span>Rewards Claimed</span>
+
+<strong id="claimedRewards">1</strong>
+
+</div>
+
+</div>
+
+<div class="progress-bar">
+
+<div class="progress-fill" id="progressFill"></div>
+
+</div>
+
+<p class="progress-text">
+
+18 of 20 approved tasks completed.
+
+</p>
+
+</div>
+
+<h2 class="section-title">
+
+🏆 Milestone Rewards
+
+</h2>
+
+<!-- PARTHERE -->
+
+  <div class="milestone-grid">
+
+<!-- 10 -->
+
+<div class="milestone-card claimed">
+
+<div class="milestone-head">
+<span class="milestone-number">10 Tasks</span>
+<span class="status claimed-status">✔ Claimed</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹300</h3>
+
+<p>
+Congratulations! You have successfully claimed this reward.
+</p>
+
+<button class="claimed-btn" disabled>
+Reward Claimed
+</button>
+
+</div>
+
+<!-- 20 -->
+
+<div class="milestone-card current">
+
+<div class="milestone-head">
+<span class="milestone-number">20 Tasks</span>
+<span class="status current-status">🔥 Current</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹600</h3>
+
+<p>
+Progress: <strong>18 / 20 Approved Tasks</strong>
+</p>
+
+<div class="mini-progress">
+
+<div class="mini-fill" style="width:90%;"></div>
+
+</div>
+
+<button class="locked-btn" disabled>
+Complete 2 More Tasks
+</button>
+
+</div>
+
+<!-- 30 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">30 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹1,000</h3>
+
+<p>
+Unlock after completing 30 approved tasks.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 40 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">40 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹1,500</h3>
+
+<p>
+Unlock after completing 40 approved tasks.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 50 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">50 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹600</h3>
+
+<p>
+Special milestone reward.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 60 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">60 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹600</h3>
+
+<p>
+Special milestone reward.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 70 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">70 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹600</h3>
+
+<p>
+Special milestone reward.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 80 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">80 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹600</h3>
+
+<p>
+Special milestone reward.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 90 -->
+
+<div class="milestone-card">
+
+<div class="milestone-head">
+<span class="milestone-number">90 Tasks</span>
+<span class="status locked-status">🔒 Locked</span>
+</div>
+
+<h2>🎁 Gift Card</h2>
+
+<h3>Worth Up To ₹600</h3>
+
+<p>
+Special milestone reward.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+<!-- 100 -->
+
+<div class="milestone-card premium">
+
+<div class="milestone-head">
+<span class="milestone-number">100 Tasks</span>
+<span class="status locked-status">👑 Ultimate</span>
+</div>
+
+<h2>🏆 Ultimate Reward</h2>
+
+<h3>Gift Card Worth Up To ₹600</h3>
+
+<p>
+Complete 100 approved tasks to unlock the final milestone reward.
+</p>
+
+<button class="locked-btn" disabled>
+Locked
+</button>
+
+</div>
+
+</div>
+
+<!-- RULES -->
+
+<div class="rules-card">
+
+<h2>📜 Reward Rules</h2>
+
+<ul>
+
+<li>✅ Only approved tasks count toward milestones.</li>
+
+<li>✅ Each milestone can be claimed only once.</li>
+
+<li>✅ Gift Card value is <strong>up to</strong> the amount shown.</li>
+
+<li>✅ Rewards depend on verification and task quality.</li>
+
+<li>✅ Duplicate, fake or spam submissions are not eligible.</li>
+
+<li>✅ CoinGrid may update reward values during special promotions.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+
+  <script>
+
+const milestones = [
+
+{tasks:10,reward:300},
+{tasks:20,reward:600},
+{tasks:30,reward:1000},
+{tasks:40,reward:1500},
+{tasks:50,reward:600},
+{tasks:60,reward:600},
+{tasks:70,reward:600},
+{tasks:80,reward:600},
+{tasks:90,reward:600},
+{tasks:100,reward:600}
+
+];
+
+// Example values from API
+let approvedTasks = 18;
+
+// Claimed milestones
+let claimedRewards = [10];
+
+function updateMilestones(){
+
+document.getElementById("approvedTasks").textContent =
+approvedTasks;
+
+let next =
+milestones.find(m=>m.tasks>approvedTasks);
+
+if(next){
+
+document.getElementById("nextMilestone").textContent =
+next.tasks;
+
+const percent =
+(approvedTasks/(next.tasks))*100;
+
+document.getElementById("progressFill").style.width =
+Math.min(percent,100)+"%";
+
+document.querySelector(".progress-text").textContent =
+approvedTasks+" of "+next.tasks+" approved tasks completed.";
+
+}else{
+
+document.getElementById("nextMilestone").textContent =
+"Completed";
+
+document.getElementById("progressFill").style.width =
+"100%";
+
+document.querySelector(".progress-text").textContent =
+"Congratulations! All milestones completed.";
+
+}
+
+document.getElementById("claimedRewards").textContent =
+claimedRewards.length;
+
+const cards =
+document.querySelectorAll(".milestone-card");
+
+cards.forEach((card,index)=>{
+
+const btn =
+card.querySelector("button");
+
+const status =
+card.querySelector(".status");
+
+const target =
+milestones[index].tasks;
+
+if(claimedRewards.includes(target)){
+
+status.textContent="✔ Claimed";
+status.className="status claimed-status";
+
+btn.textContent="Reward Claimed";
+btn.className="claimed-btn";
+btn.disabled=true;
+
+}
+
+else if(approvedTasks>=target){
+
+status.textContent="🎁 Ready";
+status.className="status current-status";
+
+btn.textContent="Claim Reward";
+btn.className="claim-btn";
+btn.disabled=false;
+
+btn.onclick=()=>{
+
+alert(
+"Reward claim request submitted!"
+);
+
+// Later replace with API call
+
+claimedRewards.push(target);
+
+updateMilestones();
+
+};
+
+}
+
+else{
+
+status.textContent="🔒 Locked";
+status.className="status locked-status";
+
+btn.textContent=
+"Complete "+(target-approvedTasks)+" More Tasks";
+
+btn.className="locked-btn";
+
+btn.disabled=true;
+
+}
+
+});
+
+}
+
+updateMilestones();
+
+  </script>
+
+</body>
+
+</html>
