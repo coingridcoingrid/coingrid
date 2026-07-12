@@ -296,7 +296,11 @@ border-color:#facc15;
 border-color:#facc15;
 background:#243246;
 }
-
+.fixed-role{
+cursor:default;
+pointer-events:none;
+box-shadow:0 0 15px rgba(250,204,21,.3);
+}
 .role-icon{
 font-size:35px;
 margin-bottom:10px;
@@ -582,34 +586,21 @@ Create your CoinGrid account in less than a minute.
 <input type="password" id="confirmPassword" placeholder="Confirm password">
 </div>
 <!-- ACCOUNT TYPE -->
-  <div class="role-selection">
+  <!-- ACCOUNT TYPE -->
+<div class="role-selection">
 
-<h3>Select Your Role</h3>
+<h3>Account Type</h3>
 
 <div class="role-grid">
 
-<div class="role-card active"
-data-role="worker">
+<div class="role-card active fixed-role">
 
 <div class="role-icon">💰</div>
 
-<h4>Worker</h4>
+<h4>Worker Account</h4>
 
 <p>
-Complete tasks and earn rewards.
-</p>
-
-</div>
-
-<div class="role-card"
-data-role="sponsor">
-
-<div class="role-icon">📢</div>
-
-<h4>Sponsor</h4>
-
-<p>
-Create tasks and promote services.
+Complete tasks and earn rewards with CoinGrid.
 </p>
 
 </div>
@@ -621,7 +612,10 @@ type="hidden"
 id="selectedRole"
 value="worker">
 
-  </div>
+</div>
+
+
+  
   <!-- REFERRAL --><div class="input-group"><label>Referral Code (Optional)</label>
 
 <input
@@ -803,28 +797,6 @@ role:'worker'
 
 /* ROLE SELECTOR */
 
-const roleCards =
-document.querySelectorAll(".role-card");
-
-const selectedRole =
-document.getElementById("selectedRole");
-
-roleCards.forEach(card=>{
-
-card.addEventListener("click",()=>{
-
-roleCards.forEach(c=>
-c.classList.remove("active")
-);
-
-card.classList.add("active");
-
-selectedRole.value =
-card.dataset.role;
-
-});
-
-});
 
 /* FORM SUBMIT */
 
