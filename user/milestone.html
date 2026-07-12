@@ -740,24 +740,21 @@ Loading...
 
 <span>Approved Tasks</span>
 
-<strong id="approvedTasks">18</strong>
-
+<strong id="approvedTasks">0</strong>
 </div>
 
 <div class="info-box">
 
 <span>Next Milestone</span>
 
-<strong id="nextMilestone">20</strong>
-
+<strong id="nextMilestone">0</strong>
 </div>
 
 <div class="info-box">
 
 <span>Rewards Claimed</span>
 
-<strong id="claimedRewards">1</strong>
-
+<strong id="claimedRewards">0</strong>
 </div>
 
 </div>
@@ -822,14 +819,16 @@ Reward Claimed
 
 <h3>Worth Up To ₹600</h3>
 
-<p>
-Progress: <strong>18 / 20 Approved Tasks</strong>
+<p id="progress20">
+Progress: <strong>0 / 20 Approved Tasks</strong>
 </p>
 
 <div class="mini-progress">
-
-<div class="mini-fill" style="width:90%;"></div>
-
+<div
+class="mini-fill"
+id="miniFill20"
+style="width:0%;">
+</div>
 </div>
 
 <button class="locked-btn" disabled>
@@ -1103,6 +1102,13 @@ return;
 const data=
 await response.json();
 
+  if(!data.success){
+
+alert(data.message);
+
+return;
+
+}
 approvedTasks=
 data.approved_tasks;
 
@@ -1166,6 +1172,18 @@ Math.min(percent,100)+"%";
 
 document.querySelector(".progress-text").textContent =
 `${approvedTasks} of ${next.tasks} approved tasks completed.`;
+
+/* ADD THIS CODE HERE */
+
+if(next.tasks===20){
+
+document.getElementById("progress20").innerHTML =
+`Progress: <strong>${approvedTasks} / 20 Approved Tasks</strong>`;
+
+document.getElementById("miniFill20").style.width =
+Math.min((approvedTasks/20)*100,100)+"%";
+
+}
 
 }else{
 
