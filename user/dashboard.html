@@ -1035,9 +1035,11 @@ Manage your account details and worker level.
     <p>Waiting for task approval</p>
   </div>
   <div class="earning-card">
-    <h4>Total Points</h4>
-    <h2 id="points">₹0</h2>
-    <p>Current available points</p>
+  <h4>Approved Balance</h4>
+
+<h2 id="approvedBalance">₹0.00</h2>
+
+<p>Total approved task rewards</p>
   </div>
  <div class="earning-card">
     <h4>Lifetime Earnings</h4>
@@ -1153,8 +1155,8 @@ if (!response.ok) {
         document.getElementById("pendingBalance").textContent =
             "₹" + Number(data.wallet.pending_balance).toFixed(2);
 
-        document.getElementById("points").textContent =
-            data.wallet.points;
+       document.getElementById("approvedBalance").textContent =
+    "₹" + Number(data.wallet.approved_balance).toFixed(2);
 
         document.getElementById("lifetime").textContent =
             "₹" + Number(data.wallet.lifetime_earnings).toFixed(2);
