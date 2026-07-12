@@ -704,7 +704,9 @@ Every approved task moves you toward bigger rewards. Stay consistent, submit qua
 
 <h3>Next Reward</h3>
 
-<h2>₹600</h2>
+<h2 id="nextReward">
+₹0
+</h2>
 
 <p>Gift Card Worth Up To</p>
 
@@ -714,9 +716,13 @@ Every approved task moves you toward bigger rewards. Stay consistent, submit qua
 
 <h3>Next Milestone</h3>
 
-<h2>20 Tasks</h2>
+<h2 id="nextMilestoneHero">
+0 Tasks
+</h2>
 
-<p>Only 2 Tasks Remaining</p>
+<p id="remainingTasks">
+Loading...
+</p>
 
 </div>
 
@@ -1049,6 +1055,12 @@ Locked
 <script src="components/sidebar.js"></script>
   <script>
 
+    const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+let approvedTasks = 0;
+
+let claimedRewards = [];
 const milestones = [
 
 {tasks:10,reward:300},
@@ -1064,12 +1076,49 @@ const milestones = [
 
 ];
 
-// Example values from API
-let approvedTasks = 18;
+async function loadMilestones(){
 
-// Claimed milestones
-let claimedRewards = [10];
+try{
 
+const response =
+await fetch(
+
+`${API_BASE}/api/milestones`,
+
+{
+credentials:"include"
+}
+
+);
+
+if(response.status===401){
+
+window.location.href=
+"../auth/login.html";
+
+return;
+
+}
+
+const data=
+await response.json();
+
+approvedTasks=
+data.approved_tasks;
+
+claimedRewards=
+data.claimed_rewards;
+
+updateMilestones();
+
+}catch(err){
+
+console.log(err);
+
+}
+
+}
+    
 function updateMilestones(){
 
 document.getElementById("approvedTasks").textContent =
@@ -1078,6 +1127,32 @@ approvedTasks;
 let next =
 milestones.find(m=>m.tasks>approvedTasks);
 
+
+  if(next){
+
+document.getElementById("nextReward").textContent =
+"₹"+next.reward;
+
+document.getElementById("nextMilestoneHero").textContent =
+next.tasks+" Tasks";
+
+document.getElementById("remainingTasks").textContent =
+"Only "+(next.tasks-approvedTasks)+" Tasks Remaining";
+
+}else{
+
+document.getElementById("nextReward").textContent =
+"Completed";
+
+document.getElementById("nextMilestoneHero").textContent =
+"Completed";
+
+document.getElementById("remainingTasks").textContent =
+"All milestone rewards unlocked.";
+
+}
+
+  
 if(next){
 
 document.getElementById("nextMilestone").textContent =
@@ -1090,7 +1165,7 @@ document.getElementById("progressFill").style.width =
 Math.min(percent,100)+"%";
 
 document.querySelector(".progress-text").textContent =
-approvedTasks+" of "+next.tasks+" approved tasks completed.";
+`${approvedTasks} of ${next.tasks} approved tasks completed.`;
 
 }else{
 
@@ -1142,17 +1217,51 @@ btn.textContent="Claim Reward";
 btn.className="claim-btn";
 btn.disabled=false;
 
-btn.onclick=()=>{
+btn.onclick = async () => {
 
-alert(
-"Reward claim request submitted!"
-);
+    try {
 
-// Later replace with API call
+        const response = await fetch(
 
-claimedRewards.push(target);
+            `${API_BASE}/api/milestones/claim`,
 
-updateMilestones();
+            {
+
+                method: "POST",
+
+                credentials: "include",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    milestone: target
+
+                })
+
+            }
+
+        );
+
+        const result = await response.json();
+
+        alert(result.message);
+
+        if (result.success) {
+
+            loadMilestones();
+
+        }
+
+    } catch (err) {
+
+        console.log(err);
+
+    }
 
 };
 
@@ -1176,7 +1285,7 @@ btn.disabled=true;
 
 }
 
-updateMilestones();
+loadMilestones();
 
   </script>
 
