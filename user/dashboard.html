@@ -906,20 +906,20 @@ Complete more approved tasks and become one of CoinGrid's Top Earners.
 👤 Profile
 </a></div></div>
 
-<!--EARNINGS  CARDS --><div class="earnings-grid"><div class="earning-card"><h4>Total Balance</h4><h2 id="balance">$0.00</h2><p>Available for withdrawal</p></div>
+<!--EARNINGS  CARDS --><div class="earnings-grid"><div class="earning-card"><h4>Total Balance</h4><h2 id="balance">₹0.00</h2><p>Available for withdrawal</p></div>
   <div class="earning-card">
     <h4>Pending Balance</h4>
-    <h2 id="pendingBalance">$0.00</h2>
+    <h2 id="pendingBalance">₹0.00</h2>
     <p>Waiting for task approval</p>
   </div>
   <div class="earning-card">
     <h4>Total Points</h4>
-    <h2 id="points">0</h2>
+    <h2 id="points">₹0</h2>
     <p>Current available points</p>
   </div>
  <div class="earning-card">
     <h4>Lifetime Earnings</h4>
-    <h2 id="lifetime">$0.00</h2>
+    <h2 id="lifetime">₹0.00</h2>
     <p>Total earnings from all tasks</p>
  </div>
 </div><!-- STATISTICS -->
@@ -1051,28 +1051,28 @@ if (!response.ok) {
         /* WALLET */
 
         document.getElementById("balance").textContent =
-            "$" + Number(data.wallet.balance).toFixed(2);
+            "₹" + Number(data.wallet.balance).toFixed(2);
 
         document.getElementById("pendingBalance").textContent =
-            "$" + Number(data.wallet.pending_balance).toFixed(2);
+            "₹" + Number(data.wallet.pending_balance).toFixed(2);
 
         document.getElementById("points").textContent =
             data.wallet.points;
 
         document.getElementById("lifetime").textContent =
-            "$" + Number(data.wallet.lifetime_earnings).toFixed(2);
+            "₹" + Number(data.wallet.lifetime_earnings).toFixed(2);
 
         document.getElementById("walletBalance").textContent =
-            "$" + Number(data.wallet.balance).toFixed(2);
+            "₹" + Number(data.wallet.balance).toFixed(2);
 
         document.getElementById("walletPending").textContent =
-            "$" + Number(data.wallet.pending_balance).toFixed(2);
+            "₹" + Number(data.wallet.pending_balance).toFixed(2);
 
         document.getElementById("walletWithdrawn").textContent =
-            "$" + Number(data.wallet.total_withdrawn).toFixed(2);
+            "₹" + Number(data.wallet.total_withdrawn).toFixed(2);
 
         document.getElementById("walletLifetime").textContent =
-            "$" + Number(data.wallet.lifetime_earnings).toFixed(2);
+            "₹" + Number(data.wallet.lifetime_earnings).toFixed(2);
 
         /* STATISTICS */
 
