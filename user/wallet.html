@@ -623,12 +623,18 @@ if(response.status === 401){
 
         /* WITHDRAWALS */
 
-        const withdrawTable =
-        document.getElementById(
-        "withdrawTable"
-        );
+  const withdrawTable =
+document.getElementById("withdrawTable");
 
-        withdrawTable.innerHTML = `
+withdrawTable.innerHTML = "";
+
+if(data.withdrawals.length > 0){
+
+withdrawTable.innerHTML = `
+
+<div class="recent-withdrawals">
+
+<h2>Recent Withdrawals</h2>
 
 <div class="withdraw-row header">
 
@@ -642,11 +648,13 @@ if(response.status === 401){
 
 </div>
 
+</div>
+
 `;
 
-        data.withdrawals.forEach(item=>{
+data.withdrawals.forEach(item=>{
 
-            withdrawTable.innerHTML += `
+withdrawTable.innerHTML += `
 
 <div class="withdraw-row">
 
@@ -654,7 +662,7 @@ if(response.status === 401){
 
 <div>${item.method}</div>
 
-<div>$${Number(item.amount).toFixed(2)}</div>
+<div>₹${Number(item.amount).toFixed(2)}</div>
 
 <div class="${item.status}">
 
@@ -666,22 +674,29 @@ ${item.status}
 
 `;
 
-        });
+});
+
+}
 
         /* TRANSACTIONS */
+const transactionTable =
+document.getElementById("transactionTable");
 
-        const transactionTable =
-        document.getElementById(
-        "transactionTable"
-        );
+transactionTable.innerHTML = "";
 
-        transactionTable.innerHTML = `
+if(data.transactions.length > 0){
+
+transactionTable.innerHTML = `
+
+<div class="transaction-section">
+
+<h2>Transaction History</h2>
 
 <div class="transaction-row header">
 
 <div>Date</div>
 
-<div>Type</div>
+<div>Description</div>
 
 <div>Amount</div>
 
@@ -689,11 +704,13 @@ ${item.status}
 
 </div>
 
+</div>
+
 `;
 
-        data.transactions.forEach(item=>{
+data.transactions.forEach(item=>{
 
-            transactionTable.innerHTML += `
+transactionTable.innerHTML += `
 
 <div class="transaction-row">
 
@@ -701,7 +718,7 @@ ${item.status}
 
 <div>${item.description}</div>
 
-<div>$${Number(item.amount).toFixed(2)}</div>
+<div>₹${Number(item.amount).toFixed(2)}</div>
 
 <div class="${item.status}">
 
@@ -713,8 +730,9 @@ ${item.status}
 
 `;
 
-        });
+});
 
+}
     }
 
     catch(error){
@@ -876,7 +894,6 @@ methodSelect.dispatchEvent(
 new Event("change")
 );
 
-loadWallet();
 
 loadWallet();
 
