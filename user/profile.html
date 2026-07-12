@@ -312,7 +312,7 @@ Loading...
   
 </div></div><div class="info-card"><h3>Earning Summary</h3><div class="info-row">
 <span>Total Earnings</span>
-<span id="totalEarnings">$0.00</span>
+<span id="totalEarnings">₹0.00</span>
   
 </div><div class="info-row">
 <span>Completed Tasks</span>
@@ -401,7 +401,7 @@ if(response.status === 401){
         profile.status;
 
         document.getElementById("totalEarnings").textContent =
-        "$" +
+        "₹" +
         Number(profile.lifetime_earnings || 0).toFixed(2);
 
         document.getElementById("completedTasks").textContent =
