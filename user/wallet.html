@@ -463,7 +463,16 @@ and withdraw earnings anytime after meeting quality requirements.
   
   <!-- BALANCE CARDS --><div class="balance-grid"><div class="balance-card"><h3>Total Earnings</h3><h2 id="lifetimeEarnings">₹0.00</h2><p>Lifetime earnings</p></div>
   <div class="balance-card"><h3>Pending Rewards</h3><h2 id="pendingBalance">₹0.00</h2><p>Awaiting approval</p></div>
-  <div class="balance-card"><h3>Total Withdrawn</h3><h2 id="totalWithdrawn">₹0.00</h2><p>Successfully paid</p></div><div class="balance-card"><h3>TotalPoints </h3><h2 id="totalPoints">0</h2><p> </p></div></div>
+  <div class="balance-card"><h3>Total Withdrawn</h3><h2 id="totalWithdrawn">₹0.00</h2><p>Successfully paid</p></div>
+    
+    <div class="balance-card">
+      
+<h3>Approved Balance</h3>
+
+<h2 id="approvedBalance">₹0.00</h2>
+
+<p>Total approved task rewards</p>    
+    </div></div>
 <!-- WITHDRAWAL METHODS --><div class="withdraw-section"><h2>Withdrawal Methods</h2>
   
 <div class="methods-grid">
@@ -616,10 +625,13 @@ if(response.status === 401){
         data.wallet.total_withdrawn
         ).toFixed(2);
 
-        document.getElementById(
-        "totalPoints"
-        ).textContent =
-        data.wallet.points;
+      document.getElementById(
+"approvedBalance"
+).textContent =
+"₹" +
+Number(
+data.wallet.approved_balance
+).toFixed(2);
 
         /* WITHDRAWALS */
 
