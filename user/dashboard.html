@@ -392,7 +392,7 @@ font-size:50px;
 
 @media(max-width:991px){
 
-.dashboard-grid{
+.walletBalance{
 grid-template-columns:1fr;
 }
 
@@ -946,37 +946,12 @@ Complete more approved tasks and become one of CoinGrid's Top Earners.
 </div>
 
   </div>
-  <!-- WALLET SUMMARY --><div class="wallet-summary"><div class="section-header"><h2>Wallet Summary</h2><a href="wallet.html">
-View Wallet
-</a></div><div class="wallet-content"><div class="wallet-item"><span>Available Balance</span>
 
-<strong id="walletBalance">₹0.00</strong>
 
-</div><div class="wallet-item"><span>Pending Balance</span>
 
-<strong id="walletPending">₹0.00</strong>
 
-</div><div class="wallet-item"><span>Total Withdrawn</span>
-
-<strong id="walletWithdrawn">₹0.00</strong>
-
-</div><div class="wallet-item"><span>Lifetime Earnings</span>
-
-<strong id="walletLifetime">₹0.00</strong>
-
-</div></div></div><!-- RECENT ACTIVITY -->
-  <div class="activity-table" id="activityTable"></div>
-<!-- TASKS + NOTIFICATIONS --><div class="dashboard-grid">
   
-  <!-- AVAILABLE TASKS -->
-  
-  <div id="taskList"></div>
-  <!-- NOTIFICATIONS --><div class="dashboard-card"><div class="section-header"><h2>Notifications</h2><a href="notifications.html">
-View All
-</a></div><div id="notificationList">
-
-
-</div></div></div><!-- LEADERBOARD -->
+  </div><!-- LEADERBOARD -->
   
   
 
@@ -1062,17 +1037,7 @@ if (!response.ok) {
         document.getElementById("lifetime").textContent =
             "₹" + Number(data.wallet.lifetime_earnings).toFixed(2);
 
-        document.getElementById("walletBalance").textContent =
-            "₹" + Number(data.wallet.balance).toFixed(2);
-
-        document.getElementById("walletPending").textContent =
-            "₹" + Number(data.wallet.pending_balance).toFixed(2);
-
-        document.getElementById("walletWithdrawn").textContent =
-            "₹" + Number(data.wallet.total_withdrawn).toFixed(2);
-
-        document.getElementById("walletLifetime").textContent =
-            "₹" + Number(data.wallet.lifetime_earnings).toFixed(2);
+       
 
         /* STATISTICS */
 
@@ -1085,76 +1050,10 @@ if (!response.ok) {
         document.getElementById("rejectedTasks").textContent =
             data.statistics.rejected_tasks;
 
-        /* TASKS */
+   
+     
 
-        const taskList = document.getElementById("taskList");
-        taskList.innerHTML = "";
-
-        data.tasks.forEach(task => {
-
-            taskList.innerHTML += `
-                <div class="task-item">
-                    <div>
-                        <h4>${task.title}</h4>
-                        <p>${task.category}</p>
-                    </div>
-                    <span>$${Number(task.reward).toFixed(2)}</span>
-                </div>
-            `;
-
-        });
-
-        /* NOTIFICATIONS */
-
-        const notificationList =
-            document.getElementById("notificationList");
-
-        notificationList.innerHTML = "";
-
-        data.notifications.forEach(notification => {
-
-            notificationList.innerHTML += `
-                <div class="notification-item">
-                    <strong>${notification.title}</strong><br>
-                    ${notification.message}
-                </div>
-            `;
-
-        });
-
-        /* TRANSACTIONS */
-
-        const activityTable =
-            document.getElementById("activityTable");
-
-        activityTable.innerHTML = `
-            <div class="activity-row activity-head">
-                <div>Description</div>
-                <div>Amount</div>
-                <div>Status</div>
-                <div>Date</div>
-            </div>
-        `;
-
-        data.transactions.forEach(tx => {
-
-            activityTable.innerHTML += `
-                <div class="activity-row">
-                    <div>${tx.description}</div>
-                    <div>$${Number(tx.amount).toFixed(2)}</div>
-                    <div>${tx.status}</div>
-                    <div>${tx.created_at}</div>
-                </div>
-            `;
-
-        });
-
-    } catch (err) {
-
-    console.error(err);
-    alert(err.message);
-
-    }
+      
 
 }
 
