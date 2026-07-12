@@ -650,6 +650,57 @@ font-size:30px;
 }
 
 }
+
+ /* MAIN CONTENT */
+
+.main-content{
+margin-left:280px;
+transition:.3s;
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+margin-right:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+.main-content{
+margin-left:0;
+}
+
+.menu-btn{
+display:block;
+}
+
+}
+ .sidebar{
+width:280px;
+position:fixed;
+left:0;
+top:0;
+height:100vh;
+z-index:1000;
+transition:.3s;
+}
+
+@media(max-width:991px){
+
+.sidebar{
+left:-100%;
+}
+
+.sidebar.active{
+left:0;
+}
+
+}
 </style>
 <body>
 
@@ -922,10 +973,29 @@ Update Submission
 
 </div>
 
-<script src="../components/sidebar.js"></script>
+
 
 <script>
 
+ /* MOBILE SIDEBAR MENU */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const menuBtn=document.getElementById("menuBtn");
+
+menuBtn.addEventListener("click",()=>{
+
+const sidebar=document.getElementById("sidebar");
+
+if(sidebar){
+
+sidebar.classList.toggle("active");
+
+}
+
+});
+
+});
   const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
