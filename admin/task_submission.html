@@ -9,7 +9,6 @@
 
 <title>Task Submission Management | CoinGrid Admin</title>
 
-<link rel="stylesheet" href="../components/sidebar.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -701,10 +700,99 @@ left:0;
 }
 
 }
+
+ .sidebar{
+width:280px;
+background:#020617;
+position:fixed;
+left:0;
+top:0;
+height:100vh;
+padding:25px;
+overflow-y:auto;
+border-right:1px solid rgba(255,255,255,.08);
+z-index:1000;
+transition:.3s;
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+color:#facc15;
+margin-bottom:40px;
+text-align:center;
+}
+
+.nav-links{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.nav-links a{
+background:#0f172a;
+padding:15px;
+border-radius:12px;
+color:#cbd5e1;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#1e293b;
+transform:translateX(5px);
+}
+
+.nav-links a.active{
+background:#facc15;
+color:#000;
+font-weight:700;
+}
+
+@media(max-width:991px){
+.sidebar{
+left:-100%;
+}
+
+.sidebar.active{
+left:0;
+}
+ }
 </style>
 <body>
 
-<div id="sidebar-container"></div>
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+CoinGrid
+</div>
+
+<div class="nav-links">
+
+<a href="/coingrid/admin/dashboard.html">📊 Dashboard</a>
+
+<a href="/coingrid/admin/users.html">👥 Users</a>
+
+<a href="/coingrid/admin/sponsors.html">🏢 Sponsors</a>
+
+<a href="/coingrid/admin/tasks.html">📋 Tasks</a>
+
+<a href="/coingrid/admin/task_submission.html" class="active">📋 Task Submissions</a>
+
+<a href="/coingrid/admin/payouts.html">💰 Payouts</a>
+
+<a href="/coingrid/admin/reports.html">📑 Reports</a>
+
+<a href="/coingrid/admin/settings.html">⚙ Settings</a>
+
+<a href="#" onclick="adminLogout()">🚪 Logout</a>
+
+<a href="/coingrid/admin/password-generator.html">Password Generator</a>
+
+</div>
+
+</div>
 
 <div class="main-content">
 
