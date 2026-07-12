@@ -1105,7 +1105,8 @@ await response.json();
   if(!data.success){
 
 alert(data.message);
-
+window.location.href=
+"../auth/login.html";
 return;
 
 }
@@ -1264,6 +1265,15 @@ btn.onclick = async () => {
             }
 
         );
+
+      if(response.status===401){
+
+window.location.href=
+"../auth/login.html";
+
+return;
+
+}
 
         const result = await response.json();
 
