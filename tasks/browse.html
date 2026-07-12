@@ -741,7 +741,7 @@ Social
     
     
     <!-- STATS --><div class="stats-grid"><div class="stat-card"><h2 id="availableTasks">0</h2><p>Available Tasks</p></div>
-  <div class="stat-card"><h2 id="totalRewards">$0.00</h2><p>Total Rewards</p></div>
+  <div class="stat-card"><h2 id="totalRewards">₹0.00</h2><p>Total Rewards</p></div>
   <div class="stat-card"><h2 id="newToday">0</h2><p>New Today</p></div>
   <div class="stat-card"><h2 id="approvalRate">0%</h2><p>Approval Rate</p></div></div><div class="sort-bar"><h3>Available Opportunities</h3>
     <select id="sortSelect"><option>Highest Reward</option>
@@ -826,7 +826,7 @@ if (response.status === 401) {
         data.stats.available_tasks;
 
         document.getElementById("totalRewards").textContent =
-        "$" +
+        "₹" +
         Number(data.stats.total_rewards).toFixed(2);
 
         document.getElementById("newToday").textContent =
@@ -878,7 +878,7 @@ style="width:100%;height:180px;object-fit:cover;border-radius:15px;margin-bottom
 
 <span class="reward">
 
-$${Number(task.reward).toFixed(2)}
+₹${Number(task.reward).toFixed(2)}
 
 </span>
 
