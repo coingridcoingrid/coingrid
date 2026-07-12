@@ -392,8 +392,8 @@ font-size:50px;
 
 @media(max-width:991px){
 
-.walletBalance{
-grid-template-columns:1fr;
+.earnings-grid{
+grid-template-columns:1fr 1fr;
 }
 
 .actions-grid{
@@ -787,8 +787,8 @@ Loading...
 
 <span>Membership</span>
 
-<strong>
-Premium
+<strong id="membershipStatus">
+Standard
 </strong>
 
 </div>
@@ -1054,6 +1054,16 @@ if (!response.ok) {
      
 
       
+
+} catch (err) {
+
+        console.error(err);
+
+        if (err.message) {
+            alert(err.message);
+        }
+
+    }
 
 }
 
