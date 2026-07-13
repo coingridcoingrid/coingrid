@@ -1092,9 +1092,11 @@ headers:{
 "Content-Type":"application/json"
 },
 
-body:JSON.stringify({
+body: JSON.stringify({
 
-token:response.credential
+token: response.credential,
+
+role: "worker"
 
 })
 
