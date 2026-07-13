@@ -516,13 +516,76 @@ and withdraw earnings anytime after meeting quality requirements.
 
 </select>
 
-</div><div class="form-group"><label>Account / UPI ID</label>
+</div>
+  
+  
+<!-- UPI -->
+
+<div class="form-group" id="upiGroup">
+
+<label>UPI ID</label>
 
 <input
 type="text"
-placeholder="Enter payment details" id="withdrawAccount">
+id="withdrawAccount"
+placeholder="Enter UPI ID (example@upi)">
 
-</div><div class="form-group"><label>Amount</label>
+</div>
+
+<!-- BANK TRANSFER -->
+
+<div id="bankFields" style="display:none;">
+
+<div class="form-group">
+
+<label>Account Holder Name</label>
+
+<input
+type="text"
+id="bankName"
+placeholder="Enter account holder name">
+
+</div>
+
+<div class="form-group">
+
+<label>Bank Account Number</label>
+
+<input
+type="text"
+id="bankAccount"
+placeholder="Enter account number">
+
+</div>
+
+<div class="form-group">
+
+<label>IFSC Code</label>
+
+<input
+type="text"
+id="bankIfsc"
+placeholder="Enter IFSC code">
+
+</div>
+
+</div>
+
+<!-- PAYPAL -->
+
+<div class="form-group" id="paypalGroup" style="display:none;">
+
+<label>PayPal Email</label>
+
+<input
+type="email"
+id="paypalEmail"
+placeholder="Enter PayPal Email">
+
+</div>
+  
+  
+  <div class="form-group"><label>Amount</label>
 
 <input id="withdrawAmount"
 type="number"
@@ -776,10 +839,48 @@ async function(e){
     "withdrawMethod"
     ).value;
 
-    const account =
-    document.getElementById(
-    "withdrawAccount"
-    ).value.trim();
+    let account = "";
+
+if(method==="UPI"){
+
+account =
+document.getElementById(
+"withdrawAccount"
+).value.trim();
+
+}
+
+else if(method==="Bank Transfer"){
+
+account = JSON.stringify({
+
+holder_name:
+document.getElementById(
+"bankName"
+).value.trim(),
+
+account_number:
+document.getElementById(
+"bankAccount"
+).value.trim(),
+
+ifsc:
+document.getElementById(
+"bankIfsc"
+).value.trim()
+
+});
+
+}
+
+else if(method==="PayPal"){
+
+account =
+document.getElementById(
+"paypalEmail"
+).value.trim();
+
+}
 
     const amount =
     Number(
@@ -870,33 +971,36 @@ function closeWithdrawPopup(){
 const methodSelect =
 document.getElementById("withdrawMethod");
 
-const accountInput =
-document.getElementById("withdrawAccount");
+const upiGroup =
+document.getElementById("upiGroup");
+
+const bankFields =
+document.getElementById("bankFields");
+
+const paypalGroup =
+document.getElementById("paypalGroup");
 
 methodSelect.addEventListener("change",()=>{
 
-switch(methodSelect.value){
+upiGroup.style.display="none";
+bankFields.style.display="none";
+paypalGroup.style.display="none";
 
-case "UPI":
+if(methodSelect.value==="UPI"){
 
-accountInput.placeholder =
-"Enter UPI ID (example@upi)";
+upiGroup.style.display="block";
 
-break;
+}
 
-case "Bank Transfer":
+else if(methodSelect.value==="Bank Transfer"){
 
-accountInput.placeholder =
-"Enter Account Number & IFSC";
+bankFields.style.display="block";
 
-break;
+}
 
-case "PayPal":
+else if(methodSelect.value==="PayPal"){
 
-accountInput.placeholder =
-"Enter PayPal Email Address";
-
-break;
+paypalGroup.style.display="block";
 
 }
 
