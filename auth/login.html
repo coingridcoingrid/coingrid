@@ -875,6 +875,79 @@ forgotPopup.style.display="none";
 
 });
 
+  
+  /* SEND PASSWORD RESET EMAIL */
+
+document
+.getElementById("sendReset")
+.addEventListener(
+"click",
+async()=>{
+
+const email =
+document
+.getElementById("resetEmail")
+.value
+.trim()
+.toLowerCase();
+
+if(!email){
+
+alert(
+"Please enter your email address."
+);
+
+return;
+
+}
+
+try{
+
+const response =
+await fetch(
+"https://coingrid-api.coingridcoingrid.workers.dev/auth/forgot-password",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+email
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+alert(data.message);
+
+forgotPopup.style.display =
+"none";
+
+document
+.getElementById("resetEmail")
+.value = "";
+
+}catch(error){
+
+alert(
+"Unable to send reset email."
+);
+
+console.error(error);
+
+}
+
+});
+
 /* SHOW PASSWORD */
 
 const passwordField =
