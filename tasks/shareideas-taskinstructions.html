@@ -2064,7 +2064,7 @@ Submit your Google Docs link for review.
 
 <div class="notice-card">
 
-<form id="ideaSubmissionForm">
+<form id="taskSubmissionForm">
 
 <div class="form-group">
 
@@ -2076,8 +2076,9 @@ Google Docs / Google Drive Link <span style="color:#ef4444;">*</span>
 
 <input
 type="url"
-id="driveLink"
-placeholder="https://docs.google.com/document/..."
+id="taskUrl"
+name="taskUrl"
+placeholder="Paste your Google Docs link here..."
 required>
 
 </div>
@@ -2091,26 +2092,14 @@ Optional Message
 </label>
 
 <textarea
-id="message"
-rows="6"
-placeholder="Anything you want our review team to know..."></textarea>
-
+id="creatorNote"
+name="creatorNote"
+rows="5"
+placeholder="Add any notes for the review team...">
+</textarea>
 </div>
 
-<div class="form-group">
 
-<label>
-
-Supporting Files (Optional)
-
-</label>
-
-<input
-type="file"
-id="attachment"
-accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.zip,.png,.jpg,.jpeg">
-
-</div>
 
 <div class="submit-box">
 
@@ -2377,6 +2366,80 @@ observer.observe(card);
 
 });
 
+
+
+   const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+const TASK_ID = 36;
+
+document
+.getElementById("taskSubmissionForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const task_id = TASK_ID;
+
+    const submission_url =
+    document.getElementById("taskUrl").value.trim();
+
+    const submission_note =
+    document.getElementById("creatorNote").value.trim();
+
+    try{
+
+        const response = await fetch(
+
+            `${API_BASE}/api/tasks/submit`,
+
+            {
+
+                method:"POST",
+
+                credentials:"include",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+
+                    task_id,
+
+                    submission_url,
+
+                    submission_note
+
+                })
+
+            }
+
+        );
+
+        const data = await response.json();
+
+        if(data.success){
+
+            alert(data.message);
+
+            window.location.href="browse.html";
+
+        }else{
+
+            alert(data.message);
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Unable to submit task.");
+
+    }
+
+});
 </script>
 
 </body>
