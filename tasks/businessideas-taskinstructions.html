@@ -334,6 +334,237 @@ transform:translateY(0);
 
 }
 
+  /* ===== CARDS ===== */
+
+.learning-grid,
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:24px;
+
+margin-top:40px;
+
+}
+
+.learn-card,
+.stat-card{
+
+background:#0f172a;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:18px;
+
+padding:28px;
+
+transition:.35s;
+
+}
+
+.learn-card:hover,
+.stat-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#facc15;
+
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.learn-card h3,
+.stat-card h3{
+
+font-size:22px;
+
+margin-bottom:14px;
+
+color:#facc15;
+
+}
+
+.learn-card p,
+.stat-card p{
+
+color:#cbd5e1;
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+.icon{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+}
+
+/* ===== NOTICE ===== */
+
+.notice-card{
+
+max-width:900px;
+
+margin:auto;
+
+background:#0f172a;
+
+border:1px solid rgba(250,204,21,.18);
+
+border-radius:18px;
+
+padding:35px;
+
+}
+
+.notice-card h2{
+
+color:#facc15;
+
+margin-bottom:20px;
+
+}
+
+.notice-card p{
+
+margin-bottom:15px;
+
+color:#d1d5db;
+
+}
+
+/* ===== FORM ===== */
+
+.form-group{
+
+margin-bottom:28px;
+
+}
+
+.form-group label{
+
+display:block;
+
+font-weight:700;
+
+margin-bottom:10px;
+
+font-size:16px;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+width:100%;
+
+padding:16px;
+
+background:#020617;
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:12px;
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+border-color:#facc15;
+
+box-shadow:0 0 0 4px rgba(250,204,21,.15);
+
+}
+
+.form-group textarea{
+
+resize:vertical;
+
+min-height:150px;
+
+}
+
+.submit-box{
+
+text-align:center;
+
+margin-top:30px;
+
+}
+
+.submit-btn{
+
+background:#facc15;
+
+color:#000;
+
+border:none;
+
+padding:16px 50px;
+
+font-size:18px;
+
+font-weight:700;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 35px rgba(250,204,21,.35);
+
+}
+
+.submit-btn:disabled{
+
+opacity:.7;
+
+cursor:not-allowed;
+
+transform:none;
+
+}
+  /* ===== SUBMISSION CARD ===== */
+
+.notice-card{
+
+max-width:700px;
+
+margin:0 auto;
+
+background:#0f172a;
+
+border:1px solid rgba(250,204,21,.18);
+
+border-radius:18px;
+
+padding:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
 </style>
 
 </head>
@@ -1988,300 +2219,13 @@ class="submit-btn">
 
 </section>
 
-<!-- ========================================= -->
-<!-- FINAL NOTICE -->
-<!-- ========================================= -->
 
-<section class="section">
 
-<div class="notice-card">
 
-<h2>
 
-📢 Final Important Notice
 
-</h2>
 
-<p>
 
-Every proposal is manually reviewed before approval.
-
-</p>
-
-<p>
-
-Submitting an idea does not guarantee development, publication or payment.
-
-</p>
-
-<p>
-
-Ideas that are copied, already available without meaningful improvements, AI-generated without original contribution, or lacking proper research are unlikely to be approved.
-
-</p>
-
-<p>
-
-If your proposal is approved, CoinGrid may begin planning and development based on project complexity.
-
-</p>
-
-<p>
-
-If the completed platform is published and generates real business revenue, eligible creators may receive performance-based rewards or revenue sharing according to the CoinGrid Creator Program.
-
-</p>
-
-<p>
-
-Platform growth, active users, customer demand and actual revenue determine creator earnings. Successful products may generate significantly higher rewards than products with limited adoption.
-
-</p>
-
-<p>
-
-By submitting your proposal, you confirm that the work is your own original idea and understand that CoinGrid will evaluate it according to the Creator Program terms.
-
-</p>
-
-</div>
-
-</section>
-  <!-- ========================================= -->
-<!-- PART 3A -->
-<!-- FINAL MESSAGE -->
-<!-- ========================================= -->
-
-<section class="section">
-
-<div class="section-title">
-
-<h2>
-
-🌟 Build The Future With CoinGrid
-
-</h2>
-
-<p>
-
-Every revolutionary product started as a simple idea. Your innovation could become the next platform used by thousands—or even millions—of people around the world.
-
-</p>
-
-</div>
-
-<div class="notice-card">
-
-<h2>
-
-Innovation Commitment
-
-</h2>
-
-<p>
-
-We are looking for original ideas that solve real-world problems—not copies of existing products.
-
-</p>
-
-<p>
-
-Take your time to research thoroughly before submitting. A well-researched proposal has a much higher chance of being selected than an unverified concept.
-
-</p>
-
-<p>
-
-If your proposal is approved, our development team may improve, design and build the product while preserving your original concept.
-
-</p>
-
-<p>
-
-Selected projects may enter development within approximately <strong>2–10 business days</strong>, depending on complexity and our current development schedule.
-
-</p>
-
-<p>
-
-Once launched, we continuously monitor user growth, platform performance and business demand to evaluate long-term success.
-
-</p>
-
-<p>
-
-Creator rewards are performance-based. Platforms with higher user adoption and stronger business growth may become eligible for significantly greater rewards under the CoinGrid Creator Program.
-
-</p>
-
-<p>
-
-Whether your idea is accepted or not, every submission helps us discover new opportunities and build better technology for everyone.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ========================================= -->
-<!-- INSPIRATION -->
-<!-- ========================================= -->
-
-<section class="section">
-
-<div class="stats-grid">
-
-<div class="stat-card">
-
-<div class="icon">💡</div>
-
-<h3>
-
-Think Different
-
-</h3>
-
-<p>
-
-Challenge existing ideas and discover opportunities others have overlooked.
-
-</p>
-
-</div>
-
-<div class="stat-card">
-
-<div class="icon">🚀</div>
-
-<h3>
-
-Build The Future
-
-</h3>
-
-<p>
-
-Great businesses begin with one innovative idea and the courage to solve real problems.
-
-</p>
-
-</div>
-
-<div class="stat-card">
-
-<div class="icon">🌍</div>
-
-<h3>
-
-Global Impact
-
-</h3>
-
-<p>
-
-Your concept could become a product used by people across different countries and industries.
-
-</p>
-
-</div>
-
-<div class="stat-card">
-
-<div class="icon">🏆</div>
-
-<h3>
-
-Create Value
-
-</h3>
-
-<p>
-
-Focus on helping people, and long-term success will naturally follow.
-
-</p>
-
-</div>
-
-</div>
-
-  </section>
-
-  <!-- ========================================= -->
-<!-- PART 3B -->
-<!-- FOOTER -->
-<!-- ========================================= -->
-
-<footer
-
-style="
-
-margin-top:80px;
-
-padding:50px 20px;
-
-background:#010814;
-
-border-top:1px solid rgba(255,255,255,.08);
-
-text-align:center;
-
-">
-
-<h2
-
-style="
-
-color:#facc15;
-
-margin-bottom:18px;
-
-">
-
-CoinGrid Innovation Academy
-
-</h2>
-
-<p
-
-style="
-
-max-width:900px;
-
-margin:auto;
-
-color:#94a3b8;
-
-line-height:1.9;
-
-">
-
-Innovation changes the world. Every successful startup, SaaS platform, AI solution, cloud service and technology company began with one original idea.
-
-Research thoroughly, solve real problems, think differently and submit your best proposal.
-
-Your innovation could become the next CoinGrid product used by thousands of people worldwide.
-
-</p>
-
-<div
-
-style="
-
-margin-top:30px;
-
-color:#64748b;
-
-font-size:15px;
-
-">
-
-© 2026 CoinGrid. All Rights Reserved.
-
-</div>
-
-</footer>
 
 <script>
 
