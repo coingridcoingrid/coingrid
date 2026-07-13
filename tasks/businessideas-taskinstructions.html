@@ -2047,3 +2047,426 @@ By submitting your proposal, you confirm that the work is your own original idea
 </div>
 
 </section>
+  <!-- ========================================= -->
+<!-- PART 3A -->
+<!-- FINAL MESSAGE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+🌟 Build The Future With CoinGrid
+
+</h2>
+
+<p>
+
+Every revolutionary product started as a simple idea. Your innovation could become the next platform used by thousands—or even millions—of people around the world.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Innovation Commitment
+
+</h2>
+
+<p>
+
+We are looking for original ideas that solve real-world problems—not copies of existing products.
+
+</p>
+
+<p>
+
+Take your time to research thoroughly before submitting. A well-researched proposal has a much higher chance of being selected than an unverified concept.
+
+</p>
+
+<p>
+
+If your proposal is approved, our development team may improve, design and build the product while preserving your original concept.
+
+</p>
+
+<p>
+
+Selected projects may enter development within approximately <strong>2–10 business days</strong>, depending on complexity and our current development schedule.
+
+</p>
+
+<p>
+
+Once launched, we continuously monitor user growth, platform performance and business demand to evaluate long-term success.
+
+</p>
+
+<p>
+
+Creator rewards are performance-based. Platforms with higher user adoption and stronger business growth may become eligible for significantly greater rewards under the CoinGrid Creator Program.
+
+</p>
+
+<p>
+
+Whether your idea is accepted or not, every submission helps us discover new opportunities and build better technology for everyone.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- INSPIRATION -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">💡</div>
+
+<h3>
+
+Think Different
+
+</h3>
+
+<p>
+
+Challenge existing ideas and discover opportunities others have overlooked.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🚀</div>
+
+<h3>
+
+Build The Future
+
+</h3>
+
+<p>
+
+Great businesses begin with one innovative idea and the courage to solve real problems.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🌍</div>
+
+<h3>
+
+Global Impact
+
+</h3>
+
+<p>
+
+Your concept could become a product used by people across different countries and industries.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🏆</div>
+
+<h3>
+
+Create Value
+
+</h3>
+
+<p>
+
+Focus on helping people, and long-term success will naturally follow.
+
+</p>
+
+</div>
+
+</div>
+
+  </section>
+
+  <!-- ========================================= -->
+<!-- PART 3B -->
+<!-- FOOTER -->
+<!-- ========================================= -->
+
+<footer
+
+style="
+
+margin-top:80px;
+
+padding:50px 20px;
+
+background:#010814;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+">
+
+<h2
+
+style="
+
+color:#facc15;
+
+margin-bottom:18px;
+
+">
+
+CoinGrid Innovation Academy
+
+</h2>
+
+<p
+
+style="
+
+max-width:900px;
+
+margin:auto;
+
+color:#94a3b8;
+
+line-height:1.9;
+
+">
+
+Innovation changes the world. Every successful startup, SaaS platform, AI solution, cloud service and technology company began with one original idea.
+
+Research thoroughly, solve real problems, think differently and submit your best proposal.
+
+Your innovation could become the next CoinGrid product used by thousands of people worldwide.
+
+</p>
+
+<div
+
+style="
+
+margin-top:30px;
+
+color:#64748b;
+
+font-size:15px;
+
+">
+
+© 2026 CoinGrid. All Rights Reserved.
+
+</div>
+
+</footer>
+
+<script>
+
+const observer =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate(
+
+[
+
+{
+
+opacity:0,
+
+transform:"translateY(40px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0)"
+
+}
+
+],
+
+{
+
+duration:700,
+
+fill:"forwards"
+
+}
+
+);
+
+}
+
+});
+
+});
+
+document
+
+.querySelectorAll(
+
+".stat-card,.learn-card,.notice-card"
+
+)
+
+.forEach(card=>{
+
+card.style.opacity=0;
+
+observer.observe(card);
+
+});
+
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+const TASK_ID = 37;
+
+document
+
+.getElementById("taskSubmissionForm")
+
+.addEventListener(
+
+"submit",
+
+async function(e){
+
+e.preventDefault();
+
+const submitButton =
+this.querySelector("button");
+
+submitButton.disabled = true;
+
+submitButton.innerHTML =
+"Submitting...";
+
+const task_id = TASK_ID;
+
+const submission_url =
+document
+.getElementById("taskUrl")
+.value
+.trim();
+
+const submission_note =
+document
+.getElementById("creatorNote")
+.value
+.trim();
+
+try{
+
+const response =
+await fetch(
+
+`${API_BASE}/api/tasks/submit`,
+
+{
+
+method:"POST",
+
+credentials:"include",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+task_id,
+
+submission_url,
+
+submission_note
+
+})
+
+}
+
+);
+
+const data =
+await response.json();
+
+if(data.success){
+
+alert(
+
+"🎉 Proposal submitted successfully!\n\nOur Innovation Review Team will carefully evaluate your submission."
+
+);
+
+window.location.href =
+"browse.html";
+
+}else{
+
+alert(
+
+data.message ||
+
+"Submission failed."
+
+);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+alert(
+
+"Unable to submit your proposal. Please try again later."
+
+);
+
+}
+
+submitButton.disabled = false;
+
+submitButton.innerHTML =
+"🚀 Submit Proposal";
+
+}
+
+);
+
+</script>
+
+</body>
+
+</html>
