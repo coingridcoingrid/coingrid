@@ -3481,7 +3481,55 @@ Every completed project helps you become a better researcher and innovator.
 </div>
 
 </section>
+<!-- ========================================= -->
+<!-- START TASK -->
+<!-- ========================================= -->
 
+<section class="section">
+
+<div class="notice-card" style="text-align:center;max-width:850px;">
+
+<h2>
+
+🎉 Congratulations!
+
+</h2>
+
+<p>
+
+You have successfully completed the CoinGrid Academy Research & Innovation Masterclass.
+
+</p>
+
+<p>
+
+You now understand how to research business ideas, validate concepts, prepare professional proposals, and submit high-quality innovation tasks.
+
+</p>
+
+<p>
+
+The task will unlock automatically after you finish this course.
+
+</p>
+
+<button
+
+id="startTaskBtn"
+
+class="primary-btn"
+
+disabled
+
+style="opacity:.6;cursor:not-allowed;margin-top:25px;">
+
+⏳ Unlocking in <span id="countdown">10</span>s
+
+</button>
+
+</div>
+
+</section>
 <!-- ========================================= -->
 <!-- END OF PART 3C -->
 <!-- END OF COURSE -->
@@ -3549,6 +3597,46 @@ section.style.transition="all .6s ease";
 observer.observe(section);
 
 });
+
+
+
+
+  
+
+let seconds=10;
+
+const btn=document.getElementById("startTaskBtn");
+
+const countdown=document.getElementById("countdown");
+
+const timer=setInterval(()=>{
+
+seconds--;
+
+countdown.textContent=seconds;
+
+if(seconds<=0){
+
+clearInterval(timer);
+
+btn.disabled=false;
+
+btn.style.opacity="1";
+
+btn.style.cursor="pointer";
+
+btn.innerHTML="🚀 Start Business Ideas Task";
+
+btn.onclick=function(){
+
+window.location.href="shareideas-taskinstructions.html";
+
+};
+
+}
+
+},1000);
+
 
 </script>
 
