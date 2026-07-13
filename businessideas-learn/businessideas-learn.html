@@ -1,0 +1,3557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+CoinGrid Academy |
+Research & Innovation Masterclass
+
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#020617;
+color:#fff;
+line-height:1.8;
+overflow-x:hidden;
+
+}
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:80px 20px;
+
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b
+);
+
+position:relative;
+overflow:hidden;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(250,204,21,.18),
+transparent 70%
+);
+
+top:-220px;
+right:-180px;
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(59,130,246,.15),
+transparent 70%
+);
+
+left:-180px;
+bottom:-180px;
+
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:900px;
+
+text-align:center;
+
+animation:fadeUp 1s ease;
+
+}
+
+.course-tag{
+
+display:inline-block;
+
+padding:10px 24px;
+
+border-radius:50px;
+
+background:rgba(250,204,21,.12);
+
+border:1px solid rgba(250,204,21,.35);
+
+color:#facc15;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+.hero h1{
+
+font-size:56px;
+
+font-weight:800;
+
+line-height:1.2;
+
+margin-bottom:25px;
+
+}
+
+.hero p{
+
+max-width:780px;
+
+margin:auto;
+
+font-size:19px;
+
+color:#cbd5e1;
+
+margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+padding:16px 36px;
+
+background:#facc15;
+
+color:#000;
+
+border:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 20px 45px rgba(250,204,21,.35);
+
+}
+
+.secondary-btn{
+
+padding:16px 36px;
+
+background:transparent;
+
+color:#fff;
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:12px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+/* SECTION */
+
+.section{
+
+width:min(1200px,92%);
+
+margin:auto;
+
+padding:90px 0;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:55px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+color:#facc15;
+
+margin-bottom:15px;
+
+}
+
+.section-title p{
+
+color:#94a3b8;
+
+font-size:18px;
+
+}
+
+/* STATS */
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:#0f172a;
+
+border:1px solid rgba(255,255,255,.08);
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#facc15;
+
+}
+
+.icon{
+
+font-size:46px;
+
+margin-bottom:18px;
+
+}
+
+.stat-card h3{
+
+color:#facc15;
+
+font-size:28px;
+
+margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+color:#cbd5e1;
+
+}
+
+/* NOTICE */
+
+.notice-card{
+
+max-width:900px;
+
+margin:auto;
+
+background:#0f172a;
+
+border:1px solid rgba(250,204,21,.2);
+
+border-radius:20px;
+
+padding:35px;
+
+}
+
+.notice-card h2{
+
+color:#facc15;
+
+margin-bottom:20px;
+
+}
+
+.notice-card p{
+
+margin-bottom:15px;
+
+color:#d1d5db;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+.section-title h2{
+
+font-size:30px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="course-tag">
+
+🎓 CoinGrid Academy
+
+</div>
+
+<h1>
+
+Research & Innovation Masterclass
+
+</h1>
+
+<p>
+
+Learn how professionals research ideas, identify opportunities, validate concepts, prepare high-quality proposals, and successfully complete CoinGrid innovation tasks.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+onclick="document.getElementById('course-info').scrollIntoView({behavior:'smooth'})">
+
+Start Learning →
+
+</button>
+
+<button
+class="secondary-btn">
+
+Course Overview
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE INFORMATION -->
+
+<section
+class="section"
+id="course-info">
+
+<div class="section-title">
+
+<h2>
+
+Welcome To CoinGrid Academy
+
+</h2>
+
+<p>
+
+Everything begins with learning. Before completing innovation tasks, you'll learn professional research, idea validation, proposal writing and submission techniques.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏱
+
+</div>
+
+<h3>
+
+30 Minutes
+
+</h3>
+
+<p>
+
+Estimated Learning Time
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+9 Lessons
+
+</h3>
+
+<p>
+
+Professional Learning Modules
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Beginner
+
+</h3>
+
+<p>
+
+No Previous Experience Required
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Innovation
+
+</h3>
+
+<p>
+
+Research • Validate • Create • Submit
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IMPORTANT NOTICE -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Before You Begin
+
+</h2>
+
+<p>
+
+This academy teaches you how to research professional business and technology ideas before submitting CoinGrid innovation tasks.
+
+</p>
+
+<p>
+
+Completing this course does not guarantee task approval or rewards. Every submission is manually reviewed for originality, research quality, practical value, and overall business potential.
+
+</p>
+
+<p>
+
+The better your research and proposal quality, the greater your chances of approval.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- COURSE PROGRESS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Part 1A of 9 • Welcome & Foundation
+
+</p>
+
+</div>
+
+</section>
+
+  <!-- ========================================= -->
+<!-- PART 1B -->
+<!-- UNDERSTANDING RESEARCH -->
+<!-- ========================================= -->
+
+<section class="section" id="part1b">
+
+<div class="section-title">
+
+<h2>
+
+Understanding Research
+
+</h2>
+
+<p>
+
+Research is the foundation of every successful business, website, application, and startup. Before creating any idea, you must understand the problem, existing solutions, and market demand.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔍
+
+</div>
+
+<h3>
+
+Research
+
+</h3>
+
+<p>
+
+Collect information before making decisions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Innovation
+
+</h3>
+
+<p>
+
+Find better solutions instead of copying existing ideas.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Market Demand
+
+</h3>
+
+<p>
+
+Understand what people actually need and search for.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Success
+
+</h3>
+
+<p>
+
+Good research increases the chance of building successful products.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY RESEARCH IS IMPORTANT -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+Why Research Matters
+
+</h2>
+
+<p>
+
+Many beginners immediately start building ideas without checking whether similar products already exist. Professional innovators spend time researching before writing a single proposal.
+
+</p>
+
+<p>
+
+Research helps you discover real problems, understand competitors, identify opportunities, and create better solutions that provide value to users.
+
+</p>
+
+<p>
+
+The more you understand the market, the better your proposal becomes.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHAT YOU WILL LEARN -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+In This Lesson You Will Learn
+
+</h2>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌐
+
+</div>
+
+<h3>
+
+Search Efficiently
+
+</h3>
+
+<p>
+
+Learn where and how to search for existing products.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🧠
+
+</div>
+
+<h3>
+
+Think Like A Founder
+
+</h3>
+
+<p>
+
+Identify opportunities instead of copying competitors.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📊
+
+</div>
+
+<h3>
+
+Analyze Competitors
+
+</h3>
+
+<p>
+
+Understand what other platforms do well and where they fall short.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Create Better Ideas
+
+</h3>
+
+<p>
+
+Transform research into innovative and practical solutions.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- BEGINNER MINDSET -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+Beginner Tip
+
+</h2>
+
+<p>
+
+Don't worry if your first idea isn't perfect.
+
+Every successful entrepreneur, developer, and business founder started by learning how to observe problems, ask questions, and improve existing solutions.
+
+</p>
+
+<p>
+
+Your goal is not to invent everything from scratch. Your goal is to understand users, identify gaps in the market, and create something that is more useful, easier, or more efficient.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 1B • Understanding Research
+
+</p>
+
+</div>
+
+</section>
+
+  <!-- ========================================= -->
+<!-- PART 1C -->
+<!-- RESEARCH WORKFLOW -->
+<!-- ========================================= -->
+
+<section class="section" id="part1c">
+
+<div class="section-title">
+
+<h2>
+
+Professional Research Workflow
+
+</h2>
+
+<p>
+
+Professional innovators don't randomly create ideas. They follow a structured research process to understand problems, discover opportunities, and validate solutions before writing a proposal.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+👀
+
+</div>
+
+<h3>
+
+Step 1
+
+</h3>
+
+<p>
+
+Observe daily problems faced by individuals, businesses, students, developers, or organizations.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔍
+
+</div>
+
+<h3>
+
+Step 2
+
+</h3>
+
+<p>
+
+Research existing solutions using search engines, websites, applications and technology platforms.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📊
+
+</div>
+
+<h3>
+
+Step 3
+
+</h3>
+
+<p>
+
+Compare competitors, identify missing features and discover opportunities for improvement.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Step 4
+
+</h3>
+
+<p>
+
+Create your own innovative solution based on your research instead of copying others.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHERE TO RESEARCH -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Where Should You Research?
+
+</h2>
+
+<p>
+
+Always verify your ideas using multiple trusted sources before preparing your proposal.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌐
+
+</div>
+
+<h3>
+
+Google Search
+
+</h3>
+
+<p>
+
+Search for existing businesses, websites, services and similar ideas.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💻
+
+</div>
+
+<h3>
+
+GitHub
+
+</h3>
+
+<p>
+
+Check whether developers have already created open-source projects similar to your idea.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Product Hunt
+
+</h3>
+
+<p>
+
+Explore newly launched startups, SaaS products and innovative technology platforms.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📱
+
+</div>
+
+<h3>
+
+App Stores
+
+</h3>
+
+<p>
+
+Search Google Play and Apple App Store for similar applications.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RESEARCH CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Beginner Research Checklist
+
+</h2>
+
+<p>
+
+✔ Understand the problem before thinking about a solution.
+
+</p>
+
+<p>
+
+✔ Search Google for similar products.
+
+</p>
+
+<p>
+
+✔ Search GitHub for related projects.
+
+</p>
+
+<p>
+
+✔ Explore Product Hunt for startup ideas.
+
+</p>
+
+<p>
+
+✔ Check Google Play Store and Apple App Store.
+
+</p>
+
+<p>
+
+✔ Read reviews to discover what users dislike.
+
+</p>
+
+<p>
+
+✔ Write notes about missing features and opportunities.
+
+</p>
+
+<p>
+
+✔ Think about how your solution can be better, easier or faster.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMMON BEGINNER MISTAKES -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+⚠ Common Beginner Mistakes
+
+</h2>
+
+<p>
+
+❌ Copying existing ideas without adding value.
+
+</p>
+
+<p>
+
+❌ Skipping market research.
+
+</p>
+
+<p>
+
+❌ Creating unrealistic business concepts.
+
+</p>
+
+<p>
+
+❌ Ignoring user needs and focusing only on features.
+
+</p>
+
+<p>
+
+❌ Submitting proposals without verifying originality.
+
+</p>
+
+<p>
+
+Successful innovators always research first, validate their ideas, and continuously improve based on user needs.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 1C • Professional Research Workflow
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- END OF PART 1 -->
+<!-- ========================================= -->
+
+  <!-- ========================================= -->
+<!-- PART 2A -->
+<!-- RESEARCH TOOLS & MARKET VALIDATION -->
+<!-- ========================================= -->
+
+<section class="section" id="part2a">
+
+<div class="section-title">
+
+<h2>
+
+Research Tools & Market Validation
+
+</h2>
+
+<p>
+
+Professional innovators never depend on a single source. They collect information from multiple trusted platforms to understand competitors, market demand, user feedback and future opportunities.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌐
+
+</div>
+
+<h3>
+
+Google Search
+
+</h3>
+
+<p>
+
+Search existing websites, businesses, articles, communities and services related to your idea.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💻
+
+</div>
+
+<h3>
+
+GitHub
+
+</h3>
+
+<p>
+
+Discover open-source software and developer projects that already solve similar problems.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Product Hunt
+
+</h3>
+
+<p>
+
+Explore recently launched startups, SaaS products and AI platforms from around the world.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📱
+
+</div>
+
+<h3>
+
+App Stores
+
+</h3>
+
+<p>
+
+Review similar mobile applications, user ratings and feature requests before creating your proposal.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- MARKET VALIDATION -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📊 Validate Your Market
+
+</h2>
+
+<p>
+
+Creating an idea is only the beginning. Successful innovators first confirm that users actually need the solution.
+
+</p>
+
+<p>
+
+Ask yourself whether people already search for this problem, whether existing products satisfy users, and whether businesses would pay for your solution.
+
+</p>
+
+<p>
+
+If there is demand and current solutions are weak, you have identified a valuable opportunity.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHAT TO ANALYZE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+What Should You Analyze?
+
+</h2>
+
+<p>
+
+Before preparing your proposal, carefully evaluate every competitor.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Features
+
+</h3>
+
+<p>
+
+List the important features every competitor provides.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+👍
+
+</div>
+
+<h3>
+
+Strengths
+
+</h3>
+
+<p>
+
+Understand why users like existing products.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+👎
+
+</div>
+
+<h3>
+
+Weaknesses
+
+</h3>
+
+<p>
+
+Read reviews to identify missing features and common complaints.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Opportunity
+
+</h3>
+
+<p>
+
+Think about how your innovation can solve these problems more effectively.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RESEARCH EXERCISE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📝 Practice Exercise
+
+</h2>
+
+<p>
+
+Choose any existing website, mobile application or SaaS platform.
+
+</p>
+
+<p>
+
+Research at least three competitors and write down:
+
+</p>
+
+<p>
+
+✔ What they do well.
+
+</p>
+
+<p>
+
+✔ What users complain about.
+
+</p>
+
+<p>
+
+✔ Which features are missing.
+
+</p>
+
+<p>
+
+✔ How your idea could improve the experience.
+
+</p>
+
+<p>
+
+This simple exercise helps you think like a professional product designer instead of simply copying existing ideas.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 2A • Research Tools & Market Validation
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 2B -->
+<!-- WRITING A PROFESSIONAL PROPOSAL -->
+<!-- ========================================= -->
+
+<section class="section" id="part2b">
+
+<div class="section-title">
+
+<h2>
+
+Writing A Professional Proposal
+
+</h2>
+
+<p>
+
+After completing your research, organize your findings into a clear and professional proposal. A well-structured proposal helps reviewers quickly understand your idea, its value, and its potential.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📝
+
+</div>
+
+<h3>
+
+Project Title
+
+</h3>
+
+<p>
+
+Choose a short, meaningful and memorable name that clearly represents your innovation.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+❗
+
+</div>
+
+<h3>
+
+Problem Statement
+
+</h3>
+
+<p>
+
+Explain the real-world problem your idea solves and why existing solutions are insufficient.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Your Solution
+
+</h3>
+
+<p>
+
+Describe how your product, website, application or service solves the identified problem.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+👥
+
+</div>
+
+<h3>
+
+Target Users
+
+</h3>
+
+<p>
+
+Identify who will benefit from your solution and explain why they would choose it.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PROPOSAL STRUCTURE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📄 Recommended Proposal Structure
+
+</h2>
+
+<p>
+
+A professional proposal should include the following sections:
+
+</p>
+
+<p>
+
+✔ Project Title
+
+</p>
+
+<p>
+
+✔ Executive Summary
+
+</p>
+
+<p>
+
+✔ Problem Statement
+
+</p>
+
+<p>
+
+✔ Existing Solutions
+
+</p>
+
+<p>
+
+✔ Market Research
+
+</p>
+
+<p>
+
+✔ Your Innovation
+
+</p>
+
+<p>
+
+✔ Target Audience
+
+</p>
+
+<p>
+
+✔ Unique Features
+
+</p>
+
+<p>
+
+✔ Revenue Model
+
+</p>
+
+<p>
+
+✔ Future Improvements
+
+</p>
+
+<p>
+
+✔ Conclusion
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WRITING TIPS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Professional Writing Tips
+
+</h2>
+
+<p>
+
+Clear communication is just as important as a great idea.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+✍️
+
+</div>
+
+<h3>
+
+Be Clear
+
+</h3>
+
+<p>
+
+Use simple language and explain your idea in a way that anyone can understand.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📊
+
+</div>
+
+<h3>
+
+Use Evidence
+
+</h3>
+
+<p>
+
+Support your proposal with research, statistics, user feedback and competitor analysis whenever possible.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Stay Focused
+
+</h3>
+
+<p>
+
+Avoid unnecessary information. Keep every section relevant to your innovation.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📖
+
+</div>
+
+<h3>
+
+Organize Well
+
+</h3>
+
+<p>
+
+Use headings, bullet points and short paragraphs to make your proposal easy to read.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMMON PROPOSAL MISTAKES -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+⚠ Common Proposal Mistakes
+
+</h2>
+
+<p>
+
+❌ Writing without research.
+
+</p>
+
+<p>
+
+❌ Copying ideas from existing platforms.
+
+</p>
+
+<p>
+
+❌ Not explaining the problem clearly.
+
+</p>
+
+<p>
+
+❌ Ignoring competitors.
+
+</p>
+
+<p>
+
+❌ Making unrealistic claims without evidence.
+
+</p>
+
+<p>
+
+❌ Poor formatting and grammar.
+
+</p>
+
+<p>
+
+The strongest proposals are clear, realistic, well-researched and focused on solving genuine user problems.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 2B • Writing A Professional Proposal
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 2C -->
+<!-- PREPARING YOUR SUBMISSION -->
+<!-- ========================================= -->
+
+<section class="section" id="part2c">
+
+<div class="section-title">
+
+<h2>
+
+Preparing Your Submission
+
+</h2>
+
+<p>
+
+Before submitting your work to CoinGrid, take a few minutes to review everything carefully. A well-prepared submission creates a positive first impression and improves the overall quality of your proposal.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📄
+
+</div>
+
+<h3>
+
+Use Google Docs
+
+</h3>
+
+<p>
+
+Prepare your proposal using Google Docs with proper headings, formatting, bullet points and clear explanations.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔗
+
+</div>
+
+<h3>
+
+Share Your Document
+
+</h3>
+
+<p>
+
+Set your Google Docs permission to <strong>Anyone with the link</strong> so the CoinGrid review team can access your proposal.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📝
+
+</div>
+
+<h3>
+
+Review Everything
+
+</h3>
+
+<p>
+
+Read your proposal one final time to correct grammar, spelling mistakes and incomplete information before submission.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Submit Confidently
+
+</h3>
+
+<p>
+
+Only submit when you are satisfied that your proposal is original, complete and professionally presented.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- SUBMISSION CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Final Submission Checklist
+
+</h2>
+
+<p>
+
+Before clicking the Submit button, make sure you have completed every step below.
+
+</p>
+
+<p>
+
+✔ Completed proper market research.
+
+</p>
+
+<p>
+
+✔ Compared existing competitors.
+
+</p>
+
+<p>
+
+✔ Clearly explained the problem.
+
+</p>
+
+<p>
+
+✔ Described your unique solution.
+
+</p>
+
+<p>
+
+✔ Identified your target audience.
+
+</p>
+
+<p>
+
+✔ Explained your business or revenue model.
+
+</p>
+
+<p>
+
+✔ Checked grammar and spelling.
+
+</p>
+
+<p>
+
+✔ Shared your Google Docs with <strong>Anyone with the link</strong> permission.
+
+</p>
+
+<p>
+
+✔ Verified that your idea is original or significantly improves existing solutions.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- BEFORE SUBMITTING -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Before You Submit
+
+</h2>
+
+<p>
+
+Remember that CoinGrid values quality over quantity. A single well-researched and professionally written proposal has a much better chance of approval than multiple incomplete or copied ideas.
+
+</p>
+
+<p>
+
+Take your time, review your work carefully and submit only when you are confident in your research and presentation.
+
+</p>
+
+<p>
+
+Innovation begins with curiosity, grows through research and succeeds through execution.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 2C • Preparing Your Submission
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- END OF PART 2 -->
+<!-- ========================================= -->
+  <!-- ========================================= -->
+<!-- PART 3A -->
+<!-- COINGRID REVIEW PROCESS -->
+<!-- ========================================= -->
+
+<section class="section" id="part3a">
+
+<div class="section-title">
+
+<h2>
+
+CoinGrid Review Process
+
+</h2>
+
+<p>
+
+After you submit your proposal, our review team carefully evaluates every submission to identify original, practical and high-quality ideas with real-world potential.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📥
+
+</div>
+
+<h3>
+
+Step 1
+
+</h3>
+
+<p>
+
+Your proposal is securely received and added to the CoinGrid review queue.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔍
+
+</div>
+
+<h3>
+
+Step 2
+
+</h3>
+
+<p>
+
+We verify originality by researching existing websites, applications, startups and similar business ideas.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📊
+
+</div>
+
+<h3>
+
+Step 3
+
+</h3>
+
+<p>
+
+Our team reviews your research quality, market demand, target audience and overall business value.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚙️
+
+</div>
+
+<h3>
+
+Step 4
+
+</h3>
+
+<p>
+
+Technical feasibility is evaluated to determine whether the idea can realistically be developed.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Step 5
+
+</h3>
+
+<p>
+
+High-quality proposals are shortlisted for planning and future development.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Step 6
+
+</h3>
+
+<p>
+
+Selected ideas may move forward to design, development, testing and public release.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- HOW WE EVALUATE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Evaluation Criteria
+
+</h2>
+
+<p>
+
+Every proposal is reviewed using the following quality standards.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Originality
+
+</h3>
+
+<p>
+
+Your idea should introduce a new concept or provide meaningful improvements over existing solutions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+Research
+
+</h3>
+
+<p>
+
+Strong market research and competitor analysis improve the quality of your proposal.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+👥
+
+</div>
+
+<h3>
+
+User Value
+
+</h3>
+
+<p>
+
+Your innovation should solve a real problem for users or businesses.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Growth Potential
+
+</h3>
+
+<p>
+
+Ideas with long-term scalability and business opportunities receive higher priority.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPORTANT REVIEW NOTICE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Important Review Information
+
+</h2>
+
+<p>
+
+Every submission is manually reviewed by the CoinGrid team. Review times may vary depending on the number of proposals received.
+
+</p>
+
+<p>
+
+Submitting a proposal does not guarantee approval, development, publication or payment.
+
+</p>
+
+<p>
+
+Ideas that are copied, incomplete, lack proper research or provide little value are unlikely to be approved.
+
+</p>
+
+<p>
+
+The strongest submissions are original, practical, well researched and capable of solving real-world problems.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 3A • CoinGrid Review Process
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 3B -->
+<!-- FROM IDEA TO LAUNCH -->
+<!-- ========================================= -->
+
+<section class="section" id="part3b">
+
+<div class="section-title">
+
+<h2>
+
+From Idea To Launch
+
+</h2>
+
+<p>
+
+Great ideas don't become successful products overnight. Every approved proposal follows a structured journey from planning to public release.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📋
+
+</div>
+
+<h3>
+
+Planning
+
+</h3>
+
+<p>
+
+Approved ideas are reviewed, organized and prepared for future product planning.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎨
+
+</div>
+
+<h3>
+
+Design
+
+</h3>
+
+<p>
+
+The user experience, interface and product structure are planned before development begins.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💻
+
+</div>
+
+<h3>
+
+Development
+
+</h3>
+
+<p>
+
+Developers begin building the platform using appropriate technologies based on project requirements.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🧪
+
+</div>
+
+<h3>
+
+Testing
+
+</h3>
+
+<p>
+
+The platform is tested for functionality, performance, usability and security before launch.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌍
+
+</div>
+
+<h3>
+
+Launch
+
+</h3>
+
+<p>
+
+Successful projects are released for public use and continuously improved based on user feedback.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Growth
+
+</h3>
+
+<p>
+
+Product performance, user adoption and future improvements are monitored after launch.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DEVELOPMENT TIMELINE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+⏳ Typical Development Timeline
+
+</h2>
+
+<p>
+
+Every project is different, so development time depends on complexity and available resources.
+
+</p>
+
+<p>
+
+✔ Initial Review</p>
+
+<p>
+
+✔ Planning & Requirement Analysis</p>
+
+<p>
+
+✔ UI/UX Design</p>
+
+<p>
+
+✔ Product Development</p>
+
+<p>
+
+✔ Internal Testing</p>
+
+<p>
+
+✔ Bug Fixes & Improvements</p>
+
+<p>
+
+✔ Public Launch</p>
+
+<p>
+
+Some ideas may require additional research before development begins.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY SOME IDEAS ARE NOT APPROVED -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Why Some Ideas Are Not Approved
+
+</h2>
+
+<p>
+
+Understanding common reasons for rejection can help you prepare stronger proposals.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+❌
+
+</div>
+
+<h3>
+
+Already Exists
+
+</h3>
+
+<p>
+
+The idea is identical to an existing product without meaningful improvements.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📄
+
+</div>
+
+<h3>
+
+Insufficient Research
+
+</h3>
+
+<p>
+
+The proposal lacks market research, competitor analysis or supporting information.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚠️
+
+</div>
+
+<h3>
+
+Unclear Concept
+
+</h3>
+
+<p>
+
+The proposal does not clearly explain the problem or how the solution works.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚫
+
+</div>
+
+<h3>
+
+Low Practical Value
+
+</h3>
+
+<p>
+
+The idea does not solve a meaningful problem or provide sufficient user value.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPROVE YOUR CHANCES -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🚀 Improve Your Chances Of Approval
+
+</h2>
+
+<p>
+
+Take your time before submitting. Strong proposals are built through careful research, clear writing and practical thinking.
+
+</p>
+
+<p>
+
+Focus on solving real-world problems instead of creating ideas that already exist. Explain your innovation clearly, support it with research and demonstrate why users would choose your solution.
+
+</p>
+
+<p>
+
+Quality is always more important than quantity. One outstanding proposal is more valuable than multiple incomplete submissions.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE PROGRESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Course Progress
+
+</h2>
+
+<p>
+
+Completed Part 3B • From Idea To Launch
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 3C -->
+<!-- COURSE COMPLETION -->
+<!-- ========================================= -->
+
+<section class="section" id="part3c">
+
+<div class="section-title">
+
+<h2>
+
+🎓 Congratulations!
+
+</h2>
+
+<p>
+
+You have successfully completed the CoinGrid Academy Research & Innovation Masterclass.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+What You've Learned
+
+</h2>
+
+<p>
+
+Throughout this course, you've learned the complete innovation workflow used to prepare high-quality CoinGrid submissions.
+
+</p>
+
+<p>
+
+✅ Understand real-world problems before creating ideas.</p>
+
+<p>
+
+✅ Research existing products using trusted platforms.</p>
+
+<p>
+
+✅ Identify opportunities and market gaps.</p>
+
+<p>
+
+✅ Create practical and innovative solutions.</p>
+
+<p>
+
+✅ Prepare professional business proposals.</p>
+
+<p>
+
+✅ Submit proposals with confidence.</p>
+
+<p>
+
+Remember, successful innovators focus on solving problems—not just creating products.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FINAL CHALLENGE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+🏆 Your First Innovation Challenge
+
+</h2>
+
+<p>
+
+It's time to apply everything you've learned.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔍
+
+</div>
+
+<h3>
+
+Research
+
+</h3>
+
+<p>
+
+Choose one industry and research existing products before thinking about a solution.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Innovate
+
+</h3>
+
+<p>
+
+Create one original idea that solves a genuine problem or significantly improves an existing solution.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📝
+
+</div>
+
+<h3>
+
+Document
+
+</h3>
+
+<p>
+
+Prepare a professional proposal using the techniques you learned in this course.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Submit
+
+</h3>
+
+<p>
+
+Submit your proposal through the appropriate CoinGrid task and begin your innovation journey.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONTINUOUS LEARNING -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📚 Continue Learning
+
+</h2>
+
+<p>
+
+Innovation is a continuous process. Continue exploring new technologies, reading industry news, studying successful startups, and learning from user feedback.
+
+</p>
+
+<p>
+
+Practice researching different industries, comparing competitors, and identifying market opportunities. Every new project improves your research and problem-solving skills.
+
+</p>
+
+<p>
+
+The more you learn, the stronger your future proposals will become.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FINAL MESSAGE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🌟 Final Message
+
+</h2>
+
+<p>
+
+Thank you for completing the CoinGrid Academy Research & Innovation Masterclass.
+
+</p>
+
+<p>
+
+Every successful company started with a single idea, supported by research, refined through learning, and improved through persistence.
+
+</p>
+
+<p>
+
+Stay curious, continue learning, think creatively, and always focus on solving real problems that make a positive impact.
+
+</p>
+
+<p>
+
+We look forward to reviewing your innovative ideas in future CoinGrid challenges.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE COMPLETION -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+🎉 Course Completed
+
+</h2>
+
+<p>
+
+Congratulations! You have completed all learning modules of the CoinGrid Academy Research & Innovation Masterclass.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+9 Lessons
+
+</h3>
+
+<p>
+
+Completed Successfully
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎓
+
+</div>
+
+<h3>
+
+Ready
+
+</h3>
+
+<p>
+
+Prepared to Research & Submit Professional Proposals
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Next Step
+
+</h3>
+
+<p>
+
+Return to CoinGrid Tasks and complete your first innovation challenge.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Keep Learning
+
+</h3>
+
+<p>
+
+Every completed project helps you become a better researcher and innovator.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- END OF PART 3C -->
+<!-- END OF COURSE -->
+<!-- ========================================= -->
+  <!-- ========================================= -->
+<!-- FOOTER -->
+<!-- ========================================= -->
+
+<footer style="text-align:center;padding:50px 20px;color:#94a3b8;border-top:1px solid rgba(255,255,255,.08);margin-top:60px;">
+
+<p>
+
+© 2026 CoinGrid Academy. All Rights Reserved.
+
+</p>
+
+<p style="margin-top:10px;">
+
+Continue learning, keep innovating and build solutions that make a real impact.
+
+</p>
+
+</footer>
+
+<script>
+
+document.querySelectorAll(".primary-btn").forEach(button=>{
+
+button.addEventListener("click",function(){
+
+const target=this.getAttribute("onclick");
+
+});
+
+});
+
+// Optional: Fade-in animation while scrolling
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.style.opacity="0";
+
+section.style.transform="translateY(40px)";
+
+section.style.transition="all .6s ease";
+
+observer.observe(section);
+
+});
+
+</script>
+
+</body>
+
+</html>
