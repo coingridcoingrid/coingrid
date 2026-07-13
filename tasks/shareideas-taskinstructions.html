@@ -2240,20 +2240,15 @@ font-size:15px;
 </footer>
 
 <script>
+const timer = document.getElementById("timer");
+const countdownBox = document.getElementById("countdownBox");
+const startTaskBtn = document.getElementById("startTaskBtn");
 
-const timer =
-document.getElementById("timer");
-
-const startTaskBtn =
-document.getElementById("startTaskBtn");
-
-const countdownBox =
-document.getElementById("countdownBox");
+if(timer && countdownBox && startTaskBtn){
 
 let seconds = 10;
 
-const countdown =
-setInterval(()=>{
+const countdown = setInterval(()=>{
 
 timer.textContent = seconds;
 
@@ -2265,25 +2260,11 @@ clearInterval(countdown);
 
 countdownBox.innerHTML = `
 
-<h2>
+<h2>✅ Learning Completed</h2>
 
-✅ Learning Completed
+<p>Congratulations!</p>
 
-</h2>
-
-<p>
-
-Congratulations!
-
-You have successfully completed this learning program.
-
-</p>
-
-<p>
-
-You may now continue to the Share Ideas task.
-
-</p>
+<p>You may now continue to the Share Ideas task.</p>
 
 `;
 
@@ -2293,17 +2274,13 @@ startTaskBtn.style.display = "inline-block";
 
 },1000);
 
-startTaskBtn.addEventListener(
-
-"click",
-
-()=>{
+startTaskBtn.addEventListener("click",()=>{
 
 window.location.href="share-ideas.html";
 
-}
+});
 
-);
+}
 
 const observer =
 new IntersectionObserver(entries=>{
