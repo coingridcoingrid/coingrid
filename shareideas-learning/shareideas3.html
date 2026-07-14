@@ -1,0 +1,3782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+CoinGrid Academy |
+Digital Communication, Professional Collaboration & Workplace Skills
+
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#020617;
+color:#fff;
+line-height:1.8;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:80px 20px;
+background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(250,204,21,.18),transparent 70%);
+top:-220px;
+right:-180px;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(59,130,246,.18),transparent 70%);
+left:-180px;
+bottom:-180px;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:920px;
+text-align:center;
+animation:fadeUp 1s ease;
+}
+
+.course-tag{
+display:inline-block;
+padding:10px 24px;
+border-radius:50px;
+background:rgba(250,204,21,.12);
+border:1px solid rgba(250,204,21,.35);
+color:#facc15;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:56px;
+font-weight:800;
+line-height:1.2;
+margin-bottom:25px;
+}
+
+.hero p{
+max-width:820px;
+margin:auto;
+font-size:19px;
+color:#cbd5e1;
+margin-bottom:40px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.primary-btn{
+padding:16px 36px;
+background:#facc15;
+color:#000;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.35s;
+}
+
+.primary-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 45px rgba(250,204,21,.35);
+}
+
+.section{
+width:min(1200px,92%);
+margin:auto;
+padding:90px 0;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:55px;
+}
+
+.section-title h2{
+font-size:42px;
+color:#facc15;
+margin-bottom:15px;
+}
+
+.section-title p{
+font-size:18px;
+color:#94a3b8;
+max-width:850px;
+margin:auto;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.stat-card{
+background:#0f172a;
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:20px;
+text-align:center;
+transition:.35s;
+}
+
+.stat-card:hover{
+transform:translateY(-6px);
+border-color:#facc15;
+}
+
+.icon{
+font-size:48px;
+margin-bottom:18px;
+}
+
+.stat-card h3{
+color:#facc15;
+margin-bottom:12px;
+}
+
+.stat-card p{
+color:#cbd5e1;
+}
+
+.notice-card{
+max-width:900px;
+margin:auto;
+background:#0f172a;
+border:1px solid rgba(250,204,21,.2);
+border-radius:20px;
+padding:35px;
+}
+
+.notice-card h2{
+color:#facc15;
+margin-bottom:20px;
+}
+
+.notice-card p{
+margin-bottom:15px;
+color:#d1d5db;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.section-title h2{
+font-size:30px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.primary-btn{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="course-tag">
+
+🎓 CoinGrid Academy
+
+</div>
+
+<h1>
+
+Digital Communication, Professional Collaboration & Workplace Skills
+
+</h1>
+
+<p>
+
+Learn how successful professionals communicate clearly, collaborate effectively, build strong workplace relationships and develop communication habits that improve teamwork, leadership and career success.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">
+
+Start Learning →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE OVERVIEW -->
+
+<section
+class="section"
+id="overview">
+
+<div class="section-title">
+
+<h2>
+
+Welcome To CoinGrid Academy
+
+</h2>
+
+<p>
+
+This learning module introduces practical communication skills, professional collaboration techniques and workplace habits that help individuals communicate confidently, solve problems together and build successful professional relationships.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏱
+
+</div>
+
+<h3>
+
+40 Minutes
+
+</h3>
+
+<p>
+
+Estimated Learning Time
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+9 Modules
+
+</h3>
+
+<p>
+
+Communication & Collaboration Training
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💬
+
+</div>
+
+<h3>
+
+Professional Skills
+
+</h3>
+
+<p>
+
+Communication, Teamwork & Leadership
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Learning Journey
+
+</h3>
+
+<p>
+
+Listen • Communicate • Collaborate • Grow
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BEFORE YOU BEGIN -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Before You Begin
+
+</h2>
+
+<p>
+
+Strong communication is one of the most valuable professional skills. Clear conversations, respectful collaboration and active listening help teams work efficiently and build trust.
+
+</p>
+
+<p>
+
+Throughout this learning experience, you will discover practical techniques used by professionals to communicate ideas clearly, solve problems together and build stronger workplace relationships.
+
+</p>
+
+<p>
+
+Your goal is to become a confident communicator who listens carefully, speaks clearly and contributes positively in every professional environment.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- CURRENT MODULE -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Part 1A • Building Strong Communication Skills
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PART 1A -->
+<!-- BUILDING STRONG COMMUNICATION SKILLS -->
+<!-- ========================================= -->
+
+<section class="section" id="communication-skills">
+
+<div class="section-title">
+
+<h2>
+
+Building Strong Communication Skills
+
+</h2>
+
+<p>
+
+Professional communication is about sharing ideas clearly, listening carefully and creating understanding between people. Strong communication improves teamwork, reduces misunderstandings and helps everyone work toward common goals.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+👂
+
+</div>
+
+<h3>
+
+Listen Actively
+
+</h3>
+
+<p>
+
+Pay full attention when others speak, understand their message and avoid interrupting before they finish.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💬
+
+</div>
+
+<h3>
+
+Speak Clearly
+
+</h3>
+
+<p>
+
+Use simple language, organize your thoughts and communicate ideas confidently so everyone understands your message.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Show Respect
+
+</h3>
+
+<p>
+
+Treat every conversation with professionalism by respecting different opinions and responding politely.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Communicate With Purpose
+
+</h3>
+
+<p>
+
+Every conversation should have a clear objective, helping people solve problems, share ideas or complete important work together.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+💡 Why Communication Matters
+
+</h2>
+
+<p>
+
+Every successful workplace depends on clear communication. Good communication reduces confusion, strengthens teamwork and helps projects move forward more efficiently.
+
+</p>
+
+<p>
+
+Professionals who communicate clearly build stronger relationships, earn trust and become valuable contributors within every organization.
+
+</p>
+
+<p>
+
+Learning to communicate effectively improves both your professional career and your everyday interactions with others.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1A • Building Strong Communication Skills
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 1B -->
+<!-- EFFECTIVE LISTENING & UNDERSTANDING OTHERS -->
+<!-- ========================================= -->
+
+<section class="section" id="active-listening">
+
+<div class="section-title">
+
+<h2>
+
+Effective Listening & Understanding Others
+
+</h2>
+
+<p>
+
+Great communication begins with listening. Successful professionals understand others before responding, ask thoughtful questions and make sure everyone feels heard during conversations.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+👂
+
+</div>
+
+<h3>
+
+Listen Carefully
+
+</h3>
+
+<p>
+
+Focus completely on the speaker instead of thinking about your reply. Careful listening improves understanding and reduces mistakes.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+❓
+
+</div>
+
+<h3>
+
+Ask Questions
+
+</h3>
+
+<p>
+
+Ask clear and respectful questions whenever you need clarification instead of making assumptions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📝
+
+</div>
+
+<h3>
+
+Understand Before Responding
+
+</h3>
+
+<p>
+
+Take a moment to understand the complete message before offering suggestions or sharing your opinion.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+😊
+
+</div>
+
+<h3>
+
+Show Attention
+
+</h3>
+
+<p>
+
+Maintain eye contact when appropriate, avoid interruptions and show genuine interest throughout the conversation.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY ACTIVE LISTENING MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🎧 Why Active Listening Matters
+
+</h2>
+
+<p>
+
+Many communication problems happen because people listen only to reply instead of listening to understand. Active listening creates stronger relationships, reduces misunderstandings and improves teamwork.
+
+</p>
+
+<p>
+
+Professionals who listen carefully understand problems faster, make better decisions and build greater trust with colleagues, clients and customers.
+
+</p>
+
+<p>
+
+By becoming a better listener, you improve every conversation, meeting and collaboration throughout your career.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ACTIVE LISTENING PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Active Listening Process
+
+</h2>
+
+<p>
+
+Follow these steps whenever someone is sharing information with you.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Pay Attention
+
+</h3>
+
+<p>
+
+Stop distractions and focus completely on the speaker.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Understand
+
+</h3>
+
+<p>
+
+Listen to the complete message before forming your response.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Clarify
+
+</h3>
+
+<p>
+
+Ask questions if something is unclear instead of making assumptions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Respond
+
+</h3>
+
+<p>
+
+Reply respectfully with helpful ideas, feedback or solutions after understanding the discussion.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ACTIVE LISTENING CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Active Listening Checklist
+
+</h2>
+
+<p>
+
+✔ Give the speaker your full attention.
+
+</p>
+
+<p>
+
+✔ Avoid interrupting conversations.
+
+</p>
+
+<p>
+
+✔ Ask thoughtful questions.
+
+</p>
+
+<p>
+
+✔ Confirm your understanding.
+
+</p>
+
+<p>
+
+✔ Respond respectfully.
+
+</p>
+
+<p>
+
+✔ Focus on understanding before speaking.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1B • Effective Listening & Understanding Others
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 1C -->
+<!-- CLEAR, CONFIDENT & PROFESSIONAL COMMUNICATION -->
+<!-- ========================================= -->
+
+<section class="section" id="professional-speaking">
+
+<div class="section-title">
+
+<h2>
+
+Clear, Confident & Professional Communication
+
+</h2>
+
+<p>
+
+Communicating professionally means expressing your ideas with confidence, clarity and respect. Strong communicators organize their thoughts, choose appropriate language and ensure their message is easy for everyone to understand.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🗣️
+
+</div>
+
+<h3>
+
+Speak Clearly
+
+</h3>
+
+<p>
+
+Use simple words, organized ideas and an appropriate speaking pace so others can easily understand your message.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+😊
+
+</div>
+
+<h3>
+
+Build Confidence
+
+</h3>
+
+<p>
+
+Speak with confidence by preparing your thoughts, maintaining a positive attitude and believing in your knowledge.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📋
+
+</div>
+
+<h3>
+
+Organize Your Message
+
+</h3>
+
+<p>
+
+Present information in a logical order with a clear beginning, explanation and conclusion.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Stay Professional
+
+</h3>
+
+<p>
+
+Remain respectful, polite and solution-focused even during challenging discussions or disagreements.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY CLEAR COMMUNICATION MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+💬 Why Clear Communication Matters
+
+</h2>
+
+<p>
+
+Clear communication reduces misunderstandings, improves teamwork and helps projects move forward more efficiently. People appreciate messages that are direct, respectful and easy to understand.
+
+</p>
+
+<p>
+
+Professional communication is valuable in meetings, presentations, interviews, emails and everyday workplace conversations. It strengthens trust and builds positive working relationships.
+
+</p>
+
+<p>
+
+Developing strong communication habits helps you become a more confident professional and a better team member in every environment.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMMUNICATION PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Professional Communication Process
+
+</h2>
+
+<p>
+
+Use this method whenever you need to explain an idea or share important information.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Prepare
+
+</h3>
+
+<p>
+
+Think about your main message and organize your ideas before speaking.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Communicate
+
+</h3>
+
+<p>
+
+Explain your message clearly using simple language and a confident tone.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Confirm
+
+</h3>
+
+<p>
+
+Ask if your message was understood correctly and answer any questions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Improve
+
+</h3>
+
+<p>
+
+Learn from every conversation and continuously improve your communication skills.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMMUNICATION CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Professional Communication Checklist
+
+</h2>
+
+<p>
+
+✔ Think before speaking.
+
+</p>
+
+<p>
+
+✔ Speak clearly and confidently.
+
+</p>
+
+<p>
+
+✔ Keep your message organized.
+
+</p>
+
+<p>
+
+✔ Respect different opinions.
+
+</p>
+
+<p>
+
+✔ Confirm understanding.
+
+</p>
+
+<p>
+
+✔ Continue improving your communication skills.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1C • Clear, Confident & Professional Communication
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 1C -->
+<!-- CLEAR, CONFIDENT & PROFESSIONAL COMMUNICATION -->
+<!-- ========================================= -->
+
+<section class="section" id="professional-speaking">
+
+<div class="section-title">
+
+<h2>
+
+Clear, Confident & Professional Communication
+
+</h2>
+
+<p>
+
+Communicating professionally means expressing your ideas with confidence, clarity and respect. Strong communicators organize their thoughts, choose appropriate language and ensure their message is easy for everyone to understand.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🗣️
+
+</div>
+
+<h3>
+
+Speak Clearly
+
+</h3>
+
+<p>
+
+Use simple words, organized ideas and an appropriate speaking pace so others can easily understand your message.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+😊
+
+</div>
+
+<h3>
+
+Build Confidence
+
+</h3>
+
+<p>
+
+Speak with confidence by preparing your thoughts, maintaining a positive attitude and believing in your knowledge.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📋
+
+</div>
+
+<h3>
+
+Organize Your Message
+
+</h3>
+
+<p>
+
+Present information in a logical order with a clear beginning, explanation and conclusion.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Stay Professional
+
+</h3>
+
+<p>
+
+Remain respectful, polite and solution-focused even during challenging discussions or disagreements.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY CLEAR COMMUNICATION MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+💬 Why Clear Communication Matters
+
+</h2>
+
+<p>
+
+Clear communication reduces misunderstandings, improves teamwork and helps projects move forward more efficiently. People appreciate messages that are direct, respectful and easy to understand.
+
+</p>
+
+<p>
+
+Professional communication is valuable in meetings, presentations, interviews, emails and everyday workplace conversations. It strengthens trust and builds positive working relationships.
+
+</p>
+
+<p>
+
+Developing strong communication habits helps you become a more confident professional and a better team member in every environment.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMMUNICATION PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Professional Communication Process
+
+</h2>
+
+<p>
+
+Use this method whenever you need to explain an idea or share important information.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Prepare
+
+</h3>
+
+<p>
+
+Think about your main message and organize your ideas before speaking.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Communicate
+
+</h3>
+
+<p>
+
+Explain your message clearly using simple language and a confident tone.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Confirm
+
+</h3>
+
+<p>
+
+Ask if your message was understood correctly and answer any questions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Improve
+
+</h3>
+
+<p>
+
+Learn from every conversation and continuously improve your communication skills.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COMMUNICATION CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Professional Communication Checklist
+
+</h2>
+
+<p>
+
+✔ Think before speaking.
+
+</p>
+
+<p>
+
+✔ Speak clearly and confidently.
+
+</p>
+
+<p>
+
+✔ Keep your message organized.
+
+</p>
+
+<p>
+
+✔ Respect different opinions.
+
+</p>
+
+<p>
+
+✔ Confirm understanding.
+
+</p>
+
+<p>
+
+✔ Continue improving your communication skills.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1C • Clear, Confident & Professional Communication
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 2A -->
+<!-- BUILDING STRONG TEAM COLLABORATION -->
+<!-- ========================================= -->
+
+<section class="section" id="team-collaboration">
+
+<div class="section-title">
+
+<h2>
+
+Building Strong Team Collaboration
+
+</h2>
+
+<p>
+
+Successful projects depend on people working together toward shared goals. Effective collaboration combines clear communication, mutual respect and shared responsibility to achieve better results than individuals working alone.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Work Together
+
+</h3>
+
+<p>
+
+Support teammates, share responsibilities and contribute your skills to help the entire team succeed.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💬
+
+</div>
+
+<h3>
+
+Share Ideas
+
+</h3>
+
+<p>
+
+Express your thoughts openly while encouraging others to contribute their perspectives and creative solutions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Focus On Common Goals
+
+</h3>
+
+<p>
+
+Keep the team's objectives as the priority and work together to achieve successful project outcomes.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🙌
+
+</div>
+
+<h3>
+
+Support Others
+
+</h3>
+
+<p>
+
+Offer help when teammates face challenges and celebrate shared achievements together.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY COLLABORATION MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🤝 Why Team Collaboration Matters
+
+</h2>
+
+<p>
+
+Modern workplaces depend on teamwork. Projects become more successful when people communicate openly, respect different ideas and combine their strengths to solve problems together.
+
+</p>
+
+<p>
+
+Collaboration improves creativity, reduces mistakes and helps teams complete work more efficiently. Every member contributes unique knowledge that strengthens the final result.
+
+</p>
+
+<p>
+
+Strong collaboration creates trust, improves workplace relationships and helps organizations achieve long-term success.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TEAMWORK PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Team Collaboration Process
+
+</h2>
+
+<p>
+
+Follow this workflow whenever you participate in a team project.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Plan
+
+</h3>
+
+<p>
+
+Understand the project goals, responsibilities and expectations before beginning work.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Communicate
+
+</h3>
+
+<p>
+
+Share updates regularly and keep teammates informed about your progress.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Collaborate
+
+</h3>
+
+<p>
+
+Work together respectfully, solve challenges as a team and support each other throughout the project.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Review
+
+</h3>
+
+<p>
+
+Evaluate completed work, celebrate achievements and identify improvements for future collaboration.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TEAM COLLABORATION CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Team Collaboration Checklist
+
+</h2>
+
+<p>
+
+✔ Respect every team member.
+
+</p>
+
+<p>
+
+✔ Communicate regularly.
+
+</p>
+
+<p>
+
+✔ Share ideas openly.
+
+</p>
+
+<p>
+
+✔ Support teammates when needed.
+
+</p>
+
+<p>
+
+✔ Focus on common goals.
+
+</p>
+
+<p>
+
+✔ Learn from every collaborative project.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 2A • Building Strong Team Collaboration
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 2B -->
+<!-- CONFLICT RESOLUTION & PROFESSIONAL PROBLEM SOLVING -->
+<!-- ========================================= -->
+
+<section class="section" id="conflict-resolution">
+
+<div class="section-title">
+
+<h2>
+
+Conflict Resolution & Professional Problem Solving
+
+</h2>
+
+<p>
+
+Disagreements are a natural part of working with others. Successful professionals remain calm, understand different viewpoints and work together to find practical solutions that strengthen relationships instead of creating unnecessary conflict.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Respect Different Opinions
+
+</h3>
+
+<p>
+
+Listen carefully to every perspective before making decisions. Different viewpoints often lead to stronger solutions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🧠
+
+</div>
+
+<h3>
+
+Focus On The Problem
+
+</h3>
+
+<p>
+
+Discuss the issue objectively without criticizing individuals. Solve the challenge instead of blaming people.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💬
+
+</div>
+
+<h3>
+
+Communicate Calmly
+
+</h3>
+
+<p>
+
+Speak respectfully, remain professional and choose words that encourage cooperation even during difficult discussions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+✅
+
+</div>
+
+<h3>
+
+Find A Solution
+
+</h3>
+
+<p>
+
+Work together to identify practical solutions that benefit everyone and help the team continue making progress.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY CONFLICT RESOLUTION MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🕊️ Why Conflict Resolution Matters
+
+</h2>
+
+<p>
+
+Every workplace experiences disagreements, but successful teams solve problems respectfully instead of allowing conflicts to grow. Professional communication helps maintain trust, improve teamwork and strengthen long-term relationships.
+
+</p>
+
+<p>
+
+People who resolve conflicts effectively create positive working environments where everyone feels respected, understood and motivated to contribute.
+
+</p>
+
+<p>
+
+Strong conflict resolution skills improve teamwork, increase productivity and help organizations achieve better results together.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONFLICT RESOLUTION PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Conflict Resolution Process
+
+</h2>
+
+<p>
+
+Follow this practical approach whenever disagreements occur within a team.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Listen
+
+</h3>
+
+<p>
+
+Allow everyone to explain their perspective without interruptions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Understand
+
+</h3>
+
+<p>
+
+Identify the real cause of the disagreement instead of focusing only on the symptoms.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Discuss
+
+</h3>
+
+<p>
+
+Communicate respectfully, explore possible solutions and encourage cooperation.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Resolve
+
+</h3>
+
+<p>
+
+Agree on a practical solution and continue working together with mutual respect.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONFLICT RESOLUTION CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Conflict Resolution Checklist
+
+</h2>
+
+<p>
+
+✔ Stay calm during disagreements.
+
+</p>
+
+<p>
+
+✔ Listen before responding.
+
+</p>
+
+<p>
+
+✔ Respect every viewpoint.
+
+</p>
+
+<p>
+
+✔ Focus on solving the problem.
+
+</p>
+
+<p>
+
+✔ Work together toward a fair solution.
+
+</p>
+
+<p>
+
+✔ Learn from every challenge to improve future teamwork.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 2B • Conflict Resolution & Professional Problem Solving
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 2C -->
+<!-- LEADERSHIP, ACCOUNTABILITY & PROFESSIONAL RESPONSIBILITY -->
+<!-- ========================================= -->
+
+<section class="section" id="professional-responsibility">
+
+<div class="section-title">
+
+<h2>
+
+Leadership, Accountability & Professional Responsibility
+
+</h2>
+
+<p>
+
+Strong professionals take responsibility for their actions, support their teams and demonstrate leadership through integrity, reliability and consistent performance. Leadership is not limited to managers—it can be demonstrated by anyone who positively influences others.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+👑
+
+</div>
+
+<h3>
+
+Lead By Example
+
+</h3>
+
+<p>
+
+Demonstrate honesty, professionalism and dedication through your daily actions so others are encouraged to follow positive behaviors.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+✅
+
+</div>
+
+<h3>
+
+Take Responsibility
+
+</h3>
+
+<p>
+
+Accept ownership of your work, complete assigned tasks on time and learn from mistakes instead of making excuses.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📅
+
+</div>
+
+<h3>
+
+Be Reliable
+
+</h3>
+
+<p>
+
+Meet commitments consistently, communicate progress honestly and become someone your team can depend on.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌟
+
+</div>
+
+<h3>
+
+Inspire Others
+
+</h3>
+
+<p>
+
+Encourage teammates, share knowledge and create a positive environment that motivates everyone to perform their best.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY PROFESSIONAL RESPONSIBILITY MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🏆 Why Professional Responsibility Matters
+
+</h2>
+
+<p>
+
+Organizations trust people who consistently complete their work, communicate honestly and take responsibility for both their successes and their mistakes. Reliability builds confidence among teammates, managers and customers.
+
+</p>
+
+<p>
+
+Professional responsibility also strengthens teamwork because everyone knows they can depend on one another to contribute fairly and support shared goals.
+
+</p>
+
+<p>
+
+By becoming dependable and accountable, you develop a reputation for professionalism that creates long-term career opportunities and stronger workplace relationships.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- LEADERSHIP PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Leadership & Accountability Process
+
+</h2>
+
+<p>
+
+Follow this practical framework whenever you work on professional responsibilities.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Accept
+
+</h3>
+
+<p>
+
+Clearly understand your responsibilities and commit to completing them with professionalism.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Complete
+
+</h3>
+
+<p>
+
+Perform your work carefully, stay organized and communicate progress regularly.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Review
+
+</h3>
+
+<p>
+
+Evaluate your results, identify improvements and take responsibility for every outcome.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Improve
+
+</h3>
+
+<p>
+
+Apply lessons learned, strengthen your skills and continue becoming a more dependable professional.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PROFESSIONAL RESPONSIBILITY CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Professional Responsibility Checklist
+
+</h2>
+
+<p>
+
+✔ Take ownership of your work.
+
+</p>
+
+<p>
+
+✔ Complete commitments on time.
+
+</p>
+
+<p>
+
+✔ Communicate honestly and respectfully.
+
+</p>
+
+<p>
+
+✔ Learn from mistakes.
+
+</p>
+
+<p>
+
+✔ Support your teammates.
+
+</p>
+
+<p>
+
+✔ Lead through positive actions every day.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 2C • Leadership, Accountability & Professional Responsibility
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 3A -->
+<!-- BUILDING TRUST & PROFESSIONAL RELATIONSHIPS -->
+<!-- ========================================= -->
+
+<section class="section" id="professional-relationships">
+
+<div class="section-title">
+
+<h2>
+
+Building Trust & Professional Relationships
+
+</h2>
+
+<p>
+
+Successful careers are built on trust, respect and positive relationships. Professionals who communicate honestly, support others and demonstrate integrity create stronger teams, better opportunities and long-lasting professional connections.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Build Trust
+
+</h3>
+
+<p>
+
+Keep your promises, communicate honestly and consistently demonstrate reliability so others can confidently depend on you.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+😊
+
+</div>
+
+<h3>
+
+Show Respect
+
+</h3>
+
+<p>
+
+Treat everyone with kindness, professionalism and fairness regardless of their role, background or experience.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💬
+
+</div>
+
+<h3>
+
+Strengthen Relationships
+
+</h3>
+
+<p>
+
+Maintain positive communication, support teamwork and appreciate the contributions of others to create lasting professional connections.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌍
+
+</div>
+
+<h3>
+
+Build A Positive Reputation
+
+</h3>
+
+<p>
+
+Your daily actions, attitude and professionalism shape how others view you and influence future opportunities.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY TRUST MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🌟 Why Trust Matters
+
+</h2>
+
+<p>
+
+Trust is one of the strongest foundations of every successful workplace. Teams perform better when people are honest, dependable and willing to support one another through challenges and achievements.
+
+</p>
+
+<p>
+
+Professional relationships built on trust encourage better communication, stronger collaboration and greater confidence when working together on important projects.
+
+</p>
+
+<p>
+
+By consistently acting with integrity, respect and responsibility, you create a reputation that supports long-term personal and professional success.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- RELATIONSHIP BUILDING PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Relationship Building Process
+
+</h2>
+
+<p>
+
+Use this practical approach to develop strong and trustworthy professional relationships.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Communicate
+
+</h3>
+
+<p>
+
+Speak honestly, respectfully and professionally in every interaction.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Support
+
+</h3>
+
+<p>
+
+Offer help, encourage teammates and contribute positively to shared goals.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Earn Trust
+
+</h3>
+
+<p>
+
+Keep commitments, accept responsibility and demonstrate reliability through consistent actions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Maintain
+
+</h3>
+
+<p>
+
+Continue strengthening relationships through respect, cooperation and professional behavior.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PROFESSIONAL RELATIONSHIP CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Professional Relationship Checklist
+
+</h2>
+
+<p>
+
+✔ Be honest in every interaction.
+
+</p>
+
+<p>
+
+✔ Respect everyone equally.
+
+</p>
+
+<p>
+
+✔ Keep your commitments.
+
+</p>
+
+<p>
+
+✔ Support your colleagues.
+
+</p>
+
+<p>
+
+✔ Build trust through consistent actions.
+
+</p>
+
+<p>
+
+✔ Maintain positive professional relationships.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 3A • Building Trust & Professional Relationships
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 3B -->
+<!-- PROFESSIONAL ETHICS & WORKPLACE INTEGRITY -->
+<!-- ========================================= -->
+
+<section class="section" id="professional-ethics">
+
+<div class="section-title">
+
+<h2>
+
+Professional Ethics & Workplace Integrity
+
+</h2>
+
+<p>
+
+Professional success is built on honesty, responsibility and ethical decision-making. People who consistently demonstrate integrity earn respect, build trust and create positive working environments where everyone can succeed.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚖️
+
+</div>
+
+<h3>
+
+Act With Integrity
+
+</h3>
+
+<p>
+
+Always do the right thing, even when no one is watching. Honest actions build long-term trust and credibility.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📜
+
+</div>
+
+<h3>
+
+Follow Workplace Rules
+
+</h3>
+
+<p>
+
+Respect company policies, legal requirements and professional standards to maintain a safe and responsible work environment.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔒
+
+</div>
+
+<h3>
+
+Protect Confidential Information
+
+</h3>
+
+<p>
+
+Handle sensitive information responsibly and never share private company or customer data without proper authorization.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌟
+
+</div>
+
+<h3>
+
+Be Accountable
+
+</h3>
+
+<p>
+
+Accept responsibility for your decisions, correct mistakes honestly and continuously improve your professional behavior.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY ETHICS MATTER -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🛡️ Why Professional Ethics Matter
+
+</h2>
+
+<p>
+
+Ethical behavior creates trust between employees, customers and organizations. Businesses depend on people who are honest, reliable and committed to doing the right thing in every situation.
+
+</p>
+
+<p>
+
+Professionals with strong integrity make fair decisions, protect confidential information and contribute to a positive workplace culture where respect and responsibility are valued.
+
+</p>
+
+<p>
+
+Building ethical habits strengthens your professional reputation and creates greater opportunities for long-term career success.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ETHICAL DECISION PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Ethical Decision-Making Process
+
+</h2>
+
+<p>
+
+Follow this framework whenever you face an important professional decision.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Identify
+
+</h3>
+
+<p>
+
+Understand the situation clearly and gather all relevant information before making a decision.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Evaluate
+
+</h3>
+
+<p>
+
+Consider whether your decision is honest, fair, respectful and consistent with professional standards.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Decide
+
+</h3>
+
+<p>
+
+Choose the option that demonstrates integrity, responsibility and respect for everyone involved.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Reflect
+
+</h3>
+
+<p>
+
+Review the outcome, learn from the experience and continue strengthening your ethical decision-making skills.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- ETHICS CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Professional Ethics Checklist
+
+</h2>
+
+<p>
+
+✔ Be honest in every situation.
+
+</p>
+
+<p>
+
+✔ Respect workplace policies.
+
+</p>
+
+<p>
+
+✔ Protect confidential information.
+
+</p>
+
+<p>
+
+✔ Accept responsibility for your actions.
+
+</p>
+
+<p>
+
+✔ Make fair and ethical decisions.
+
+</p>
+
+<p>
+
+✔ Build your professional reputation through integrity.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 3B • Professional Ethics & Workplace Integrity
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 3C -->
+<!-- DIGITAL PROFESSIONALISM & ONLINE REPUTATION -->
+<!-- ========================================= -->
+
+<section class="section" id="digital-professionalism">
+
+<div class="section-title">
+
+<h2>
+
+Digital Professionalism & Online Reputation
+
+</h2>
+
+<p>
+
+In today's digital world, your online behavior reflects your professional character. Every email, message, social media post and online interaction contributes to your personal reputation. Practicing digital professionalism helps build trust, protect your reputation and create better career opportunities.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+💻
+
+</div>
+
+<h3>
+
+Maintain Professional Behavior
+
+</h3>
+
+<p>
+
+Communicate respectfully in emails, messages and online meetings while maintaining a positive and professional attitude.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌐
+
+</div>
+
+<h3>
+
+Build A Positive Online Presence
+
+</h3>
+
+<p>
+
+Share valuable knowledge, participate respectfully in online communities and create a digital profile that reflects professionalism.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔐
+
+</div>
+
+<h3>
+
+Protect Your Digital Identity
+
+</h3>
+
+<p>
+
+Use strong passwords, secure your accounts and avoid sharing personal or confidential information publicly.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Think Before You Post
+
+</h3>
+
+<p>
+
+Consider how your online actions may affect your personal reputation, future career opportunities and professional relationships.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY DIGITAL PROFESSIONALISM MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🌍 Why Digital Professionalism Matters
+
+</h2>
+
+<p>
+
+Employers, colleagues and clients often interact through digital platforms. Professional online behavior creates trust, demonstrates responsibility and strengthens your professional image.
+
+</p>
+
+<p>
+
+A positive digital reputation opens opportunities for networking, career growth and long-term professional success, while careless online behavior may negatively affect future opportunities.
+
+</p>
+
+<p>
+
+Maintaining professionalism both online and offline shows integrity, maturity and respect for others in every situation.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DIGITAL PROFESSIONALISM PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Digital Professionalism Process
+
+</h2>
+
+<p>
+
+Use this workflow whenever you communicate or share information online.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Think
+
+</h3>
+
+<p>
+
+Consider whether your message is respectful, accurate and appropriate before sharing it.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Communicate
+
+</h3>
+
+<p>
+
+Use professional language, remain respectful and clearly express your ideas.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Protect
+
+</h3>
+
+<p>
+
+Keep personal accounts secure and protect confidential information from unauthorized access.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Maintain
+
+</h3>
+
+<p>
+
+Continue building a positive online reputation through responsible and professional digital behavior.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DIGITAL PROFESSIONALISM CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Digital Professionalism Checklist
+
+</h2>
+
+<p>
+
+✔ Think before posting online.
+
+</p>
+
+<p>
+
+✔ Communicate respectfully.
+
+</p>
+
+<p>
+
+✔ Protect your digital accounts.
+
+</p>
+
+<p>
+
+✔ Respect others online.
+
+</p>
+
+<p>
+
+✔ Maintain a positive professional reputation.
+
+</p>
+
+<p>
+
+✔ Represent yourself responsibly in every digital interaction.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 3C • Digital Professionalism & Online Reputation
+
+</p>
+
+</div>
+
+</section>
+
+<script>
+
+document.querySelectorAll('.stat-card').forEach(card=>{
+card.addEventListener('mouseenter',()=>{
+card.style.transform='translateY(-8px)';
+});
+card.addEventListener('mouseleave',()=>{
+card.style.transform='translateY(0)';
+});
+});
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.animate([
+{opacity:0,transform:'translateY(40px)'},
+{opacity:1,transform:'translateY(0)'}
+],{
+duration:700,
+fill:'forwards',
+easing:'ease'
+});
+observer.unobserve(entry.target);
+}
+});
+},{threshold:.15});
+
+document.querySelectorAll('.section,.stat-card,.notice-card').forEach(el=>{
+el.style.opacity='0';
+observer.observe(el);
+});
+
+</script>
+
+</body>
+
+</html>
