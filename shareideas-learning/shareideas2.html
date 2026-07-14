@@ -1,0 +1,3589 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+CoinGrid Academy |
+Digital Productivity, Time Management & Smart Workflows
+
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#020617;
+color:#fff;
+line-height:1.8;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:80px 20px;
+background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(250,204,21,.18),transparent 70%);
+top:-220px;
+right:-180px;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(59,130,246,.18),transparent 70%);
+left:-180px;
+bottom:-180px;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:920px;
+text-align:center;
+animation:fadeUp 1s ease;
+}
+
+.course-tag{
+display:inline-block;
+padding:10px 24px;
+border-radius:50px;
+background:rgba(250,204,21,.12);
+border:1px solid rgba(250,204,21,.35);
+color:#facc15;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:56px;
+font-weight:800;
+line-height:1.2;
+margin-bottom:25px;
+}
+
+.hero p{
+max-width:820px;
+margin:auto;
+font-size:19px;
+color:#cbd5e1;
+margin-bottom:40px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.primary-btn{
+padding:16px 36px;
+background:#facc15;
+color:#000;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.35s;
+}
+
+.primary-btn:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 45px rgba(250,204,21,.35);
+}
+
+.section{
+width:min(1200px,92%);
+margin:auto;
+padding:90px 0;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:55px;
+}
+
+.section-title h2{
+font-size:42px;
+color:#facc15;
+margin-bottom:15px;
+}
+
+.section-title p{
+font-size:18px;
+color:#94a3b8;
+max-width:850px;
+margin:auto;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.stat-card{
+background:#0f172a;
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:20px;
+text-align:center;
+transition:.35s;
+}
+
+.stat-card:hover{
+transform:translateY(-6px);
+border-color:#facc15;
+}
+
+.icon{
+font-size:48px;
+margin-bottom:18px;
+}
+
+.stat-card h3{
+color:#facc15;
+margin-bottom:12px;
+}
+
+.stat-card p{
+color:#cbd5e1;
+}
+
+.notice-card{
+max-width:900px;
+margin:auto;
+background:#0f172a;
+border:1px solid rgba(250,204,21,.2);
+border-radius:20px;
+padding:35px;
+}
+
+.notice-card h2{
+color:#facc15;
+margin-bottom:20px;
+}
+
+.notice-card p{
+margin-bottom:15px;
+color:#d1d5db;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.section-title h2{
+font-size:30px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.primary-btn{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="course-tag">
+
+🎓 CoinGrid Academy
+
+</div>
+
+<h1>
+
+Digital Productivity, Time Management & Smart Workflows
+
+</h1>
+
+<p>
+
+Discover how successful professionals organize their work, manage time efficiently, eliminate distractions and build productive daily systems that help them complete important tasks consistently.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">
+
+Start Learning →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE OVERVIEW -->
+
+<section
+class="section"
+id="overview">
+
+<div class="section-title">
+
+<h2>
+
+Welcome To CoinGrid Academy
+
+</h2>
+
+<p>
+
+This learning module teaches practical productivity techniques, smart planning methods and efficient workflows that help individuals complete more meaningful work while reducing unnecessary effort and distractions.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏱
+
+</div>
+
+<h3>
+
+40 Minutes
+
+</h3>
+
+<p>
+
+Estimated Learning Time
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+9 Modules
+
+</h3>
+
+<p>
+
+Productivity & Workflow Training
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚡
+
+</div>
+
+<h3>
+
+Professional Skills
+
+</h3>
+
+<p>
+
+Planning, Focus & Organization
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Learning Journey
+
+</h3>
+
+<p>
+
+Plan • Focus • Execute • Improve
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BEFORE YOU BEGIN -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Before You Begin
+
+</h2>
+
+<p>
+
+Being busy is not the same as being productive. Successful professionals focus on completing the most valuable work instead of simply staying occupied throughout the day.
+
+</p>
+
+<p>
+
+Throughout this learning module, you will discover practical methods for organizing tasks, reducing distractions, improving focus and creating daily routines that increase both productivity and work quality.
+
+</p>
+
+<p>
+
+Your goal is to build sustainable habits that help you work smarter, stay organized and consistently achieve meaningful results.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- CURRENT MODULE -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Part 1A • Building A Strong Productivity Mindset
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PART 1A -->
+<!-- BUILDING A STRONG PRODUCTIVITY MINDSET -->
+<!-- ========================================= -->
+
+<section class="section" id="productivity-mindset">
+
+<div class="section-title">
+
+<h2>
+
+Building A Strong Productivity Mindset
+
+</h2>
+
+<p>
+
+Productivity begins with clear priorities, disciplined habits and consistent action. Successful people focus on completing important work instead of reacting to every distraction.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Set Clear Priorities
+
+</h3>
+
+<p>
+
+Identify the most important tasks before starting your day and complete high-value work first.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📅
+
+</div>
+
+<h3>
+
+Plan Ahead
+
+</h3>
+
+<p>
+
+Create a simple daily schedule so you know exactly what needs to be completed and when.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔕</div>
+
+<h3>
+
+Reduce Distractions
+
+</h3>
+
+<p>
+
+Limit interruptions, unnecessary notifications and activities that reduce your concentration.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🏆
+
+</div>
+
+<h3>
+
+Stay Consistent
+
+</h3>
+
+<p>
+
+Small productive actions repeated every day create better long-term results than occasional bursts of effort.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+💡 Why Productivity Matters
+
+</h2>
+
+<p>
+
+Time is one of your most valuable resources. Learning to organize your work effectively helps you complete projects faster, reduce stress and create more opportunities for personal and professional growth.
+
+</p>
+
+<p>
+
+Highly productive people are not necessarily working longer hours—they are making better decisions about how they spend their time.
+
+</p>
+
+<p>
+
+Building productive habits today creates lasting success throughout your career and everyday life.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1A • Building A Strong Productivity Mindset
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 1B -->
+<!-- PLANNING YOUR DAY FOR MAXIMUM PRODUCTIVITY -->
+<!-- ========================================= -->
+
+<section class="section" id="daily-planning">
+
+<div class="section-title">
+
+<h2>
+
+Plan Your Day Before You Start Working
+
+</h2>
+
+<p>
+
+Highly productive people don't begin their day by randomly choosing tasks. They create a clear plan, organize priorities and focus on completing important work before moving to less important activities.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📝
+
+</div>
+
+<h3>
+
+Write A Daily Plan
+
+</h3>
+
+<p>
+
+Create a simple list of tasks before starting work so you always know what should be completed next.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔥
+
+</div>
+
+<h3>
+
+Finish Important Tasks First
+
+</h3>
+
+<p>
+
+Complete the most valuable and difficult work while your energy and concentration are highest.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏰
+
+</div>
+
+<h3>
+
+Estimate Your Time
+
+</h3>
+
+<p>
+
+Assign realistic time limits for every task to stay organized and avoid spending too long on one activity.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+✅
+
+</div>
+
+<h3>
+
+Review Your Progress
+
+</h3>
+
+<p>
+
+Check completed tasks throughout the day and adjust your plan whenever priorities change.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DAILY PLANNING -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📅 Why Daily Planning Is Important
+
+</h2>
+
+<p>
+
+Without a clear plan, it is easy to become distracted by notifications, emails or less important work. Planning your day helps you stay focused on meaningful tasks that move your goals forward.
+
+</p>
+
+<p>
+
+Successful professionals often spend a few minutes each morning organizing their schedule because preparation reduces stress and improves decision-making throughout the day.
+
+</p>
+
+<p>
+
+A simple daily plan creates structure, improves productivity and makes it easier to complete important work consistently.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DAILY PLANNING PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Daily Planning Process
+
+</h2>
+
+<p>
+
+Follow this workflow every morning before beginning your work.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+List Tasks
+
+</h3>
+
+<p>
+
+Write every important task you need to complete today.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Prioritize
+
+</h3>
+
+<p>
+
+Arrange tasks from highest priority to lowest priority.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Schedule
+
+</h3>
+
+<p>
+
+Assign enough time for each task while leaving room for unexpected situations.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Complete
+
+</h3>
+
+<p>
+
+Focus on one task at a time until it is finished before moving to the next one.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DAILY PLANNING CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Daily Planning Checklist
+
+</h2>
+
+<p>
+
+✔ Create your task list every morning.
+
+</p>
+
+<p>
+
+✔ Complete high-priority work first.
+
+</p>
+
+<p>
+
+✔ Estimate realistic completion times.
+
+</p>
+
+<p>
+
+✔ Avoid multitasking whenever possible.
+
+</p>
+
+<p>
+
+✔ Review your progress throughout the day.
+
+</p>
+
+<p>
+
+✔ Prepare tomorrow's plan before finishing today's work.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1B • Planning Your Day For Maximum Productivity
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 1C -->
+<!-- ELIMINATING DISTRACTIONS & IMPROVING FOCUS -->
+<!-- ========================================= -->
+
+<section class="section" id="focus-management">
+
+<div class="section-title">
+
+<h2>
+
+Eliminating Distractions & Improving Focus
+
+</h2>
+
+<p>
+
+Staying productive requires more than planning. You must protect your attention by reducing distractions, maintaining concentration and creating an environment that supports deep, focused work.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📵
+
+</div>
+
+<h3>
+
+Limit Notifications
+
+</h3>
+
+<p>
+
+Turn off unnecessary notifications while working to avoid losing focus every few minutes.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎧
+
+</div>
+
+<h3>
+
+Create A Quiet Workspace
+
+</h3>
+
+<p>
+
+Choose a comfortable and organized environment that helps you concentrate without frequent interruptions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Focus On One Task
+
+</h3>
+
+<p>
+
+Complete one important task before starting another. Single-tasking improves both speed and quality.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏳
+
+</div>
+
+<h3>
+
+Work In Time Blocks
+
+</h3>
+
+<p>
+
+Divide your work into focused sessions with short breaks to maintain energy and concentration.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY FOCUS MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🧠 Why Focus Is Important
+
+</h2>
+
+<p>
+
+Every distraction interrupts your thinking and often takes several minutes to fully regain concentration. Protecting your focus helps you complete work faster and with fewer mistakes.
+
+</p>
+
+<p>
+
+Highly productive people intentionally create environments that support concentration by reducing interruptions, organizing their workspace and avoiding unnecessary multitasking.
+
+</p>
+
+<p>
+
+Strong focus leads to better decisions, higher-quality work and greater satisfaction after completing important tasks.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FOCUS WORKFLOW -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Focus Workflow
+
+</h2>
+
+<p>
+
+Use this routine whenever you begin an important task.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Prepare
+
+</h3>
+
+<p>
+
+Organize everything you need before starting so you won't need unnecessary interruptions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Remove Distractions
+
+</h3>
+
+<p>
+
+Silence notifications, close unrelated applications and keep only essential tools open.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Focus
+
+</h3>
+
+<p>
+
+Work on one task continuously until reaching a meaningful stopping point.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Take A Short Break
+
+</h3>
+
+<p>
+
+Rest briefly before beginning the next focused work session to maintain productivity.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FOCUS CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Focus Improvement Checklist
+
+</h2>
+
+<p>
+
+✔ Silence unnecessary notifications.
+
+</p>
+
+<p>
+
+✔ Keep your workspace clean and organized.
+
+</p>
+
+<p>
+
+✔ Complete one task before starting another.
+
+</p>
+
+<p>
+
+✔ Use focused work sessions with short breaks.
+
+</p>
+
+<p>
+
+✔ Avoid unnecessary multitasking.
+
+</p>
+
+<p>
+
+✔ Protect your attention every day.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 1C • Eliminating Distractions & Improving Focus
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 2A -->
+<!-- BUILDING PRODUCTIVE DAILY HABITS -->
+<!-- ========================================= -->
+
+<section class="section" id="daily-habits">
+
+<div class="section-title">
+
+<h2>
+
+Building Productive Daily Habits
+
+</h2>
+
+<p>
+
+Long-term productivity is created through consistent daily habits rather than occasional bursts of motivation. Small positive routines repeated every day help you achieve bigger goals with less stress and greater confidence.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌅
+
+</div>
+
+<h3>
+
+Start Your Day With Purpose
+
+</h3>
+
+<p>
+
+Begin each day by reviewing your goals, planning your priorities and preparing yourself for productive work instead of immediately checking social media or unnecessary notifications.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📋
+
+</div>
+
+<h3>
+
+Follow A Routine
+
+</h3>
+
+<p>
+
+Create a consistent schedule for studying, working, exercising and resting. Daily routines reduce decision fatigue and improve productivity.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Track Your Progress
+
+</h3>
+
+<p>
+
+Review completed tasks every day to understand what you achieved and identify areas where you can improve tomorrow.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎉
+
+</div>
+
+<h3>
+
+Celebrate Small Wins
+
+</h3>
+
+<p>
+
+Recognize your progress after completing important tasks. Small achievements build motivation and encourage consistent effort.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- DAILY HABITS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🌟 Why Daily Habits Matter
+
+</h2>
+
+<p>
+
+Successful professionals rely on habits rather than motivation alone. Motivation changes from day to day, but strong habits help you continue making progress even when you don't feel motivated.
+
+</p>
+
+<p>
+
+Simple routines such as planning your day, staying organized, working consistently and reviewing your progress help create long-term success in both your personal and professional life.
+
+</p>
+
+<p>
+
+Every productive habit you develop today becomes an investment in your future achievements.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- HABIT BUILDING PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Habit Building Process
+
+</h2>
+
+<p>
+
+Use this practical method to develop productive habits that last.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Choose One Habit
+
+</h3>
+
+<p>
+
+Focus on developing one productive habit before trying to improve everything at once.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Practice Daily
+
+</h3>
+
+<p>
+
+Repeat the habit every day at the same time until it becomes a natural part of your routine.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Monitor Progress
+
+</h3>
+
+<p>
+
+Keep track of your consistency and identify any obstacles preventing regular practice.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Improve Gradually
+
+</h3>
+
+<p>
+
+Once one habit becomes automatic, add another positive habit to continue growing.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- HABIT CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Daily Habit Checklist
+
+</h2>
+
+<p>
+
+✔ Plan your day every morning.
+
+</p>
+
+<p>
+
+✔ Follow a consistent routine.
+
+</p>
+
+<p>
+
+✔ Complete important work first.
+
+</p>
+
+<p>
+
+✔ Review your progress every evening.
+
+</p>
+
+<p>
+
+✔ Celebrate small achievements.
+
+</p>
+
+<p>
+
+✔ Improve one habit at a time.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 2A • Building Productive Daily Habits
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 2B -->
+<!-- EFFECTIVE TIME MANAGEMENT TECHNIQUES -->
+<!-- ========================================= -->
+
+<section class="section" id="time-management">
+
+<div class="section-title">
+
+<h2>
+
+Effective Time Management Techniques
+
+</h2>
+
+<p>
+
+Managing time effectively means using every hour with purpose instead of simply staying busy. Good time management helps you complete more important work, reduce stress and maintain a healthy balance between work, learning and personal life.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏰
+
+</div>
+
+<h3>
+
+Set Time Limits
+
+</h3>
+
+<p>
+
+Assign a realistic amount of time for every important task. Deadlines help you stay focused and prevent unnecessary delays.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📌
+
+</div>
+
+<h3>
+
+Prioritize Important Work
+
+</h3>
+
+<p>
+
+Complete tasks that create the greatest value before spending time on less important activities.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⌛
+
+</div>
+
+<h3>
+
+Avoid Procrastination
+
+</h3>
+
+<p>
+
+Start important tasks immediately instead of waiting for the perfect moment. Small actions today are better than delayed perfection.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚖️
+
+</div>
+
+<h3>
+
+Maintain Balance
+
+</h3>
+
+<p>
+
+Schedule enough time for work, learning, exercise and rest to remain productive without becoming exhausted.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY TIME MANAGEMENT MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+⏳ Why Time Management Matters
+
+</h2>
+
+<p>
+
+Everyone has the same twenty-four hours each day. The difference between highly productive people and others is how they choose to use their time.
+
+</p>
+
+<p>
+
+Managing your schedule helps you avoid last-minute pressure, complete important tasks consistently and create more opportunities to achieve your personal and professional goals.
+
+</p>
+
+<p>
+
+When you control your time instead of allowing distractions to control you, your productivity and confidence both improve.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TIME MANAGEMENT PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Time Management Process
+
+</h2>
+
+<p>
+
+Follow this practical workflow to organize your day more effectively.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Plan
+
+</h3>
+
+<p>
+
+List every important task that needs to be completed today.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Prioritize
+
+</h3>
+
+<p>
+
+Arrange tasks according to importance and complete the highest priority work first.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Manage Time
+
+</h3>
+
+<p>
+
+Assign realistic time blocks and remain focused until each task is completed.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Review
+
+</h3>
+
+<p>
+
+Evaluate your progress at the end of the day and improve tomorrow's schedule using what you learned.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TIME MANAGEMENT CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Time Management Checklist
+
+</h2>
+
+<p>
+
+✔ Plan your day before starting work.
+
+</p>
+
+<p>
+
+✔ Focus on high-priority tasks first.
+
+</p>
+
+<p>
+
+✔ Set realistic deadlines.
+
+</p>
+
+<p>
+
+✔ Avoid procrastination.
+
+</p>
+
+<p>
+
+✔ Balance work, learning and rest.
+
+</p>
+
+<p>
+
+✔ Review your daily schedule for continuous improvement.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 2B • Effective Time Management Techniques
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 2C -->
+<!-- WORKING SMARTER THROUGH CONTINUOUS IMPROVEMENT -->
+<!-- ========================================= -->
+
+<section class="section" id="continuous-productivity">
+
+<div class="section-title">
+
+<h2>
+
+Working Smarter Through Continuous Improvement
+
+</h2>
+
+<p>
+
+Productivity is an ongoing journey of learning, improving and adapting. Successful professionals regularly evaluate their work, identify better methods and make small improvements that produce significant long-term results.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📊
+
+</div>
+
+<h3>
+
+Review Your Work
+
+</h3>
+
+<p>
+
+At the end of each day or week, evaluate what was completed successfully and identify areas where your workflow can improve.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔄
+
+</div>
+
+<h3>
+
+Improve Your Process
+
+</h3>
+
+<p>
+
+Replace inefficient habits with better methods that save time, reduce effort and improve the quality of your work.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+Keep Learning
+
+</h3>
+
+<p>
+
+Learn new skills, productivity techniques and digital tools that help you work more effectively and confidently.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Grow Consistently
+
+</h3>
+
+<p>
+
+Small improvements repeated every day create remarkable long-term growth in productivity, confidence and professional success.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONTINUOUS IMPROVEMENT -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📈 Why Continuous Improvement Matters
+
+</h2>
+
+<p>
+
+No workflow is perfect forever. As technology changes and responsibilities grow, your methods should improve as well. Regular improvements help you remain organized, efficient and prepared for new challenges.
+
+</p>
+
+<p>
+
+Successful professionals do not wait for major problems before making changes. They continuously look for small opportunities to simplify tasks, improve quality and save valuable time.
+
+</p>
+
+<p>
+
+Improving a little every day creates better habits, stronger skills and greater long-term success than making occasional large changes.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPROVEMENT PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Productivity Improvement Process
+
+</h2>
+
+<p>
+
+Follow this practical cycle to improve your daily workflow continuously.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Review
+
+</h3>
+
+<p>
+
+Look back at your completed work and identify what went well and what caused delays.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Identify
+
+</h3>
+
+<p>
+
+Find one habit, tool or process that could be improved to save time or increase efficiency.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Apply
+
+</h3>
+
+<p>
+
+Introduce the improvement into your daily routine and practice it consistently.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Repeat
+
+</h3>
+
+<p>
+
+Continue reviewing and improving regularly to build stronger productivity habits over time.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PRODUCTIVITY IMPROVEMENT CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Continuous Productivity Checklist
+
+</h2>
+
+<p>
+
+✔ Review your work regularly.
+
+</p>
+
+<p>
+
+✔ Learn new productivity techniques.
+
+</p>
+
+<p>
+
+✔ Replace inefficient habits.
+
+</p>
+
+<p>
+
+✔ Improve one process at a time.
+
+</p>
+
+<p>
+
+✔ Measure your progress consistently.
+
+</p>
+
+<p>
+
+✔ Never stop learning and improving.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 2C • Working Smarter Through Continuous Improvement
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 3A -->
+<!-- DIGITAL COLLABORATION & TEAMWORK -->
+<!-- ========================================= -->
+
+<section class="section" id="digital-collaboration">
+
+<div class="section-title">
+
+<h2>
+
+Digital Collaboration & Teamwork
+
+</h2>
+
+<p>
+
+Modern projects are rarely completed alone. Strong communication, teamwork and collaboration allow individuals to combine their skills, solve problems faster and achieve better results than working independently.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Work As A Team
+
+</h3>
+
+<p>
+
+Share responsibilities, support teammates and work together toward a common goal while respecting everyone's contributions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💬
+
+</div>
+
+<h3>
+
+Communicate Clearly
+
+</h3>
+
+<p>
+
+Share ideas, ask questions and provide updates using simple, respectful and professional communication.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📂
+
+</div>
+
+<h3>
+
+Organize Shared Work
+
+</h3>
+
+<p>
+
+Keep documents, tasks and project information organized so every team member can easily find what they need.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Support Common Goals
+
+</h3>
+
+<p>
+
+Focus on completing team objectives instead of individual recognition. Successful teams achieve results together.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY TEAMWORK MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🌍 Why Collaboration Matters
+
+</h2>
+
+<p>
+
+Large projects require different skills, experiences and perspectives. Working with others helps generate better ideas, solve challenges more efficiently and reduce mistakes through shared knowledge.
+
+</p>
+
+<p>
+
+Successful professionals listen carefully, communicate openly and respect different viewpoints. Collaboration creates stronger relationships and better project outcomes.
+
+</p>
+
+<p>
+
+Learning to work effectively with others is one of the most valuable professional skills in today's digital workplace.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COLLABORATION PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Collaboration Process
+
+</h2>
+
+<p>
+
+Follow this workflow whenever you work on a shared project.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Plan Together
+
+</h3>
+
+<p>
+
+Discuss project goals, assign responsibilities and ensure everyone understands their role.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Communicate
+
+</h3>
+
+<p>
+
+Share updates regularly and ask questions whenever clarification is needed.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Support Each Other
+
+</h3>
+
+<p>
+
+Help teammates overcome challenges and work together to solve problems efficiently.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Review Results
+
+</h3>
+
+<p>
+
+Evaluate completed work, celebrate achievements and identify improvements for future projects.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TEAMWORK CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Collaboration Checklist
+
+</h2>
+
+<p>
+
+✔ Communicate respectfully.
+
+</p>
+
+<p>
+
+✔ Share responsibilities fairly.
+
+</p>
+
+<p>
+
+✔ Support your teammates.
+
+</p>
+
+<p>
+
+✔ Stay organized throughout the project.
+
+</p>
+
+<p>
+
+✔ Solve problems together.
+
+</p>
+
+<p>
+
+✔ Learn from every collaborative experience.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 3A • Digital Collaboration & Teamwork
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 3B -->
+<!-- ADAPTABILITY, CONTINUOUS LEARNING & PROFESSIONAL GROWTH -->
+<!-- ========================================= -->
+
+<section class="section" id="professional-growth">
+
+<div class="section-title">
+
+<h2>
+
+Adaptability, Continuous Learning & Professional Growth
+
+</h2>
+
+<p>
+
+The digital world changes rapidly. New technologies, tools and ways of working appear every year. Professionals who continue learning and adapt to change remain valuable, productive and prepared for future opportunities.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h3>
+
+Keep Learning
+
+</h3>
+
+<p>
+
+Develop the habit of learning new skills, technologies and professional practices throughout your career instead of relying only on what you already know.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔄
+
+</div>
+
+<h3>
+
+Adapt To Change
+
+</h3>
+
+<p>
+
+Accept new challenges with a positive mindset and remain flexible when technologies, responsibilities or business needs evolve.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💻
+
+</div>
+
+<h3>
+
+Improve Digital Skills
+
+</h3>
+
+<p>
+
+Explore modern software, productivity tools and digital platforms that help you work more efficiently and solve problems effectively.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌱
+
+</div>
+
+<h3>
+
+Grow Every Day
+
+</h3>
+
+<p>
+
+Small improvements made consistently create stronger knowledge, greater confidence and better professional opportunities over time.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY CONTINUOUS LEARNING MATTERS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🚀 Why Continuous Learning Matters
+
+</h2>
+
+<p>
+
+Technology continues evolving, and industries regularly adopt new tools and working methods. Professionals who continue learning remain competitive and are better prepared for future opportunities.
+
+</p>
+
+<p>
+
+Continuous learning is not limited to formal education. Reading articles, watching tutorials, practicing new skills and learning from experienced professionals all contribute to long-term career growth.
+
+</p>
+
+<p>
+
+Developing a learning mindset helps you solve problems more effectively, adapt confidently to change and continue growing throughout your professional journey.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CONTINUOUS LEARNING PROCESS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Simple Continuous Learning Process
+
+</h2>
+
+<p>
+
+Follow this practical cycle to continue improving your skills throughout your career.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Learn
+
+</h3>
+
+<p>
+
+Study new concepts, technologies and professional skills from trusted learning resources.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Practice
+
+</h3>
+
+<p>
+
+Apply what you learn through real projects, exercises and practical experience.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Evaluate
+
+</h3>
+
+<p>
+
+Review your progress, identify knowledge gaps and determine what should be improved next.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Repeat
+
+</h3>
+
+<p>
+
+Continue learning, practicing and improving as new technologies and opportunities emerge.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- LEARNING CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Continuous Learning Checklist
+
+</h2>
+
+<p>
+
+✔ Learn something new regularly.
+
+</p>
+
+<p>
+
+✔ Practice your skills consistently.
+
+</p>
+
+<p>
+
+✔ Stay informed about industry changes.
+
+</p>
+
+<p>
+
+✔ Be open to new technologies.
+
+</p>
+
+<p>
+
+✔ Improve through real experience.
+
+</p>
+
+<p>
+
+✔ Never stop developing your professional skills.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 3B • Adaptability, Continuous Learning & Professional Growth
+
+</p>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 3C -->
+<!-- LIFELONG PRODUCTIVITY & SUCCESS MINDSET -->
+<!-- ========================================= -->
+
+<section class="section" id="lifelong-productivity">
+
+<div class="section-title">
+
+<h2>
+
+Lifelong Productivity & Success Mindset
+
+</h2>
+
+<p>
+
+Productivity is not about working harder every day. It is about developing habits, maintaining discipline and continuously improving the way you work throughout your life. Long-term success comes from consistency, learning and making better decisions every day.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+🌱
+
+</div>
+
+<h3>
+
+Grow Continuously
+
+</h3>
+
+<p>
+
+Improve your knowledge, skills and daily routines step by step instead of expecting overnight success.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Stay Goal Focused
+
+</h3>
+
+<p>
+
+Keep your long-term goals in mind and make daily decisions that move you closer to achieving them.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💪
+
+</div>
+
+<h3>
+
+Build Discipline
+
+</h3>
+
+<p>
+
+Continue working even when motivation is low. Consistent discipline creates lasting success.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🏆
+
+</div>
+
+<h3>
+
+Pursue Excellence
+
+</h3>
+
+<p>
+
+Always look for ways to improve your quality of work, increase efficiency and deliver better results.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- SUCCESS MINDSET -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+🚀 Success Is Built Every Day
+
+</h2>
+
+<p>
+
+Every productive decision you make today influences your future. Small daily improvements become major achievements when repeated consistently over months and years.
+
+</p>
+
+<p>
+
+Successful professionals remain organized, adaptable and committed to continuous improvement. They understand that every completed task strengthens their skills, confidence and experience.
+
+</p>
+
+<p>
+
+Your productivity journey never truly ends. Continue learning, improving and applying better methods as technology, opportunities and responsibilities continue to evolve.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PRODUCTIVITY SUCCESS CYCLE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Productivity Success Cycle
+
+</h2>
+
+<p>
+
+Follow this continuous cycle to remain productive throughout your personal and professional life.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+1️⃣
+
+</div>
+
+<h3>
+
+Plan
+
+</h3>
+
+<p>
+
+Set clear goals, organize priorities and prepare your work before beginning.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+2️⃣
+
+</div>
+
+<h3>
+
+Execute
+
+</h3>
+
+<p>
+
+Complete important tasks with focus, consistency and attention to quality.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+3️⃣
+
+</div>
+
+<h3>
+
+Review
+
+</h3>
+
+<p>
+
+Evaluate your results, identify strengths and discover opportunities for improvement.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+4️⃣
+
+</div>
+
+<h3>
+
+Improve
+
+</h3>
+
+<p>
+
+Apply what you learned and continue building stronger habits for future success.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FINAL CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Lifelong Productivity Checklist
+
+</h2>
+
+<p>
+
+✔ Plan every day with purpose.
+
+</p>
+
+<p>
+
+✔ Focus on meaningful work.
+
+</p>
+
+<p>
+
+✔ Learn and improve continuously.
+
+</p>
+
+<p>
+
+✔ Stay disciplined and consistent.
+
+</p>
+
+<p>
+
+✔ Support others through teamwork.
+
+</p>
+
+<p>
+
+✔ Build habits that create long-term success.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CURRENT MODULE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Current Module
+
+</h2>
+
+<p>
+
+Completed Part 3C • Lifelong Productivity & Success Mindset
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- COURSE COMPLETED -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+🎉 Congratulations
+
+</h2>
+
+<p>
+
+You have successfully completed this CoinGrid Academy learning module.
+
+</p>
+
+</div>
+
+<div id="countdownBox" class="notice-card" style="text-align:center;">
+
+<h2>
+
+Preparing Your Task...
+
+</h2>
+
+<p>
+
+Please wait
+
+<strong>
+
+<span id="timer">10</span>
+
+</strong>
+
+seconds.
+
+</p>
+
+<p>
+
+The "Continue" button will unlock automatically.
+
+</p>
+
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+
+<button
+
+id="startTaskBtn"
+
+class="primary-btn"
+
+style="display:none;">
+
+🚀 Continue
+
+</button>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer
+style="
+margin-top:80px;
+padding:50px 20px;
+text-align:center;
+background:#010814;
+border-top:1px solid rgba(255,255,255,.08);
+">
+
+<h2
+style="
+color:#facc15;
+margin-bottom:15px;
+">
+
+CoinGrid Academy
+
+</h2>
+
+<p
+style="
+max-width:750px;
+margin:auto;
+color:#94a3b8;
+line-height:1.9;
+">
+
+Productivity is built one day at a time.
+
+Plan carefully, stay focused, improve continuously and develop habits that create lasting success.
+
+</p>
+
+<div
+style="
+margin-top:25px;
+color:#64748b;
+font-size:15px;
+">
+
+© 2026 CoinGrid. All Rights Reserved.
+
+</div>
+
+</footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const timer=document.getElementById("timer");
+const countdownBox=document.getElementById("countdownBox");
+const startTaskBtn=document.getElementById("startTaskBtn");
+
+const TASK_URL="../tasks/productivity-taskinstructions.html";
+
+let seconds=10;
+
+const countdown=setInterval(()=>{
+
+seconds--;
+
+timer.textContent=seconds;
+
+if(seconds<=0){
+
+clearInterval(countdown);
+
+countdownBox.innerHTML=`
+
+<h2>✅ Learning Completed</h2>
+
+<p>Congratulations!</p>
+
+<p>You may now continue to the next task.</p>
+
+`;
+
+startTaskBtn.style.display="inline-block";
+
+}
+
+},1000);
+
+startTaskBtn.addEventListener("click",()=>{
+
+window.location.href=TASK_URL;
+
+});
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.15});
+
+document.querySelectorAll(".stat-card,.notice-card").forEach(card=>{
+
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition=".7s ease";
+
+observer.observe(card);
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
