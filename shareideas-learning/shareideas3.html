@@ -3723,56 +3723,191 @@ Continue building a positive online reputation through responsible and professio
 <!-- CURRENT MODULE -->
 <!-- ========================================= -->
 
+<!-- ========================================= -->
+<!-- COURSE COMPLETED -->
+<!-- ========================================= -->
+
 <section class="section">
 
 <div class="section-title">
 
 <h2>
 
-Current Module
+🎉 Congratulations
 
 </h2>
 
 <p>
 
-Completed Part 3C • Digital Professionalism & Online Reputation
+You have successfully completed this CoinGrid Academy learning module.
 
 </p>
 
 </div>
 
+<div id="countdownBox" class="notice-card" style="text-align:center;">
+
+<h2>
+
+Preparing Your Task...
+
+</h2>
+
+<p>
+
+Please wait
+
+<strong>
+
+<span id="timer">10</span>
+
+</strong>
+
+seconds.
+
+</p>
+
+<p>
+
+The "Continue" button will unlock automatically.
+
+</p>
+
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+
+<button
+
+id="startTaskBtn"
+
+class="primary-btn"
+
+style="display:none;">
+
+🚀 Start Sharing Ideas
+
+</button>
+
+</div>
+
 </section>
+
+<!-- FOOTER -->
+
+<footer
+style="
+margin-top:80px;
+padding:50px 20px;
+text-align:center;
+background:#010814;
+border-top:1px solid rgba(255,255,255,.08);
+">
+
+<h2
+style="
+color:#facc15;
+margin-bottom:15px;
+">
+
+CoinGrid Academy
+
+</h2>
+
+<p
+style="
+max-width:750px;
+margin:auto;
+color:#94a3b8;
+line-height:1.9;
+">
+
+Professional communication creates stronger relationships, successful teamwork and lasting career growth. Continue practicing clear communication, active listening and respectful collaboration every day.
+
+</p>
+
+<div
+style="
+margin-top:25px;
+color:#64748b;
+font-size:15px;
+">
+
+© 2026 CoinGrid. All Rights Reserved.
+
+</div>
+
+</footer>
 
 <script>
 
-document.querySelectorAll('.stat-card').forEach(card=>{
-card.addEventListener('mouseenter',()=>{
-card.style.transform='translateY(-8px)';
-});
-card.addEventListener('mouseleave',()=>{
-card.style.transform='translateY(0)';
-});
+document.addEventListener("DOMContentLoaded",()=>{
+
+const timer=document.getElementById("timer");
+const countdownBox=document.getElementById("countdownBox");
+const startTaskBtn=document.getElementById("startTaskBtn");
+
+const TASK_URL="../tasks/communication-taskinstructions.html";
+
+let seconds=10;
+
+const countdown=setInterval(()=>{
+
+seconds--;
+
+timer.textContent=seconds;
+
+if(seconds<=0){
+
+clearInterval(countdown);
+
+countdownBox.innerHTML=`
+
+<h2>✅ Learning Completed</h2>
+
+<p>Congratulations!</p>
+
+<p>You may now continue to the next task.</p>
+
+`;
+
+startTaskBtn.style.display="inline-block";
+
+}
+
+},1000);
+
+startTaskBtn.addEventListener("click",()=>{
+
+window.location.href=TASK_URL;
+
 });
 
 const observer=new IntersectionObserver(entries=>{
+
 entries.forEach(entry=>{
+
 if(entry.isIntersecting){
-entry.target.animate([
-{opacity:0,transform:'translateY(40px)'},
-{opacity:1,transform:'translateY(0)'}
-],{
-duration:700,
-fill:'forwards',
-easing:'ease'
-});
-observer.unobserve(entry.target);
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
 }
+
 });
+
 },{threshold:.15});
 
-document.querySelectorAll('.section,.stat-card,.notice-card').forEach(el=>{
-el.style.opacity='0';
-observer.observe(el);
+document.querySelectorAll(".stat-card,.notice-card").forEach(card=>{
+
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition=".7s ease";
+
+observer.observe(card);
+
+});
+
 });
 
 </script>
