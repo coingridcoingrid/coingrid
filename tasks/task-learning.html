@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preparing Lesson | CoinGrid</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:500px;
+background:#1e293b;
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:40px 30px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.logo{
+font-size:34px;
+font-weight:800;
+color:#facc15;
+margin-bottom:15px;
+}
+
+.icon{
+font-size:70px;
+margin-bottom:20px;
+}
+
+h1{
+font-size:28px;
+margin-bottom:15px;
+}
+
+p{
+color:#cbd5e1;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+.spinner{
+width:70px;
+height:70px;
+margin:0 auto 25px;
+border:6px solid rgba(255,255,255,.15);
+border-top:6px solid #facc15;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+.status{
+font-size:15px;
+color:#94a3b8;
+}
+
+.error{
+display:none;
+margin-top:25px;
+color:#ef4444;
+font-weight:600;
+}
+
+.back-btn{
+display:none;
+margin-top:20px;
+padding:14px 20px;
+background:#facc15;
+color:#111827;
+text-decoration:none;
+border-radius:12px;
+font-weight:700;
+}
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">
+
+CoinGrid
+
+</div>
+
+<div class="icon">
+
+📚
+
+</div>
+
+<h1>
+
+Preparing Today's Lesson
+
+</h1>
+
+<p>
+
+Please wait while we prepare today's learning lesson.
+
+</p>
+
+<div class="spinner"></div>
+
+<div class="status" id="status">
+
+Loading...
+
+</div>
+
+<div class="error" id="errorBox">
+
+Unable to load today's lesson.
+
+</div>
+
+<a href="browse.html" class="back-btn" id="backBtn">
+
+← Back to Tasks
+
+</a>
+
+</div>
+
+<script>
+
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+const params =
+new URLSearchParams(window.location.search);
+
+const taskId =
+params.get("id");
+
+if(!taskId){
+
+document.getElementById("status").style.display="none";
+
+document.getElementById("errorBox").style.display="block";
+
+document.getElementById("backBtn").style.display="inline-block";
+
+throw new Error("Task ID missing.");
+
+}
+
+async function loadTask(){
+
+try{
+
+const response =
+await fetch(
+`${API_BASE}/api/task?id=${taskId}`,
+{
+credentials:"include"
+}
+);
+
+if(response.status===401){
+
+window.location.replace("../auth/login.html");
+
+return;
+
+}
+
+const data =
+await response.json();
+
+if(!data.success){
+
+throw new Error(data.message);
+
+}
+
+document.getElementById("status").textContent =
+"Opening today's lesson...";
+
+setTimeout(()=>{
+
+window.location.replace(
+data.task.redirect_url
+);
+
+},800);
+
+}catch(error){
+
+console.error(error);
+
+document.querySelector(".spinner").style.display="none";
+
+document.getElementById("status").style.display="none";
+
+document.getElementById("errorBox").textContent=
+error.message || "Unable to load lesson.";
+
+document.getElementById("errorBox").style.display="block";
+
+document.getElementById("backBtn").style.display="inline-block";
+
+}
+
+}
+
+loadTask();
+
+</script>
+
+</body>
+
+</html>
