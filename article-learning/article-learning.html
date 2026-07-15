@@ -5249,19 +5249,20 @@ progressFill.style.width="8%";
 
 /* Start Learning */
 
-startBtn.addEventListener("click",()=>{
+if (startBtn) {
 
-startBtn.innerHTML="Loading...";
+    startBtn.addEventListener("click", () => {
 
-startBtn.disabled=true;
+        startBtn.innerHTML = "Loading...";
+        startBtn.disabled = true;
 
-setTimeout(()=>{
+        setTimeout(() => {
+            window.location.href = "part2.html";
+        }, 800);
 
-window.location.href="part2.html";
+    });
 
-},800);
-
-});
+}
 
 /* Preview */
 
@@ -5360,13 +5361,13 @@ behavior:"smooth"
 
 /* Keyboard Shortcut */
 
-document.addEventListener("keydown",e=>{
+document.addEventListener("keydown", e => {
 
-if(e.key==="Enter"){
+    if (e.key === "Enter" && startBtn) {
 
-startBtn.click();
+        startBtn.click();
 
-}
+    }
 
 });
 
