@@ -391,8 +391,11 @@ if(response.status === 401){
         document.getElementById("userName").textContent =
         profile.name;
 
-        document.getElementById("userId").textContent =
-        "CG" + String(profile.id).padStart(6, "0");
+        const randomId =
+"CG" + Math.floor(100000 + Math.random() * 900000);
+
+document.getElementById("userId").textContent =
+randomId;
 
         document.getElementById("accountRole").textContent =
         profile.role;
