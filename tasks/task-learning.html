@@ -5,11 +5,16 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>Preparing Lesson | CoinGrid</title>
+<title>
+Preparing Task | CoinGrid
+</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -21,90 +26,312 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#0f172a;
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
+
+background:
+linear-gradient(135deg,#020617,#0f172a,#1e293b);
+
 min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 padding:20px;
+
+color:#fff;
+
+overflow:hidden;
+
 }
 
+/* BACKGROUND GLOW */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:350px;
+
+height:350px;
+
+background:#facc15;
+
+filter:blur(180px);
+
+opacity:.08;
+
+top:-120px;
+
+left:-120px;
+
+border-radius:50%;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:320px;
+
+height:320px;
+
+background:#2563eb;
+
+filter:blur(180px);
+
+opacity:.08;
+
+bottom:-100px;
+
+right:-100px;
+
+border-radius:50%;
+
+}
+
+/* CARD */
+
 .card{
+
+position:relative;
+
 width:100%;
-max-width:500px;
-background:#1e293b;
-border:1px solid rgba(255,255,255,.08);
-border-radius:24px;
-padding:40px 30px;
+
+max-width:520px;
+
+padding:45px 35px;
+
+border-radius:28px;
+
+background:
+rgba(30,41,59,.82);
+
+border:1px solid
+rgba(255,255,255,.08);
+
+backdrop-filter:blur(16px);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.45);
+
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+z-index:5;
+
+}
+
+/* LOGO */
+
+.logo{
+
+font-size:42px;
+
+font-weight:800;
+
+margin-bottom:28px;
+
+letter-spacing:.5px;
+
 }
 
 .logo{
-font-size:34px;
-font-weight:800;
+
 color:#facc15;
-margin-bottom:15px;
+
 }
 
-.icon{
-font-size:70px;
-margin-bottom:20px;
+.logo span{
+
+color:#ffffff;
+
 }
+
+/* HEADING */
 
 h1{
-font-size:28px;
+
+font-size:30px;
+
 margin-bottom:15px;
+
+font-weight:700;
+
 }
 
-p{
+.description{
+
+font-size:15px;
+
+line-height:1.9;
+
 color:#cbd5e1;
-line-height:1.8;
-margin-bottom:25px;
+
+margin-bottom:35px;
+
 }
+
+/* SPINNER */
 
 .spinner{
-width:70px;
-height:70px;
+
+width:72px;
+
+height:72px;
+
 margin:0 auto 25px;
-border:6px solid rgba(255,255,255,.15);
-border-top:6px solid #facc15;
+
 border-radius:50%;
+
+border:6px solid
+rgba(255,255,255,.12);
+
+border-top:6px solid
+#facc15;
+
 animation:spin 1s linear infinite;
+
 }
+
+/* STATUS */
 
 .status{
-font-size:15px;
-color:#94a3b8;
+
+font-size:16px;
+
+font-weight:600;
+
+color:#facc15;
+
+margin-bottom:10px;
+
 }
+
+.sub-status{
+
+font-size:14px;
+
+color:#94a3b8;
+
+}
+
+/* ERROR */
 
 .error{
+
 display:none;
+
 margin-top:25px;
-color:#ef4444;
+
+padding:15px;
+
+background:
+rgba(239,68,68,.12);
+
+border:1px solid
+rgba(239,68,68,.3);
+
+border-radius:14px;
+
+color:#fca5a5;
+
 font-weight:600;
+
 }
 
+/* BUTTON */
+
 .back-btn{
+
 display:none;
-margin-top:20px;
-padding:14px 20px;
-background:#facc15;
-color:#111827;
+
+margin-top:22px;
+
+padding:15px 22px;
+
+background:
+linear-gradient(135deg,#facc15,#f59e0b);
+
+border-radius:14px;
+
 text-decoration:none;
-border-radius:12px;
+
+color:#111827;
+
 font-weight:700;
+
+transition:.3s;
+
 }
+
+.back-btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+/* FOOTER */
+
+.footer{
+
+margin-top:35px;
+
+font-size:13px;
+
+color:#64748b;
+
+}
+
+/* SPINNER */
 
 @keyframes spin{
 
 0%{
+
 transform:rotate(0deg);
+
 }
 
 100%{
+
 transform:rotate(360deg);
+
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.card{
+
+padding:35px 25px;
+
+}
+
+.logo{
+
+font-size:36px;
+
+}
+
+h1{
+
+font-size:25px;
+
+}
+
+.description{
+
+font-size:14px;
+
 }
 
 }
@@ -119,47 +346,61 @@ transform:rotate(360deg);
 
 <div class="logo">
 
-CoinGrid
-
-</div>
-
-<div class="icon">
-
-📚
+Coin<span>Grid</span>
 
 </div>
 
 <h1>
 
-Preparing Today's Lesson
+Preparing Your Task
 
 </h1>
 
-<p>
+<p class="description">
 
-Please wait while we prepare today's learning lesson.
+Please wait while we securely prepare today's learning experience and verify your task details.
 
 </p>
 
 <div class="spinner"></div>
 
-<div class="status" id="status">
+<div
+class="status"
+id="status">
 
 Loading...
 
 </div>
 
-<div class="error" id="errorBox">
+<div
+class="sub-status">
 
-Unable to load today's lesson.
+Please do not close this page.
 
 </div>
 
-<a href="browse.html" class="back-btn" id="backBtn">
+<div
+class="error"
+id="errorBox">
+
+Unable to prepare your task.
+
+</div>
+
+<a
+href="browse.html"
+class="back-btn"
+id="backBtn">
 
 ← Back to Tasks
 
 </a>
+
+<div class="footer">
+
+© CoinGrid • Secure Learning Platform
+
+</div>
 
 </div>
 
@@ -169,16 +410,23 @@ const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
 const params =
-new URLSearchParams(window.location.search);
+new URLSearchParams(
+window.location.search
+);
 
 const taskId =
 params.get("id");
 
-if(!taskId){
+  if(!taskId){
 
 document.getElementById("status").style.display="none";
 
+document.querySelector(".spinner").style.display="none";
+
 document.getElementById("errorBox").style.display="block";
+
+document.getElementById("errorBox").textContent=
+"Task ID is missing.";
 
 document.getElementById("backBtn").style.display="inline-block";
 
@@ -190,6 +438,9 @@ async function loadTask(){
 
 try{
 
+document.getElementById("status").textContent=
+"Connecting to CoinGrid...";
+
 const response =
 await fetch(
 `${API_BASE}/api/task?id=${taskId}`,
@@ -200,31 +451,40 @@ credentials:"include"
 
 if(response.status===401){
 
-window.location.replace("../auth/login.html");
+window.location.replace(
+"../auth/login.html"
+);
 
 return;
 
 }
+
+document.getElementById("status").textContent=
+"Verifying task...";
 
 const data =
 await response.json();
 
 if(!data.success){
 
-throw new Error(data.message);
+throw new Error(
+data.message
+);
 
 }
 
-document.getElementById("status").textContent =
-"Opening today's lesson...";
+document.getElementById("status").textContent=
+"Preparing learning experience...";
 
 setTimeout(()=>{
 
-window.location.replace(
+document.getElementById("status").textContent=
+"Opening your task...";
+  window.location.replace(
 data.task.redirect_url
 );
 
-},800);
+},1000);
 
 }catch(error){
 
@@ -234,12 +494,17 @@ document.querySelector(".spinner").style.display="none";
 
 document.getElementById("status").style.display="none";
 
-document.getElementById("errorBox").textContent=
-error.message || "Unable to load lesson.";
-
 document.getElementById("errorBox").style.display="block";
 
-document.getElementById("backBtn").style.display="inline-block";
+document.getElementById("errorBox").textContent=
+
+error.message ||
+
+"Unable to prepare your task.";
+
+document.getElementById("backBtn").style.display=
+
+"inline-block";
 
 }
 
