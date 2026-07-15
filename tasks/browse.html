@@ -796,6 +796,25 @@ Next ➜
 const API_BASE =
 "https://coingrid-api.coingridcoingrid.workers.dev";
 
+
+  function escapeHTML(value){
+
+    if(value === null || value === undefined){
+
+        return "";
+
+    }
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
+
+}
+
+  
 let currentCategory = "All";
 
 let currentSearch = "";
@@ -803,14 +822,7 @@ let currentSearch = "";
 let currentSort = "newest";
 let currentPage = 1;
 
-  function escapeHTML(str) {
-    return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-}
+
 async function loadTasks(){
 
     try{
@@ -915,8 +927,7 @@ task.featured
 
 </div>
 
-<h3>${task.title}</h3>
-
+<h3>${escapeHTML(task.title)}</h3>
 <p>${escapeHTML(task.short_description || task.description || "")}</p>
 
 <div class="task-info">
