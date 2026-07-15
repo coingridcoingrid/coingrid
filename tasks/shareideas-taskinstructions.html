@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+CoinGrid Academy |
+Share Your Ideas Challenge
+
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#020617;
+color:#ffffff;
+overflow-x:hidden;
+line-height:1.8;
+
+}
+
+/* HERO */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:80px 20px;
+
+background:
+
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b
+);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+circle,
+rgba(250,204,21,.18),
+transparent 70%
+);
+
+top:-220px;
+right:-180px;
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+circle,
+rgba(59,130,246,.18),
+transparent 70%
+);
+
+left:-160px;
+bottom:-160px;
+
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:920px;
+
+text-align:center;
+
+animation:fadeUp 1s ease;
+
+}
+
+.course-tag{
+
+display:inline-block;
+
+padding:10px 24px;
+
+border-radius:50px;
+
+background:rgba(250,204,21,.12);
+
+border:1px solid rgba(250,204,21,.35);
+
+color:#facc15;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+.hero h1{
+
+font-size:56px;
+
+font-weight:800;
+
+line-height:1.2;
+
+margin-bottom:25px;
+
+}
+
+.hero p{
+
+max-width:820px;
+
+margin:auto;
+
+font-size:19px;
+
+color:#cbd5e1;
+
+margin-bottom:45px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+padding:17px 36px;
+
+border:none;
+
+border-radius:14px;
+
+background:#facc15;
+
+color:#000;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 20px 45px rgba(250,204,21,.35);
+
+}
+
+.secondary-btn{
+
+padding:17px 36px;
+
+border-radius:14px;
+
+border:1px solid rgba(255,255,255,.15);
+
+background:transparent;
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+/* SECTION */
+
+.section{
+
+width:min(1200px,92%);
+
+margin:auto;
+
+padding:90px 0;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+color:#facc15;
+
+margin-bottom:15px;
+
+}
+
+.section-title p{
+
+font-size:18px;
+
+color:#94a3b8;
+
+max-width:800px;
+
+margin:auto;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+.hero p{
+
+font-size:17px;
+
+}
+
+.section-title h2{
+
+font-size:30px;
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+/* =======================================
+   SUBMISSION FORM
+======================================= */
+
+.notice-card{
+
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:40px;
+backdrop-filter:blur(16px);
+
+}
+
+.notice-card h2{
+
+color:#facc15;
+margin-bottom:20px;
+font-size:30px;
+
+}
+
+.notice-card p{
+
+color:#cbd5e1;
+margin-bottom:14px;
+line-height:1.8;
+
+}
+
+.form-group{
+
+margin-bottom:25px;
+
+}
+
+.form-group label{
+
+display:block;
+margin-bottom:10px;
+font-size:16px;
+font-weight:600;
+color:#ffffff;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+width:100%;
+padding:16px 18px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.08);
+background:#0f172a;
+color:#ffffff;
+font-size:15px;
+outline:none;
+transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+border-color:#facc15;
+box-shadow:0 0 0 4px rgba(250,204,21,.12);
+
+}
+
+.form-group textarea{
+
+min-height:180px;
+resize:vertical;
+
+}
+
+.form-group input[type="file"]{
+
+padding:18px;
+background:#111827;
+cursor:pointer;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+color:#94a3b8;
+
+}
+
+.submit-box{
+
+margin-top:35px;
+text-align:center;
+
+}
+
+.submit-btn{
+
+background:#facc15;
+color:#000;
+padding:18px 42px;
+border:none;
+border-radius:14px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+transform:translateY(-4px);
+box-shadow:0 20px 40px rgba(250,204,21,.35);
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.notice-card{
+
+padding:25px;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+padding:14px;
+
+}
+
+.submit-btn{
+
+width:100%;
+
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="course-tag">
+
+💡 CoinGrid Innovation Challenge
+
+</div>
+
+<h1>
+
+Share Your Unique Online Earning & Business Ideas
+
+</h1>
+
+<p>
+
+Welcome to the CoinGrid Innovation Challenge.
+
+This task is designed to discover creative people who can think beyond existing online earning platforms and business models.
+
+Your objective is <strong>not to build a website or application.</strong>
+
+Instead, you will research existing solutions, identify market gaps, and prepare a professional proposal describing one or more original ideas that could become future online earning platforms.
+
+If your idea is selected after our review, our development team may build the platform based on your concept. If it is published and begins generating revenue, you may become eligible for revenue sharing according to the CoinGrid Creator Program.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">
+
+Start Learning
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="alert('Read every section carefully before submitting your innovation proposal.')">
+
+Task Information
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+   <!-- ========================================= -->
+<!-- TASK INFORMATION -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📋 Task Information
+
+</h2>
+
+<p>
+
+Welcome to the <strong>CoinGrid Innovation Challenge</strong>. Please read all task instructions carefully before creating and submitting your innovation proposal.
+
+</p>
+
+<p>
+
+Your submission should be a well-researched Google Docs proposal containing original online earning or business ideas. The submission form is located at the bottom of this page.
+
+</p>
+
+<p>
+
+Only submit your proposal after researching existing platforms and verifying that your idea is original or provides meaningful improvements over existing solutions.
+
+</p>
+
+<div style="margin-top:25px;">
+
+<p><strong>📄 Submission:</strong> Google Docs / Google Drive Link</p>
+
+<p><strong>🔍 Review:</strong> Manual Verification</p>
+
+<p><strong>🚀 Development:</strong> Selected ideas may be developed by CoinGrid.</p>
+
+<p><strong>💰 Rewards:</strong> Eligible ideas may qualify for the CoinGrid Creator Revenue Sharing Program.</p>
+
+</div>
+
+<div style="text-align:center;margin-top:30px;">
+
+<button
+
+class="primary-btn"
+
+onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">
+
+📖 Read Task Instructions
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSE OVERVIEW -->
+
+<section
+class="section"
+id="overview">
+
+<div class="section-title">
+
+<h2>
+
+Challenge Overview
+
+</h2>
+
+<p>
+
+Before submitting your innovation proposal, learn how to research existing platforms, identify genuine opportunities, validate your ideas, and prepare a professional document for review.
+
+</p>
+
+</div>
+
+<!-- ========================================= -->
+
+<!-- Paste Part 1B Below Here -->
+
+<!-- ========================================= -->
+
+  <!-- LEARNING OBJECTIVES -->
+
+<div class="section-title">
+
+<h2>
+
+What You Will Learn
+
+</h2>
+
+<p>
+
+Before submitting your ideas, understand how successful innovators research, think creatively, identify opportunities, and transform simple concepts into valuable online businesses.
+
+</p>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learn-card">
+
+<h3>🔍 Research Before You Build</h3>
+
+<p>
+
+Always investigate whether your idea already exists. Search Google, AI assistants, startup websites, Product Hunt, GitHub and other platforms before deciding your concept is unique.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>💡 Think Beyond Existing Websites</h3>
+
+<p>
+
+Don't create another copy of survey websites, GPT websites, freelancing platforms or reward apps. Your objective is to discover opportunities that most people have never considered.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🌍 Solve Real Problems</h3>
+
+<p>
+
+Every successful business solves a real problem. Instead of asking how people can earn money, ask what difficulties people experience while earning money online.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🤖 Use AI As A Research Assistant</h3>
+
+<p>
+
+AI can help you brainstorm, compare competitors, summarize research and generate questions, but your final proposal should reflect your own original thinking and creativity.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>📈 Validate Every Idea</h3>
+
+<p>
+
+Check whether your concept already exists, whether users actually need it, and whether businesses would be interested in supporting or advertising on such a platform.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>📝 Prepare A Professional Proposal</h3>
+
+<p>
+
+Instead of writing only one sentence, explain your concept clearly using headings, logical workflow, expected users, benefits, future improvements and possible revenue model.
+
+</p>
+
+</div>
+
+</div>
+
+<!-- WHY THIS TASK MATTERS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Why This Challenge Is Important
+
+</h2>
+
+<p>
+
+CoinGrid is continuously searching for innovative online earning concepts that provide genuine value instead of repeating ideas already available on the internet.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">🚀</div>
+
+<h3>Create</h3>
+
+<p>
+
+Create original earning ideas instead of copying existing websites.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🧠</div>
+
+<h3>Research</h3>
+
+<p>
+
+Study current products and discover opportunities others have overlooked.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">💼</div>
+
+<h3>Business</h3>
+
+<p>
+
+Think like a startup founder by solving real user problems.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">⭐</div>
+
+<h3>Innovation</h3>
+
+<p>
+
+Your creativity could become CoinGrid's next published earning platform.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IMPORTANT NOTICE -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Important Notice
+
+</h2>
+
+<p>
+
+This is not a programming task.
+
+</p>
+
+<p>
+
+You are not expected to create a website, mobile application, software or prototype.
+
+</p>
+
+<p>
+
+Your responsibility is to prepare a professional document describing one or more innovative online earning or business ideas.
+
+</p>
+
+<p>
+
+Every submitted idea should be researched carefully before submission.
+
+</p>
+
+<p>
+
+Ideas that already exist without meaningful improvements are less likely to be accepted.
+
+</p>
+
+<p>
+
+Originality, practical thinking, real-world usefulness and professional presentation are the most important evaluation criteria.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+
+<!-- Paste Part 1C Below Here -->
+
+<!-- ========================================= -->
+
+
+  <!-- INNOVATION RESEARCH FRAMEWORK -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Innovation Research Framework
+
+</h2>
+
+<p>
+
+Before writing your proposal, follow a structured research process. The strongest ideas are built through observation, research and continuous improvement—not guesswork.
+
+</p>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learn-card">
+
+<h3>Step 1 — Find A Problem</h3>
+
+<p>
+
+Observe how people earn money online today. Identify frustrations, repeated tasks, unnecessary costs, or opportunities that existing platforms fail to address.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>Step 2 — Research Existing Solutions</h3>
+
+<p>
+
+Search Google, AI assistants, YouTube, Product Hunt, startup directories, GitHub and technology blogs to discover whether similar solutions already exist.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>Step 3 — Identify Market Gaps</h3>
+
+<p>
+
+If similar products exist, analyze what they are missing. Focus on improving user experience, automation, accessibility, transparency or earning opportunities.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>Step 4 — Create Your Innovation</h3>
+
+<p>
+
+Design an idea that solves a genuine problem while providing value for both users and businesses. Your concept should be practical and realistic.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>Step 5 — Validate Your Concept</h3>
+
+<p>
+
+Ask yourself whether users would actually use your platform, whether companies would support it and whether the idea could realistically be developed.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>Step 6 — Prepare Your Proposal</h3>
+
+<p>
+
+Document your idea professionally with logical explanations, workflow diagrams, target users, expected benefits and future improvements.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RESEARCH CHECKLIST -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Research Checklist
+
+</h2>
+
+<p>
+
+Complete these steps before submitting your proposal.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Checklist Before Submission
+
+</h2>
+
+<p>
+
+✅ Search whether your idea already exists.
+
+</p>
+
+<p>
+
+✅ Compare similar websites and applications.
+
+</p>
+
+<p>
+
+✅ Identify missing features or weaknesses.
+
+</p>
+
+<p>
+
+✅ Explain why users would choose your idea.
+
+</p>
+
+<p>
+
+✅ Verify the idea is technically possible.
+
+</p>
+
+<p>
+
+✅ Prepare your proposal using clear headings and logical explanations.
+
+</p>
+
+<p>
+
+✅ Include only your own original ideas and research.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- THINK LIKE AN ENTREPRENEUR -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Think Like An Entrepreneur
+
+</h2>
+
+<p>
+
+Great businesses begin with great questions.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Ask Yourself
+
+</h2>
+
+<p>
+
+❓ What problem am I solving?
+
+</p>
+
+<p>
+
+❓ Who will benefit from this idea?
+
+</p>
+
+<p>
+
+❓ Why doesn't a better solution already exist?
+
+</p>
+
+<p>
+
+❓ Can this idea become a sustainable business?
+
+</p>
+
+<p>
+
+❓ Would I personally use this platform?
+
+</p>
+
+<p>
+
+❓ Does this provide genuine value instead of unrealistic promises?
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+
+<!-- Paste Part 2A Below Here -->
+
+<!-- ========================================= -->
+
+  <!-- HOW TO CREATE A WINNING IDEA -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+How To Create A Winning Innovation
+
+</h2>
+
+<p>
+
+The best ideas are not copied from existing websites. They are created by understanding people's problems and designing a better solution.
+
+</p>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learn-card">
+
+<h3>🎯 Start With A Real Problem</h3>
+
+<p>
+
+Every successful platform solves a real problem. Observe what people struggle with while earning money online and ask yourself how that experience could become easier, faster or more rewarding.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🌍 Think Globally</h3>
+
+<p>
+
+Don't limit your idea to one country. Consider whether people from different countries, languages and backgrounds could also benefit from your platform.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🚀 Improve Existing Concepts</h3>
+
+<p>
+
+If a similar platform already exists, don't copy it. Study its weaknesses and create meaningful improvements that provide a better experience for users.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>💼 Build A Sustainable Business</h3>
+
+<p>
+
+Think about how your idea could generate long-term revenue while remaining fair, useful and trustworthy for both users and business partners.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>📊 Validate With Research</h3>
+
+<p>
+
+Research competitors, market demand and technology trends before finalizing your proposal. A researched idea is much stronger than a random idea.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>⭐ Focus On Long-Term Value</h3>
+
+<p>
+
+Instead of chasing short-term trends, design a platform that users would still find valuable years from now.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Common Mistakes To Avoid
+
+</h2>
+
+<p>
+
+Many proposals are rejected because they repeat existing ideas or promise unrealistic results.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Avoid These Mistakes
+
+</h2>
+
+<p>
+
+❌ Copying existing GPT, survey or freelancing websites without meaningful improvements.
+
+</p>
+
+<p>
+
+❌ Promising unrealistic earnings or impossible technology.
+
+</p>
+
+<p>
+
+❌ Submitting AI-generated content without your own ideas.
+
+</p>
+
+<p>
+
+❌ Skipping research before writing your proposal.
+
+</p>
+
+<p>
+
+❌ Creating ideas that solve problems nobody actually has.
+
+</p>
+
+<p>
+
+❌ Writing only a few sentences instead of a complete proposal.
+
+</p>
+
+<p>
+
+Remember: originality, practicality and usefulness are more valuable than complexity.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- WHAT MAKES A GREAT IDEA -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Characteristics Of A Great Idea
+
+</h2>
+
+<p>
+
+Our review team looks for ideas that combine creativity with practical value.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">💡</div>
+
+<h3>Original</h3>
+
+<p>
+
+Introduces something genuinely different instead of copying another platform.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">⚙</div>
+
+<h3>Practical</h3>
+
+<p>
+
+Can realistically be developed using today's technology.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">👥</div>
+
+<h3>User Focused</h3>
+
+<p>
+
+Provides clear value for the people who will use it.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">📈</div>
+
+<h3>Scalable</h3>
+
+<p>
+
+Has the potential to grow into a larger platform over time.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+
+<!-- Paste Part 2B Below Here -->
+
+<!-- ========================================= -->
+  <!-- DOCUMENT PREPARATION -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+How To Prepare Your Submission
+
+</h2>
+
+<p>
+
+Your proposal should be written like a professional business document. The clearer and more organized your submission is, the easier it is for our review team to evaluate your innovation.
+
+</p>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learn-card">
+
+<h3>📌 Project Title</h3>
+
+<p>
+
+Choose a short, unique and meaningful title that clearly explains your innovation.
+
+Examples:
+
+• Smart Skill Marketplace
+
+• AI Community Rewards
+
+• Local Task Exchange
+
+• Verified Knowledge Network
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>❗ Problem Statement</h3>
+
+<p>
+
+Describe the real problem your idea solves.
+
+Explain why this problem exists, who experiences it and why current platforms fail to solve it effectively.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>💡 Proposed Solution</h3>
+
+<p>
+
+Explain how your platform works step by step.
+
+Describe what happens from the moment a user joins until they receive value from your platform.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>👥 Target Users</h3>
+
+<p>
+
+Identify who will benefit most.
+
+Examples include students, freelancers, creators, businesses, teachers, developers, job seekers or remote workers.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>⭐ Unique Features</h3>
+
+<p>
+
+List the features that make your platform different from competitors.
+
+Explain why users would choose your platform instead of existing alternatives.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>💰 Revenue Model</h3>
+
+<p>
+
+Describe how the platform could generate sustainable income while providing genuine value for users.
+
+Avoid unrealistic or misleading earning promises.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- REQUIRED DOCUMENT FORMAT -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Required Sections
+
+</h2>
+
+<p>
+
+Your document should include these sections before submission.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Submission Checklist
+
+</h2>
+
+<p>
+
+✔ Project Title
+
+</p>
+
+<p>
+
+✔ Problem Statement
+
+</p>
+
+<p>
+
+✔ Existing Competitors
+
+</p>
+
+<p>
+
+✔ Market Research
+
+</p>
+
+<p>
+
+✔ Proposed Solution
+
+</p>
+
+<p>
+
+✔ Workflow Explanation
+
+</p>
+
+<p>
+
+✔ Target Users
+
+</p>
+
+<p>
+
+✔ Benefits
+
+</p>
+
+<p>
+
+✔ Revenue Model
+
+</p>
+
+<p>
+
+✔ Future Improvements
+
+</p>
+
+<p>
+
+✔ Why Your Idea Is Different
+
+</p>
+
+<p>
+
+✔ Conclusion
+
+</p>
+
+</div>
+
+</section>
+
+<!-- IDEA QUALITY CHECK -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Before You Submit
+
+</h2>
+
+<p>
+
+Ask yourself these final questions before uploading your proposal.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">🔍</div>
+
+<h3>Researched</h3>
+
+<p>
+
+Did I verify that my idea doesn't already exist or that I significantly improved an existing concept?
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">💡</div>
+
+<h3>Original</h3>
+
+<p>
+
+Is this genuinely my own idea instead of a copied website or AI-generated concept?
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">⚙</div>
+
+<h3>Possible</h3>
+
+<p>
+
+Can this realistically be developed using today's technology?
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">📈</div>
+
+<h3>Valuable</h3>
+
+<p>
+
+Will real users receive meaningful value from this platform?
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+
+<!-- Paste Part 2C Below Here -->
+
+<!-- ========================================= -->
+  <!-- REVIEW PROCESS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+How Your Idea Will Be Reviewed
+
+</h2>
+
+<p>
+
+Every submission is carefully evaluated before any decision is made. Our goal is to identify ideas that are original, practical and capable of becoming successful online platforms.
+
+</p>
+
+</div>
+
+<div class="learning-grid">
+
+<div class="learn-card">
+
+<h3>📥 Step 1 — Submission Received</h3>
+
+<p>
+
+Your document is securely received by the CoinGrid review team. Every submission is assigned for evaluation.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🔍 Step 2 — Originality Review</h3>
+
+<p>
+
+Our team checks whether your idea is original or simply copies an existing platform. We also verify the research you've performed.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🧠 Step 3 — Innovation Evaluation</h3>
+
+<p>
+
+We evaluate whether your concept solves a genuine problem, creates value for users and introduces meaningful improvements or completely new approaches.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>⚙ Step 4 — Technical Feasibility</h3>
+
+<p>
+
+Ideas are reviewed to determine whether they can realistically be developed using current technologies, reasonable resources and sustainable business models.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🏆 Step 5 — Selection</h3>
+
+<p>
+
+Only the strongest proposals move forward for future development. Selection depends on originality, practicality and long-term potential.
+
+</p>
+
+</div>
+
+<div class="learn-card">
+
+<h3>🚀 Step 6 — Development</h3>
+
+<p>
+
+If selected, our development team may begin designing and building a real platform inspired by your proposal.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- REVENUE SHARING -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Creator Revenue Sharing Program
+
+</h2>
+
+<p>
+
+Accepted ideas may become part of the CoinGrid Creator Program after successful development and publication.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Important Information
+
+</h2>
+
+<p>
+
+Submitting an idea does not automatically generate payment.
+
+</p>
+
+<p>
+
+Your proposal must first pass our review process.
+
+</p>
+
+<p>
+
+If approved, our team may design, develop, test and publish the platform using your concept.
+
+</p>
+
+<p>
+
+Revenue sharing begins only after the published platform starts generating real revenue from advertisements, partnerships or other legitimate business activities.
+
+</p>
+
+<p>
+
+Revenue depends entirely on actual user engagement, traffic and platform performance.
+
+</p>
+
+<p>
+
+If no revenue is generated, there will be no revenue available to distribute.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- REVENUE SPLIT -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Revenue Distribution
+
+</h2>
+
+<p>
+
+When an approved idea generates revenue after publication, earnings may be shared according to the CoinGrid Creator Program.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">👤</div>
+
+<h3>60%</h3>
+
+<p>
+
+Creator Share
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🏢</div>
+
+<h3>40%</h3>
+
+<p>
+
+CoinGrid Share
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">🌍</div>
+
+<h3>Growth</h3>
+
+<p>
+
+Hosting, development, maintenance and marketing.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">📈</div>
+
+<h3>Long-Term</h3>
+
+<p>
+
+Revenue continues according to the published agreement while the platform remains active.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TOP PERFORMERS -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+Become A Top Innovator
+
+</h2>
+
+<p>
+
+Outstanding contributors may receive additional opportunities beyond standard task rewards.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Top Performer Benefits
+
+</h2>
+
+<p>
+
+🏆 Invitation to exclusive high-paying private tasks.
+
+</p>
+
+<p>
+
+💼 Priority consideration for future CoinGrid projects.
+
+</p>
+
+<p>
+
+🚀 Early access to new innovation programs.
+
+</p>
+
+<p>
+
+⭐ Opportunity to collaborate directly with our development team.
+
+</p>
+
+<p>
+
+👨‍💻 Potential recruitment opportunities for exceptional long-term contributors.
+
+</p>
+
+<p>
+
+Selection is based on originality, professionalism, research quality, creativity and the overall impact of your submitted ideas.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+
+<!-- Paste Part 3 Below Here -->
+
+<!-- ========================================= -->
+  <!-- FINAL SUBMISSION -->
+
+<!-- ========================================= -->
+<!-- PART 3D - HOW TO SUBMIT YOUR IDEAS -->
+<!-- Replace Existing Final Submission Section -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+📤 How To Submit Your Innovation Ideas
+
+</h2>
+
+<p>
+
+Follow these steps carefully to ensure our review team can access and evaluate your submission.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<h2>
+
+Step-by-Step Submission Guide
+
+</h2>
+
+<p><strong>Step 1</strong><br>
+Create a new Google Docs document.</p>
+
+<p><strong>Step 2</strong><br>
+Write your online earning or business ideas clearly using headings and professional formatting.</p>
+
+<p><strong>Step 3</strong><br>
+Include your research, competitors, problem statement, solution, target users, unique features and revenue model.</p>
+
+<p><strong>Step 4</strong><br>
+Open the Google Docs <b>Share</b> option.</p>
+
+<p><strong>Step 5</strong><br>
+Change access to <b>Anyone with the link</b>.</p>
+
+<p><strong>Step 6</strong><br>
+Copy the Google Docs sharing link.</p>
+
+<p><strong>Step 7</strong><br>
+Paste the copied link into the submission form below.</p>
+
+<p><strong>Step 8</strong><br>
+Optionally upload supporting files such as PDF, DOCX, PPTX, images or research documents.</p>
+
+<p><strong>Step 9</strong><br>
+Review everything carefully and click <b>Submit Ideas</b>.</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- SUBMISSION CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+✅ Before You Submit
+
+</h2>
+
+<p>✔ Your ideas are original.</p>
+
+<p>✔ You researched similar platforms.</p>
+
+<p>✔ Your Google Docs link is accessible.</p>
+
+<p>✔ Access is set to <b>Anyone with the link</b>.</p>
+
+<p>✔ Your proposal explains the problem and solution.</p>
+
+<p>✔ Your proposal is written professionally.</p>
+
+<p>✔ Supporting files are uploaded (optional).</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- SUBMISSION FORM -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>
+
+🚀 Submit Your Innovation
+
+</h2>
+
+<p>
+
+Submit your Google Docs link for review.
+
+</p>
+
+</div>
+
+<div class="notice-card">
+
+<form id="taskSubmissionForm">
+
+<div class="form-group">
+
+<label>
+
+Google Docs / Google Drive Link <span style="color:#ef4444;">*</span>
+
+</label>
+
+<input
+type="url"
+id="taskUrl"
+name="taskUrl"
+placeholder="Paste your Google Docs link here..."
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Optional Message
+
+</label>
+
+<textarea
+id="creatorNote"
+name="creatorNote"
+rows="5"
+placeholder="Add any notes for the review team...">
+</textarea>
+</div>
+
+
+
+<div class="submit-box">
+
+<button
+type="submit"
+class="submit-btn">
+
+🚀 Submit Ideas
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPORTANT NOTICE -->
+<!-- ========================================= -->
+
+<section class="section">
+
+<div class="notice-card">
+
+<h2>
+
+📢 Important Information
+
+</h2>
+
+<p>
+
+Submitting your idea does not guarantee approval or payment.
+
+</p>
+
+<p>
+
+Our team manually reviews every submission for originality, research quality, practicality and business potential.
+
+</p>
+
+<p>
+
+Only selected ideas may be developed into real platforms.
+
+</p>
+
+<p>
+
+If a selected platform is launched and generates revenue, eligible creators may participate in the CoinGrid Creator Revenue Sharing Program (60% Creator • 40% CoinGrid), subject to the applicable program terms.
+
+</p>
+
+<p>
+
+Top performers may receive invitations to private high-paying tasks and may also be considered for future opportunities within CoinGrid.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer
+
+style="
+
+margin-top:80px;
+
+padding:50px 20px;
+
+background:#010814;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+">
+
+<h2
+
+style="
+
+color:#facc15;
+
+margin-bottom:18px;
+
+">
+
+CoinGrid Innovation Academy
+
+</h2>
+
+<p
+
+style="
+
+max-width:850px;
+
+margin:auto;
+
+color:#94a3b8;
+
+line-height:1.9;
+
+">
+
+Every successful startup begins with one great idea.
+
+Research carefully, think creatively, solve real problems, and present your proposal professionally.
+
+Your innovation could become the next CoinGrid platform used by thousands of users worldwide.
+
+</p>
+
+<div
+
+style="
+
+margin-top:30px;
+
+color:#64748b;
+
+font-size:15px;
+
+">
+
+© 2026 CoinGrid. All Rights Reserved.
+
+</div>
+
+</footer>
+
+<script>
+const timer = document.getElementById("timer");
+const countdownBox = document.getElementById("countdownBox");
+const startTaskBtn = document.getElementById("startTaskBtn");
+
+if(timer && countdownBox && startTaskBtn){
+
+let seconds = 10;
+
+const countdown = setInterval(()=>{
+
+timer.textContent = seconds;
+
+seconds--;
+
+if(seconds < 0){
+
+clearInterval(countdown);
+
+countdownBox.innerHTML = `
+
+<h2>✅ Learning Completed</h2>
+
+<p>Congratulations!</p>
+
+<p>You may now continue to the Share Ideas task.</p>
+
+`;
+
+startTaskBtn.style.display = "inline-block";
+
+}
+
+},1000);
+
+startTaskBtn.addEventListener("click",()=>{
+
+window.location.href="share-ideas.html";
+
+});
+
+}
+
+const observer =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate(
+
+[
+
+{
+
+opacity:0,
+
+transform:"translateY(40px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0)"
+
+}
+
+],
+
+{
+
+duration:700,
+
+fill:"forwards"
+
+}
+
+);
+
+}
+
+});
+
+});
+
+document
+
+.querySelectorAll(
+
+".stat-card,.learn-card,.notice-card"
+
+)
+
+.forEach(card=>{
+
+card.style.opacity=0;
+
+observer.observe(card);
+
+});
+
+
+
+   const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+const TASK_ID = 37;
+
+document
+.getElementById("taskSubmissionForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const task_id = TASK_ID;
+
+    const submission_url =
+    document.getElementById("taskUrl").value.trim();
+
+    const submission_note =
+    document.getElementById("creatorNote").value.trim();
+
+    try{
+
+        const response = await fetch(
+
+            `${API_BASE}/api/tasks/submit`,
+
+            {
+
+                method:"POST",
+
+                credentials:"include",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+
+                    task_id,
+
+                    submission_url,
+
+                    submission_note
+
+                })
+
+            }
+
+        );
+
+        const data = await response.json();
+
+        if(data.success){
+
+            alert(data.message);
+
+            window.location.href="browse.html";
+
+        }else{
+
+            alert(data.message);
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Unable to submit task.");
+
+    }
+
+});
+</script>
+
+</body>
+
+</html>
