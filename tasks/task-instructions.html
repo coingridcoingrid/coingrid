@@ -1,0 +1,4109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+CoinGrid | Article Task Instructions
+</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+  /* =========================================
+   CoinGrid Task Instructions
+   Part 1B - Global CSS
+========================================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#020617;
+color:#fff;
+line-height:1.7;
+overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+position:relative;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:90px 20px;
+background:linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#1e293b
+);
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+top:-250px;
+right:-220px;
+background:radial-gradient(circle,
+rgba(250,204,21,.18),
+transparent 70%);
+filter:blur(20px);
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+left:-180px;
+bottom:-180px;
+background:radial-gradient(circle,
+rgba(59,130,246,.18),
+transparent 70%);
+filter:blur(20px);
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.25);
+backdrop-filter:blur(3px);
+}
+
+.hero-content{
+position:relative;
+z-index:5;
+max-width:900px;
+text-align:center;
+animation:fadeUp .8s ease;
+}
+
+.task-badge{
+display:inline-block;
+padding:10px 24px;
+border-radius:50px;
+background:rgba(250,204,21,.12);
+border:1px solid rgba(250,204,21,.3);
+color:#facc15;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:58px;
+font-weight:800;
+line-height:1.15;
+margin-bottom:25px;
+}
+
+.hero-description{
+font-size:19px;
+max-width:760px;
+margin:auto;
+color:#cbd5e1;
+margin-bottom:45px;
+}
+
+/* ================= BUTTONS ================= */
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.primary-btn{
+padding:16px 36px;
+border:none;
+border-radius:12px;
+background:#facc15;
+color:#000;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 15px 35px rgba(250,204,21,.25);
+}
+
+.primary-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 25px 45px rgba(250,204,21,.35);
+}
+
+.secondary-btn{
+padding:16px 36px;
+border-radius:12px;
+background:transparent;
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.secondary-btn:hover{
+background:rgba(255,255,255,.08);
+transform:translateY(-4px);
+}
+
+/* ================= COMMON SECTION ================= */
+
+.task-section{
+width:min(1200px,92%);
+margin:auto;
+padding:90px 0;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.section-title h2{
+font-size:42px;
+margin-bottom:15px;
+color:#facc15;
+}
+
+.section-title p{
+font-size:18px;
+color:#94a3b8;
+max-width:750px;
+margin:auto;
+}
+
+/* ================= GRID ================= */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+
+/* ================= CARD ================= */
+
+.stat-card,
+.summary-card,
+.status-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:22px;
+backdrop-filter:blur(18px);
+}
+
+.stat-card{
+padding:35px 25px;
+text-align:center;
+transition:.35s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+border-color:rgba(250,204,21,.35);
+box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.icon{
+font-size:45px;
+margin-bottom:20px;
+}
+
+.stat-card h3{
+font-size:26px;
+margin-bottom:10px;
+color:#facc15;
+}
+
+.stat-card p{
+font-size:16px;
+color:#cbd5e1;
+}
+
+/* ================= SUMMARY ================= */
+
+.summary-card{
+padding:45px;
+}
+
+.summary-card h2{
+font-size:34px;
+margin-bottom:25px;
+color:#facc15;
+}
+
+.summary-card p{
+font-size:17px;
+color:#d1d5db;
+margin-bottom:18px;
+}
+
+.summary-card ul{
+padding-left:25px;
+margin-top:20px;
+}
+
+.summary-card li{
+margin-bottom:14px;
+color:#e2e8f0;
+}
+
+/* ================= STATUS ================= */
+
+.status-card{
+padding:45px;
+}
+
+.status-card h2{
+color:#facc15;
+margin-bottom:30px;
+font-size:34px;
+}
+
+.status-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+font-size:17px;
+}
+
+.status-row:last-child{
+border:none;
+}
+
+.status-open{
+color:#22c55e;
+font-weight:700;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(40px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+.hero h1{
+font-size:42px;
+}
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.section-title h2{
+font-size:34px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:70px 20px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero-description{
+font-size:17px;
+}
+
+.summary-card,
+.status-card{
+padding:30px;
+}
+
+.status-row{
+flex-direction:column;
+align-items:flex-start;
+gap:8px;
+}
+
+}
+
+@media(max-width:550px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+width:100%;
+}
+
+.section-title h2{
+font-size:28px;
+}
+
+.summary-card h2,
+.status-card h2{
+font-size:28px;
+}
+
+  }
+
+  /* =========================================
+   PART 2B - ADDITIONAL CSS
+   Submission & Revenue Sections
+========================================= */
+
+/* Smooth spacing */
+
+.task-section{
+scroll-margin-top:80px;
+}
+
+/* Better summary paragraphs */
+
+.summary-card p{
+line-height:1.9;
+}
+
+/* Better lists */
+
+.summary-card ul{
+margin-top:20px;
+padding-left:28px;
+}
+
+.summary-card li{
+margin-bottom:14px;
+line-height:1.8;
+}
+
+/* Status hover */
+
+.status-card{
+transition:.35s;
+}
+
+.status-card:hover{
+border-color:rgba(250,204,21,.35);
+box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+/* Better card animation */
+
+.stat-card,
+.summary-card,
+.status-card{
+opacity:0;
+transform:translateY(35px);
+animation:fadeCard .8s ease forwards;
+}
+
+.stat-card:nth-child(1){animation-delay:.1s;}
+.stat-card:nth-child(2){animation-delay:.2s;}
+.stat-card:nth-child(3){animation-delay:.3s;}
+.stat-card:nth-child(4){animation-delay:.4s;}
+
+@keyframes fadeCard{
+
+from{
+
+opacity:0;
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* Better Buttons */
+
+.primary-btn,
+.secondary-btn{
+
+transition:
+transform .3s,
+box-shadow .3s,
+background .3s;
+
+}
+
+.primary-btn:active{
+
+transform:scale(.97);
+
+}
+
+.secondary-btn:active{
+
+transform:scale(.97);
+
+}
+
+/* Status rows */
+
+.status-row span:last-child{
+
+font-weight:600;
+color:#f8fafc;
+
+}
+
+/* Summary cards */
+
+.summary-card{
+
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,.05),
+rgba(255,255,255,.03)
+);
+
+}
+
+/* Card icons */
+
+.icon{
+
+transition:.35s;
+
+}
+
+.stat-card:hover .icon{
+
+transform:scale(1.12);
+
+}
+
+/* Section spacing */
+
+.section-title{
+
+max-width:900px;
+margin:auto auto 60px;
+
+}
+
+/* Better readability */
+
+strong{
+
+color:#facc15;
+
+}
+
+/* Nice scrollbar */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#0f172a;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#facc15;
+border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#f59e0b;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.summary-card,
+.status-card{
+
+padding:28px;
+
+}
+
+.summary-card h2,
+.status-card h2{
+
+font-size:26px;
+
+}
+
+.section-title p{
+
+font-size:16px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.task-section{
+
+padding:70px 0;
+
+}
+
+.hero-description{
+
+font-size:16px;
+
+}
+
+.summary-card p,
+.status-row{
+
+font-size:15px;
+
+}
+
+  }
+  /* =========================================
+   PART 3B CSS
+   Creator Reputation & Final Sections
+========================================= */
+
+/* Cards */
+
+.summary-card,
+.status-card,
+.stat-card{
+transition:
+transform .35s,
+box-shadow .35s,
+border-color .35s,
+background .35s;
+}
+
+.summary-card:hover,
+.status-card:hover,
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:rgba(250,204,21,.35);
+
+box-shadow:
+0 20px 45px rgba(0,0,0,.35);
+
+}
+
+/* Better Headings */
+
+.summary-card h2,
+.status-card h2{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+}
+
+/* Status Rows */
+
+.status-row{
+
+transition:
+background .3s,
+padding-left .3s;
+
+}
+
+.status-row:hover{
+
+background:
+rgba(250,204,21,.05);
+
+padding-left:10px;
+
+}
+
+/* Lists */
+
+.summary-card ul{
+
+list-style:none;
+padding:0;
+margin-top:20px;
+
+}
+
+.summary-card li{
+
+padding:14px 18px;
+margin-bottom:12px;
+
+background:
+rgba(255,255,255,.04);
+
+border-left:4px solid #facc15;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+.summary-card li:hover{
+
+background:
+rgba(250,204,21,.08);
+
+transform:translateX(6px);
+
+}
+
+/* Better Paragraphs */
+
+.summary-card p{
+
+font-size:17px;
+line-height:1.9;
+color:#dbe4f0;
+
+}
+
+/* Stat Icons */
+
+.icon{
+
+transition:
+transform .35s,
+filter .35s;
+
+}
+
+.stat-card:hover .icon{
+
+transform:
+scale(1.15)
+rotate(-6deg);
+
+filter:
+drop-shadow(0 10px 15px rgba(250,204,21,.35));
+
+}
+
+/* Section Animation */
+
+.task-section{
+
+animation:
+fadeSection .7s ease;
+
+}
+
+@keyframes fadeSection{
+
+from{
+
+opacity:0;
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* Buttons */
+
+.primary-btn{
+
+position:relative;
+overflow:hidden;
+
+}
+
+.primary-btn::after{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:120%;
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.35),
+transparent
+);
+
+transition:.6s;
+
+}
+
+.primary-btn:hover::after{
+
+left:120%;
+
+}
+
+/* Card Background */
+
+.summary-card,
+.status-card{
+
+background:
+
+linear-gradient(
+145deg,
+rgba(255,255,255,.06),
+rgba(255,255,255,.03)
+);
+
+}
+
+/* Scroll Reveal Ready */
+
+.reveal{
+
+opacity:0;
+transform:translateY(35px);
+
+transition:
+
+opacity .8s,
+transform .8s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.summary-card,
+.status-card{
+
+padding:35px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.summary-card h2,
+.status-card h2{
+
+font-size:28px;
+
+}
+
+.summary-card p{
+
+font-size:16px;
+
+}
+
+.status-row{
+
+font-size:15px;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.summary-card,
+.status-card{
+
+padding:24px;
+
+}
+
+.summary-card li{
+
+padding:12px 14px;
+
+}
+
+.icon{
+
+font-size:38px;
+
+}
+
+  }
+  /* ===========================================
+   TASK SUBMISSION FORM
+=========================================== */
+
+.form-group{
+
+display:flex;
+
+flex-direction:column;
+
+margin-top:25px;
+
+}
+
+.form-group label{
+
+font-size:16px;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+color:#facc15;
+
+}
+
+.form-group input,
+.form-group textarea{
+
+width:100%;
+
+padding:16px 18px;
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,.12);
+
+background:rgba(255,255,255,.05);
+
+color:#fff;
+
+font-size:16px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+color:#94a3b8;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+border-color:#facc15;
+
+box-shadow:0 0 0 3px rgba(250,204,21,.15);
+
+}
+
+.form-group textarea{
+
+resize:vertical;
+
+min-height:140px;
+
+}
+  </style>
+
+</head>
+
+<body>
+
+<!-- ========================================= -->
+<!-- HERO SECTION -->
+<!-- ========================================= -->
+
+<section class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<div class="task-badge">
+
+🚀 CoinGrid Premium Creator Program
+
+</div>
+
+<h1>
+
+Professional Article Creation Challenge
+
+</h1>
+
+<p class="hero-description">
+
+Create a unique, responsive and high-quality HTML article that provides genuine value to readers. Outstanding articles may be selected for publication on <strong>DailyHustle.com</strong>, where approved creators can participate in our long-term revenue sharing program.
+
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="primary-btn"
+id="readInstructions">
+
+📖 Read Instructions
+
+</button>
+
+<button
+class="secondary-btn"
+id="rewardDetails">
+
+💰 Reward Details
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+  <!-- ========================================= -->
+<!-- TASK INFORMATION -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+📋 Task Information
+
+</h2>
+
+<p style="margin-top:20px;line-height:1.9;">
+
+Welcome to the <strong>Professional Article Creation Challenge</strong>.
+
+Please read all task instructions carefully before creating your article.
+
+</p>
+
+<div class="status-row">
+
+<span>
+
+Task
+
+</span>
+
+<span>
+
+Professional HTML Article
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Submission
+
+</span>
+
+<span>
+
+Google Drive ZIP Folder Link
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Review
+
+</span>
+
+<span>
+
+Manual Verification
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Publishing Platform
+
+</span>
+
+<span>
+
+DailyHustle.com
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Creator Program
+
+</span>
+
+<span>
+
+Revenue Sharing Eligible
+
+</span>
+
+</div>
+
+<p style="margin-top:25px;line-height:1.9;">
+
+Please complete every instruction before scrolling to the submission form at the bottom of this page. Submissions that do not follow the required guidelines may be rejected.
+
+</p>
+
+<div class="hero-buttons" style="margin-top:25px;">
+
+<button
+class="primary-btn"
+onclick="document.querySelector('.task-section:nth-of-type(2)').scrollIntoView({behavior:'smooth'})">
+
+📖 Read Task Instructions
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- TASK OVERVIEW -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+Task Overview
+
+</h2>
+
+<p>
+
+Read the complete task information before you begin creating your article.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📝
+
+</div>
+
+<h3>
+
+Article Creation
+
+</h3>
+
+<p>
+
+Task Category
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💵
+
+</div>
+
+<h3>
+
+Up To $100+
+
+</h3>
+
+<p>
+
+Potential Reward
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Intermediate
+
+</h3>
+
+<p>
+
+Difficulty
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⏱
+
+</div>
+
+<h3>
+
+2–8 Hours
+
+</h3>
+
+<p>
+
+Estimated Time
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TASK STATUS -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+Current Task Status
+
+</h2>
+
+<div class="status-row">
+
+<span>
+
+Status
+
+</span>
+
+<span class="status-open">
+
+🟢 Open
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Participation
+
+</span>
+
+<span>
+
+Unlimited
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Submission Period
+
+</span>
+
+<span>
+
+Until Task Expires
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Review Method
+
+</span>
+
+<span>
+
+Manual Verification
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Publishing Platform
+
+</span>
+
+<span>
+
+DailyHustle.com
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- QUICK SUMMARY -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📌 Quick Summary
+
+</h2>
+
+<p>
+
+Your goal is to create a professional article as a responsive HTML page using HTML, CSS and JavaScript. The article should teach something valuable, solve a real problem or introduce a useful idea that benefits readers.
+
+</p>
+
+<p>
+
+Every submission is manually reviewed for originality, quality, design, usefulness and technical standards before any publication decision is made.
+
+</p>
+
+<p>
+
+Approved articles may be published on <strong>DailyHustle.com</strong>. Revenue sharing is based on the article's real performance after publication according to CoinGrid Creator Program policies.
+
+</p>
+
+<p>
+
+Please read every instruction carefully before proceeding to the next section.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================= -->
+<!-- PART 1B - TASK DETAILS -->
+<!-- Paste BELOW Quick Summary -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+📋 What You Need To Build
+
+</h2>
+
+<p>
+
+Your submission must be a complete, professional and responsive article page.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+💻
+
+</div>
+
+<h3>
+
+HTML
+
+</h3>
+
+<p>
+
+Build a complete HTML page with proper semantic structure and clean layout.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎨
+
+</div>
+
+<h3>
+
+CSS
+
+</h3>
+
+<p>
+
+Design a beautiful responsive interface that works perfectly on all screen sizes.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚙️
+
+</div>
+
+<h3>
+
+JavaScript
+
+</h3>
+
+<p>
+
+Add useful interactive features where appropriate without reducing performance.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🖼️
+
+</div>
+
+<h3>
+
+Images
+
+</h3>
+
+<p>
+
+Use high-quality banners, illustrations or screenshots that support your content.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- REQUIRED DELIVERABLES -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📦 Required Deliverables
+
+</h2>
+
+<p>
+
+When your work is complete, prepare the following before submitting:
+
+</p>
+
+<ul>
+
+<li>✅ Complete HTML page</li>
+
+<li>✅ CSS stylesheet (or embedded CSS)</li>
+
+<li>✅ JavaScript file (or embedded JavaScript)</li>
+
+<li>✅ Images used in the project</li>
+
+<li>✅ Fonts or icons (if required)</li>
+
+<li>✅ ZIP file containing all project files</li>
+
+<li>✅ Optional live preview link</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- TECHNOLOGY REQUIREMENTS -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+🛠 Technology Requirements
+
+</h2>
+
+<div class="status-row">
+
+<span>HTML Version</span>
+
+<span>HTML5</span>
+
+</div>
+
+<div class="status-row">
+
+<span>CSS</span>
+
+<span>CSS3</span>
+
+</div>
+
+<div class="status-row">
+
+<span>JavaScript</span>
+
+<span>Vanilla JavaScript</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Responsive Design</span>
+
+<span>Required</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Browser Support</span>
+
+<span>Chrome, Edge & Firefox</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPORTANT NOTE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+⚠ Before You Continue
+
+</h2>
+
+<p>
+
+Create the article completely by yourself or with tools that you have substantially reviewed and improved. Ensure that you have the right to use any images, icons, or other assets you include.
+
+</p>
+
+<p>
+
+Your article should focus on helping readers through useful, accurate and well-presented information. Submissions that are incomplete, misleading or copied from other sources are unlikely to be approved.
+
+</p>
+
+</div>
+
+  </section>
+<!-- ========================================= -->
+<!-- PART 1C - QUALITY REQUIREMENTS -->
+<!-- Paste BELOW Part 1B -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+⭐ Quality Requirements
+
+</h2>
+
+<p>
+
+Every submission is reviewed against the following standards.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+💡
+
+</div>
+
+<h3>
+
+Original Content
+
+</h3>
+
+<p>
+
+Create your own article with unique explanations, ideas and examples.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📱
+
+</div>
+
+<h3>
+
+Responsive Design
+
+</h3>
+
+<p>
+
+Your page must work correctly on mobile, tablet and desktop devices.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⚡
+
+</div>
+
+<h3>
+
+Fast Loading
+
+</h3>
+
+<p>
+
+Optimize images and code so the page loads quickly.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Useful Information
+
+</h3>
+
+<p>
+
+Your article should genuinely help readers and solve a real problem.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- REVIEW CRITERIA -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📊 How We Evaluate Your Article
+
+</h2>
+
+<ul>
+
+<li>✅ Originality of your idea</li>
+
+<li>✅ Accuracy of information</li>
+
+<li>✅ Overall design quality</li>
+
+<li>✅ Mobile responsiveness</li>
+
+<li>✅ User experience</li>
+
+<li>✅ Readability and grammar</li>
+
+<li>✅ Professional presentation</li>
+
+<li>✅ Practical value for readers</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- REJECTION REASONS -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+❌ Common Reasons for Rejection
+
+</h2>
+
+<ul>
+
+<li>Copied or plagiarized content.</li>
+
+<li>Misleading or false information.</li>
+
+<li>Broken HTML, CSS or JavaScript.</li>
+
+<li>Poor mobile responsiveness.</li>
+
+<li>Very low-quality design.</li>
+
+<li>Incomplete project files.</li>
+
+<li>Spam or meaningless content.</li>
+
+<li>Copyright violations.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- READY TO CONTINUE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+🚀 Ready for the Next Step?
+
+</h2>
+
+<p style="margin-top:20px;line-height:1.9;">
+
+You now understand what you need to build, what files to submit and the quality standards expected for approval.
+
+In the next section, we'll explain how your submission is reviewed, how articles are published on DailyHustle.com, and how revenue sharing works.
+
+</p>
+
+<div class="hero-buttons" style="margin-top:30px;">
+
+<button
+class="primary-btn"
+id="gotoPart2">
+
+Continue to Part 2 →
+
+</button>
+
+</div>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 2A - SUBMISSION & REVIEW PROCESS -->
+<!-- Paste BELOW Part 1C -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+🔍 How Your Submission Is Reviewed
+
+</h2>
+
+<p>
+
+Every submission goes through multiple quality checks before it can be approved for publication.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📤
+
+</div>
+
+<h3>
+
+Step 1
+
+</h3>
+
+<p>
+
+Submit your completed article project through the CoinGrid submission page.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🔎
+
+</div>
+
+<h3>
+
+Step 2
+
+</h3>
+
+<p>
+
+Our review team checks originality, quality, design, responsiveness and overall usefulness.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+✅
+
+</div>
+
+<h3>
+
+Step 3
+
+</h3>
+
+<p>
+
+Approved articles move to the publishing queue.
+
+Rejected articles may receive feedback when applicable.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Step 4
+
+</h3>
+
+<p>
+
+Approved articles are prepared for publication on our partner platform.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- REVIEW WORKFLOW -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📋 Complete Review Workflow
+
+</h2>
+
+<ul>
+
+<li>1️⃣ Submit your article.</li>
+
+<li>2️⃣ Automatic project validation.</li>
+
+<li>3️⃣ Manual originality review.</li>
+
+<li>4️⃣ HTML, CSS and JavaScript testing.</li>
+
+<li>5️⃣ Mobile responsiveness testing.</li>
+
+<li>6️⃣ Quality and readability evaluation.</li>
+
+<li>7️⃣ Approval or rejection decision.</li>
+
+<li>8️⃣ Approved articles move to publishing.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- QUALITY VERIFICATION -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+🛡 Verification Checklist
+
+</h2>
+
+<div class="status-row">
+
+<span>
+
+Original Content
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Responsive Design
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Professional Layout
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Working HTML/CSS/JS
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Useful Information
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Manual Review
+
+</span>
+
+<span>
+
+Always Performed
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPORTANT -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+⚠ Important
+
+</h2>
+
+<p>
+
+Submitting your project does not automatically approve it.
+
+</p>
+
+<p>
+
+Every submission is reviewed individually to ensure it meets CoinGrid's quality standards before it becomes eligible for publication.
+
+</p>
+
+<p>
+
+This review process helps maintain high-quality content for readers and provides fair opportunities for creators.
+
+</p>
+
+</div>
+
+  </section>
+
+  <!-- ========================================= -->
+<!-- PART 2B - PUBLICATION & REVENUE SHARING -->
+<!-- Paste BELOW Part 2A -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+🌍 Publication & Revenue Sharing
+
+</h2>
+
+<p>
+
+Approved articles may be published on our partner platform,
+<strong>DailyHustle.com</strong>, where they can reach real readers from around the world.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📰
+
+</div>
+
+<h3>
+
+Published
+
+</h3>
+
+<p>
+
+After approval, your article may be published on DailyHustle.com.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+👥
+
+</div>
+
+<h3>
+
+Real Readers
+
+</h3>
+
+<p>
+
+Your article will be available to real visitors interested in the topic.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Performance
+
+</h3>
+
+<p>
+
+Views, engagement and reader interest are monitored continuously.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+💰
+
+</div>
+
+<h3>
+
+Revenue
+
+</h3>
+
+<p>
+
+Eligible earnings are calculated based on your article's performance.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- REVENUE SHARING -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+💵 Revenue Sharing
+
+</h2>
+
+<p>
+
+If your article is approved and published, it may generate revenue through advertisements and other monetization methods available on DailyHustle.com.
+
+</p>
+
+<p>
+
+Revenue is shared according to the CoinGrid Creator Program.
+
+</p>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+👤
+
+</div>
+
+<h3>
+
+60%
+
+</h3>
+
+<p>
+
+Creator Share
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🏢
+
+</div>
+
+<h3>
+
+40%
+
+</h3>
+
+<p>
+
+CoinGrid Share
+
+</p>
+
+</div>
+
+</div>
+
+<p>
+
+CoinGrid's share supports hosting, content moderation, technical infrastructure, promotion, quality review, maintenance and ongoing platform development.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- HOW PAYMENTS WORK -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+💳 Payment Process
+
+</h2>
+
+<div class="status-row">
+
+<span>
+
+Article Approved
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Published on DailyHustle.com
+
+</span>
+
+<span>
+
+Required
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Performance Tracking
+
+</span>
+
+<span>
+
+Views & Engagement
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Revenue Generated
+
+</span>
+
+<span>
+
+Performance Based
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Creator Payment
+
+</span>
+
+<span>
+
+According to Revenue Share
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- IMPORTANT PAYMENT NOTICE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📌 Important Payment Notice
+
+</h2>
+
+<p>
+
+Submitting an article does not guarantee payment.
+
+</p>
+
+<p>
+
+Only articles that successfully pass review and are selected for publication may become eligible for revenue sharing.
+
+</p>
+
+<p>
+
+Actual earnings depend on factors such as reader engagement, page views, advertising revenue and the long-term performance of the published article.
+
+</p>
+
+<p>
+
+Some articles may earn more than others, while some may generate little or no revenue if they receive limited engagement.
+
+</p>
+
+<p>
+
+Our goal is to reward creators who consistently produce useful, high-quality content that benefits readers.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PART 2 COMPLETE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+✅ Part 2 Complete
+
+</h2>
+
+<p style="margin-top:20px;line-height:1.9;">
+
+You now understand how articles are reviewed, published and how the Creator Revenue Sharing Program works.
+
+In the next section, you'll learn how CoinGrid tracks your creator reputation, assigns better tasks and offers opportunities to join our professional team.
+
+</p>
+
+<div class="hero-buttons" style="margin-top:30px;">
+
+<button
+class="primary-btn"
+id="gotoPart3">
+
+Continue to Part 3 →
+
+</button>
+
+</div>
+
+</div>
+
+  </section>
+
+  <!-- ========================================= -->
+<!-- PART 3A - CREATOR REPUTATION -->
+<!-- Paste BELOW Part 2B -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+🏆 Build Your Creator Reputation
+
+</h2>
+
+<p>
+
+Every article you submit helps build your Creator Profile inside CoinGrid.
+
+Your work history becomes valuable over time.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📂
+
+</div>
+
+<h3>
+
+Work History
+
+</h3>
+
+<p>
+
+Every submitted project is recorded in your creator profile.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+⭐
+
+</div>
+
+<h3>
+
+Quality Score
+
+</h3>
+
+<p>
+
+High-quality work improves your overall creator rating.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Performance
+
+</h3>
+
+<p>
+
+Published articles continue building your professional portfolio.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🏅
+
+</div>
+
+<h3>
+
+Experience
+
+</h3>
+
+<p>
+
+Successful creators unlock better opportunities over time.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CREATOR LEVELS -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+🚀 Creator Growth Journey
+
+</h2>
+
+<ul>
+
+<li>🥉 Beginner Creator</li>
+
+<li>🥈 Verified Creator</li>
+
+<li>🥇 Professional Creator</li>
+
+<li>💎 Premium Creator</li>
+
+<li>👑 Elite Creator</li>
+
+</ul>
+
+<p>
+
+As your work quality and consistency improve, you may receive access to more valuable projects and additional platform opportunities.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- HOW WE TRACK QUALITY -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+📊 Creator Performance Tracking
+
+</h2>
+
+<div class="status-row">
+
+<span>
+
+Approved Articles
+
+</span>
+
+<span>
+
+Tracked
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Rejected Articles
+
+</span>
+
+<span>
+
+Tracked
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Content Quality
+
+</span>
+
+<span>
+
+Tracked
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Professional Behaviour
+
+</span>
+
+<span>
+
+Tracked
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Consistency
+
+</span>
+
+<span>
+
+Tracked
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Portfolio Growth
+
+</span>
+
+<span>
+
+Tracked
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- WHY QUALITY MATTERS -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+💡 Why Quality Matters
+
+</h2>
+
+<p>
+
+Creators who consistently submit useful, original and professional work help improve the quality of the platform.
+
+</p>
+
+<p>
+
+Strong submissions increase trust with readers and strengthen your reputation as a reliable creator.
+
+</p>
+
+<p>
+
+Over time, your portfolio can demonstrate your skills and may help you qualify for additional opportunities offered through CoinGrid.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PART 3A COMPLETE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+✅ Part 3A Completed
+
+</h2>
+
+<p style="margin-top:20px;line-height:1.9;">
+
+You've learned how your creator profile, reputation and work history grow over time.
+
+Next, you'll discover how high-performing creators can unlock advanced projects and future opportunities.
+
+</p>
+
+<div class="hero-buttons" style="margin-top:30px;">
+
+<button
+class="primary-btn"
+id="gotoPart3B">
+
+Continue to Part 3B →
+
+</button>
+
+</div>
+
+</div>
+
+  </section>
+
+  <!-- ========================================= -->
+<!-- PART 3B - ADVANCED OPPORTUNITIES -->
+<!-- Paste BELOW Part 3A -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+🚀 Unlock Better Tasks & Opportunities
+
+</h2>
+
+<p>
+
+Consistently delivering high-quality work can help you qualify for more advanced projects and additional opportunities within the CoinGrid platform.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+📈
+
+</div>
+
+<h3>
+
+Higher Value Tasks
+
+</h3>
+
+<p>
+
+Creators who consistently submit high-quality work may receive invitations to more challenging and rewarding projects.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🏅
+
+</div>
+
+<h3>
+
+Priority Reviews
+
+</h3>
+
+<p>
+
+Strong creator histories may help your future submissions receive faster review attention when possible.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Special Projects
+
+</h3>
+
+<p>
+
+Selected creators may be invited to work on premium content, website development or other platform projects.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🤝
+
+</div>
+
+<h3>
+
+Professional Opportunities
+
+</h3>
+
+<p>
+
+Exceptional creators may be considered for future collaboration opportunities as platform needs evolve.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- HOW TO IMPROVE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📚 How To Become a Top Creator
+
+</h2>
+
+<ul>
+
+<li>✅ Submit only original work.</li>
+
+<li>✅ Research your topic thoroughly.</li>
+
+<li>✅ Build clean and responsive pages.</li>
+
+<li>✅ Make your articles useful and practical.</li>
+
+<li>✅ Check grammar and spelling.</li>
+
+<li>✅ Optimize images and page speed.</li>
+
+<li>✅ Keep improving with every submission.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- LONG-TERM BENEFITS -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+🌟 Long-Term Benefits
+
+</h2>
+
+<div class="status-row">
+
+<span>
+
+Professional Portfolio
+
+</span>
+
+<span>
+
+Build Over Time
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Creator Reputation
+
+</span>
+
+<span>
+
+Improves With Quality
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Advanced Projects
+
+</span>
+
+<span>
+
+May Become Available
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Revenue Opportunities
+
+</span>
+
+<span>
+
+Based on Eligible Published Work
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Future Collaboration
+
+</span>
+
+<span>
+
+Based on Platform Needs
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PROFESSIONAL MINDSET -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+💼 Think Like a Professional Creator
+
+</h2>
+
+<p>
+
+Focus on creating content that genuinely helps readers rather than only trying to complete a task.
+
+</p>
+
+<p>
+
+Professional creators continually improve their writing, design and technical skills. Consistently useful work builds trust with readers and strengthens your portfolio over time.
+
+</p>
+
+<p>
+
+Every article you submit is an opportunity to demonstrate your creativity, technical ability and commitment to quality.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- PART 3B COMPLETE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+✅ Part 3B Completed
+
+</h2>
+
+<p style="margin-top:20px;line-height:1.9;">
+
+You've learned how to build your creator reputation and prepare for long-term growth.
+
+The final section will explain how to submit your project correctly and allow you to begin the Article Creation Task.
+
+</p>
+
+<div class="hero-buttons" style="margin-top:30px;">
+
+<button
+class="primary-btn"
+id="gotoPart3C">
+
+Continue to Final Part →
+
+</button>
+
+</div>
+
+</div>
+
+  </section>
+  <!-- ========================================= -->
+<!-- PART 3C - FINAL SUBMISSION & START TASK -->
+<!-- Paste BELOW Part 3B -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="section-title">
+
+<h2>
+
+🎉 Final Step - Submit Your Best Work
+
+</h2>
+
+<p>
+
+You have now completed all instructions for this task. Before submitting your project, review the final checklist below.
+
+</p>
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+<div class="icon">
+
+✅
+
+</div>
+
+<h3>
+
+Original Work
+
+</h3>
+
+<p>
+
+Your article should be your own work and provide genuine value to readers.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📱
+
+</div>
+
+<h3>
+
+Responsive
+
+</h3>
+
+<p>
+
+Your page should display correctly on mobile, tablet and desktop devices.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+🧪
+
+</div>
+
+<h3>
+
+Fully Tested
+
+</h3>
+
+<p>
+
+Check that all HTML, CSS and JavaScript work correctly before submitting.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<div class="icon">
+
+📦
+
+</div>
+
+<h3>
+
+Ready To Upload
+
+</h3>
+
+<p>
+
+Prepare your project files and submit them through CoinGrid.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FINAL REMINDER -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+📌 Final Reminder
+
+</h2>
+
+<p>
+
+Submitting a project does not automatically guarantee publication or payment.
+
+</p>
+
+<p>
+
+Every submission is reviewed manually for originality, quality, usefulness, responsiveness and overall user experience.
+
+</p>
+
+<p>
+
+Articles selected for publication may appear on <strong>DailyHustle.com</strong>.
+
+</p>
+
+<p>
+
+If a published article generates eligible revenue, it will be shared according to the CoinGrid Creator Program.
+
+</p>
+
+<p>
+
+<strong>Creator Share:</strong> 60%
+
+</p>
+
+<p>
+
+<strong>CoinGrid Share:</strong> 40%
+
+</p>
+
+<p>
+
+Revenue depends on factors such as article quality, reader engagement, views, advertising performance and long-term value.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- CREATOR MESSAGE -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="summary-card">
+
+<h2>
+
+💙 A Message From CoinGrid
+
+</h2>
+
+<p>
+
+We are building a community of talented creators who enjoy producing useful content.
+
+</p>
+
+<p>
+
+Every quality article helps readers learn something new while allowing creators to build a professional portfolio.
+
+</p>
+
+<p>
+
+Consistently producing outstanding work may help you qualify for premium tasks, larger projects and future collaboration opportunities as our platform grows.
+
+</p>
+
+<p>
+
+Take your time, focus on quality and create something you're proud of.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- FINAL CHECKLIST -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+✅ Final Submission Checklist
+
+</h2>
+
+<div class="status-row">
+
+<span>Original Article</span>
+
+<span>✔</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Responsive Design</span>
+
+<span>✔</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Working HTML/CSS/JS</span>
+
+<span>✔</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Grammar Checked</span>
+
+<span>✔</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Images Included</span>
+
+<span>✔</span>
+
+</div>
+
+<div class="status-row">
+
+<span>Ready For Submission</span>
+
+<span>✔</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- START TASK -->
+<!-- ========================================= -->
+
+<!-- ========================================= -->
+<!-- FINAL SECTION - TASK SUBMISSION -->
+<!-- ========================================= -->
+
+<!-- ========================================= -->
+<!-- FINAL SECTION - TASK SUBMISSION -->
+<!-- ========================================= -->
+
+<section class="task-section">
+
+<div class="status-card">
+
+<h2>
+
+📤 Task Submission Instructions
+
+</h2>
+
+<p style="margin-top:20px;line-height:1.9;">
+
+Follow every step carefully before submitting your project. A complete and properly organized submission helps us review your work faster.
+
+</p>
+
+<div class="status-row">
+
+<span>
+
+Step 1
+
+</span>
+
+<span>
+
+Complete your HTML article with all required files.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 2
+
+</span>
+
+<span>
+
+Check that HTML, CSS and JavaScript work correctly.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 3
+
+</span>
+
+<span>
+
+Test your article on Mobile, Tablet and Desktop.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 4
+
+</span>
+
+<span>
+
+Include every image, icon, font and asset used in the project.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 5
+
+</span>
+
+<span>
+
+Place all project files inside one folder.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 6
+
+</span>
+
+<span>
+
+Compress the entire project folder into a ZIP file.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 7
+
+</span>
+
+<span>
+
+Open Google Drive and create a new folder named <strong>CoinGrid Submission</strong>.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 8
+
+</span>
+
+<span>
+
+Upload your ZIP file into the <strong>CoinGrid Submission</strong> folder.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 9
+
+</span>
+
+<span>
+
+Right-click the folder → Share → Change access to <strong>Anyone with the link</strong>.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 10
+
+</span>
+
+<span>
+
+Copy the Google Drive folder link.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 11
+
+</span>
+
+<span>
+
+Paste the Google Drive folder link into the CoinGrid Submission Form.
+
+</span>
+
+</div>
+
+<div class="status-row">
+
+<span>
+
+Step 12
+
+</span>
+
+<span>
+
+Review everything carefully before clicking the Submit button.
+
+</span>
+
+</div>
+
+<br>
+
+<div class="summary-card">
+
+<h2>
+
+✅ Final Checklist Before Submission
+
+</h2>
+
+<ul>
+
+<li>✔ HTML page completed.</li>
+
+<li>✔ CSS working correctly.</li>
+
+<li>✔ JavaScript working correctly.</li>
+
+<li>✔ Mobile responsive layout verified.</li>
+
+<li>✔ Images and assets included.</li>
+
+<li>✔ No missing files.</li>
+
+<li>✔ No console errors.</li>
+
+<li>✔ Content is original.</li>
+
+<li>✔ Grammar and spelling checked.</li>
+
+<li>✔ Entire project compressed into a ZIP file.</li>
+
+<li>✔ ZIP uploaded to Google Drive.</li>
+
+<li>✔ Google Drive folder access set to <strong>Anyone with the link</strong>.</li>
+
+<li>✔ Correct Google Drive folder link copied.</li>
+
+<li>✔ Drive link pasted into the submission form.</li>
+
+</ul>
+
+</div>
+
+<br>
+
+<div class="summary-card">
+
+<h2>
+
+⚠ Important Notice
+
+</h2>
+
+<p>
+
+Please do not delete, rename or move your Google Drive folder after submitting. Our review team must be able to access your files during the verification process.
+
+</p>
+
+<p>
+
+Projects with broken links, private folders, missing files or inaccessible ZIP files cannot be reviewed until the issue is corrected.
+
+</p>
+
+<p>
+
+Every submission is manually verified. Only approved articles may be published on <strong>DailyHustle.com</strong>.
+
+</p>
+
+<p>
+
+If your article is approved, published and generates eligible revenue, your earnings will follow the CoinGrid Creator Revenue Sharing Program (60% Creator • 40% CoinGrid).
+
+</p>
+
+</div>
+
+<!-- ========================================= -->
+<!-- SUBMISSION FORM -->
+<!-- ========================================= -->
+
+<div class="summary-card">
+
+<h2>
+
+📤 Submit Your Task
+
+</h2>
+
+<p>
+
+Paste the Google Drive folder link containing your ZIP project below. Make sure the folder access is set to <strong>Anyone with the link</strong> before submitting.
+
+</p>
+
+<form id="taskSubmissionForm">
+
+<div class="form-group">
+
+<label for="taskUrl">
+
+Google Drive ZIP Folder URL
+
+</label>
+
+<input
+type="url"
+id="taskUrl"
+name="taskUrl"
+placeholder="Paste your task ZIP Google Drive folder URL here..."
+required>
+
+</div>
+
+<div class="form-group">
+
+<label for="creatorNote">
+
+Additional Notes (Optional)
+
+</label>
+
+<textarea
+id="creatorNote"
+name="creatorNote"
+rows="5"
+placeholder="Add any notes for the review team..."></textarea>
+
+</div>
+
+<div class="hero-buttons">
+
+<button
+type="reset"
+class="secondary-btn">
+
+Reset
+
+</button>
+
+<button
+type="submit"
+class="primary-btn"
+id="submitTaskBtn">
+
+📤 Submit Task
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+  
+<script>
+
+/* =========================================
+   CoinGrid Task Instructions
+========================================= */
+
+const readBtn = document.getElementById("readInstructions");
+const rewardBtn = document.getElementById("rewardDetails");
+const startTaskBtn = document.getElementById("startTaskBtn");
+
+/* Smooth button scrolling */
+
+if(readBtn){
+
+readBtn.onclick = () => {
+
+document.querySelector(".task-section").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+};
+
+}
+
+/* Reward details */
+
+if(rewardBtn){
+
+rewardBtn.onclick = () => {
+
+alert(`
+
+CoinGrid Creator Program
+
+• Your article is reviewed manually.
+
+• Approved articles may be published on DailyHustle.com.
+
+• Revenue depends on article performance.
+
+Creator Share : 60%
+
+CoinGrid Share : 40%
+
+Higher quality articles generally have a better chance of attracting readers and generating revenue over time.
+
+`);
+
+};
+
+}
+
+/* Start Task */
+
+if(startTaskBtn){
+
+startTaskBtn.onclick = () => {
+
+const confirmStart = confirm(
+
+"Have you read all instructions carefully?\n\nClick OK to start the Article Creation Task."
+
+);
+
+if(confirmStart){
+
+window.location.href="article-task.html";
+
+}
+
+};
+
+}
+
+/* Reveal Animation */
+
+const observer = new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0px)";
+
+}
+
+});
+
+},{threshold:0.15});
+
+document.querySelectorAll(
+
+".stat-card,.summary-card,.status-card"
+
+).forEach(card=>{
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition="all .8s ease";
+
+observer.observe(card);
+
+});
+
+/* Progress */
+
+window.addEventListener("load",()=>{
+
+console.log("CoinGrid Task Instructions Loaded");
+
+});
+
+
+const API_BASE =
+"https://coingrid-api.coingridcoingrid.workers.dev";
+
+const TASK_ID = 36;
+
+document
+.getElementById("taskSubmissionForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+const task_id = TASK_ID;
+    const submission_url =
+        document.getElementById("taskUrl").value.trim();
+
+    const submission_note =
+        document.getElementById("creatorNote").value.trim();
+
+    try{
+
+        const response = await fetch(
+
+            `${API_BASE}/api/tasks/submit`,
+
+            {
+
+                method:"POST",
+
+                credentials:"include",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+
+                    task_id,
+
+                    submission_url,
+
+                    submission_note
+
+                })
+
+            }
+
+        );
+
+        const data = await response.json();
+
+if (data.success) {
+
+    alert(data.message);
+
+    window.location.href = "browse.html";
+
+} else {
+
+    alert(data.message);
+
+}
+    }catch(error){
+
+        console.error(error);
+
+        alert("Unable to submit task.");
+
+    }
+
+});
+
+  </script>
+</body>
+
+  </html>
