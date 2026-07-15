@@ -780,6 +780,132 @@ grid-template-columns:1fr;
 }
 
 }
+
+    /* SHARE CARD */
+
+.share-card{
+
+margin:30px 0;
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+padding:30px;
+
+border-radius:24px;
+
+background:linear-gradient(135deg,#0ea5e9,#2563eb);
+
+border:1px solid rgba(255,255,255,.12);
+
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.share-icon{
+
+font-size:64px;
+
+}
+
+.share-content{
+
+flex:1;
+
+}
+
+.share-content h2{
+
+font-size:28px;
+
+margin-bottom:12px;
+
+}
+
+.share-content p{
+
+color:#e2e8f0;
+
+line-height:1.8;
+
+margin-bottom:25px;
+
+}
+
+.share-buttons{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.share-btn{
+
+padding:15px 24px;
+
+border:none;
+
+border-radius:12px;
+
+background:#facc15;
+
+color:#111827;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.share-btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.share-btn.outline{
+
+background:transparent;
+
+color:#fff;
+
+border:2px solid rgba(255,255,255,.4);
+
+}
+
+.share-btn.outline:hover{
+
+background:rgba(255,255,255,.12);
+
+}
+
+@media(max-width:768px){
+
+.share-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.share-buttons{
+
+justify-content:center;
+
+}
+
+}
 </style></head><body>
   
   <div class="dashboard"><!-- SIDEBAR -->
@@ -967,6 +1093,40 @@ Complete more approved tasks and become one of CoinGrid's Top Earners.
 </div>
 
 </div>
+
+<!-- SHARE COINGRID -->
+
+<div class="share-card">
+
+<div class="share-icon">
+🌍
+</div>
+
+<div class="share-content">
+
+<h2>Share CoinGrid</h2>
+
+<p>
+Help others discover CoinGrid by sharing your personal invite link.
+More referral features and benefits will be introduced in future updates.
+</p>
+
+<div class="share-buttons">
+
+<button id="copyInviteBtn" class="share-btn">
+📋 Copy Invite Link
+</button>
+
+<button id="shareInviteBtn" class="share-btn outline">
+📤 Share Link
+</button>
+
+</div>
+
+</div>
+
+</div>
+
     
 <!-- QUICK ACTIONS -->
 
@@ -1192,6 +1352,54 @@ if (!response.ok) {
 }
 
 loadDashboard();
-                         </script>
+                        
+
+
+
+const inviteLink =
+"https://coingrid.in/invite";
+
+document
+.getElementById("copyInviteBtn")
+.addEventListener("click", async () => {
+
+await navigator.clipboard.writeText(inviteLink);
+
+alert("Invite link copied!");
+
+});
+
+document
+.getElementById("shareInviteBtn")
+.addEventListener("click", async () => {
+
+if(navigator.share){
+
+navigator.share({
+
+title:"Join CoinGrid",
+
+text:"Check out CoinGrid!",
+
+url:inviteLink
+
+});
+
+}else{
+
+window.open(
+
+"https://wa.me/?text=" +
+
+encodeURIComponent(inviteLink),
+
+"_blank"
+
+);
+
+}
+
+});
+</script>
 
 </body></html>
